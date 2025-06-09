@@ -1,0 +1,1 @@
+[2025-06-08T13:34:25.033+0000] {scheduler_job_runner.py:781} ERROR - Executor reports task instance <TaskInstance: transform_cart_items_csv.run_cart_items_transform manual__2025-06-03T00:00:00+00:00 [queued]> finished (failed) although the task says it's queued. (Info: None) Was the task killed externally?

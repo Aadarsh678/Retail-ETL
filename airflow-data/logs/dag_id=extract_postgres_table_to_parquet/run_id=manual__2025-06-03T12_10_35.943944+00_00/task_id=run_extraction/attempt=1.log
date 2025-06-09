@@ -1,0 +1,16 @@
+[2025-06-03T12:10:38.517+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction manual__2025-06-03T12:10:35.943944+00:00 [queued]>
+[2025-06-03T12:10:38.523+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction manual__2025-06-03T12:10:35.943944+00:00 [queued]>
+[2025-06-03T12:10:38.523+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-03T12:10:38.576+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_extraction> on 2025-06-03 12:10:35.943944+00:00
+[2025-06-03T12:10:38.581+0000] {standard_task_runner.py:60} INFO - Started process 1139 to run task
+[2025-06-03T12:10:38.583+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'extract_postgres_table_to_parquet', 'run_extraction', 'manual__2025-06-03T12:10:35.943944+00:00', '--job-id', '318', '--raw', '--subdir', 'DAGS_FOLDER/asia/landing.py', '--cfg-path', '/tmp/tmp8snqukpr']
+[2025-06-03T12:10:38.585+0000] {standard_task_runner.py:88} INFO - Job 318: Subtask run_extraction
+[2025-06-03T12:10:38.684+0000] {task_command.py:423} INFO - Running <TaskInstance: extract_postgres_table_to_parquet.run_extraction manual__2025-06-03T12:10:35.943944+00:00 [running]> on host fbffe4c27949
+[2025-06-03T12:10:38.857+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='extract_postgres_table_to_parquet' AIRFLOW_CTX_TASK_ID='run_extraction' AIRFLOW_CTX_EXECUTION_DATE='2025-06-03T12:10:35.943944+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-03T12:10:35.943944+00:00'
+[2025-06-03T12:10:38.857+0000] {logging_mixin.py:188} INFO - Starting extraction for table: customers in region: asia
+[2025-06-03T12:11:07.603+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=asia/table=customers/load_date=2025-06-03/
+[2025-06-03T12:11:17.128+0000] {logging_mixin.py:188} INFO - Finished extraction for customers
+[2025-06-03T12:11:17.160+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-06-03T12:11:17.174+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=extract_postgres_table_to_parquet, task_id=run_extraction, execution_date=20250603T121035, start_date=20250603T121038, end_date=20250603T121117
+[2025-06-03T12:11:17.351+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-03T12:11:17.370+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,31 @@
+[2025-06-09T07:26:17.783+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_us.process_product_reviews_us manual__2025-06-09T07:23:36.480089+00:00 [queued]>
+[2025-06-09T07:26:17.797+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_us.process_product_reviews_us manual__2025-06-09T07:23:36.480089+00:00 [queued]>
+[2025-06-09T07:26:17.798+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-09T07:26:17.814+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_us.process_product_reviews_us> on 2025-06-09 07:23:36.480089+00:00
+[2025-06-09T07:26:17.820+0000] {standard_task_runner.py:60} INFO - Started process 68203 to run task
+[2025-06-09T07:26:17.824+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_processor_7', 'process_region_us.process_product_reviews_us', 'manual__2025-06-09T07:23:36.480089+00:00', '--job-id', '539', '--raw', '--subdir', 'DAGS_FOLDER/master2.py', '--cfg-path', '/tmp/tmpdf098p8_']
+[2025-06-09T07:26:17.826+0000] {standard_task_runner.py:88} INFO - Job 539: Subtask process_region_us.process_product_reviews_us
+[2025-06-09T07:26:17.854+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-09T07:26:17.911+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_processor_7.process_region_us.process_product_reviews_us manual__2025-06-09T07:23:36.480089+00:00 [running]> on host afcdbcf38bc0
+[2025-06-09T07:26:18.079+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_processor_7' AIRFLOW_CTX_TASK_ID='process_region_us.process_product_reviews_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T07:23:36.480089+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-09T07:23:36.480089+00:00'
+[2025-06-09T07:26:29.334+0000] {logging_mixin.py:188} INFO - Processing product_reviews for region us
+[2025-06-09T07:26:46.766+0000] {logging_mixin.py:188} INFO - +---------+----------+-----------+--------+------+-------------------+--------------------+--------------------+-------------+--------------------+-------+--------+
+|review_id|product_id|customer_id|order_id|rating|       review_title|         review_text|is_verified_purchase|helpful_votes|          created_at|_region| _source|
++---------+----------+-----------+--------+------+-------------------+--------------------+--------------------+-------------+--------------------+-------+--------+
+|        1|         1|          1|       1|     5|     AMAZING PHONE!|Best iPhone yet! ...|                true|           23|2025-06-08 19:23:...|     us|postgres|
+|        2|         5|          2|       2|     4|lovely summer dress|Beautiful dress, ...|                true|           12|2025-06-08 19:23:...|     us|postgres|
+|        3|         6|          3|       3|     5|   Perfect Recliner|So comfortable! G...|                true|           18|2025-06-08 19:23:...|     us|postgres|
+|        4|        14|          4|       4|     3|  DECENT HEADPHONES|Sound quality is ...|                true|            7|2025-06-08 19:23:...|     us|postgres|
+|        5|         7|         10|      10|     2| disappointing book|Content was outda...|                true|            3|2025-06-08 19:23:...|     us|postgres|
+|        6|         1|          5|    NULL|     4|    Good but pricey|Great phone featu...|               false|            5|2025-06-08 19:23:...|     us|postgres|
+|        7|         9|          7|       7|     5|    EXCELLENT BIKE!|Perfect for trail...|                true|           15|2025-06-08 19:23:...|     us|postgres|
+|        8|        10|          8|       8|     4|   fun building set|Kids absolutely l...|                true|            9|2025-06-08 19:23:...|     us|postgres|
+|        1|         1|          1|       1|     5|     AMAZING PHONE!|Best iPhone yet! ...|                true|           23|2025-06-08 19:23:...|     us|postgres|
+|        2|         5|          2|       2|     4|lovely summer dress|Beautiful dress, ...|                true|           12|2025-06-08 19:23:...|     us|postgres|
++---------+----------+-----------+--------+------+-------------------+--------------------+--------------------+-------------+--------------------+-------+--------+
+only showing top 10 rows
+[2025-06-09T07:26:50.686+0000] {logging_mixin.py:188} INFO - Successfully processed 16 records for product_reviews in us
+[2025-06-09T07:26:51.537+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'us', 'table': 'product_reviews', 'record_count': 16, 'status': 'success'}
+[2025-06-09T07:26:51.652+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_processor_7, task_id=process_region_us.process_product_reviews_us, execution_date=20250609T072336, start_date=20250609T072617, end_date=20250609T072651
+[2025-06-09T07:26:51.845+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-09T07:26:51.975+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

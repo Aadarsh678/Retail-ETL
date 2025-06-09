@@ -1,0 +1,1 @@
+[2025-06-09T02:12:35.383+0000] {scheduler_job_runner.py:781} ERROR - Executor reports task instance <TaskInstance: multi_region_processor.process_region_eu.process_customers_eu scheduled__2025-06-07T00:00:00+00:00 [queued]> finished (failed) although the task says it's queued. (Info: None) Was the task killed externally?

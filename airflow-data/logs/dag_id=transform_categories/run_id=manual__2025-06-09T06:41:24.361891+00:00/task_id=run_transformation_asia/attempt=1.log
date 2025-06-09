@@ -1,0 +1,42 @@
+[2025-06-09T06:41:37.130+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: transform_categories.run_transformation_asia manual__2025-06-09T06:41:24.361891+00:00 [queued]>
+[2025-06-09T06:41:37.143+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: transform_categories.run_transformation_asia manual__2025-06-09T06:41:24.361891+00:00 [queued]>
+[2025-06-09T06:41:37.144+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-09T06:41:37.169+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_transformation_asia> on 2025-06-09 06:41:24.361891+00:00
+[2025-06-09T06:41:37.180+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-09T06:41:37.180+0000] {standard_task_runner.py:60} INFO - Started process 2239 to run task
+[2025-06-09T06:41:37.186+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'transform_categories', 'run_transformation_asia', 'manual__2025-06-09T06:41:24.361891+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/staging/categories_to_staging.py', '--cfg-path', '/tmp/tmpvh95o585']
+[2025-06-09T06:41:37.187+0000] {standard_task_runner.py:88} INFO - Job 12: Subtask run_transformation_asia
+[2025-06-09T06:41:37.213+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-09T06:41:37.274+0000] {task_command.py:423} INFO - Running <TaskInstance: transform_categories.run_transformation_asia manual__2025-06-09T06:41:24.361891+00:00 [running]> on host afcdbcf38bc0
+[2025-06-09T06:41:37.447+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='transform_categories' AIRFLOW_CTX_TASK_ID='run_transformation_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T06:41:24.361891+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-09T06:41:24.361891+00:00'
+[2025-06-09T06:41:37.448+0000] {logging_mixin.py:188} INFO - Starting transformation for table: categories in region: asia
+[2025-06-09T06:41:37.450+0000] {logging_mixin.py:188} INFO - Reading data from: /opt/airflow/data/raw/region=asia/table=categories/load_date=2025-06-08/part-00000-7c0d8a90-2b30-4920-81df-548dc08f1c32-c000.snappy.parquet
+[2025-06-09T06:41:38.520+0000] {logging_mixin.py:188} INFO - [INFO] Processing 15 records for asia
+[2025-06-09T06:41:38.521+0000] {logging_mixin.py:188} INFO - Error transforming data for asia: 'DataFrame' object has no attribute 'select'
+[2025-06-09T06:41:38.521+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/staging/categories_to_staging.py", line 83, in run_transformation_asia
+    transform_categories_table(
+  File "/opt/airflow/dags/staging/../../scripts/pyspark_jobs/categories.py", line 144, in transform_categories_table
+    raise e
+  File "/opt/airflow/dags/staging/../../scripts/pyspark_jobs/categories.py", line 127, in transform_categories_table
+    df_transformed = transform_categories(df_raw, region)
+  File "/opt/airflow/scripts/etl/transform/categories.py", line 128, in transform_categories
+    return transform_asia(df)
+  File "/opt/airflow/scripts/etl/transform/categories.py", line 44, in transform_asia
+    return df.select(
+  File "/home/airflow/.local/lib/python3.10/site-packages/pandas/core/generic.py", line 6299, in __getattr__
+    return object.__getattribute__(self, name)
+AttributeError: 'DataFrame' object has no attribute 'select'
+[2025-06-09T06:41:38.545+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=transform_categories, task_id=run_transformation_asia, execution_date=20250609T064124, start_date=20250609T064137, end_date=20250609T064138
+[2025-06-09T06:41:38.593+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 12 for task run_transformation_asia ('DataFrame' object has no attribute 'select'; 2239)
+[2025-06-09T06:41:38.639+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-06-09T06:41:38.665+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

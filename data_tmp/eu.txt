@@ -1,0 +1,288 @@
+#!/bin/bash
+
+psql -U "$POSTGRES_USER" -d retail_etl <<'EOF'
+BEGIN;
+
+
+-- Insert Categories with varied naming conventions
+INSERT INTO eu.categories (category_name, category_name_local, parent_category_id, category_path, is_active, gdpr_sensitive) VALUES
+('Electronics', 'Elektronik', NULL, '/Electronics', 1, FALSE),
+('SMARTPHONES', 'SMARTPHONES', 1, '/Electronics/Smartphones', 1, FALSE),
+('laptops', 'laptops', 1, '/Electronics/Laptops', 1, FALSE),
+('Gaming', 'Spiele', 1, '/Electronics/Gaming', 1, FALSE),
+('CLOTHING', 'KLEIDUNG', NULL, '/Clothing', 1, FALSE),
+('mens wear', 'herrenbekleidung', 5, '/Clothing/Mens', 1, FALSE),
+('WOMENS WEAR', 'DAMENBEKLEIDUNG', 5, '/Clothing/Womens', 1, FALSE),
+('Home & Garden', 'Haus & Garten', NULL, '/Home-Garden', 1, FALSE),
+('furniture', 'möbel', 8, '/Home-Garden/Furniture', 1, FALSE),
+('BOOKS', 'BÜCHER', NULL, '/Books', 1, TRUE),
+('health & beauty', 'gesundheit & schönheit', NULL, '/Health-Beauty', 1, TRUE),
+('Sports', 'Sport', NULL, '/Sports', 1, FALSE),
+('automotive', 'automobil', NULL, '/Automotive', 0, FALSE),
+('TOYS', 'SPIELZEUG', NULL, '/Toys', 1, FALSE),
+('jewelry', 'schmuck', NULL, '/Jewelry', 1, FALSE);
+
+-- Insert Products with varied data
+INSERT INTO eu.products (product_sku, product_name, product_description, category_id, base_price_eur, vat_rate, cost_price_eur, weight_kg, length_cm, width_cm, height_cm, energy_rating, is_active) VALUES
+('EU-SKU-PHONE001', 'iPhone 15 Pro', 'Latest Apple smartphone with advanced features', 2, 1199.99, 19.00, 800.00, 0.221, 15.9, 7.6, 0.83, NULL, 1),
+('EU-SKU-LAPTOP001', 'MACBOOK AIR M2', 'Apple MacBook Air with M2 chip', 3, 1299.99, 19.00, 900.00, 1.24, 30.41, 21.24, 1.13, 'A++', 1),
+('EU-SKU-GAME001', 'playstation 5', 'Sony PlayStation 5 gaming console', 4, 499.99, 19.00, 350.00, 4.5, 39.0, 26.0, 10.4, 'B', 1),
+('EU-SKU-SHIRT001', 'Cotton T-Shirt', 'Premium cotton t-shirt for men', 6, 29.99, 19.00, 12.00, 0.2, 30.0, 25.0, 2.0, NULL, 1),
+('EU-SKU-DRESS001', 'SUMMER DRESS', 'Elegant summer dress for women', 7, 89.99, 19.00, 35.00, 0.3, 40.0, 30.0, 3.0, NULL, 1),
+('EU-SKU-SOFA001', 'leather sofa', 'Premium leather 3-seater sofa', 9, 1599.99, 19.00, 800.00, 85.0, 220.0, 90.0, 85.0, NULL, 1),
+('EU-SKU-BOOK001', 'DATA PRIVACY GUIDE', 'Complete guide to GDPR compliance', 10, 39.99, 7.00, 15.00, 0.5, 24.0, 17.0, 2.5, NULL, 1),
+('EU-SKU-CREAM001', 'anti aging cream', 'Premium anti-aging face cream', 11, 79.99, 19.00, 25.00, 0.05, 8.0, 8.0, 6.0, NULL, 1),
+('EU-SKU-BIKE001', 'MOUNTAIN BIKE', 'Professional mountain bike', 12, 899.99, 19.00, 450.00, 15.5, 180.0, 65.0, 110.0, NULL, 1),
+('EU-SKU-TOY001', 'lego castle set', 'Medieval castle LEGO building set', 14, 149.99, 19.00, 75.00, 2.1, 35.0, 25.0, 15.0, NULL, 1),
+('EU-SKU-WATCH001', 'SMART WATCH', 'Fitness tracking smartwatch', 15, 299.99, 19.00, 120.00, 0.045, 4.5, 4.0, 1.2, NULL, 1),
+('EU-SKU-FRIDGE001', 'energy efficient fridge', 'A+++ energy rated refrigerator', 8, 799.99, 19.00, 400.00, 65.0, 180.0, 60.0, 85.0, 'A+++', 1),
+('EU-SKU-PHONE002', 'SAMSUNG GALAXY S24', 'Latest Samsung flagship phone', 2, 999.99, 19.00, 650.00, 0.196, 15.8, 7.1, 0.79, NULL, 1),
+('EU-SKU-HEADPHONES001', 'wireless headphones', 'Noise-cancelling wireless headphones', 1, 249.99, 19.00, 100.00, 0.25, 20.0, 18.0, 8.0, NULL, 1),
+('EU-SKU-TABLET001', 'IPAD PRO', 'Apple iPad Pro 12.9 inch', 1, 1099.99, 19.00, 700.00, 0.682, 28.0, 21.5, 0.64, NULL, 1);
+
+-- Insert Product Variants
+INSERT INTO eu.product_variants (product_id, sku, variant_name, variant_type, variant_value, price_adjustment_eur, is_active) VALUES
+(1, 'EU-SKU-PHONE001-BLACK-128GB', 'iPhone 15 Pro Black 128GB', 'color_storage', 'Black 128GB', 0.00, 1),
+(1, 'EU-SKU-PHONE001-BLUE-256GB', 'iPhone 15 Pro Blue 256GB', 'color_storage', 'Blue 256GB', 200.00, 1),
+(1, 'EU-SKU-PHONE001-WHITE-512GB', 'iPhone 15 Pro White 512GB', 'color_storage', 'White 512GB', 400.00, 1),
+(2, 'EU-SKU-LAPTOP001-SILVER-8GB', 'MacBook Air Silver 8GB', 'color_memory', 'Silver 8GB', 0.00, 1),
+(2, 'EU-SKU-LAPTOP001-GOLD-16GB', 'MacBook Air Gold 16GB', 'color_memory', 'Gold 16GB', 300.00, 1),
+(3, 'EU-SKU-GAME001-STANDARD', 'PlayStation 5 Standard', 'edition', 'Standard', 0.00, 1),
+(3, 'EU-SKU-GAME001-DIGITAL', 'PlayStation 5 Digital', 'edition', 'Digital', -100.00, 1),
+(4, 'EU-SKU-SHIRT001-RED-M', 'Cotton T-Shirt Red Medium', 'color_size', 'Red M', 0.00, 1),
+(4, 'EU-SKU-SHIRT001-BLUE-L', 'Cotton T-Shirt Blue Large', 'color_size', 'Blue L', 5.00, 1),
+(4, 'EU-SKU-SHIRT001-BLACK-XL', 'Cotton T-Shirt Black XL', 'color_size', 'Black XL', 10.00, 1),
+(5, 'EU-SKU-DRESS001-RED-S', 'Summer Dress Red Small', 'color_size', 'Red S', 0.00, 1),
+(5, 'EU-SKU-DRESS001-BLUE-M', 'Summer Dress Blue Medium', 'color_size', 'Blue M', 0.00, 1),
+(5, 'EU-SKU-DRESS001-BLACK-L', 'Summer Dress Black Large', 'color_size', 'Black L', 15.00, 1),
+(6, 'EU-SKU-SOFA001-BROWN', 'Leather Sofa Brown', 'color', 'Brown', 0.00, 1),
+(6, 'EU-SKU-SOFA001-BLACK', 'Leather Sofa Black', 'color', 'Black', 200.00, 1),
+(7, 'EU-SKU-BOOK001-EN', 'Data Privacy Guide English', 'language', 'English', 0.00, 1),
+(7, 'EU-SKU-BOOK001-DE', 'Data Privacy Guide German', 'language', 'German', 0.00, 1),
+(8, 'EU-SKU-CREAM001-50ML', 'Anti Aging Cream 50ml', 'size', '50ml', 0.00, 1),
+(8, 'EU-SKU-CREAM001-100ML', 'Anti Aging Cream 100ml', 'size', '100ml', 30.00, 1),
+(9, 'EU-SKU-BIKE001-RED-M', 'Mountain Bike Red Medium', 'color_size', 'Red M', 0.00, 1),
+(9, 'EU-SKU-BIKE001-BLUE-L', 'Mountain Bike Blue Large', 'color_size', 'Blue L', 50.00, 1);
+
+-- Insert Inventory data
+INSERT INTO eu.inventory (variant_id, warehouse_location, quantity_available, quantity_reserved, reorder_level, last_restocked_at) VALUES
+(1, 'EU-DE-01', 150, 25, 50, '2024-01-15 10:30:00+01'),
+(2, 'EU-DE-01', 75, 15, 30, '2024-01-20 14:15:00+01'),
+(3, 'EU-NL-02', 45, 8, 20, '2024-01-18 09:45:00+01'),
+(4, 'EU-FR-03', 200, 35, 75, '2024-01-22 11:20:00+01'),
+(5, 'EU-FR-03', 120, 20, 40, '2024-01-25 16:30:00+01'),
+(6, 'EU-DE-01', 85, 12, 25, '2024-01-19 13:45:00+01'),
+(7, 'EU-IT-04', 65, 10, 20, '2024-01-21 08:15:00+01'),
+(8, 'EU-NL-02', 300, 45, 100, '2024-01-23 12:00:00+01'),
+(9, 'EU-DE-01', 180, 30, 60, '2024-01-24 15:20:00+01'),
+(10, 'EU-FR-03', 220, 40, 80, '2024-01-26 10:45:00+01'),
+(11, 'EU-IT-04', 95, 18, 35, '2024-01-27 14:30:00+01'),
+(12, 'EU-NL-02', 110, 22, 45, '2024-01-28 09:15:00+01'),
+(13, 'EU-DE-01', 160, 28, 55, '2024-01-29 11:40:00+01'),
+(14, 'EU-FR-03', 75, 12, 25, '2024-01-30 16:10:00+01'),
+(15, 'EU-IT-04', 25, 5, 10, '2024-01-31 13:25:00+01'),
+(16, 'EU-NL-02', 500, 80, 150, '2024-02-01 08:50:00+01'),
+(17, 'EU-DE-01', 450, 70, 120, '2024-02-02 12:35:00+01'),
+(18, 'EU-FR-03', 80, 15, 30, '2024-02-03 15:45:00+01'),
+(19, 'EU-IT-04', 120, 25, 50, '2024-02-04 10:20:00+01'),
+(20, 'EU-NL-02', 35, 8, 15, '2024-02-05 14:15:00+01');
+
+
+-- Insert Customers with varied email and phone formats (valid and invalid)
+INSERT INTO eu.customers (email_hash, first_name_masked, last_name_masked, phone_masked, country_code, status_code, customer_tier, gdpr_consent_date, data_retention_until, acquisition_channel) VALUES
+-- Valid emails and phones
+('john.doe@email.com', 'JOHN', 'DOE', '+49-30-12345678', 'DE', 1, 'premium', '2024-01-15 10:30:00+01', '2027-01-15', 'organic'),
+('maria.garcia@gmail.com', 'maria', 'garcia', '+34-91-1234567', 'ES', 1, 'standard', '2024-01-16 11:45:00+01', '2027-01-16', 'social_media'),
+('PIERRE.MARTIN@YAHOO.FR', 'Pierre', 'MARTIN', '+33-1-45678901', 'FR', 1, 'enterprise', '2024-01-17 09:20:00+01', '2027-01-17', 'referral'),
+('anna.rossi@hotmail.it', 'Anna', 'rossi', '+39-06-87654321', 'IT', 1, 'standard', '2024-01-18 14:15:00+01', '2027-01-18', 'paid_ads'),
+('LARS.NIELSEN@OUTLOOK.COM', 'lars', 'NIELSEN', '+45-33-123456', 'DK', 1, 'premium', '2024-01-19 16:30:00+01', '2027-01-19', 'organic'),
+
+-- Invalid emails but valid phones
+('invalid.email.com', 'Sophie', 'Dubois', '+33-2-34567890', 'FR', 1, 'standard', '2024-01-20 12:45:00+01', '2027-01-20', 'email_campaign'),
+('@missing-local.com', 'HANS', 'mueller', '+49-89-9876543', 'DE', 1, 'standard', '2024-01-21 08:30:00+01', '2027-01-21', 'organic'),
+('no-at-symbol.gmail.com', 'elena', 'POPOV', '+359-2-1234567', 'BG', 1, 'premium', '2024-01-22 15:20:00+01', '2027-01-22', 'referral'),
+('double@@email.com', 'Marco', 'bianchi', '+39-02-11223344', 'IT', 1, 'standard', '2024-01-23 11:10:00+01', '2027-01-23', 'social_media'),
+('spaces in@email.com', 'INGRID', 'LARSSON', '+46-8-5566778', 'SE', 1, 'enterprise', '2024-01-24 13:55:00+01', '2027-01-24', 'paid_ads'),
+
+-- Valid emails but invalid phones
+('carlos.lopez@email.es', 'carlos', 'lopez', '123-456', 'ES', 1, 'standard', '2024-01-25 10:40:00+01', '2027-01-25', 'organic'),
+('EMMA.JOHNSON@GMAIL.COM', 'Emma', 'JOHNSON', 'not-a-phone', 'GB', 1, 'premium', '2024-01-26 14:25:00+01', '2027-01-26', 'email_campaign'),
+('luca.ferrari@yahoo.it', 'Luca', 'ferrari', '+39-abc-defghij', 'IT', 1, 'standard', '2024-01-27 09:15:00+01', '2027-01-27', 'referral'),
+('MARIE.BERNARD@HOTMAIL.FR', 'marie', 'BERNARD', '++33-1-23456789', 'FR', 1, 'enterprise', '2024-01-28 16:45:00+01', '2027-01-28', 'social_media'),
+('jan.kowalski@gmail.com', 'Jan', 'kowalski', '48-22-', 'PL', 1, 'standard', '2024-01-29 12:30:00+01', '2027-01-29', 'paid_ads'),
+
+-- Both invalid
+('invalid@', 'PETRA', 'novak', 'invalid-phone', 'CZ', 1, 'standard', '2024-01-30 11:20:00+01', '2027-01-30', 'organic'),
+('.com@domain', 'antonio', 'SILVA', '351-21-', 'PT', 1, 'premium', '2024-01-31 15:35:00+01', '2027-01-31', 'email_campaign'),
+('user@.com', 'Katarina', 'jovanovic', '+381-11-abc', 'RS', 1, 'standard', '2024-02-01 08:50:00+01', '2027-02-01', 'referral'),
+('multiple@at@signs.com', 'NIKOS', 'papadopoulos', '30-210-', 'GR', 1, 'enterprise', '2024-02-02 13:40:00+01', '2027-02-02', 'social_media'),
+('user@domain.', 'olga', 'PETROV', 'phone123', 'BG', 1, 'standard', '2024-02-03 10:15:00+01', '2027-02-03', 'paid_ads'),
+
+-- Additional valid customers
+('thomas.wagner@web.de', 'Thomas', 'Wagner', '+49-40-87654321', 'DE', 1, 'premium', '2024-02-04 14:20:00+01', '2027-02-04', 'organic'),
+('ISABELLE.MOREAU@ORANGE.FR', 'isabelle', 'MOREAU', '+33-4-12345678', 'FR', 1, 'standard', '2024-02-05 09:30:00+01', '2027-02-05', 'referral'),
+('giuseppe.romano@libero.it', 'Giuseppe', 'romano', '+39-011-2233445', 'IT', 1, 'enterprise', '2024-02-06 16:10:00+01', '2027-02-06', 'email_campaign'),
+('MIGUEL.SANTOS@SAPO.PT', 'miguel', 'SANTOS', '+351-21-9876543', 'PT', 1, 'standard', '2024-02-07 12:45:00+01', '2027-02-07', 'social_media'),
+('alexandra.popescu@yahoo.ro', 'Alexandra', 'popescu', '+40-21-5566778', 'RO', 1, 'premium', '2024-02-08 11:25:00+01', '2027-02-08', 'paid_ads');
+
+-- Insert Customer Addresses
+INSERT INTO eu.customer_addresses (customer_id, address_type, street_address, city, region, postal_code, country_code, is_default) VALUES
+(1, 'billing', 'Unter den Linden 1', 'Berlin', 'Berlin', '10117', 'DE', TRUE),
+(1, 'shipping', 'Alexanderplatz 5', 'Berlin', 'Berlin', '10178', 'DE', FALSE),
+(2, 'billing', 'Calle Gran Vía 28', 'Madrid', 'Madrid', '28013', 'ES', TRUE),
+(3, 'billing', 'Avenue des Champs-Élysées 100', 'Paris', 'Île-de-France', '75008', 'FR', TRUE),
+(3, 'shipping', 'Rue de Rivoli 50', 'Paris', 'Île-de-France', '75001', 'FR', FALSE),
+(4, 'billing', 'Via del Corso 123', 'Rome', 'Lazio', '00186', 'IT', TRUE),
+(5, 'billing', 'Strøget 15', 'Copenhagen', 'Capital Region', '1160', 'DK', TRUE),
+(6, 'billing', 'Boulevard Saint-Germain 75', 'Paris', 'Île-de-France', '75006', 'FR', TRUE),
+(7, 'billing', 'Marienplatz 8', 'Munich', 'Bavaria', '80331', 'DE', TRUE),
+(8, 'billing', 'Vitosha Boulevard 89', 'Sofia', 'Sofia City', '1000', 'BG', TRUE),
+(9, 'billing', 'Corso Buenos Aires 45', 'Milan', 'Lombardy', '20124', 'IT', TRUE),
+(10, 'billing', 'Drottninggatan 32', 'Stockholm', 'Stockholm County', '11151', 'SE', TRUE),
+(11, 'billing', 'Calle de Alcalá 156', 'Madrid', 'Madrid', '28009', 'ES', TRUE),
+(12, 'billing', 'Oxford Street 200', 'London', 'Greater London', 'W1C 1JH', 'GB', TRUE),
+(13, 'billing', 'Via Nazionale 78', 'Rome', 'Lazio', '00184', 'IT', TRUE),
+(14, 'billing', 'Rue de la Paix 25', 'Paris', 'Île-de-France', '75002', 'FR', TRUE),
+(15, 'billing', 'Nowy Świat 45', 'Warsaw', 'Masovian Voivodeship', '00-042', 'PL', TRUE),
+(16, 'billing', 'Wenceslas Square 12', 'Prague', 'Prague', '11000', 'CZ', TRUE),
+(17, 'billing', 'Rua Augusta 234', 'Lisbon', 'Lisbon', '1100-053', 'PT', TRUE),
+(18, 'billing', 'Knez Mihailova 67', 'Belgrade', 'Belgrade', '11000', 'RS', TRUE),
+(19, 'billing', 'Ermou Street 89', 'Athens', 'Attica', '10563', 'GR', TRUE),
+(20, 'billing', 'Calea Victoriei 156', 'Bucharest', 'Bucharest', '010073', 'RO', TRUE),
+(21, 'billing', 'Königsallee 78', 'Düsseldorf', 'North Rhine-Westphalia', '40212', 'DE', TRUE),
+(22, 'billing', 'Avenue Montaigne 45', 'Paris', 'Île-de-France', '75008', 'FR', TRUE),
+(23, 'billing', 'Via Montenapoleone 23', 'Milan', 'Lombardy', '20121', 'IT', TRUE),
+(24, 'billing', 'Rua do Ouro 67', 'Porto', 'Porto', '4000-314', 'PT', TRUE),
+(25, 'billing', 'Calea Dorobanti 234', 'Bucharest', 'Bucharest', '010573', 'RO', TRUE);
+
+-- Insert Marketing Campaigns
+INSERT INTO eu.marketing_campaigns (campaign_name, campaign_type, channel, start_date, end_date, budget_eur, target_audience, campaign_status, gdpr_compliant) VALUES
+('SPRING ELECTRONICS SALE', 'seasonal', 'email', '2024-03-01', '2024-03-31', 15000.00, 'Electronics enthusiasts aged 25-45', 'active', TRUE),
+('summer fashion collection', 'product_launch', 'social_media', '2024-06-01', '2024-08-31', 25000.00, 'Fashion-conscious women 18-35', 'active', TRUE),
+('Back to School Campaign', 'seasonal', 'paid_search', '2024-08-15', '2024-09-15', 12000.00, 'Students and parents', 'completed', TRUE),
+('BLACK FRIDAY MEGA SALE', 'promotional', 'multi_channel', '2024-11-25', '2024-11-29', 50000.00, 'All customer segments', 'completed', TRUE),
+('holiday gift guide', 'seasonal', 'content_marketing', '2024-12-01', '2024-12-24', 8000.00, 'Gift buyers', 'completed', TRUE),
+('New Year Fitness Goals', 'lifestyle', 'influencer', '2024-01-01', '2024-01-31', 18000.00, 'Health and fitness enthusiasts', 'completed', TRUE),
+('VALENTINE JEWELRY SPECIAL', 'seasonal', 'display_ads', '2024-02-01', '2024-02-14', 10000.00, 'Couples and gift buyers', 'completed', TRUE),
+('eco friendly products', 'sustainability', 'email', '2024-04-22', '2024-05-22', 7500.00, 'Environmentally conscious consumers', 'active', TRUE),
+('Gaming Console Launch', 'product_launch', 'gaming_platforms', '2024-03-15', '2024-04-15', 30000.00, 'Gamers aged 16-40', 'completed', TRUE),
+('MOTHER DAY SPECIAL', 'seasonal', 'social_media', '2024-05-01', '2024-05-12', 6000.00, 'Children buying for mothers', 'completed', TRUE);
+
+-- Insert Discounts
+INSERT INTO eu.discounts (discount_code, discount_name, discount_type, discount_value, minimum_order_amount_eur, maximum_discount_amount_eur, usage_limit, usage_count, start_date, end_date, is_active) VALUES
+('WELCOME10', 'New Customer Welcome', 'percentage', 10.00, 50.00, 100.00, 1000, 234, '2024-01-01 00:00:00+01', '2024-12-31 23:59:59+01', 1),
+('SPRING20', 'Spring Sale 20% Off', 'percentage', 20.00, 100.00, 200.00, 500, 156, '2024-03-01 00:00:00+01', '2024-03-31 23:59:59+01', 0),
+('FREESHIP', 'Free Shipping', 'shipping', 0.00, 75.00, 15.00, 2000, 567, '2024-01-01 00:00:00+01', '2024-12-31 23:59:59+01', 1),
+('SAVE50EUR', 'Save 50 Euro', 'fixed', 50.00, 200.00, 50.00, 300, 89, '2024-02-01 00:00:00+01', '2024-02-29 23:59:59+01', 0),
+('BLACKFRIDAY30', 'Black Friday 30% Off', 'percentage', 30.00, 150.00, 300.00, 1000, 678, '2024-11-25 00:00:00+01', '2024-11-29 23:59:59+01', 0),
+('STUDENT15', 'Student Discount', 'percentage', 15.00, 30.00, 150.00, 0, 123, '2024-01-01 00:00:00+01', '2024-12-31 23:59:59+01', 1),
+('LOYALTY25', 'Loyalty Member 25% Off', 'percentage', 25.00, 100.00, 250.00, 500, 234, '2024-01-01 00:00:00+01', '2024-12-31 23:59:59+01', 1),
+('SUMMER15', 'Summer Special', 'percentage', 15.00, 80.00, 120.00, 750, 345, '2024-06-01 00:00:00+01', '2024-08-31 23:59:59+01', 1),
+('FIRST100', 'First 100 Customers', 'fixed', 25.00, 100.00, 25.00, 100, 100, '2024-01-01 00:00:00+01', '2024-01-31 23:59:59+01', 0),
+('WEEKEND10', 'Weekend Special', 'percentage', 10.00, 60.00, 80.00, 0, 456, '2024-01-01 00:00:00+01', '2024-12-31 23:59:59+01', 1);
+
+-- Insert Orders and Order Items
+INSERT INTO eu.orders (order_reference, customer_id, order_status, subtotal_eur, vat_amount_eur, shipping_eur, discount_eur, total_eur, billing_address_id, shipping_address_id, campaign_id, discount_id, invoice_required) VALUES
+('EU-2024-001001', 1, 'delivered', 1199.99, 227.99, 9.99, 119.99, 1316.98, 1, 2, 1, 1, TRUE),
+('EU-2024-001002', 2, 'shipped', 89.99, 17.09, 12.99, 0.00, 120.07, 3, 3, 2, NULL, TRUE),
+('EU-2024-001003', 3, 'processing', 1599.99, 303.99, 0.00, 319.99, 1583.99, 4, 5, 3, 3, TRUE),
+('EU-2024-001004', 4, 'delivered', 249.99, 47.49, 7.99, 24.99, 280.48, 6, 6, 4, 4, TRUE),
+('EU-2024-001005', 5, 'cancelled', 299.99, 56.99, 5.99, 0.00, 362.97, 7, 7, 5, NULL, FALSE),
+('EU-2024-001006', 6, 'delivered', 79.99, 15.19, 4.99, 7.99, 92.18, 8, 8, 6, 6, TRUE),
+('EU-2024-001007', 7, 'shipped', 899.99, 170.99, 15.99, 134.99, 951.98, 9, 9, 7, 7, TRUE),
+('EU-2024-001008', 8, 'processing', 149.99, 28.49, 8.99, 14.99, 172.48, 10, 10, 8, 8, TRUE),
+('EU-2024-001009', 9, 'delivered', 1799.99, 341.99, 0.00, 0.00, 2141.98, 11, 11, 9, NULL, TRUE),
+('EU-2024-001010', 10, 'returned', 39.99, 2.79, 3.99, 3.99, 42.78, 12, 12, 10, 9, TRUE);
+
+-- Insert Order Items
+INSERT INTO eu.order_items (order_id, variant_id, quantity, unit_price_eur, vat_rate, total_price_eur) VALUES
+(1, 1, 1, 1199.99, 19.00, 1427.98),
+(2, 11, 1, 89.99, 19.00, 107.08),
+(3, 14, 1, 1599.99, 19.00, 1903.98),
+(4, 14, 1, 249.99, 19.00, 297.48),
+(5, 11, 1, 299.99, 19.00, 356.98),
+(6, 18, 1, 79.99, 19.00, 95.18),
+(7, 20, 1, 899.99, 19.00, 1070.98),
+(8, 10, 1, 149.99, 19.00, 178.48),
+(9, 14, 1, 1599.99, 19.00, 1903.98),
+(9, 1, 1, 199.99, 19.00, 237.98),
+(10, 16, 1, 39.99, 7.00, 42.78);
+
+-- Insert Shopping Carts and Cart Items
+INSERT INTO eu.shopping_carts (customer_id, session_id, abandoned_at, is_abandoned) VALUES
+(1, 'sess_abc123def456', NULL, 0),
+(2, 'sess_ghi789jkl012', '2024-02-01 15:30:00+01', 1),
+(3, 'sess_mno345pqr678', NULL, 0),
+(4, 'sess_stu901vwx234', '2024-02-02 10:45:00+01', 1),
+(5, 'sess_yza567bcd890', NULL, 0);
+
+INSERT INTO eu.cart_items (cart_id, variant_id, quantity, unit_price_eur) VALUES
+(1, 2, 1, 1399.99),
+(1, 8, 2, 29.99),
+(2, 15, 1, 1799.99),
+(3, 19, 1, 109.99),
+(4, 6, 1, 399.99),
+(5, 12, 1, 999.99);
+
+-- Insert Payments
+INSERT INTO eu.payments (order_id, payment_method, payment_status, payment_amount_eur, transaction_id, gateway_response, psd2_compliant) VALUES
+(1, 'sepa_debit', 'completed', 1316.98, 'txn_sepa_001', 'Payment successful', TRUE),
+(2, 'credit_card', 'completed', 120.07, 'txn_cc_002', 'Payment successful', TRUE),
+(3, 'ideal', 'pending', 1583.99, 'txn_ideal_003', 'Payment processing', TRUE),
+(4, 'sofort', 'completed', 280.48, 'txn_sofort_004', 'Payment successful', TRUE),
+(5, 'credit_card', 'failed', 362.97, 'txn_cc_005', 'Insufficient funds', TRUE),
+(6, 'sepa_debit', 'completed', 92.18, 'txn_sepa_006', 'Payment successful', TRUE),
+(7, 'paypal', 'completed', 951.98, 'txn_pp_007', 'Payment successful', TRUE),
+(8, 'credit_card', 'completed', 172.48, 'txn_cc_008', 'Payment successful', TRUE),
+(9, 'sepa_debit', 'completed', 2141.98, 'txn_sepa_009', 'Payment successful', TRUE),
+(10, 'ideal', 'refunded', 42.78, 'txn_ideal_010', 'Payment refunded', TRUE);
+
+-- Insert Shipments
+INSERT INTO eu.shipments (order_id, tracking_number, carrier, shipping_method, shipped_timestamp, estimated_delivery_date, actual_delivery_timestamp, shipment_status) VALUES
+(1, 'DHL1234567890', 'DHL', 'Standard', '2024-01-16 14:30:00+01', '2024-01-18', '2024-01-18 16:45:00+01', 'delivered'),
+(2, 'DPD9876543210', 'DPD', 'Express', '2024-01-17 10:15:00+01', '2024-01-19', NULL, 'in_transit'),
+(3, 'HERMES5555666677', 'Hermes', 'Standard', NULL, NULL, NULL, 'pending'),
+(4, 'POSTNL1111222233', 'PostNL', 'Express', '2024-01-18 09:45:00+01', '2024-01-20', '2024-01-19 14:20:00+01', 'delivered'),
+(6, 'DHL2222333344', 'DHL', 'Same Day', '2024-01-19 11:30:00+01', '2024-01-19', '2024-01-19 18:15:00+01', 'delivered'),
+(7, 'DPD7777888899', 'DPD', 'Standard', '2024-01-20 13:20:00+01', '2024-01-22', NULL, 'in_transit'),
+(8, 'HERMES4444555566', 'Hermes', 'Express', '2024-01-21 15:45:00+01', '2024-01-23', NULL, 'in_transit'),
+(9, 'DHL6666777788', 'DHL', 'Standard', '2024-01-22 08:30:00+01', '2024-01-24', '2024-01-24 12:10:00+01', 'delivered');
+
+-- Insert Returns
+INSERT INTO eu.returns (order_id, return_reason, return_status, refund_amount_eur, refund_timestamp, cooling_off_period_days) VALUES
+(5, 'Changed mind', 'approved', 362.97, '2024-01-25 14:30:00+01', 14),
+(10, 'Product defective', 'processing', 42.78, NULL, 14);
+
+-- Insert Product Reviews
+INSERT INTO eu.product_reviews (product_id, customer_id, order_id, rating, review_title, review_text, is_verified_purchase, helpful_votes, moderation_status) VALUES
+(1, 1, 1, 5, 'EXCELLENT PHONE!', 'Amazing camera quality and battery life. Highly recommended!', TRUE, 15, 'approved'),
+(5, 2, 2, 4, 'beautiful dress', 'Nice fabric and fit, but color slightly different from photo', TRUE, 8, 'approved'),
+(6, 3, 3, 5, 'Perfect Sofa', 'Comfortable and well-made. Great value for money.', TRUE, 22, 'approved'),
+(14, 4, 4, 3, 'AVERAGE HEADPHONES', 'Sound quality is okay but not exceptional for the price', TRUE, 5, 'approved'),
+(7, 10, 10, 1, 'poor quality book', 'Pages were damaged and content outdated', TRUE, 2, 'approved'),
+(1, 5, NULL, 4, 'Good but expensive', 'Great phone but overpriced compared to competitors', FALSE, 3, 'pending'),
+(9, 7, 7, 5, 'AMAZING BIKE!', 'Perfect for mountain trails. Excellent build quality.', TRUE, 18, 'approved'),
+(10, 8, 8, 4, 'fun lego set', 'Kids love it but some pieces were missing', TRUE, 7, 'approved');
+
+-- Insert Wishlists
+INSERT INTO eu.wishlists (customer_id, product_id) VALUES
+(1, 2), (1, 9), (1, 11),
+(2, 1), (2, 6), (2, 8),
+(3, 4), (3, 7), (3, 12),
+(4, 3), (4, 5), (4, 10),
+(5, 2), (5, 6), (5, 13),
+(6, 1), (6, 9), (6, 14),
+(7, 8), (7, 11), (7, 15),
+(8, 3), (8, 7), (8, 12),
+(9, 4), (9, 10), (9, 13),
+(10, 5), (10, 6), (10, 14);
+
+COMMIT;
+EOF
+
+# Capture status
+if [ $? -eq 0 ]; then
+  echo "Transaction committed successfully."
+else
+  echo "Transaction failed. Rolled back."
+fi

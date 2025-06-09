@@ -1,0 +1,732 @@
+[2025-06-08T20:11:48.630+0000] {processor.py:161} INFO - Started process (PID=162744) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:11:48.631+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:11:48.632+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:11:48.632+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:11:48.726+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:11:48.725+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 12, in <module>
+    from cart_items import transform_cart_items
+ModuleNotFoundError: No module named 'cart_items'
+[2025-06-08T20:11:48.726+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:11:48.764+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 0.137 seconds
+[2025-06-08T20:11:58.494+0000] {processor.py:161} INFO - Started process (PID=163314) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:11:58.495+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:11:58.496+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:11:58.496+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:11:58.499+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:11:58.498+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 27
+    "product_reviews","wishlists"]
+                                 ^
+SyntaxError: unmatched ']'
+[2025-06-08T20:11:58.499+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:11:58.531+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 0.041 seconds
+[2025-06-08T20:12:11.162+0000] {processor.py:161} INFO - Started process (PID=163945) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:12:11.163+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:12:11.164+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:12:11.164+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:12:11.250+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:12:11.248+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 12, in <module>
+    from cart_items import transform_cart_items
+ModuleNotFoundError: No module named 'cart_items'
+[2025-06-08T20:12:11.250+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:12:11.278+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 0.122 seconds
+[2025-06-08T20:12:39.549+0000] {processor.py:161} INFO - Started process (PID=165282) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:12:39.551+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:12:39.555+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:12:39.554+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:12:45.654+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:12:45.653+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 63, in <module>
+    "orders": transform_orders,
+NameError: name 'transform_orders' is not defined
+[2025-06-08T20:12:45.654+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:12:45.701+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 6.160 seconds
+[2025-06-08T20:12:57.063+0000] {processor.py:161} INFO - Started process (PID=166126) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:12:57.064+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:12:57.065+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:12:57.065+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:13:03.922+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:13:03.921+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 70, in <module>
+    }
+NameError: name 'transform_marketing_campaigns' is not defined
+[2025-06-08T20:13:03.923+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:13:03.951+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 6.891 seconds
+[2025-06-08T20:13:35.096+0000] {processor.py:161} INFO - Started process (PID=167991) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:13:35.096+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:13:35.097+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:13:35.097+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:13:40.673+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:13:40.671+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 229, in <module>
+    [asia_tasks, eu_tasks, us_tasks] >> summary
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 109, in __rrshift__
+    self.__lshift__(other)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 99, in __lshift__
+    self.set_upstream(other)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/xcom_arg.py", line 148, in set_upstream
+    operator.set_upstream(task_or_task_list, edge_modifier)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 270, in set_upstream
+    self._set_relatives(task_or_task_list, upstream=True, edge_modifier=edge_modifier)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 214, in _set_relatives
+    task_object.update_relative(self, not upstream, edge_modifier=edge_modifier)
+AttributeError: 'list' object has no attribute 'update_relative'
+[2025-06-08T20:13:40.673+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:13:40.700+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 5.608 seconds
+[2025-06-08T20:14:11.739+0000] {processor.py:161} INFO - Started process (PID=169949) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:14:11.740+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:14:11.741+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:14:11.741+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:14:17.118+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:14:17.113+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 221, in <module>
+    asia_tasks = process_region_asia()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 91, in __call__
+    return self._create_task_group(TaskGroup, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 99, in _create_task_group
+    retval = self.function(*args, **kwargs)
+  File "/opt/airflow/dags/master2.py", line 156, in process_region_asia
+    task = process_table.override(task_id=f"process_{table}_asia")(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 366, in __call__
+    op = self.operator_class(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 437, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/python.py", line 52, in __init__
+    super().__init__(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 437, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 228, in __init__
+    signature.bind(*op_args, **op_kwargs)
+  File "/usr/local/lib/python3.10/inspect.py", line 3186, in bind
+    return self._bind(args, kwargs)
+  File "/usr/local/lib/python3.10/inspect.py", line 3156, in _bind
+    raise TypeError('missing a required argument: {arg!r}'. \
+TypeError: missing a required argument: 'load_date'
+[2025-06-08T20:14:17.118+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:14:17.174+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 5.439 seconds
+[2025-06-08T20:14:23.723+0000] {processor.py:161} INFO - Started process (PID=170576) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:14:23.724+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:14:23.725+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:14:23.724+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:14:23.728+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:14:23.727+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 106
+    def process_table(region: str, table: str, load_date: 2025-06-08):
+                                                               ^
+SyntaxError: leading zeros in decimal integer literals are not permitted; use an 0o prefix for octal integers
+[2025-06-08T20:14:23.729+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:14:23.760+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 0.041 seconds
+[2025-06-08T20:14:41.110+0000] {processor.py:161} INFO - Started process (PID=171402) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:14:41.111+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:14:41.112+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:14:41.112+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:14:48.137+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:14:48.135+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 221, in <module>
+    asia_tasks = process_region_asia()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 91, in __call__
+    return self._create_task_group(TaskGroup, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 99, in _create_task_group
+    retval = self.function(*args, **kwargs)
+  File "/opt/airflow/dags/master2.py", line 156, in process_region_asia
+    task = process_table.override(task_id=f"process_{table}_asia")(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 366, in __call__
+    op = self.operator_class(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 437, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/python.py", line 52, in __init__
+    super().__init__(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 437, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 228, in __init__
+    signature.bind(*op_args, **op_kwargs)
+  File "/usr/local/lib/python3.10/inspect.py", line 3186, in bind
+    return self._bind(args, kwargs)
+  File "/usr/local/lib/python3.10/inspect.py", line 3156, in _bind
+    raise TypeError('missing a required argument: {arg!r}'. \
+TypeError: missing a required argument: 'load_date'
+[2025-06-08T20:14:48.138+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:14:48.167+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 7.062 seconds
+[2025-06-08T20:15:20.463+0000] {processor.py:161} INFO - Started process (PID=173288) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:15:20.464+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:15:20.464+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:15:20.464+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:15:27.338+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:15:27.335+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 221, in <module>
+    asia_tasks = process_region_asia()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 91, in __call__
+    return self._create_task_group(TaskGroup, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 99, in _create_task_group
+    retval = self.function(*args, **kwargs)
+  File "/opt/airflow/dags/master2.py", line 156, in process_region_asia
+    task = process_table.override(task_id=f"process_{table}_asia")(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 366, in __call__
+    op = self.operator_class(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 437, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/python.py", line 52, in __init__
+    super().__init__(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 437, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 228, in __init__
+    signature.bind(*op_args, **op_kwargs)
+  File "/usr/local/lib/python3.10/inspect.py", line 3186, in bind
+    return self._bind(args, kwargs)
+  File "/usr/local/lib/python3.10/inspect.py", line 3156, in _bind
+    raise TypeError('missing a required argument: {arg!r}'. \
+TypeError: missing a required argument: 'load_date'
+[2025-06-08T20:15:27.338+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:15:27.372+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 6.913 seconds
+[2025-06-08T20:15:40.021+0000] {processor.py:161} INFO - Started process (PID=174233) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:15:40.022+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:15:40.023+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:15:40.023+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:15:46.209+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:15:46.207+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 221, in <module>
+    asia_tasks = process_region_asia()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 91, in __call__
+    return self._create_task_group(TaskGroup, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 99, in _create_task_group
+    retval = self.function(*args, **kwargs)
+  File "/opt/airflow/dags/master2.py", line 156, in process_region_asia
+    task = process_table.override(task_id=f"process_{table}_asia")(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 366, in __call__
+    op = self.operator_class(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 437, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/python.py", line 52, in __init__
+    super().__init__(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 437, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 228, in __init__
+    signature.bind(*op_args, **op_kwargs)
+  File "/usr/local/lib/python3.10/inspect.py", line 3186, in bind
+    return self._bind(args, kwargs)
+  File "/usr/local/lib/python3.10/inspect.py", line 3156, in _bind
+    raise TypeError('missing a required argument: {arg!r}'. \
+TypeError: missing a required argument: 'load_date'
+[2025-06-08T20:15:46.209+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:15:46.236+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 6.218 seconds
+[2025-06-08T20:15:59.527+0000] {processor.py:161} INFO - Started process (PID=175245) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:15:59.528+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:15:59.530+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:15:59.529+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:16:05.997+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:16:05.995+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 221, in <module>
+    asia_tasks = process_region_asia()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 91, in __call__
+    return self._create_task_group(TaskGroup, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 99, in _create_task_group
+    retval = self.function(*args, **kwargs)
+  File "/opt/airflow/dags/master2.py", line 156, in process_region_asia
+    task = process_table.override(task_id=f"process_{table}_asia")(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 366, in __call__
+    op = self.operator_class(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 437, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/python.py", line 52, in __init__
+    super().__init__(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 437, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 228, in __init__
+    signature.bind(*op_args, **op_kwargs)
+  File "/usr/local/lib/python3.10/inspect.py", line 3186, in bind
+    return self._bind(args, kwargs)
+  File "/usr/local/lib/python3.10/inspect.py", line 3156, in _bind
+    raise TypeError('missing a required argument: {arg!r}'. \
+TypeError: missing a required argument: 'load_date'
+[2025-06-08T20:16:05.998+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:16:06.024+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 6.501 seconds
+[2025-06-08T20:16:37.639+0000] {processor.py:161} INFO - Started process (PID=177037) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:16:37.640+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:16:37.641+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:16:37.641+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:16:42.917+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:16:42.915+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 221, in <module>
+    asia_tasks = process_region_asia()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 91, in __call__
+    return self._create_task_group(TaskGroup, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 99, in _create_task_group
+    retval = self.function(*args, **kwargs)
+  File "/opt/airflow/dags/master2.py", line 156, in process_region_asia
+    task = process_table.override(task_id=f"process_{table}_asia")(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 366, in __call__
+    op = self.operator_class(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 437, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/python.py", line 52, in __init__
+    super().__init__(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 437, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 228, in __init__
+    signature.bind(*op_args, **op_kwargs)
+  File "/usr/local/lib/python3.10/inspect.py", line 3186, in bind
+    return self._bind(args, kwargs)
+  File "/usr/local/lib/python3.10/inspect.py", line 3156, in _bind
+    raise TypeError('missing a required argument: {arg!r}'. \
+TypeError: missing a required argument: 'load_date'
+[2025-06-08T20:16:42.917+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:16:42.946+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 5.310 seconds
+[2025-06-08T20:17:26.066+0000] {processor.py:161} INFO - Started process (PID=179513) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:17:26.067+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:17:26.069+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:17:26.068+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:17:31.359+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:17:31.356+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 221, in <module>
+    asia_tasks = process_region_asia()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 91, in __call__
+    return self._create_task_group(TaskGroup, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 99, in _create_task_group
+    retval = self.function(*args, **kwargs)
+  File "/opt/airflow/dags/master2.py", line 156, in process_region_asia
+    task = process_table.override(task_id=f"process_{table}_asia")(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 366, in __call__
+    op = self.operator_class(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 437, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/python.py", line 52, in __init__
+    super().__init__(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 437, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 228, in __init__
+    signature.bind(*op_args, **op_kwargs)
+  File "/usr/local/lib/python3.10/inspect.py", line 3186, in bind
+    return self._bind(args, kwargs)
+  File "/usr/local/lib/python3.10/inspect.py", line 3156, in _bind
+    raise TypeError('missing a required argument: {arg!r}'. \
+TypeError: missing a required argument: 'load_date'
+[2025-06-08T20:17:31.359+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:17:31.388+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 5.326 seconds
+[2025-06-08T20:17:43.359+0000] {processor.py:161} INFO - Started process (PID=180440) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:17:43.360+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:17:43.361+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:17:43.360+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:17:49.388+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:17:49.387+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 221, in <module>
+    asia_tasks = process_region_asia()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 91, in __call__
+    return self._create_task_group(TaskGroup, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 99, in _create_task_group
+    retval = self.function(*args, **kwargs)
+TypeError: process_region_asia() missing 1 required positional argument: 'load_date'
+[2025-06-08T20:17:49.389+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:17:49.420+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 6.065 seconds
+[2025-06-08T20:17:56.801+0000] {processor.py:161} INFO - Started process (PID=181154) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:17:56.802+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:17:56.803+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:17:56.803+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:18:02.707+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:18:02.706+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 221, in <module>
+    asia_tasks = process_region_asia()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 91, in __call__
+    return self._create_task_group(TaskGroup, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 99, in _create_task_group
+    retval = self.function(*args, **kwargs)
+TypeError: process_region_asia() missing 1 required positional argument: 'load_date'
+[2025-06-08T20:18:02.708+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:18:02.738+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 5.940 seconds
+[2025-06-08T20:18:21.908+0000] {processor.py:161} INFO - Started process (PID=182312) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:18:21.910+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:18:21.910+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:18:21.910+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:18:27.733+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:18:27.732+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 221, in <module>
+    asia_tasks = process_region_asia()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 91, in __call__
+    return self._create_task_group(TaskGroup, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 99, in _create_task_group
+    retval = self.function(*args, **kwargs)
+TypeError: process_region_asia() missing 1 required positional argument: 'load_date'
+[2025-06-08T20:18:27.733+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:18:27.765+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 5.860 seconds
+[2025-06-08T20:19:07.794+0000] {processor.py:161} INFO - Started process (PID=184835) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:19:07.795+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:19:07.796+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:19:07.795+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:19:13.269+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:19:13.268+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 221, in <module>
+    asia_tasks = process_region_asia()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 91, in __call__
+    return self._create_task_group(TaskGroup, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/task_group.py", line 99, in _create_task_group
+    retval = self.function(*args, **kwargs)
+TypeError: process_region_asia() missing 1 required positional argument: 'load_date'
+[2025-06-08T20:19:13.269+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:19:13.297+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 5.505 seconds
+[2025-06-08T20:19:47.073+0000] {processor.py:161} INFO - Started process (PID=186665) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:19:47.075+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:19:47.076+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:19:47.076+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:19:54.107+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:19:54.106+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 225, in <module>
+    [asia_tasks, eu_tasks, us_tasks] >> summary
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 109, in __rrshift__
+    self.__lshift__(other)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 99, in __lshift__
+    self.set_upstream(other)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/xcom_arg.py", line 148, in set_upstream
+    operator.set_upstream(task_or_task_list, edge_modifier)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 270, in set_upstream
+    self._set_relatives(task_or_task_list, upstream=True, edge_modifier=edge_modifier)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 214, in _set_relatives
+    task_object.update_relative(self, not upstream, edge_modifier=edge_modifier)
+AttributeError: 'list' object has no attribute 'update_relative'
+[2025-06-08T20:19:54.107+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:19:54.139+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 7.070 seconds
+[2025-06-08T20:20:27.401+0000] {processor.py:161} INFO - Started process (PID=188533) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:20:27.402+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:20:27.403+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:20:27.403+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:20:34.453+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:20:34.451+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 225, in <module>
+    [asia_tasks, eu_tasks, us_tasks] >> summary
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 109, in __rrshift__
+    self.__lshift__(other)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 99, in __lshift__
+    self.set_upstream(other)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/xcom_arg.py", line 148, in set_upstream
+    operator.set_upstream(task_or_task_list, edge_modifier)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 270, in set_upstream
+    self._set_relatives(task_or_task_list, upstream=True, edge_modifier=edge_modifier)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 214, in _set_relatives
+    task_object.update_relative(self, not upstream, edge_modifier=edge_modifier)
+AttributeError: 'list' object has no attribute 'update_relative'
+[2025-06-08T20:20:34.453+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:20:34.490+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 7.094 seconds
+[2025-06-08T20:21:12.486+0000] {processor.py:161} INFO - Started process (PID=190457) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:21:12.487+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:21:12.488+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:21:12.488+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:21:19.822+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:21:19.821+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 225, in <module>
+    [asia_tasks, eu_tasks, us_tasks] >> summary
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 109, in __rrshift__
+    self.__lshift__(other)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 99, in __lshift__
+    self.set_upstream(other)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/xcom_arg.py", line 148, in set_upstream
+    operator.set_upstream(task_or_task_list, edge_modifier)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 270, in set_upstream
+    self._set_relatives(task_or_task_list, upstream=True, edge_modifier=edge_modifier)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 214, in _set_relatives
+    task_object.update_relative(self, not upstream, edge_modifier=edge_modifier)
+AttributeError: 'list' object has no attribute 'update_relative'
+[2025-06-08T20:21:19.823+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:21:19.855+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 7.373 seconds
+[2025-06-08T20:21:32.856+0000] {processor.py:161} INFO - Started process (PID=191358) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:21:32.857+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:21:32.859+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:21:32.858+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:21:39.363+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:21:39.361+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 238, in <module>
+    [asia_tasks, eu_tasks, us_tasks] >> summary
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 109, in __rrshift__
+    self.__lshift__(other)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 99, in __lshift__
+    self.set_upstream(other)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/xcom_arg.py", line 148, in set_upstream
+    operator.set_upstream(task_or_task_list, edge_modifier)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 270, in set_upstream
+    self._set_relatives(task_or_task_list, upstream=True, edge_modifier=edge_modifier)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 214, in _set_relatives
+    task_object.update_relative(self, not upstream, edge_modifier=edge_modifier)
+AttributeError: 'list' object has no attribute 'update_relative'
+[2025-06-08T20:21:39.363+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:21:39.395+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 6.543 seconds
+[2025-06-08T20:22:10.371+0000] {processor.py:161} INFO - Started process (PID=193225) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:22:10.372+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:22:10.373+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:22:10.373+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:22:16.482+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:22:16.481+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 238, in <module>
+    [asia_tasks, eu_tasks, us_tasks] >> summary
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 109, in __rrshift__
+    self.__lshift__(other)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 99, in __lshift__
+    self.set_upstream(other)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/xcom_arg.py", line 148, in set_upstream
+    operator.set_upstream(task_or_task_list, edge_modifier)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 270, in set_upstream
+    self._set_relatives(task_or_task_list, upstream=True, edge_modifier=edge_modifier)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 214, in _set_relatives
+    task_object.update_relative(self, not upstream, edge_modifier=edge_modifier)
+AttributeError: 'list' object has no attribute 'update_relative'
+[2025-06-08T20:22:16.483+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:22:16.512+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 6.146 seconds
+[2025-06-08T20:22:50.325+0000] {processor.py:161} INFO - Started process (PID=195134) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:22:50.326+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:22:50.327+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:22:50.327+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:22:57.046+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:22:57.045+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 238, in <module>
+    [asia_tasks, eu_tasks, us_tasks] >> summary
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 109, in __rrshift__
+    self.__lshift__(other)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 99, in __lshift__
+    self.set_upstream(other)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/xcom_arg.py", line 148, in set_upstream
+    operator.set_upstream(task_or_task_list, edge_modifier)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 270, in set_upstream
+    self._set_relatives(task_or_task_list, upstream=True, edge_modifier=edge_modifier)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 214, in _set_relatives
+    task_object.update_relative(self, not upstream, edge_modifier=edge_modifier)
+AttributeError: 'list' object has no attribute 'update_relative'
+[2025-06-08T20:22:57.047+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:22:57.088+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 6.767 seconds
+[2025-06-08T20:23:27.712+0000] {processor.py:161} INFO - Started process (PID=196961) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:23:27.713+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:23:27.714+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:23:27.714+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:23:32.952+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:23:32.951+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 238, in <module>
+    [asia_tasks, eu_tasks, us_tasks] >> summary
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 109, in __rrshift__
+    self.__lshift__(other)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 99, in __lshift__
+    self.set_upstream(other)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/xcom_arg.py", line 148, in set_upstream
+    operator.set_upstream(task_or_task_list, edge_modifier)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 270, in set_upstream
+    self._set_relatives(task_or_task_list, upstream=True, edge_modifier=edge_modifier)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskmixin.py", line 214, in _set_relatives
+    task_object.update_relative(self, not upstream, edge_modifier=edge_modifier)
+AttributeError: 'list' object has no attribute 'update_relative'
+[2025-06-08T20:23:32.952+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:23:32.983+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 5.273 seconds
+[2025-06-08T20:23:46.771+0000] {processor.py:161} INFO - Started process (PID=197937) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:23:46.772+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:23:46.773+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:23:46.772+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:23:53.085+0000] {processor.py:840} INFO - DAG(s) 'multi_region_processor' retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:23:53.434+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:23:53.433+0000] {override.py:1769} INFO - Created Permission View: can delete on DAG:multi_region_processor
+[2025-06-08T20:23:53.444+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:23:53.444+0000] {override.py:1769} INFO - Created Permission View: can edit on DAG:multi_region_processor
+[2025-06-08T20:23:53.450+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:23:53.450+0000] {override.py:1769} INFO - Created Permission View: can read on DAG:multi_region_processor
+[2025-06-08T20:23:53.451+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:23:53.451+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-06-08T20:23:53.465+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:23:53.464+0000] {dag.py:3058} INFO - Creating ORM DAG for multi_region_processor
+[2025-06-08T20:23:53.478+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:23:53.477+0000] {dag.py:3823} INFO - Setting next_dagrun for multi_region_processor to 2025-06-07 00:00:00+00:00, run_after=2025-06-08 00:00:00+00:00
+[2025-06-08T20:23:53.507+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 6.740 seconds
+[2025-06-08T20:25:15.349+0000] {processor.py:161} INFO - Started process (PID=201642) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:25:15.351+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:25:15.352+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:25:15.351+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:25:26.889+0000] {processor.py:840} INFO - DAG(s) 'multi_region_processor' retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:25:27.002+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:25:26.999+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-06-08T20:25:27.099+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:25:27.098+0000] {dag.py:3823} INFO - Setting next_dagrun for multi_region_processor to 2025-06-08 00:00:00+00:00, run_after=2025-06-09 00:00:00+00:00
+[2025-06-08T20:25:27.148+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 11.804 seconds
+[2025-06-08T20:26:16.768+0000] {processor.py:161} INFO - Started process (PID=203449) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:26:16.771+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:26:16.772+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:26:16.772+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:26:23.745+0000] {processor.py:840} INFO - DAG(s) 'multi_region_processor' retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:26:23.858+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:26:23.858+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-06-08T20:26:23.953+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:26:23.952+0000] {dag.py:3823} INFO - Setting next_dagrun for multi_region_processor to 2025-06-08 00:00:00+00:00, run_after=2025-06-09 00:00:00+00:00
+[2025-06-08T20:26:24.008+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 7.243 seconds
+[2025-06-08T20:27:04.433+0000] {processor.py:161} INFO - Started process (PID=205520) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:27:04.437+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:27:04.439+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:27:04.438+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:27:12.031+0000] {processor.py:840} INFO - DAG(s) 'multi_region_processor' retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:27:12.146+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:27:12.143+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-06-08T20:27:12.199+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:27:12.199+0000] {dag.py:3823} INFO - Setting next_dagrun for multi_region_processor to 2025-06-08 00:00:00+00:00, run_after=2025-06-09 00:00:00+00:00
+[2025-06-08T20:27:12.220+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 7.797 seconds
+[2025-06-08T20:27:43.960+0000] {processor.py:161} INFO - Started process (PID=207377) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:27:43.962+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:27:43.963+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:27:43.963+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:27:49.975+0000] {processor.py:840} INFO - DAG(s) 'multi_region_processor' retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:27:50.047+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:27:50.046+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-06-08T20:27:50.086+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:27:50.085+0000] {dag.py:3823} INFO - Setting next_dagrun for multi_region_processor to 2025-06-08 00:00:00+00:00, run_after=2025-06-09 00:00:00+00:00
+[2025-06-08T20:27:50.117+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 6.161 seconds
+[2025-06-08T20:28:24.980+0000] {processor.py:161} INFO - Started process (PID=209190) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:28:24.982+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:28:24.983+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:28:24.983+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:28:24.992+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:28:24.990+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/master2.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/master2.py", line 349
+    return spark = SparkSession.builder \
+                 ^
+SyntaxError: invalid syntax
+[2025-06-08T20:28:24.993+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:28:25.045+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 0.070 seconds
+[2025-06-08T20:28:40.044+0000] {processor.py:161} INFO - Started process (PID=209850) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:28:40.047+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:28:40.049+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:28:40.048+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:28:45.504+0000] {processor.py:840} INFO - DAG(s) 'multi_region_processor' retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:28:45.569+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:28:45.568+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-06-08T20:28:45.601+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:28:45.601+0000] {dag.py:3823} INFO - Setting next_dagrun for multi_region_processor to 2025-06-08 00:00:00+00:00, run_after=2025-06-09 00:00:00+00:00
+[2025-06-08T20:28:45.637+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 5.596 seconds
+[2025-06-08T20:29:42.108+0000] {processor.py:161} INFO - Started process (PID=212234) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:29:42.113+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:29:42.113+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:29:42.113+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:29:49.421+0000] {processor.py:840} INFO - DAG(s) 'multi_region_processor' retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:29:49.523+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:29:49.523+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-06-08T20:29:49.645+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:29:49.644+0000] {dag.py:3823} INFO - Setting next_dagrun for multi_region_processor to 2025-06-08 00:00:00+00:00, run_after=2025-06-09 00:00:00+00:00
+[2025-06-08T20:29:49.689+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 7.584 seconds
+[2025-06-08T20:31:18.013+0000] {processor.py:161} INFO - Started process (PID=214663) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:31:18.015+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:31:18.016+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:31:18.015+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:31:25.137+0000] {processor.py:840} INFO - DAG(s) 'multi_region_processor' retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:31:25.253+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:31:25.249+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-06-08T20:31:25.312+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:31:25.312+0000] {dag.py:3823} INFO - Setting next_dagrun for multi_region_processor to 2025-06-08 00:00:00+00:00, run_after=2025-06-09 00:00:00+00:00
+[2025-06-08T20:31:25.338+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 7.328 seconds
+[2025-06-08T20:31:58.612+0000] {processor.py:161} INFO - Started process (PID=216164) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:31:58.615+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:31:58.616+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:31:58.616+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:32:06.936+0000] {processor.py:840} INFO - DAG(s) 'multi_region_processor' retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:32:07.021+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:32:07.020+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-06-08T20:32:07.065+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:32:07.064+0000] {dag.py:3823} INFO - Setting next_dagrun for multi_region_processor to 2025-06-08 00:00:00+00:00, run_after=2025-06-09 00:00:00+00:00
+[2025-06-08T20:32:07.113+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 8.504 seconds
+[2025-06-08T20:33:37.874+0000] {processor.py:161} INFO - Started process (PID=167) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:33:37.877+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:33:37.878+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:33:37.878+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:34:06.033+0000] {processor.py:840} INFO - DAG(s) 'multi_region_processor' retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:34:06.463+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:34:06.456+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-06-08T20:34:06.576+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:34:06.574+0000] {dag.py:3823} INFO - Setting next_dagrun for multi_region_processor to 2025-06-08 00:00:00+00:00, run_after=2025-06-09 00:00:00+00:00
+[2025-06-08T20:34:06.725+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 28.855 seconds
+[2025-06-08T20:35:14.486+0000] {processor.py:161} INFO - Started process (PID=3795) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:35:14.489+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:35:14.490+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:35:14.490+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:35:20.830+0000] {processor.py:840} INFO - DAG(s) 'multi_region_processor' retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:35:21.067+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:35:21.066+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-06-08T20:35:21.101+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:35:21.100+0000] {dag.py:3823} INFO - Setting next_dagrun for multi_region_processor to 2025-06-08 00:00:00+00:00, run_after=2025-06-09 00:00:00+00:00
+[2025-06-08T20:35:21.135+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 6.656 seconds
+[2025-06-08T20:35:58.095+0000] {processor.py:161} INFO - Started process (PID=5880) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:35:58.096+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:35:58.097+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:35:58.097+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:36:04.467+0000] {processor.py:840} INFO - DAG(s) 'multi_region_processor' retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:36:04.578+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:36:04.577+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-06-08T20:36:04.704+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:36:04.704+0000] {dag.py:3823} INFO - Setting next_dagrun for multi_region_processor to 2025-06-08 00:00:00+00:00, run_after=2025-06-09 00:00:00+00:00
+[2025-06-08T20:36:04.730+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 6.638 seconds
+[2025-06-08T20:36:47.131+0000] {processor.py:161} INFO - Started process (PID=8026) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:36:47.132+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:36:47.133+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:36:47.133+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:36:53.173+0000] {processor.py:840} INFO - DAG(s) 'multi_region_processor' retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:36:53.233+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:36:53.233+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-06-08T20:36:53.315+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:36:53.315+0000] {dag.py:3823} INFO - Setting next_dagrun for multi_region_processor to 2025-06-08 00:00:00+00:00, run_after=2025-06-09 00:00:00+00:00
+[2025-06-08T20:36:53.365+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 6.239 seconds
+[2025-06-08T20:37:43.074+0000] {processor.py:161} INFO - Started process (PID=10431) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:37:43.075+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:37:43.076+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:37:43.076+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:37:50.483+0000] {processor.py:840} INFO - DAG(s) 'multi_region_processor' retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:37:50.554+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:37:50.554+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-06-08T20:37:50.592+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:37:50.592+0000] {dag.py:3823} INFO - Setting next_dagrun for multi_region_processor to 2025-06-08 00:00:00+00:00, run_after=2025-06-09 00:00:00+00:00
+[2025-06-08T20:37:50.620+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 7.550 seconds
+[2025-06-08T20:38:38.709+0000] {processor.py:161} INFO - Started process (PID=12869) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:38:38.710+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:38:38.712+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:38:38.711+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:38:45.279+0000] {processor.py:840} INFO - DAG(s) 'multi_region_processor' retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:38:45.345+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:38:45.345+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-06-08T20:38:45.386+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:38:45.385+0000] {dag.py:3823} INFO - Setting next_dagrun for multi_region_processor to 2025-06-08 00:00:00+00:00, run_after=2025-06-09 00:00:00+00:00
+[2025-06-08T20:38:45.411+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 6.708 seconds
+[2025-06-08T20:39:31.127+0000] {processor.py:161} INFO - Started process (PID=15339) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:39:31.129+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:39:31.130+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:39:31.129+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:39:39.188+0000] {processor.py:840} INFO - DAG(s) 'multi_region_processor' retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:39:39.251+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:39:39.250+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-06-08T20:39:39.292+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:39:39.291+0000] {dag.py:3823} INFO - Setting next_dagrun for multi_region_processor to 2025-06-08 00:00:00+00:00, run_after=2025-06-09 00:00:00+00:00
+[2025-06-08T20:39:39.349+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 8.230 seconds
+[2025-06-08T20:40:26.300+0000] {processor.py:161} INFO - Started process (PID=17798) to work on /opt/airflow/dags/master2.py
+[2025-06-08T20:40:26.301+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/master2.py for tasks to queue
+[2025-06-08T20:40:26.302+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:40:26.302+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/master2.py
+[2025-06-08T20:40:33.179+0000] {processor.py:840} INFO - DAG(s) 'multi_region_processor' retrieved from /opt/airflow/dags/master2.py
+[2025-06-08T20:40:33.234+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:40:33.234+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-06-08T20:40:33.267+0000] {logging_mixin.py:188} INFO - [2025-06-08T20:40:33.266+0000] {dag.py:3823} INFO - Setting next_dagrun for multi_region_processor to 2025-06-08 00:00:00+00:00, run_after=2025-06-09 00:00:00+00:00
+[2025-06-08T20:40:33.291+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/master2.py took 6.997 seconds

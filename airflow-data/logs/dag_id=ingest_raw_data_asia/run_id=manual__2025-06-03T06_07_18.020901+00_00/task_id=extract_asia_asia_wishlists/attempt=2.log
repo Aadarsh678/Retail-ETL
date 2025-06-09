@@ -1,0 +1,114 @@
+[2025-06-03T08:02:46.631+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_raw_data_asia.extract_asia_asia_wishlists manual__2025-06-03T06:07:18.020901+00:00 [queued]>
+[2025-06-03T08:02:47.242+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_raw_data_asia.extract_asia_asia_wishlists manual__2025-06-03T06:07:18.020901+00:00 [queued]>
+[2025-06-03T08:02:47.242+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 2
+[2025-06-03T08:02:49.285+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): extract_asia_asia_wishlists> on 2025-06-03 06:07:18.020901+00:00
+[2025-06-03T08:02:49.290+0000] {standard_task_runner.py:60} INFO - Started process 3011 to run task
+[2025-06-03T08:02:49.292+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'ingest_raw_data_asia', 'extract_asia_asia_wishlists', 'manual__2025-06-03T06:07:18.020901+00:00', '--job-id', '296', '--raw', '--subdir', 'DAGS_FOLDER/asia/landing.py', '--cfg-path', '/tmp/tmp36n1xwa1']
+[2025-06-03T08:02:49.293+0000] {standard_task_runner.py:88} INFO - Job 296: Subtask extract_asia_asia_wishlists
+[2025-06-03T08:02:53.172+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-03T08:02:53.502+0000] {task_command.py:423} INFO - Running <TaskInstance: ingest_raw_data_asia.extract_asia_asia_wishlists manual__2025-06-03T06:07:18.020901+00:00 [running]> on host 86069ee61878
+[2025-06-03T08:02:56.292+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='ingest_raw_data_asia' AIRFLOW_CTX_TASK_ID='extract_asia_asia_wishlists' AIRFLOW_CTX_EXECUTION_DATE='2025-06-03T06:07:18.020901+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-03T06:07:18.020901+00:00'
+[2025-06-03T08:02:56.677+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-06-03T08:02:57.550+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n                spark-submit                     /opt/airflow/scripts/pyspark_jobs/extract_to_parquet.py                     asia.wishlists "jdbc:postgresql://retail-postgres:5432/retail_etl" retail-etl retail_etl 2025-06-03\n            ']
+[2025-06-03T08:02:58.008+0000] {subprocess.py:86} INFO - Output:
+[2025-06-03T08:03:35.660+0000] {subprocess.py:93} INFO - 25/06/03 08:03:35 INFO SparkContext: Running Spark version 3.5.6
+[2025-06-03T08:03:35.670+0000] {subprocess.py:93} INFO - 25/06/03 08:03:35 INFO SparkContext: OS info Linux, 6.11.0-26-generic, amd64
+[2025-06-03T08:03:35.671+0000] {subprocess.py:93} INFO - 25/06/03 08:03:35 INFO SparkContext: Java version 11.0.24
+[2025-06-03T08:03:35.919+0000] {subprocess.py:93} INFO - 25/06/03 08:03:35 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-06-03T08:03:36.355+0000] {subprocess.py:93} INFO - 25/06/03 08:03:36 INFO ResourceUtils: ==============================================================
+[2025-06-03T08:03:36.356+0000] {subprocess.py:93} INFO - 25/06/03 08:03:36 INFO ResourceUtils: No custom resources configured for spark.driver.
+[2025-06-03T08:03:36.356+0000] {subprocess.py:93} INFO - 25/06/03 08:03:36 INFO ResourceUtils: ==============================================================
+[2025-06-03T08:03:36.356+0000] {subprocess.py:93} INFO - 25/06/03 08:03:36 INFO SparkContext: Submitted application: Extract_asia_asia.wishlists
+[2025-06-03T08:03:36.491+0000] {subprocess.py:93} INFO - 25/06/03 08:03:36 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+[2025-06-03T08:03:36.549+0000] {subprocess.py:93} INFO - 25/06/03 08:03:36 INFO ResourceProfile: Limiting resource is cpu
+[2025-06-03T08:03:36.550+0000] {subprocess.py:93} INFO - 25/06/03 08:03:36 INFO ResourceProfileManager: Added ResourceProfile id: 0
+[2025-06-03T08:03:36.843+0000] {subprocess.py:93} INFO - 25/06/03 08:03:36 INFO SecurityManager: Changing view acls to: airflow
+[2025-06-03T08:03:36.846+0000] {subprocess.py:93} INFO - 25/06/03 08:03:36 INFO SecurityManager: Changing modify acls to: airflow
+[2025-06-03T08:03:36.846+0000] {subprocess.py:93} INFO - 25/06/03 08:03:36 INFO SecurityManager: Changing view acls groups to:
+[2025-06-03T08:03:36.849+0000] {subprocess.py:93} INFO - 25/06/03 08:03:36 INFO SecurityManager: Changing modify acls groups to:
+[2025-06-03T08:03:36.849+0000] {subprocess.py:93} INFO - 25/06/03 08:03:36 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: airflow; groups with view permissions: EMPTY; users with modify permissions: airflow; groups with modify permissions: EMPTY
+[2025-06-03T08:03:38.417+0000] {subprocess.py:93} INFO - 25/06/03 08:03:38 INFO Utils: Successfully started service 'sparkDriver' on port 45395.
+[2025-06-03T08:03:38.692+0000] {subprocess.py:93} INFO - 25/06/03 08:03:38 INFO SparkEnv: Registering MapOutputTracker
+[2025-06-03T08:03:38.926+0000] {subprocess.py:93} INFO - 25/06/03 08:03:38 INFO SparkEnv: Registering BlockManagerMaster
+[2025-06-03T08:03:39.074+0000] {subprocess.py:93} INFO - 25/06/03 08:03:39 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+[2025-06-03T08:03:39.082+0000] {subprocess.py:93} INFO - 25/06/03 08:03:39 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+[2025-06-03T08:03:39.123+0000] {subprocess.py:93} INFO - 25/06/03 08:03:39 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+[2025-06-03T08:03:39.265+0000] {subprocess.py:93} INFO - 25/06/03 08:03:39 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-cec49731-3b54-4030-a8f0-3514d748e4e0
+[2025-06-03T08:03:39.383+0000] {subprocess.py:93} INFO - 25/06/03 08:03:39 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+[2025-06-03T08:03:39.475+0000] {subprocess.py:93} INFO - 25/06/03 08:03:39 INFO SparkEnv: Registering OutputCommitCoordinator
+[2025-06-03T08:03:40.437+0000] {subprocess.py:93} INFO - 25/06/03 08:03:40 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+[2025-06-03T08:03:41.604+0000] {subprocess.py:93} INFO - 25/06/03 08:03:41 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+[2025-06-03T08:03:41.605+0000] {subprocess.py:93} INFO - 25/06/03 08:03:41 WARN Utils: Service 'SparkUI' could not bind on port 4041. Attempting port 4042.
+[2025-06-03T08:03:41.606+0000] {subprocess.py:93} INFO - 25/06/03 08:03:41 WARN Utils: Service 'SparkUI' could not bind on port 4042. Attempting port 4043.
+[2025-06-03T08:03:41.606+0000] {subprocess.py:93} INFO - 25/06/03 08:03:41 WARN Utils: Service 'SparkUI' could not bind on port 4043. Attempting port 4044.
+[2025-06-03T08:03:41.607+0000] {subprocess.py:93} INFO - 25/06/03 08:03:41 WARN Utils: Service 'SparkUI' could not bind on port 4044. Attempting port 4045.
+[2025-06-03T08:03:41.607+0000] {subprocess.py:93} INFO - 25/06/03 08:03:41 WARN Utils: Service 'SparkUI' could not bind on port 4045. Attempting port 4046.
+[2025-06-03T08:03:41.608+0000] {subprocess.py:93} INFO - 25/06/03 08:03:41 WARN Utils: Service 'SparkUI' could not bind on port 4046. Attempting port 4047.
+[2025-06-03T08:03:41.608+0000] {subprocess.py:93} INFO - 25/06/03 08:03:41 WARN Utils: Service 'SparkUI' could not bind on port 4047. Attempting port 4048.
+[2025-06-03T08:03:41.642+0000] {subprocess.py:93} INFO - 25/06/03 08:03:41 INFO Utils: Successfully started service 'SparkUI' on port 4048.
+[2025-06-03T08:03:43.283+0000] {subprocess.py:93} INFO - 25/06/03 08:03:43 INFO Executor: Starting executor ID driver on host 86069ee61878
+[2025-06-03T08:03:43.286+0000] {subprocess.py:93} INFO - 25/06/03 08:03:43 INFO Executor: OS info Linux, 6.11.0-26-generic, amd64
+[2025-06-03T08:03:43.290+0000] {subprocess.py:93} INFO - 25/06/03 08:03:43 INFO Executor: Java version 11.0.24
+[2025-06-03T08:03:43.311+0000] {subprocess.py:93} INFO - 25/06/03 08:03:43 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+[2025-06-03T08:03:43.315+0000] {subprocess.py:93} INFO - 25/06/03 08:03:43 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@4281ab7f for default.
+[2025-06-03T08:03:43.375+0000] {subprocess.py:93} INFO - 25/06/03 08:03:43 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 43111.
+[2025-06-03T08:03:43.376+0000] {subprocess.py:93} INFO - 25/06/03 08:03:43 INFO NettyBlockTransferService: Server created on 86069ee61878:43111
+[2025-06-03T08:03:43.382+0000] {subprocess.py:93} INFO - 25/06/03 08:03:43 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+[2025-06-03T08:03:43.396+0000] {subprocess.py:93} INFO - 25/06/03 08:03:43 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 86069ee61878, 43111, None)
+[2025-06-03T08:03:43.405+0000] {subprocess.py:93} INFO - 25/06/03 08:03:43 INFO BlockManagerMasterEndpoint: Registering block manager 86069ee61878:43111 with 434.4 MiB RAM, BlockManagerId(driver, 86069ee61878, 43111, None)
+[2025-06-03T08:03:43.411+0000] {subprocess.py:93} INFO - 25/06/03 08:03:43 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 86069ee61878, 43111, None)
+[2025-06-03T08:03:43.413+0000] {subprocess.py:93} INFO - 25/06/03 08:03:43 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 86069ee61878, 43111, None)
+[2025-06-03T08:03:48.537+0000] {subprocess.py:93} INFO - 25/06/03 08:03:48 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+[2025-06-03T08:03:48.558+0000] {subprocess.py:93} INFO - 25/06/03 08:03:48 INFO SharedState: Warehouse path is 'file:/tmp/airflowtmpqrppxrjv/spark-warehouse'.
+[2025-06-03T08:04:48.855+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-06-03T08:04:49.002+0000] {subprocess.py:93} INFO -   File "/opt/airflow/scripts/pyspark_jobs/extract_to_parquet.py", line 24, in <module>
+[2025-06-03T08:04:49.003+0000] {subprocess.py:93} INFO -     .load()
+[2025-06-03T08:04:49.749+0000] {subprocess.py:93} INFO -   File "/usr/local/spark/python/lib/pyspark.zip/pyspark/sql/readwriter.py", line 314, in load
+[2025-06-03T08:04:50.800+0000] {subprocess.py:93} INFO -   File "/usr/local/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1322, in __call__
+[2025-06-03T08:04:51.163+0000] {subprocess.py:93} INFO -   File "/usr/local/spark/python/lib/pyspark.zip/pyspark/errors/exceptions/captured.py", line 179, in deco
+[2025-06-03T08:04:51.363+0000] {subprocess.py:93} INFO -   File "/usr/local/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/protocol.py", line 326, in get_return_value
+[2025-06-03T08:04:51.552+0000] {subprocess.py:93} INFO - py4j.protocol.Py4JJavaError: An error occurred while calling o30.load.
+[2025-06-03T08:04:51.715+0000] {subprocess.py:93} INFO - : java.lang.ClassNotFoundException: org.postgresql.Driver
+[2025-06-03T08:04:51.778+0000] {subprocess.py:93} INFO - 	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:476)
+[2025-06-03T08:04:51.779+0000] {subprocess.py:93} INFO - 	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:594)
+[2025-06-03T08:04:51.800+0000] {subprocess.py:93} INFO - 	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+[2025-06-03T08:04:52.431+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.datasources.jdbc.DriverRegistry$.register(DriverRegistry.scala:46)
+[2025-06-03T08:04:52.577+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.$anonfun$driverClass$1(JDBCOptions.scala:103)
+[2025-06-03T08:04:52.788+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.$anonfun$driverClass$1$adapted(JDBCOptions.scala:103)
+[2025-06-03T08:04:52.824+0000] {subprocess.py:93} INFO - 	at scala.Option.foreach(Option.scala:407)
+[2025-06-03T08:04:52.992+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.<init>(JDBCOptions.scala:103)
+[2025-06-03T08:04:53.024+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.<init>(JDBCOptions.scala:41)
+[2025-06-03T08:04:53.043+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.datasources.jdbc.JdbcRelationProvider.createRelation(JdbcRelationProvider.scala:34)
+[2025-06-03T08:04:53.608+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:346)
+[2025-06-03T08:04:53.812+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.DataFrameReader.loadV1Source(DataFrameReader.scala:229)
+[2025-06-03T08:04:54.153+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.DataFrameReader.$anonfun$load$2(DataFrameReader.scala:211)
+[2025-06-03T08:04:54.394+0000] {subprocess.py:93} INFO - 	at scala.Option.getOrElse(Option.scala:189)
+[2025-06-03T08:04:54.540+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:211)
+[2025-06-03T08:04:54.760+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:172)
+[2025-06-03T08:04:54.968+0000] {subprocess.py:93} INFO - 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[2025-06-03T08:04:54.989+0000] {subprocess.py:93} INFO - 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[2025-06-03T08:04:54.989+0000] {subprocess.py:93} INFO - 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[2025-06-03T08:04:55.042+0000] {subprocess.py:93} INFO - 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+[2025-06-03T08:04:55.042+0000] {subprocess.py:93} INFO - 	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+[2025-06-03T08:04:55.074+0000] {subprocess.py:93} INFO - 	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+[2025-06-03T08:04:55.089+0000] {subprocess.py:93} INFO - 	at py4j.Gateway.invoke(Gateway.java:282)
+[2025-06-03T08:04:55.090+0000] {subprocess.py:93} INFO - 	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+[2025-06-03T08:04:55.090+0000] {subprocess.py:93} INFO - 	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+[2025-06-03T08:04:55.090+0000] {subprocess.py:93} INFO - 	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+[2025-06-03T08:04:55.090+0000] {subprocess.py:93} INFO - 	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+[2025-06-03T08:04:55.090+0000] {subprocess.py:93} INFO - 	at java.base/java.lang.Thread.run(Thread.java:829)
+[2025-06-03T08:04:55.090+0000] {subprocess.py:93} INFO - 
+[2025-06-03T08:04:55.921+0000] {subprocess.py:93} INFO - 25/06/03 08:04:55 INFO SparkContext: Invoking stop() from shutdown hook
+[2025-06-03T08:04:55.922+0000] {subprocess.py:93} INFO - 25/06/03 08:04:55 INFO SparkContext: SparkContext is stopping with exitCode 0.
+[2025-06-03T08:04:56.440+0000] {subprocess.py:93} INFO - 25/06/03 08:04:56 INFO SparkUI: Stopped Spark web UI at http://86069ee61878:4048
+[2025-06-03T08:04:57.654+0000] {subprocess.py:93} INFO - 25/06/03 08:04:57 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+[2025-06-03T08:04:58.034+0000] {subprocess.py:93} INFO - 25/06/03 08:04:58 INFO MemoryStore: MemoryStore cleared
+[2025-06-03T08:04:58.036+0000] {subprocess.py:93} INFO - 25/06/03 08:04:58 INFO BlockManager: BlockManager stopped
+[2025-06-03T08:04:58.286+0000] {subprocess.py:93} INFO - 25/06/03 08:04:58 INFO BlockManagerMaster: BlockManagerMaster stopped
+[2025-06-03T08:04:58.309+0000] {subprocess.py:93} INFO - 25/06/03 08:04:58 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+[2025-06-03T08:04:58.390+0000] {subprocess.py:93} INFO - 25/06/03 08:04:58 INFO SparkContext: Successfully stopped SparkContext
+[2025-06-03T08:04:58.391+0000] {subprocess.py:93} INFO - 25/06/03 08:04:58 INFO ShutdownHookManager: Shutdown hook called
+[2025-06-03T08:04:58.391+0000] {subprocess.py:93} INFO - 25/06/03 08:04:58 INFO ShutdownHookManager: Deleting directory /tmp/spark-e84582ec-294f-45ff-a52c-f83fe047940f/pyspark-3466fd02-eac1-408d-bdff-53893622a166
+[2025-06-03T08:04:58.403+0000] {subprocess.py:93} INFO - 25/06/03 08:04:58 INFO ShutdownHookManager: Deleting directory /tmp/spark-e84582ec-294f-45ff-a52c-f83fe047940f
+[2025-06-03T08:04:58.420+0000] {subprocess.py:93} INFO - 25/06/03 08:04:58 INFO ShutdownHookManager: Deleting directory /tmp/spark-ed45e71f-619e-4942-9ed7-036780928666
+[2025-06-03T08:05:00.656+0000] {subprocess.py:97} INFO - Command exited with return code 1

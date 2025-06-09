@@ -1,0 +1,32 @@
+[2025-06-09T06:01:31.807+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: transform_categories.run_transformation_asia manual__2025-06-09T05:53:09.877616+00:00 [queued]>
+[2025-06-09T06:01:31.828+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: transform_categories.run_transformation_asia manual__2025-06-09T05:53:09.877616+00:00 [queued]>
+[2025-06-09T06:01:31.829+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-09T06:01:31.859+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_transformation_asia> on 2025-06-09 05:53:09.877616+00:00
+[2025-06-09T06:01:31.872+0000] {standard_task_runner.py:60} INFO - Started process 29048 to run task
+[2025-06-09T06:01:31.872+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-09T06:01:31.879+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'transform_categories', 'run_transformation_asia', 'manual__2025-06-09T05:53:09.877616+00:00', '--job-id', '7', '--raw', '--subdir', 'DAGS_FOLDER/staging/categories_to_staging.py', '--cfg-path', '/tmp/tmpsw5cqqfq']
+[2025-06-09T06:01:31.882+0000] {standard_task_runner.py:88} INFO - Job 7: Subtask run_transformation_asia
+[2025-06-09T06:01:31.919+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-09T06:01:32.019+0000] {task_command.py:423} INFO - Running <TaskInstance: transform_categories.run_transformation_asia manual__2025-06-09T05:53:09.877616+00:00 [running]> on host 64d899e082be
+[2025-06-09T06:01:32.254+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='transform_categories' AIRFLOW_CTX_TASK_ID='run_transformation_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T05:53:09.877616+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-09T05:53:09.877616+00:00'
+[2025-06-09T06:01:32.255+0000] {logging_mixin.py:188} INFO - Starting transformation for table: categories in region: asia
+[2025-06-09T06:01:32.303+0000] {logging_mixin.py:188} INFO - Reading data from: /opt/airflow/data/raw/region=asia/table=categories/load_date=2025-06-08/
+[2025-06-09T06:01:41.732+0000] {logging_mixin.py:188} INFO - [INFO] Processing 30 records for asia
+[2025-06-09T06:01:42.342+0000] {logging_mixin.py:188} INFO - Sample transformed data for asia:
+[2025-06-09T06:01:47.220+0000] {logging_mixin.py:188} INFO - +-------------+--------------+------------------+------------------------+---------+-------------------+-------------------+-------+--------+
+|categories_id|category_name |parent_category_id|category_path           |is_active|created_at         |updated_at         |_region|_source |
++-------------+--------------+------------------+------------------------+---------+-------------------+-------------------+-------+--------+
+|1            |Electronics   |NULL              |/Electronics            |true     |2024-01-01 09:00:00|2025-06-08 19:23:06|asia   |postgres|
+|2            |Smartphones   |1                 |/Electronics/Smartphones|true     |2024-01-02 00:00:00|2025-06-08 19:23:06|asia   |postgres|
+|3            |Laptops       |1                 |/Electronics/Laptops    |true     |2024-03-01 00:00:00|2025-06-08 19:23:06|asia   |postgres|
+|4            |Gaming Devices|1                 |/Electronics/Gaming     |true     |NULL               |2025-06-08 19:23:06|asia   |postgres|
+|5            |Clothing      |NULL              |/Clothing               |true     |2024-05-01 00:00:00|2025-06-08 19:23:06|asia   |postgres|
++-------------+--------------+------------------+------------------------+---------+-------------------+-------------------+-------+--------+
+only showing top 5 rows
+[2025-06-09T06:01:47.221+0000] {logging_mixin.py:188} INFO - Writing transformed data to: /opt/airflow/data/staging/categories/region=asia/load_date=2025-06-08/
+[2025-06-09T06:01:49.112+0000] {logging_mixin.py:188} INFO - Successfully transformed 30 records for asia
+[2025-06-09T06:13:02.766+0000] {local_task_job_runner.py:302} WARNING - State of this instance has been externally set to skipped. Terminating instance.
+[2025-06-09T06:13:02.814+0000] {process_utils.py:131} INFO - Sending 15 to group 29048. PIDs of all processes in the group: [29048]
+[2025-06-09T06:13:02.850+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 29048
+[2025-06-09T06:13:02.892+0000] {taskinstance.py:2450} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-06-09T06:13:03.203+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=29048, status='terminated', exitcode=0, started='06:01:31') (29048) terminated with exit code 0

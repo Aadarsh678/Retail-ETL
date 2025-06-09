@@ -1,0 +1,31 @@
+[2025-06-09T06:50:16.176+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: transform_categories.run_transformation_eu manual__2025-06-09T06:50:14.509197+00:00 [queued]>
+[2025-06-09T06:50:16.203+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: transform_categories.run_transformation_eu manual__2025-06-09T06:50:14.509197+00:00 [queued]>
+[2025-06-09T06:50:16.204+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-09T06:50:16.236+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_transformation_eu> on 2025-06-09 06:50:14.509197+00:00
+[2025-06-09T06:50:16.248+0000] {standard_task_runner.py:60} INFO - Started process 28768 to run task
+[2025-06-09T06:50:16.254+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'transform_categories', 'run_transformation_eu', 'manual__2025-06-09T06:50:14.509197+00:00', '--job-id', '17', '--raw', '--subdir', 'DAGS_FOLDER/staging/categories_to_staging.py', '--cfg-path', '/tmp/tmplt2eom5z']
+[2025-06-09T06:50:16.262+0000] {standard_task_runner.py:88} INFO - Job 17: Subtask run_transformation_eu
+[2025-06-09T06:50:16.307+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-09T06:50:16.416+0000] {task_command.py:423} INFO - Running <TaskInstance: transform_categories.run_transformation_eu manual__2025-06-09T06:50:14.509197+00:00 [running]> on host afcdbcf38bc0
+[2025-06-09T06:50:16.669+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='transform_categories' AIRFLOW_CTX_TASK_ID='run_transformation_eu' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T06:50:14.509197+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-09T06:50:14.509197+00:00'
+[2025-06-09T06:50:16.671+0000] {logging_mixin.py:188} INFO - Starting transformation for table: categories in region: eu
+[2025-06-09T06:50:26.154+0000] {logging_mixin.py:188} INFO - Reading data from: /opt/airflow/data/raw/region=eu/table=categories/load_date=2025-06-08/
+[2025-06-09T06:50:38.136+0000] {logging_mixin.py:188} INFO - [INFO] Processing 30 records for eu
+[2025-06-09T06:50:38.847+0000] {logging_mixin.py:188} INFO - Sample transformed data for eu:
+[2025-06-09T06:50:43.697+0000] {logging_mixin.py:188} INFO - +-----------+-------------+-------------------+------------------+------------------------+---------+--------------+-------------------+-------------------+-------+--------+
+|category_id|category_name|category_name_local|parent_category_id|category_path           |is_active|gdpr_sensitive|created_at         |updated_at         |_region|_source |
++-----------+-------------+-------------------+------------------+------------------------+---------+--------------+-------------------+-------------------+-------+--------+
+|1          |Electronics  |Elektronik         |NULL              |/Electronics            |1        |false         |2025-06-08 19:22:57|2025-06-08 19:22:57|eu     |postgres|
+|2          |Smartphones  |Smartphones        |1                 |/Electronics/Smartphones|1        |false         |2025-06-08 19:22:57|2025-06-08 19:22:57|eu     |postgres|
+|3          |Laptops      |Laptops            |1                 |/Electronics/Laptops    |1        |false         |2025-06-08 19:22:57|2025-06-08 19:22:57|eu     |postgres|
+|4          |Gaming       |Spiele             |1                 |/Electronics/Gaming     |1        |false         |2025-06-08 19:22:57|2025-06-08 19:22:57|eu     |postgres|
+|5          |Clothing     |Kleidung           |NULL              |/Clothing               |1        |false         |2025-06-08 19:22:57|2025-06-08 19:22:57|eu     |postgres|
++-----------+-------------+-------------------+------------------+------------------------+---------+--------------+-------------------+-------------------+-------+--------+
+only showing top 5 rows
+[2025-06-09T06:50:43.698+0000] {logging_mixin.py:188} INFO - Writing transformed data to: /opt/airflow/data/staging/categories/region=eu/load_date=2025-06-08/
+[2025-06-09T06:50:45.746+0000] {logging_mixin.py:188} INFO - Successfully transformed 30 records for eu
+[2025-06-09T06:50:45.890+0000] {logging_mixin.py:188} INFO - Finished transformation for categories in region eu
+[2025-06-09T06:50:45.891+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-06-09T06:50:45.921+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=transform_categories, task_id=run_transformation_eu, execution_date=20250609T065014, start_date=20250609T065016, end_date=20250609T065045
+[2025-06-09T06:50:45.962+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-09T06:50:46.015+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

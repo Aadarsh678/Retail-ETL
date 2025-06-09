@@ -1,0 +1,70 @@
+import os
+import sys
+import datetime
+import pendulum
+from airflow.decorators import dag, task
+from airflow.models import Variable
+from airflow.exceptions import AirflowSkipException
+from dotenv import load_dotenv
+from pyspark.sql import SparkSession
+
+# Load env vars
+load_dotenv()
+
+# Add scripts folder to sys.path
+sys.path.append(os.path.join(os.path.dirname(__file__), "../../"))
+
+from scripts.pyspark_jobs.load_parquet_snowflake_staging import load_parquet_to_snowflake
+
+REGION = "asia"
+TABLE = "customers"
+
+@dag(
+    dag_id="load_parquet_to_snowflake_staging",
+    schedule="0 0 * * *",
+    start_date=pendulum.datetime(2024, 1, 1, tz="UTC"),
+    catchup=False,
+)
+def load_to_snowflake():
+    @task
+    def load_latest_data():
+        base_path = f"/opt/airflow/data/raw/region={REGION}/table={TABLE}/"
+
+        # Find latest load_date folder
+        folders = os.listdir(base_path)
+        date_folders = [d.split('=')[-1] for d in folders if d.startswith("load_date=")]
+        if not date_folders:
+            raise FileNotFoundError("No Parquet date_folders found.")
+        latest_date = max(date_folders)
+
+        var_key = f"last_loaded_timestamp_{REGION}_{TABLE}"
+        try:
+            last_loaded_timestamp = Variable.get(var_key)
+            print(f"[INFO] Last loaded timestamp: {last_loaded_timestamp}")
+        except KeyError:
+            last_loaded_timestamp = "2000-01-01 00:00:00"
+            print(f"[INFO] Variable not found, defaulting to {last_loaded_timestamp}")
+
+        parquet_path = os.path.join(base_path, f"load_date={latest_date}/")
+
+        spark = SparkSession.builder.getOrCreate()
+        df = spark.read.parquet(parquet_path)
+
+        max_parquet_ts = df.agg({"created": "max"}).collect()[0][0].strftime("%Y-%m-%d %H:%M:%S")
+
+        if max_parquet_ts <= last_loaded_timestamp:
+            raise AirflowSkipException(f"No new data to load. Last loaded: {last_loaded_timestamp}, max found: {max_parquet_ts}")
+
+        # Load only records newer than last loaded timestamp
+        load_parquet_to_snowflake(REGION, TABLE, latest_date, min_load_date=last_loaded_timestamp)
+
+        # Update variable after successful load
+        Variable.set(var_key, max_parquet_ts)
+        print(f"[INFO] Updated Airflow variable '{var_key}' = {max_parquet_ts}")
+
+        spark.stop()
+
+
+    load_latest_data()
+
+dag = load_to_snowflake()

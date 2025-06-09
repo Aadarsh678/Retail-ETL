@@ -1,0 +1,49 @@
+[2025-06-08T20:34:07.340+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_processor.process_region_us.process_categories_us manual__2025-06-08T20:24:20.634976+00:00 [queued]>
+[2025-06-08T20:34:07.358+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_processor.process_region_us.process_categories_us manual__2025-06-08T20:24:20.634976+00:00 [queued]>
+[2025-06-08T20:34:07.359+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2025-06-08T20:34:07.385+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_us.process_categories_us> on 2025-06-08 20:24:20.634976+00:00
+[2025-06-08T20:34:07.391+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T20:34:07.391+0000] {standard_task_runner.py:60} INFO - Started process 1184 to run task
+[2025-06-08T20:34:07.414+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_processor', 'process_region_us.process_categories_us', 'manual__2025-06-08T20:24:20.634976+00:00', '--job-id', '27', '--raw', '--subdir', 'DAGS_FOLDER/master2.py', '--cfg-path', '/tmp/tmpoqqtzql9']
+[2025-06-08T20:34:07.417+0000] {standard_task_runner.py:88} INFO - Job 27: Subtask process_region_us.process_categories_us
+[2025-06-08T20:34:07.562+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-08T20:34:07.650+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_processor.process_region_us.process_categories_us manual__2025-06-08T20:24:20.634976+00:00 [running]> on host 0cd0e93eeabc
+[2025-06-08T20:34:07.990+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_processor' AIRFLOW_CTX_TASK_ID='process_region_us.process_categories_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-08T20:24:20.634976+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-08T20:24:20.634976+00:00'
+[2025-06-08T20:34:08.013+0000] {logging_mixin.py:188} INFO - Processing categories for region us
+[2025-06-08T20:34:31.326+0000] {logging_mixin.py:188} INFO - ✅ Successfully processed 30 records for categories in us
+[2025-06-08T20:40:43.256+0000] {local_task_job_runner.py:121} ERROR - Received SIGTERM. Terminating subprocesses
+[2025-06-08T20:40:43.513+0000] {process_utils.py:131} INFO - Sending 15 to group 1184. PIDs of all processes in the group: [1184]
+[2025-06-08T20:40:43.517+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 1184
+[2025-06-08T20:40:43.526+0000] {taskinstance.py:2450} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-06-08T20:40:44.033+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/master2.py", line 408, in process_table
+    finally:
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/sql/session.py", line 1796, in stop
+    self._sc.stop()
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/context.py", line 666, in stop
+    self._accumulatorServer.shutdown()
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/accumulators.py", line 316, in shutdown
+    SocketServer.TCPServer.shutdown(self)
+  File "/usr/local/lib/python3.10/socketserver.py", line 252, in shutdown
+    self.__is_shut_down.wait()
+  File "/usr/local/lib/python3.10/threading.py", line 607, in wait
+    signaled = self._cond.wait(timeout)
+  File "/usr/local/lib/python3.10/threading.py", line 320, in wait
+    waiter.acquire()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 2452, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+[2025-06-08T20:40:44.114+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=multi_region_processor, task_id=process_region_us.process_categories_us, execution_date=20250608T202420, start_date=20250608T203407, end_date=20250608T204044
+[2025-06-08T20:40:44.425+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 27 for task process_region_us.process_categories_us (Task received SIGTERM signal; 1184)
+[2025-06-08T20:40:44.456+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=1184, status='terminated', exitcode=1, started='20:34:07') (1184) terminated with exit code 1
+[2025-06-08T20:40:44.463+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 143
+[2025-06-08T20:40:44.809+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

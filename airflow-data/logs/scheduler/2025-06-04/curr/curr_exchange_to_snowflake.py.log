@@ -1,0 +1,224 @@
+[2025-06-04T07:47:49.675+0000] {processor.py:161} INFO - Started process (PID=318) to work on /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:47:49.676+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/curr/curr_exchange_to_snowflake.py for tasks to queue
+[2025-06-04T07:47:49.677+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:47:49.676+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:47:49.679+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:47:49.678+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/curr/curr_exchange_to_snowflake.py", line 11, in <module>
+    @dag(
+NameError: name 'dag' is not defined
+[2025-06-04T07:47:49.680+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:47:49.705+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/curr/curr_exchange_to_snowflake.py took 0.032 seconds
+[2025-06-04T07:48:19.927+0000] {processor.py:161} INFO - Started process (PID=338) to work on /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:48:19.929+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/curr/curr_exchange_to_snowflake.py for tasks to queue
+[2025-06-04T07:48:19.930+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:48:19.929+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:48:19.935+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:48:19.934+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/curr/curr_exchange_to_snowflake.py", line 11, in <module>
+    @dag(
+NameError: name 'dag' is not defined
+[2025-06-04T07:48:19.935+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:48:19.959+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/curr/curr_exchange_to_snowflake.py took 0.034 seconds
+[2025-06-04T07:48:50.190+0000] {processor.py:161} INFO - Started process (PID=358) to work on /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:48:50.191+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/curr/curr_exchange_to_snowflake.py for tasks to queue
+[2025-06-04T07:48:50.192+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:48:50.192+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:48:50.194+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:48:50.193+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/curr/curr_exchange_to_snowflake.py", line 11, in <module>
+    @dag(
+NameError: name 'dag' is not defined
+[2025-06-04T07:48:50.194+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:48:50.213+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/curr/curr_exchange_to_snowflake.py took 0.026 seconds
+[2025-06-04T07:49:20.451+0000] {processor.py:161} INFO - Started process (PID=378) to work on /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:49:20.452+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/curr/curr_exchange_to_snowflake.py for tasks to queue
+[2025-06-04T07:49:20.453+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:49:20.453+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:49:20.455+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:49:20.455+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/curr/curr_exchange_to_snowflake.py", line 11, in <module>
+    @dag(
+NameError: name 'dag' is not defined
+[2025-06-04T07:49:20.456+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:49:20.475+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/curr/curr_exchange_to_snowflake.py took 0.026 seconds
+[2025-06-04T07:49:50.714+0000] {processor.py:161} INFO - Started process (PID=398) to work on /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:49:50.715+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/curr/curr_exchange_to_snowflake.py for tasks to queue
+[2025-06-04T07:49:50.715+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:49:50.715+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:49:50.717+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:49:50.717+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/curr/curr_exchange_to_snowflake.py", line 11, in <module>
+    @dag(
+NameError: name 'dag' is not defined
+[2025-06-04T07:49:50.718+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:49:50.738+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/curr/curr_exchange_to_snowflake.py took 0.026 seconds
+[2025-06-04T07:50:20.989+0000] {processor.py:161} INFO - Started process (PID=418) to work on /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:50:20.991+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/curr/curr_exchange_to_snowflake.py for tasks to queue
+[2025-06-04T07:50:20.992+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:50:20.991+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:50:20.994+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:50:20.993+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/curr/curr_exchange_to_snowflake.py", line 11, in <module>
+    @dag(
+NameError: name 'dag' is not defined
+[2025-06-04T07:50:20.994+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:50:21.013+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/curr/curr_exchange_to_snowflake.py took 0.025 seconds
+[2025-06-04T07:50:51.239+0000] {processor.py:161} INFO - Started process (PID=438) to work on /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:50:51.241+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/curr/curr_exchange_to_snowflake.py for tasks to queue
+[2025-06-04T07:50:51.241+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:50:51.241+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:50:51.243+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:50:51.243+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/curr/curr_exchange_to_snowflake.py", line 11, in <module>
+    @dag(
+NameError: name 'dag' is not defined
+[2025-06-04T07:50:51.244+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:50:51.273+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/curr/curr_exchange_to_snowflake.py took 0.036 seconds
+[2025-06-04T07:51:21.541+0000] {processor.py:161} INFO - Started process (PID=458) to work on /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:51:21.543+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/curr/curr_exchange_to_snowflake.py for tasks to queue
+[2025-06-04T07:51:21.544+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:51:21.543+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:51:21.546+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:51:21.545+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/curr/curr_exchange_to_snowflake.py", line 11, in <module>
+    @dag(
+NameError: name 'dag' is not defined
+[2025-06-04T07:51:21.547+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:51:21.573+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/curr/curr_exchange_to_snowflake.py took 0.035 seconds
+[2025-06-04T07:51:51.829+0000] {processor.py:161} INFO - Started process (PID=478) to work on /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:51:51.831+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/curr/curr_exchange_to_snowflake.py for tasks to queue
+[2025-06-04T07:51:51.832+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:51:51.831+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:51:51.834+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:51:51.833+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/curr/curr_exchange_to_snowflake.py", line 11, in <module>
+    @dag(
+NameError: name 'dag' is not defined
+[2025-06-04T07:51:51.834+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:51:51.856+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/curr/curr_exchange_to_snowflake.py took 0.032 seconds
+[2025-06-04T07:52:22.088+0000] {processor.py:161} INFO - Started process (PID=498) to work on /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:52:22.089+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/curr/curr_exchange_to_snowflake.py for tasks to queue
+[2025-06-04T07:52:22.090+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:52:22.090+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:52:22.093+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:52:22.093+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/curr/curr_exchange_to_snowflake.py", line 11, in <module>
+    @dag(
+NameError: name 'dag' is not defined
+[2025-06-04T07:52:22.093+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:52:22.112+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/curr/curr_exchange_to_snowflake.py took 0.026 seconds
+[2025-06-04T07:52:52.357+0000] {processor.py:161} INFO - Started process (PID=518) to work on /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:52:52.359+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/curr/curr_exchange_to_snowflake.py for tasks to queue
+[2025-06-04T07:52:52.360+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:52:52.360+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:52:52.362+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:52:52.361+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/curr/curr_exchange_to_snowflake.py", line 11, in <module>
+    @dag(
+NameError: name 'dag' is not defined
+[2025-06-04T07:52:52.362+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:52:52.381+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/curr/curr_exchange_to_snowflake.py took 0.026 seconds
+[2025-06-04T07:53:15.324+0000] {processor.py:161} INFO - Started process (PID=167) to work on /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:53:15.326+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/curr/curr_exchange_to_snowflake.py for tasks to queue
+[2025-06-04T07:53:15.327+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:53:15.327+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:53:15.331+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:53:15.330+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/curr/curr_exchange_to_snowflake.py", line 11, in <module>
+    @dag(
+NameError: name 'dag' is not defined
+[2025-06-04T07:53:15.331+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:53:15.380+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/curr/curr_exchange_to_snowflake.py took 0.061 seconds
+[2025-06-04T07:53:46.072+0000] {processor.py:161} INFO - Started process (PID=188) to work on /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:53:46.074+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/curr/curr_exchange_to_snowflake.py for tasks to queue
+[2025-06-04T07:53:46.075+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:53:46.075+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:53:46.078+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:53:46.077+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/curr/curr_exchange_to_snowflake.py", line 11, in <module>
+    @dag(
+NameError: name 'dag' is not defined
+[2025-06-04T07:53:46.078+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:53:46.099+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/curr/curr_exchange_to_snowflake.py took 0.029 seconds
+[2025-06-04T07:54:16.443+0000] {processor.py:161} INFO - Started process (PID=208) to work on /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:54:16.445+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/curr/curr_exchange_to_snowflake.py for tasks to queue
+[2025-06-04T07:54:16.445+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:54:16.445+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:54:16.448+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:54:16.447+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/curr/curr_exchange_to_snowflake.py", line 11, in <module>
+    @dag(
+NameError: name 'dag' is not defined
+[2025-06-04T07:54:16.448+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:54:16.467+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/curr/curr_exchange_to_snowflake.py took 0.027 seconds
+[2025-06-04T07:54:46.741+0000] {processor.py:161} INFO - Started process (PID=228) to work on /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:54:46.742+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/curr/curr_exchange_to_snowflake.py for tasks to queue
+[2025-06-04T07:54:46.742+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:54:46.742+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:54:46.745+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:54:46.744+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/curr/curr_exchange_to_snowflake.py", line 11, in <module>
+    @dag(
+NameError: name 'dag' is not defined
+[2025-06-04T07:54:46.745+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:54:46.766+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/curr/curr_exchange_to_snowflake.py took 0.027 seconds
+[2025-06-04T07:55:17.045+0000] {processor.py:161} INFO - Started process (PID=248) to work on /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:55:17.046+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/curr/curr_exchange_to_snowflake.py for tasks to queue
+[2025-06-04T07:55:17.050+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:55:17.048+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:55:17.053+0000] {logging_mixin.py:188} INFO - [2025-06-04T07:55:17.052+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/curr/curr_exchange_to_snowflake.py", line 11, in <module>
+    @dag(
+NameError: name 'dag' is not defined
+[2025-06-04T07:55:17.053+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/curr/curr_exchange_to_snowflake.py
+[2025-06-04T07:55:17.078+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/curr/curr_exchange_to_snowflake.py took 0.036 seconds

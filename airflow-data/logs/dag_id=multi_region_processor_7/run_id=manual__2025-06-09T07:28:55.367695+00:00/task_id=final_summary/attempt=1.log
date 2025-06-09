@@ -1,0 +1,15 @@
+[2025-06-09T07:34:33.204+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_processor_7.final_summary manual__2025-06-09T07:28:55.367695+00:00 [queued]>
+[2025-06-09T07:34:33.216+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_processor_7.final_summary manual__2025-06-09T07:28:55.367695+00:00 [queued]>
+[2025-06-09T07:34:33.216+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-09T07:34:33.233+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): final_summary> on 2025-06-09 07:28:55.367695+00:00
+[2025-06-09T07:34:33.237+0000] {standard_task_runner.py:60} INFO - Started process 85072 to run task
+[2025-06-09T07:34:33.239+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_processor_7', 'final_summary', 'manual__2025-06-09T07:28:55.367695+00:00', '--job-id', '603', '--raw', '--subdir', 'DAGS_FOLDER/master2.py', '--cfg-path', '/tmp/tmpnho4e0fa']
+[2025-06-09T07:34:33.240+0000] {standard_task_runner.py:88} INFO - Job 603: Subtask final_summary
+[2025-06-09T07:34:33.282+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-09T07:34:33.321+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_processor_7.final_summary manual__2025-06-09T07:28:55.367695+00:00 [running]> on host afcdbcf38bc0
+[2025-06-09T07:34:33.433+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_processor_7' AIRFLOW_CTX_TASK_ID='final_summary' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T07:28:55.367695+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-09T07:28:55.367695+00:00'
+[2025-06-09T07:34:33.434+0000] {logging_mixin.py:188} INFO -  All regions processed successfully!
+[2025-06-09T07:34:33.434+0000] {python.py:201} INFO - Done. Returned value was: {'status': 'completed'}
+[2025-06-09T07:34:33.468+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_processor_7, task_id=final_summary, execution_date=20250609T072855, start_date=20250609T073433, end_date=20250609T073433
+[2025-06-09T07:34:33.494+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-09T07:34:33.515+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

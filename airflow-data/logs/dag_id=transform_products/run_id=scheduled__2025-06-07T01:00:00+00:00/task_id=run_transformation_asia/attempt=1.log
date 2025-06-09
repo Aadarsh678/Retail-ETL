@@ -1,0 +1,27 @@
+[2025-06-08T16:27:28.228+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: transform_products.run_transformation_asia scheduled__2025-06-07T01:00:00+00:00 [queued]>
+[2025-06-08T16:27:28.268+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: transform_products.run_transformation_asia scheduled__2025-06-07T01:00:00+00:00 [queued]>
+[2025-06-08T16:27:28.268+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-08T16:27:28.330+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_transformation_asia> on 2025-06-07 01:00:00+00:00
+[2025-06-08T16:27:28.339+0000] {standard_task_runner.py:60} INFO - Started process 3922 to run task
+[2025-06-08T16:27:28.340+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T16:27:28.373+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'transform_products', 'run_transformation_asia', 'scheduled__2025-06-07T01:00:00+00:00', '--job-id', '499', '--raw', '--subdir', 'DAGS_FOLDER/staging/products_to_staging.py', '--cfg-path', '/tmp/tmpau3k1tqx']
+[2025-06-08T16:27:28.376+0000] {standard_task_runner.py:88} INFO - Job 499: Subtask run_transformation_asia
+[2025-06-08T16:27:28.500+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-08T16:27:28.675+0000] {task_command.py:423} INFO - Running <TaskInstance: transform_products.run_transformation_asia scheduled__2025-06-07T01:00:00+00:00 [running]> on host c10f2fed82e0
+[2025-06-08T16:27:29.073+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='transform_products' AIRFLOW_CTX_TASK_ID='run_transformation_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-07T01:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-07T01:00:00+00:00'
+[2025-06-08T16:27:29.080+0000] {logging_mixin.py:188} INFO - Starting transformation for table: products in region: asia
+[2025-06-08T16:27:29.199+0000] {logging_mixin.py:188} INFO - Reading data from: /opt/airflow/data/raw/region=asia/table=products/load_date=2025-06-06/
+[2025-06-08T16:27:54.988+0000] {logging_mixin.py:188} INFO - [INFO] Processing 17 records for asia
+[2025-06-08T16:27:56.862+0000] {logging_mixin.py:188} INFO - Sample transformed data for asia:
+[2025-06-08T16:28:05.832+0000] {logging_mixin.py:188} INFO - +----------+-----------+--------------+----------------------------------------------+-----------+---------+--------+---------+------------------+--------+------------------+---------+-------------------+-------+--------+
+|product_id|product_sku|product_name  |product_description                           |category_id|price_jpy|cost_jpy|weight_kg|length_cm         |width_cm|height_cm         |is_active|created_at         |_region|_source |
++----------+-----------+--------------+----------------------------------------------+-----------+---------+--------+---------+------------------+--------+------------------+---------+-------------------+-------+--------+
+|1         |JP-ITEM-001|Iphone 15 Pro |Latest Apple smartphone with advanced features|2          |149800   |95000   |0.187500 |14.669999999999998|7.15    |0.78              |true     |2024-01-15 08:30:45|asia   |postgres|
+|2         |JP-ITEM-002|Macbook Air M2|Apple MacBook Air with M2 chip                |3          |158000   |98000   |1.240000 |30.410000000000004|21.5    |1.1300000000000001|true     |2024-01-16 00:00:00|asia   |postgres|
+|3         |JP-ITEM-003|Playstation 5 |Sony PlayStation 5 gaming console             |4          |59800    |42000   |4.500000 |39.0              |26.0    |10.4              |true     |2024-01-17 00:00:00|asia   |postgres|
+|4         |JP-ITEM-004|Cotton T-shirt|Premium cotton t-shirt for men                |6          |3500     |1200    |0.180000 |NULL              |NULL    |NULL              |true     |NULL               |asia   |postgres|
+|5         |JP-ITEM-005|Summer Dress  |Elegant summer dress for women                |7          |8900     |3500    |0.300000 |NULL              |NULL    |NULL              |true     |2024-01-19 00:00:00|asia   |postgres|
++----------+-----------+--------------+----------------------------------------------+-----------+---------+--------+---------+------------------+--------+------------------+---------+-------------------+-------+--------+
+only showing top 5 rows
+[2025-06-08T16:28:05.833+0000] {logging_mixin.py:188} INFO - Writing transformed data to: /opt/airflow/data/staging/products/region=asia/load_date=2025-06-06/
+[2025-06-08T16:28:08.577+0000] {logging_mixin.py:188} INFO - Successfully transformed 17 records for asia

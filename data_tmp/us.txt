@@ -1,0 +1,286 @@
+#!/bin/bash
+
+psql -U "$POSTGRES_USER" -d retail_etl <<'EOF'
+BEGIN;
+
+-- Insert Categories with varied naming conventions
+INSERT INTO us.categories (category_name, parent_category_id, category_path, is_active) VALUES
+('Electronics', NULL, '/Electronics', TRUE),
+('SMARTPHONES', 1, '/Electronics/Smartphones', T),
+('laptops', 1, '/Electronics/Laptops', TRUE),
+('Gaming Consoles', 1, '/Electronics/Gaming', TRUE),
+('CLOTHING', NULL, '/Clothing', TRUE),
+('mens apparel', 5, '/Clothing/Mens', TRUE),
+('WOMENS APPAREL', 5, '/Clothing/Womens', TRUE),
+('Home & Garden', NULL, '/Home-Garden', TRUE),
+('furniture', 8, '/Home-Garden/Furniture', TRUE),
+('BOOKS', NULL, '/Books', TRUE),
+('health & beauty', NULL, '/Health-Beauty', TRUE),
+('Sports & Outdoors', NULL, '/Sports', TRUE),
+('automotive', NULL, '/Automotive', F),
+('TOYS & GAMES', NULL, '/Toys', TRUE),
+('jewelry & watches', NULL, '/Jewelry', TRUE);
+
+-- Insert Products with varied data
+INSERT INTO us.products (product_code, product_name, product_description, category_id, base_price_usd, cost_price_usd, weight_lbs, dimensions_inches, is_active) VALUES
+('PRD-12001', 'iPhone 15 Pro', 'Latest Apple smartphone with advanced camera system', 2, 999.99, 650.00, 0.487, '6.1 x 3.0 x 0.33', TRUE),
+('PRD-12002', 'MACBOOK AIR M2', 'Apple MacBook Air with M2 chip and 13-inch display', 3, 1199.99, 800.00, 2.7, '11.97 x 8.36 x 0.44', TRUE),
+('PRD-12003', 'playstation 5', 'Sony PlayStation 5 gaming console with 4K gaming', 4, 499.99, 350.00, 9.9, '15.4 x 10.2 x 4.1', TRUE),
+('PRD-12004', 'Cotton T-Shirt', 'Premium 100% cotton crew neck t-shirt', 6, 24.99, 8.00, 0.44, '28 x 20 x 1', TRUE),
+('PRD-12005', 'SUMMER DRESS', 'Floral print midi dress perfect for summer', 7, 79.99, 25.00, 0.66, '36 x 24 x 2', TRUE),
+('PRD-12006', 'leather recliner', 'Genuine leather power reclining chair', 9, 1299.99, 650.00, 187.4, '32 x 36 x 40', TRUE),
+('PRD-12007', 'DATA SCIENCE HANDBOOK', 'Complete guide to data science and analytics', 10, 49.99, 15.00, 1.1, '9.25 x 7.5 x 1.2', TRUE),
+('PRD-12008', 'anti aging serum', 'Advanced peptide anti-aging facial serum', 11, 89.99, 20.00, 0.11, '4 x 1.5 x 1.5', TRUE),
+('PRD-12009', 'MOUNTAIN BIKE', 'Professional 21-speed mountain bike', 12, 799.99, 400.00, 34.2, '68 x 44 x 25', TRUE),
+('PRD-12010', 'lego architecture set', 'Famous landmarks LEGO architecture series', 14, 199.99, 80.00, 4.6, '15 x 10 x 3', TRUE),
+('PRD-12011', 'SMART WATCH', 'Fitness tracking smartwatch with GPS', 15, 249.99, 100.00, 0.099, '1.77 x 1.57 x 0.43', TRUE),
+('PRD-12012', 'stainless steel refrigerator', 'Energy Star certified 25 cu ft refrigerator', 8, 1599.99, 800.00, 297.6, '35.75 x 69.88 x 36', TRUE),
+('PRD-12013', 'SAMSUNG GALAXY S24', 'Latest Samsung flagship with AI features', 2, 899.99, 550.00, 0.432, '5.94 x 2.78 x 0.30', TRUE),
+('PRD-12014', 'wireless headphones', 'Noise-cancelling over-ear wireless headphones', 1, 299.99, 120.00, 0.55, '7.3 x 6.7 x 3.3', TRUE),
+('PRD-12015', 'TABLET PRO', 'High-performance tablet with stylus support', 1, 899.99, 500.00, 1.5, '11.04 x 8.46 x 0.25', TRUE);
+
+-- Insert Product Variants
+INSERT INTO us.product_variants (product_id, sku, variant_name, variant_type, variant_value, price_adjustment_usd, is_active) VALUES
+(1, 'PRD-12001-BLACK-128GB', 'iPhone 15 Pro Black 128GB', 'color_storage', 'Black 128GB', 0.00, TRUE),
+(1, 'PRD-12001-BLUE-256GB', 'iPhone 15 Pro Blue 256GB', 'color_storage', 'Blue 256GB', 200.00, TRUE),
+(1, 'PRD-12001-WHITE-512GB', 'iPhone 15 Pro White 512GB', 'color_storage', 'White 512GB', 400.00, TRUE),
+(2, 'PRD-12002-SILVER-8GB', 'MacBook Air Silver 8GB RAM', 'color_memory', 'Silver 8GB', 0.00, TRUE),
+(2, 'PRD-12002-GOLD-16GB', 'MacBook Air Gold 16GB RAM', 'color_memory', 'Gold 16GB', 300.00, TRUE),
+(3, 'PRD-12003-STANDARD', 'PlayStation 5 Standard Edition', 'edition', 'Standard', 0.00, TRUE),
+(3, 'PRD-12003-DIGITAL', 'PlayStation 5 Digital Edition', 'edition', 'Digital', -100.00, TRUE),
+(4, 'PRD-12004-RED-M', 'Cotton T-Shirt Red Medium', 'color_size', 'Red M', 0.00, TRUE),
+(4, 'PRD-12004-BLUE-L', 'Cotton T-Shirt Blue Large', 'color_size', 'Blue L', 2.00, TRUE),
+(4, 'PRD-12004-BLACK-XL', 'Cotton T-Shirt Black XL', 'color_size', 'Black XL', 4.00, TRUE),
+(5, 'PRD-12005-FLORAL-S', 'Summer Dress Floral Small', 'pattern_size', 'Floral S', 0.00, TRUE),
+(5, 'PRD-12005-SOLID-M', 'Summer Dress Solid Medium', 'pattern_size', 'Solid M', 0.00, TRUE),
+(5, 'PRD-12005-STRIPE-L', 'Summer Dress Stripe Large', 'pattern_size', 'Stripe L', 10.00, TRUE),
+(6, 'PRD-12006-BROWN', 'Leather Recliner Brown', 'color', 'Brown', 0.00, TRUE),
+(6, 'PRD-12006-BLACK', 'Leather Recliner Black', 'color', 'Black', 150.00, TRUE),
+(7, 'PRD-12007-HARDCOVER', 'Data Science Handbook Hardcover', 'format', 'Hardcover', 0.00, TRUE),
+(7, 'PRD-12007-PAPERBACK', 'Data Science Handbook Paperback', 'format', 'Paperback', -15.00, TRUE),
+(8, 'PRD-12008-30ML', 'Anti Aging Serum 30ml', 'size', '30ml', 0.00, TRUE),
+(8, 'PRD-12008-60ML', 'Anti Aging Serum 60ml', 'size', '60ml', 40.00, TRUE),
+(9, 'PRD-12009-RED-M', 'Mountain Bike Red Medium', 'color_size', 'Red M', 0.00, TRUE),
+(9, 'PRD-12009-BLUE-L', 'Mountain Bike Blue Large', 'color_size', 'Blue L', 50.00, TRUE);
+
+-- Insert Inventory data
+INSERT INTO us.inventory (variant_id, warehouse_location, quantity_available, quantity_reserved, reorder_level, last_restocked_at) VALUES
+(1, 'US-WEST-01', 125, 20, 40, '2024-01-15 08:30:00'),
+(2, 'US-WEST-01', 85, 15, 25, '2024-01-18 10:15:00'),
+(3, 'US-EAST-02', 65, 12, 20, '2024-01-20 14:45:00'),
+(4, 'US-CENTRAL-03', 200, 35, 60, '2024-01-22 09:20:00'),
+(5, 'US-CENTRAL-03', 150, 25, 50, '2024-01-25 11:30:00'),
+(6, 'US-WEST-01', 95, 18, 30, '2024-01-19 16:10:00'),
+(7, 'US-SOUTH-04', 75, 10, 25, '2024-01-21 13:45:00'),
+(8, 'US-EAST-02', 250, 40, 80, '2024-01-23 07:50:00'),
+(9, 'US-WEST-01', 180, 30, 55, '2024-01-24 12:20:00'),
+(10, 'US-CENTRAL-03', 220, 45, 70, '2024-01-26 15:35:00'),
+(11, 'US-SOUTH-04', 110, 22, 35, '2024-01-27 09:40:00'),
+(12, 'US-EAST-02', 130, 25, 45, '2024-01-28 14:15:00'),
+(13, 'US-WEST-01', 160, 28, 50, '2024-01-29 11:55:00'),
+(14, 'US-CENTRAL-03', 90, 15, 30, '2024-01-30 16:25:00'),
+(15, 'US-SOUTH-04', 45, 8, 15, '2024-01-31 08:40:00'),
+(16, 'US-EAST-02', 400, 65, 120, '2024-02-01 13:10:00'),
+(17, 'US-WEST-01', 350, 55, 100, '2024-02-02 10:30:00'),
+(18, 'US-CENTRAL-03', 95, 18, 35, '2024-02-03 15:20:00'),
+(19, 'US-SOUTH-04', 140, 28, 50, '2024-02-04 12:45:00'),
+(20, 'US-EAST-02', 55, 12, 20, '2024-02-05 09:15:00');
+
+-- Insert Customers with varied email and phone formats (valid and invalid)
+INSERT INTO us.customers (email, first_name, last_name, phone, date_of_birth, gender, customer_segment, acquisition_channel, is_active) VALUES
+-- Valid emails and phones
+('john.smith@email.com', 'JOHN', 'SMITH', '+1-555-123-4567', '1985-03-15', 'Male', 'vip', 'google_ads', TRUE),
+('maria.gonzalez@gmail.com', 'maria', 'gonzalez', '+1-555-987-6543', '1990-07-22', 'Female', 'regular', 'facebook', TRUE),
+('DAVID.JOHNSON@YAHOO.COM', 'David', 'JOHNSON', '+1-555-456-7890', '1982-11-08', 'Male', 'new', 'referral', TRUE),
+('sarah.williams@hotmail.com', 'Sarah', 'williams', '+1-555-234-5678', '1988-05-12', 'Female', 'regular', 'organic', TRUE),
+('MICHAEL.BROWN@OUTLOOK.COM', 'michael', 'BROWN', '+1-555-345-6789', '1975-09-30', 'Male', 'vip', 'email_campaign', TRUE),
+
+-- Invalid emails but valid phones
+('invalid.email.com', 'Jennifer', 'Davis', '+1-555-567-8901', '1992-01-18', 'Female', 'regular', 'social_media', TRUE),
+('@missing-local.com', 'ROBERT', 'miller', '+1-555-678-9012', '1980-12-05', 'Male', 'new', 'google_ads', TRUE),
+('no-at-symbol.gmail.com', 'lisa', 'WILSON', '+1-555-789-0123', '1987-04-25', 'Female', 'regular', 'referral', TRUE),
+('double@@email.com', 'Christopher', 'moore', '+1-555-890-1234', '1983-08-14', 'Male', 'vip', 'facebook', TRUE),
+('spaces in@email.com', 'AMANDA', 'TAYLOR', '+1-555-901-2345', '1991-06-03', 'Female', 'regular', 'organic', TRUE),
+
+-- Valid emails but invalid phones
+('james.anderson@email.us', 'james', 'anderson', '555-123', '1986-10-20', 'Male', 'new', 'email_campaign', TRUE),
+('JESSICA.THOMAS@GMAIL.COM', 'Jessica', 'THOMAS', 'not-a-phone', '1989-02-14', 'Female', 'regular', 'social_media', TRUE),
+('daniel.jackson@yahoo.com', 'Daniel', 'jackson', '+1-abc-def-ghij', '1984-07-09', 'Male', 'vip', 'google_ads', TRUE),
+('ASHLEY.WHITE@HOTMAIL.COM', 'ashley', 'WHITE', '++1-555-123-4567', '1993-03-28', 'Female', 'regular', 'referral', TRUE),
+('matthew.harris@gmail.com', 'Matthew', 'harris', '1-555-', '1981-11-16', 'Male', 'new', 'facebook', TRUE),
+
+-- Both invalid
+('invalid@', 'STEPHANIE', 'martin', 'invalid-phone', '1990-09-12', 'Female', 'regular', 'organic', TRUE),
+('.com@domain', 'joshua', 'GARCIA', '555-', '1985-05-07', 'Male', 'new', 'email_campaign', TRUE),
+('user@.com', 'Nicole', 'rodriguez', '+1-555-abc', '1988-12-22', 'Female', 'regular', 'social_media', TRUE),
+('multiple@at@signs.com', 'ANDREW', 'lewis', '555-123-', '1982-08-01', 'Male', 'vip', 'google_ads', TRUE),
+('user@domain.', 'michelle', 'LEE', 'phone123', '1987-04-18', 'Female', 'regular', 'referral', TRUE),
+
+-- Additional valid customers
+('william.walker@web.com', 'William', 'Walker', '+1-555-111-2222', '1979-06-25', 'Male', 'vip', 'organic', TRUE),
+('KIMBERLY.HALL@ORANGE.NET', 'kimberly', 'HALL', '+1-555-333-4444', '1994-01-10', 'Female', 'regular', 'facebook', TRUE),
+('ryan.allen@company.com', 'Ryan', 'allen', '+1-555-555-6666', '1986-10-05', 'Male', 'new', 'email_campaign', TRUE),
+('SAMANTHA.YOUNG@MAIL.COM', 'samantha', 'YOUNG', '+1-555-777-8888', '1991-07-30', 'Female', 'regular', 'social_media', TRUE),
+('brandon.king@email.net', 'Brandon', 'king', '+1-555-999-0000', '1983-02-17', 'Male', 'vip', 'google_ads', TRUE);
+
+-- Insert Customer Addresses
+INSERT INTO us.customer_addresses (customer_id, address_type, street_address, city, state, zip_code, country, is_default) VALUES
+(1, 'billing', '123 Main Street', 'New York', 'New York', '10001', 'USA', TRUE),
+(1, 'shipping', '456 Broadway Ave', 'New York', 'New York', '10002', 'USA', FALSE),
+(2, 'billing', '789 Sunset Blvd', 'Los Angeles', 'California', '90210', 'USA', TRUE),
+(3, 'billing', '321 Oak Street', 'Chicago', 'Illinois', '60601', 'USA', TRUE),
+(3, 'shipping', '654 Pine Avenue', 'Chicago', 'Illinois', '60602', 'USA', FALSE),
+(4, 'billing', '987 Elm Drive', 'Houston', 'Texas', '77001', 'USA', TRUE),
+(5, 'billing', '147 Maple Lane', 'Phoenix', 'Arizona', '85001', 'USA', TRUE),
+(6, 'billing', '258 Cedar Court', 'Philadelphia', 'Pennsylvania', '19101', 'USA', TRUE),
+(7, 'billing', '369 Birch Road', 'San Antonio', 'Texas', '78201', 'USA', TRUE),
+(8, 'billing', '741 Walnut Street', 'San Diego', 'California', '92101', 'USA', TRUE),
+(9, 'billing', '852 Cherry Avenue', 'Dallas', 'Texas', '75201', 'USA', TRUE),
+(10, 'billing', '963 Peach Drive', 'San Jose', 'California', '95101', 'USA', TRUE),
+(11, 'billing', '159 Apple Lane', 'Austin', 'Texas', '73301', 'USA', TRUE),
+(12, 'billing', '357 Orange Street', 'Jacksonville', 'Florida', '32099', 'USA', TRUE),
+(13, 'billing', '468 Grape Court', 'Fort Worth', 'Texas', '76101', 'USA', TRUE),
+(14, 'billing', '579 Berry Road', 'Columbus', 'Ohio', '43085', 'USA', TRUE),
+(15, 'billing', '680 Plum Avenue', 'Charlotte', 'North Carolina', '28202', 'USA', TRUE),
+(16, 'billing', '791 Lemon Drive', 'San Francisco', 'California', '94102', 'USA', TRUE),
+(17, 'billing', '802 Lime Street', 'Indianapolis', 'Indiana', '46201', 'USA', TRUE),
+(18, 'billing', '913 Coconut Lane', 'Seattle', 'Washington', '98101', 'USA', TRUE),
+(19, 'billing', '024 Banana Court', 'Denver', 'Colorado', '80201', 'USA', TRUE),
+(20, 'billing', '135 Mango Road', 'Washington', 'District of Columbia', '20001', 'USA', TRUE),
+(21, 'billing', '246 Kiwi Avenue', 'Boston', 'Massachusetts', '02101', 'USA', TRUE),
+(22, 'billing', '357 Papaya Drive', 'El Paso', 'Texas', '79901', 'USA', TRUE),
+(23, 'billing', '468 Guava Street', 'Detroit', 'Michigan', '48201', 'USA', TRUE),
+(24, 'billing', '579 Passion Lane', 'Nashville', 'Tennessee', '37201', 'USA', TRUE),
+(25, 'billing', '680 Dragon Court', 'Portland', 'Oregon', '97201', 'USA', TRUE);
+
+-- Insert Marketing Campaigns
+INSERT INTO us.marketing_campaigns (campaign_name, campaign_type, channel, start_date, end_date, budget_usd, target_audience, campaign_status) VALUES
+('BLACK FRIDAY BLOWOUT', 'promotional', 'multi_channel', '2024-11-25', '2024-11-29', 75000.00, 'All customer segments nationwide', 'completed'),
+('summer electronics sale', 'seasonal', 'google_ads', '2024-06-01', '2024-08-31', 35000.00, 'Tech enthusiasts aged 18-45', 'completed'),
+('Back to School Special', 'seasonal', 'facebook', '2024-08-01', '2024-09-15', 25000.00, 'Students and parents', 'completed'),
+('HOLIDAY GIFT GUIDE', 'seasonal', 'email', '2024-12-01', '2024-12-24', 15000.00, 'Holiday shoppers', 'completed'),
+('new year fitness', 'lifestyle', 'instagram', '2024-01-01', '2024-01-31', 20000.00, 'Health and fitness enthusiasts', 'completed'),
+('Valentine Romance Collection', 'seasonal', 'social', '2024-02-01', '2024-02-14', 12000.00, 'Couples and gift buyers', 'completed'),
+('SPRING FASHION LAUNCH', 'product_launch', 'display', '2024-03-01', '2024-05-31', 40000.00, 'Fashion-conscious women 25-40', 'active'),
+('mothers day special', 'seasonal', 'email', '2024-05-01', '2024-05-12', 8000.00, 'Children buying for mothers', 'completed'),
+('Gaming Console Drop', 'product_launch', 'ppc', '2024-03-15', '2024-04-15', 50000.00, 'Gamers aged 16-35', 'completed'),
+('SUMMER OUTDOOR GEAR', 'seasonal', 'google_ads', '2024-04-01', '2024-07-31', 30000.00, 'Outdoor enthusiasts', 'active');
+
+-- Insert Discounts
+INSERT INTO us.discounts (discount_code, discount_name, discount_type, discount_value, minimum_order_amount_usd, maximum_discount_amount_usd, usage_limit, usage_count, start_date, end_date, is_active) VALUES
+('WELCOME15', 'New Customer Welcome', 'percentage', 15.00, 50.00, 150.00, 1000, 287, '2024-01-01 00:00:00', '2024-12-31 23:59:59', TRUE),
+('SAVE25NOW', 'Save 25% Today', 'percentage', 25.00, 100.00, 250.00, 500, 198, '2024-03-01 00:00:00', '2024-03-31 23:59:59', FALSE),
+('FREESHIP75', 'Free Shipping Over $75', 'free_shipping', 0.00, 75.00, 25.00, 0, 1234, '2024-01-01 00:00:00', '2024-12-31 23:59:59', TRUE),
+('FLAT50OFF', 'Flat $50 Off', 'fixed_amount', 50.00, 200.00, 50.00, 300, 156, '2024-02-01 00:00:00', '2024-02-29 23:59:59', FALSE),
+('BLACKFRIDAY40', 'Black Friday 40% Off', 'percentage', 40.00, 150.00, 400.00, 2000, 1876, '2024-11-25 00:00:00', '2024-11-29 23:59:59', FALSE),
+('STUDENT20', 'Student Discount', 'percentage', 20.00, 25.00, 200.00, 0, 456, '2024-01-01 00:00:00', '2024-12-31 23:59:59', TRUE),
+('VIP30OFF', 'VIP Member 30% Off', 'percentage', 30.00, 100.00, 300.00, 1000, 567, '2024-01-01 00:00:00', '2024-12-31 23:59:59', TRUE),
+('SUMMER20', 'Summer Special 20%', 'percentage', 20.00, 80.00, 160.00, 750, 423, '2024-06-01 00:00:00', '2024-08-31 23:59:59', TRUE),
+('FIRST100SAVE', 'First 100 Customers Save', 'fixed_amount', 30.00, 100.00, 30.00, 100, 100, '2024-01-01 00:00:00', '2024-01-31 23:59:59', FALSE),
+('WEEKEND12', 'Weekend Special 12%', 'percentage', 12.00, 60.00, 100.00, 0, 789, '2024-01-01 00:00:00', '2024-12-31 23:59:59', TRUE);
+
+-- Insert Orders and Order Items
+INSERT INTO us.orders (order_number, customer_id, order_status, subtotal_usd, tax_amount_usd, shipping_amount_usd, discount_amount_usd, total_amount_usd, billing_address_id, shipping_address_id, campaign_id, discount_id) VALUES
+('US-ORD-100001', 1, 'delivered', 999.99, 87.49, 12.99, 149.99, 950.48, 1, 2, 1, 1),
+('US-ORD-100002', 2, 'shipped', 79.99, 7.99, 8.99, 0.00, 96.97, 3, 3, 2, NULL),
+('US-ORD-100003', 3, 'processing', 1299.99, 123.49, 0.00, 324.99, 1098.49, 4, 5, 3, 3),
+('US-ORD-100004', 4, 'delivered', 299.99, 26.24, 9.99, 59.99, 276.23, 6, 6, 4, 4),
+('US-ORD-100005', 5, 'cancelled', 249.99, 21.87, 7.99, 0.00, 279.85, 7, 7, 5, NULL),
+('US-ORD-100006', 6, 'delivered', 89.99, 7.87, 5.99, 17.99, 85.86, 8, 8, 6, 6),
+('US-ORD-100007', 7, 'shipped', 799.99, 69.99, 19.99, 159.99, 729.98, 9, 9, 7, 7),
+('US-ORD-100008', 8, 'processing', 199.99, 17.49, 12.99, 39.99, 190.48, 10, 10, 8, 8),
+('US-ORD-100009', 9, 'delivered', 1599.99, 139.99, 0.00, 0.00, 1739.98, 11, 11, 9, NULL),
+('US-ORD-100010', 10, 'returned', 49.99, 4.37, 4.99, 9.99, 49.36, 12, 12, 10, 9);
+
+-- Insert Order Items
+INSERT INTO us.order_items (order_id, variant_id, quantity, unit_price_usd, total_price_usd) VALUES
+(1, 1, 1, 999.99, 999.99),
+(2, 11, 1, 79.99, 79.99),
+(3, 4, 1, 1199.99, 1199.99),
+(3, 5, 1, 100.00, 100.00),
+(4, 14, 1, 299.99, 299.99),
+(5, 11, 1, 249.99, 249.99),
+(6, 18, 1, 89.99, 89.99),
+(7, 20, 1, 799.99, 799.99),
+(8, 10, 1, 199.99, 199.99),
+(9, 12, 1, 1599.99, 1599.99),
+(10, 16, 1, 49.99, 49.99);
+
+-- Insert Shopping Carts and Cart Items
+INSERT INTO us.shopping_carts (customer_id, session_id, abandoned_at, is_abandoned) VALUES
+(1, 'sess_us_abc123def456', NULL, FALSE),
+(2, 'sess_us_ghi789jkl012', '2024-02-01 14:30:00', TRUE),
+(3, 'sess_us_mno345pqr678', NULL, FALSE),
+(4, 'sess_us_stu901vwx234', '2024-02-02 09:45:00', TRUE),
+(5, 'sess_us_yza567bcd890', NULL, FALSE);
+
+INSERT INTO us.cart_items (cart_id, variant_id, quantity, unit_price_usd) VALUES
+(1, 2, 1, 1199.99),
+(1, 8, 2, 24.99),
+(2, 15, 1, 1449.99),
+(3, 19, 1, 129.99),
+(4, 6, 1, 399.99),
+(5, 13, 1, 899.99);
+
+-- Insert Payments
+INSERT INTO us.payments (order_id, payment_method, payment_status, payment_amount_usd, transaction_id, gateway_response) VALUES
+(1, 'credit_card', 'completed', 950.48, 'txn_cc_us_001', 'Payment successful - Visa ending in 1234'),
+(2, 'paypal', 'completed', 96.97, 'txn_pp_us_002', 'PayPal payment completed'),
+(3, 'apple_pay', 'pending', 1098.49, 'txn_ap_us_003', 'Apple Pay processing'),
+(4, 'credit_card', 'completed', 276.23, 'txn_cc_us_004', 'Payment successful - Mastercard ending in 5678'),
+(5, 'credit_card', 'failed', 279.85, 'txn_cc_us_005', 'Declined - Insufficient funds'),
+(6, 'bank_transfer', 'completed', 85.86, 'txn_bt_us_006', 'ACH transfer completed'),
+(7, 'paypal', 'completed', 729.98, 'txn_pp_us_007', 'PayPal payment completed'),
+(8, 'credit_card', 'completed', 190.48, 'txn_cc_us_008', 'Payment successful - Amex ending in 9012'),
+(9, 'apple_pay', 'completed', 1739.98, 'txn_ap_us_009', 'Apple Pay completed'),
+(10, 'credit_card', 'refunded', 49.36, 'txn_cc_us_010', 'Payment refunded to Visa ending in 3456');
+
+-- Insert Shipments
+INSERT INTO us.shipments (order_id, tracking_number, carrier, shipping_method, shipped_date, estimated_delivery_date, actual_delivery_date, shipment_status) VALUES
+(1, '1Z999AA1234567890', 'UPS', 'Ground', '2024-01-16 13:30:00', '2024-01-18', '2024-01-18 15:45:00', 'delivered'),
+(2, '7749123456789012', 'FedEx', '2-Day Air', '2024-01-17 09:15:00', '2024-01-19', NULL, 'in_transit'),
+(3, '9400123456789012345678', 'USPS', 'Priority Mail', NULL, NULL, NULL, 'preparing'),
+(4, '1Z999AA9876543210', 'UPS', 'Next Day Air', '2024-01-18 08:45:00', '2024-01-19', '2024-01-19 13:20:00', 'delivered'),
+(6, '7749987654321098', 'FedEx', 'Same Day', '2024-01-19 10:30:00', '2024-01-19', '2024-01-19 17:15:00', 'delivered'),
+(7, '1Z999AA5555666677', 'UPS', 'Ground', '2024-01-20 12:20:00', '2024-01-22', NULL, 'in_transit'),
+(8, '7749111122223333', 'FedEx', 'Express', '2024-01-21 14:45:00', '2024-01-23', NULL, 'in_transit'),
+(9, '1Z999AA4444555566', 'UPS', 'Ground', '2024-01-22 07:30:00', '2024-01-24', '2024-01-24 11:10:00', 'delivered');
+
+-- Insert Returns
+INSERT INTO us.returns (order_id, return_reason, return_status, refund_amount_usd, refund_date) VALUES
+(5, 'Changed mind', 'approved', 279.85, '2024-01-25 13:30:00'),
+(10, 'Product defective', 'processing', 49.36, NULL);
+
+-- Insert Product Reviews
+INSERT INTO us.product_reviews (product_id, customer_id, order_id, rating, review_title, review_text, is_verified_purchase, helpful_votes) VALUES
+(1, 1, 1, 5, 'AMAZING PHONE!', 'Best iPhone yet! Camera quality is incredible and battery lasts all day.', TRUE, 23),
+(5, 2, 2, 4, 'lovely summer dress', 'Beautiful dress, fits perfectly. Color is exactly as shown online.', TRUE, 12),
+(6, 3, 3, 5, 'Perfect Recliner', 'So comfortable! Great quality leather and the power recline works perfectly.', TRUE, 18),
+(14, 4, 4, 3, 'DECENT HEADPHONES', 'Sound quality is good but not great for the price. Comfortable to wear.', TRUE, 7),
+(7, 10, 10, 2, 'disappointing book', 'Content was outdated and not as comprehensive as expected.', TRUE, 3),
+(1, 5, NULL, 4, 'Good but pricey', 'Great phone features but overpriced compared to Android alternatives.', FALSE, 5),
+(9, 7, 7, 5, 'EXCELLENT BIKE!', 'Perfect for trail riding! Smooth shifting and great build quality.', TRUE, 15),
+(10, 8, 8, 4, 'fun building set', 'Kids absolutely love it! Instructions were clear and easy to follow.', TRUE, 9);
+
+-- Insert Wishlists
+INSERT INTO us.wishlists (customer_id, product_id) VALUES
+(1, 2), (1, 9), (1, 11),
+(2, 1), (2, 6), (2, 8),
+(3, 4), (3, 7), (3, 12),
+(4, 3), (4, 5), (4, 10),
+(5, 2), (5, 6), (5, 13),
+(6, 1), (6, 9), (6, 14),
+(7, 8), (7, 11), (7, 15),
+(8, 3), (8, 7), (8, 12),
+(9, 4), (9, 10), (9, 13),
+(10, 5), (10, 6), (10, 14);
+
+COMMIT;
+EOF
+
+# Capture status
+if [ $? -eq 0 ]; then
+  echo "Transaction committed successfully."
+else
+  echo "Transaction failed. Rolled back."
+fi

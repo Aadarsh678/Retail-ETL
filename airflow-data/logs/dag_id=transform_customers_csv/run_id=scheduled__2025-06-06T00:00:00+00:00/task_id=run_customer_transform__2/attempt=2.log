@@ -1,0 +1,10 @@
+[2025-06-08T13:53:49.336+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: transform_customers_csv.run_customer_transform__2 scheduled__2025-06-06T00:00:00+00:00 [queued]>
+[2025-06-08T13:53:49.358+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: transform_customers_csv.run_customer_transform__2 scheduled__2025-06-06T00:00:00+00:00 [queued]>
+[2025-06-08T13:53:49.359+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 2
+[2025-06-08T13:53:49.396+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_customer_transform__2> on 2025-06-06 00:00:00+00:00
+[2025-06-08T13:53:49.413+0000] {standard_task_runner.py:60} INFO - Started process 59553 to run task
+[2025-06-08T13:53:49.433+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'transform_customers_csv', 'run_customer_transform__2', 'scheduled__2025-06-06T00:00:00+00:00', '--job-id', '352', '--raw', '--subdir', 'DAGS_FOLDER/staging/customer_to_staging.py', '--cfg-path', '/tmp/tmp2le82adj']
+[2025-06-08T13:53:49.441+0000] {standard_task_runner.py:88} INFO - Job 352: Subtask run_customer_transform__2
+[2025-06-08T13:53:49.571+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-08T13:53:49.770+0000] {task_command.py:423} INFO - Running <TaskInstance: transform_customers_csv.run_customer_transform__2 scheduled__2025-06-06T00:00:00+00:00 [running]> on host d0ede4cad666
+[2025-06-08T13:53:50.301+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='transform_customers_csv' AIRFLOW_CTX_TASK_ID='run_customer_transform__2' AIRFLOW_CTX_EXECUTION_DATE='2025-06-06T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-06T00:00:00+00:00'

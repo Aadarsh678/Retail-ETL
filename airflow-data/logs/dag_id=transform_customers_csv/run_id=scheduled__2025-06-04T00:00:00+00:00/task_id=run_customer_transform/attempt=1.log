@@ -1,0 +1,97 @@
+[2025-06-08T13:53:50.386+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: transform_customers_csv.run_customer_transform scheduled__2025-06-04T00:00:00+00:00 [queued]>
+[2025-06-08T13:53:50.476+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: transform_customers_csv.run_customer_transform scheduled__2025-06-04T00:00:00+00:00 [queued]>
+[2025-06-08T13:53:50.484+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-08T13:53:50.597+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_customer_transform> on 2025-06-04 00:00:00+00:00
+[2025-06-08T13:53:50.612+0000] {standard_task_runner.py:60} INFO - Started process 59613 to run task
+[2025-06-08T13:53:50.621+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'transform_customers_csv', 'run_customer_transform', 'scheduled__2025-06-04T00:00:00+00:00', '--job-id', '357', '--raw', '--subdir', 'DAGS_FOLDER/staging/customer_to_staging.py', '--cfg-path', '/tmp/tmpwt2ck2op']
+[2025-06-08T13:53:50.637+0000] {standard_task_runner.py:88} INFO - Job 357: Subtask run_customer_transform
+[2025-06-08T13:53:50.792+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-08T13:53:51.158+0000] {task_command.py:423} INFO - Running <TaskInstance: transform_customers_csv.run_customer_transform scheduled__2025-06-04T00:00:00+00:00 [running]> on host d0ede4cad666
+[2025-06-08T13:53:51.752+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='transform_customers_csv' AIRFLOW_CTX_TASK_ID='run_customer_transform' AIRFLOW_CTX_EXECUTION_DATE='2025-06-04T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-04T00:00:00+00:00'
+[2025-06-08T13:54:25.206+0000] {clientserver.py:538} INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 516, in send_command
+    raise Py4JNetworkError("Answer from Java side is empty")
+py4j.protocol.Py4JNetworkError: Answer from Java side is empty
+[2025-06-08T13:54:25.580+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T13:54:25.594+0000] {java_gateway.py:1055} ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 516, in send_command
+    raise Py4JNetworkError("Answer from Java side is empty")
+py4j.protocol.Py4JNetworkError: Answer from Java side is empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+[2025-06-08T13:54:25.624+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T13:54:25.790+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/staging/customer_to_staging.py", line 25, in run_customer_transform
+    spark = SparkSession.builder.appName(f"TransformCustomers-{region}").getOrCreate()
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/sql/session.py", line 497, in getOrCreate
+    sc = SparkContext.getOrCreate(sparkConf)
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/context.py", line 515, in getOrCreate
+    SparkContext(conf=conf or SparkConf())
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/context.py", line 203, in __init__
+    self._do_init(
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/context.py", line 296, in _do_init
+    self._jsc = jsc or self._initialize_context(self._conf._jconf)
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/context.py", line 421, in _initialize_context
+    return self._jvm.JavaSparkContext(jconf)
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1587, in __call__
+    return_value = get_return_value(
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling None.org.apache.spark.api.java.JavaSparkContext
+[2025-06-08T13:54:27.419+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=transform_customers_csv, task_id=run_customer_transform, execution_date=20250604T000000, start_date=20250608T135350, end_date=20250608T135427
+[2025-06-08T13:54:28.000+0000] {clientserver.py:538} INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 516, in send_command
+    raise Py4JNetworkError("Answer from Java side is empty")
+py4j.protocol.Py4JNetworkError: Answer from Java side is empty
+[2025-06-08T13:54:28.014+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T13:54:28.038+0000] {java_gateway.py:1055} ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 516, in send_command
+    raise Py4JNetworkError("Answer from Java side is empty")
+py4j.protocol.Py4JNetworkError: Answer from Java side is empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+[2025-06-08T13:54:28.040+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T13:54:28.068+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T13:54:28.082+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T13:54:28.108+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T13:54:28.155+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T13:54:28.166+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T13:54:28.180+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T13:54:28.209+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T13:54:28.211+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T13:54:28.212+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T13:54:28.212+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T13:54:28.236+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T13:54:28.245+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T13:54:28.257+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T13:54:28.254+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 357 for task run_customer_transform (An error occurred while calling None.org.apache.spark.api.java.JavaSparkContext; 59613)
+[2025-06-08T13:54:28.271+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T13:54:28.432+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-06-08T13:54:28.959+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

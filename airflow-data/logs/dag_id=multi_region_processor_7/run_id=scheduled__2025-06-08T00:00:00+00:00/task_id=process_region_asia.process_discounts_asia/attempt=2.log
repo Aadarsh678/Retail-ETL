@@ -1,0 +1,67 @@
+[2025-06-09T04:26:38.938+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_asia.process_discounts_asia scheduled__2025-06-08T00:00:00+00:00 [queued]>
+[2025-06-09T04:26:38.959+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_asia.process_discounts_asia scheduled__2025-06-08T00:00:00+00:00 [queued]>
+[2025-06-09T04:26:38.960+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 2
+[2025-06-09T04:26:39.027+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_asia.process_discounts_asia> on 2025-06-08 00:00:00+00:00
+[2025-06-09T04:26:39.035+0000] {standard_task_runner.py:60} INFO - Started process 1131 to run task
+[2025-06-09T04:26:39.035+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-09T04:26:39.112+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_processor_7', 'process_region_asia.process_discounts_asia', 'scheduled__2025-06-08T00:00:00+00:00', '--job-id', '147', '--raw', '--subdir', 'DAGS_FOLDER/master2.py', '--cfg-path', '/tmp/tmprk_44kge']
+[2025-06-09T04:26:39.114+0000] {standard_task_runner.py:88} INFO - Job 147: Subtask process_region_asia.process_discounts_asia
+[2025-06-09T04:26:39.473+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-09T04:26:39.595+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_processor_7.process_region_asia.process_discounts_asia scheduled__2025-06-08T00:00:00+00:00 [running]> on host 847c6af56c4f
+[2025-06-09T04:26:39.824+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_processor_7' AIRFLOW_CTX_TASK_ID='process_region_asia.process_discounts_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-08T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-08T00:00:00+00:00'
+[2025-06-09T04:26:39.861+0000] {logging_mixin.py:188} INFO - Processing discounts for region asia
+[2025-06-09T04:27:07.453+0000] {logging_mixin.py:188} INFO - +-----------+-------------+--------------------+-------------+--------------+--------------------+--------------------+-----------+-----------+-------------------+-------------------+---------+-------------------+-------+--------+
+|discount_id|discount_code|       discount_name|discount_type|discount_value|minimum_order_amount|maximum_order_amount|usage_limit|usage_count|         start_date|           end_date|is_active|         created_at|_region| _source|
++-----------+-------------+--------------------+-------------+--------------+--------------------+--------------------+-----------+-----------+-------------------+-------------------+---------+-------------------+-------+--------+
+|          1|    WELCOME10|New Customer Welcome|   percentage|          10.0|                5000|               10000|       1000|        234|2024-01-01 00:00:00|2024-12-31 00:00:00|     true|2024-02-25 11:50:35|   asia|postgres|
+|          2|     SPRING25| Spring Sale 25% Off|   percentage|          25.0|               10000|               20000|        500|        156|2024-03-01 00:00:00|2024-03-31 00:00:00|    false|2024-02-26 00:00:00|   asia|postgres|
+|          3|     FREESHIP|       Free Shipping|     shipping|           0.0|                8000|                1500|       2000|        567|2024-03-01 00:00:00|2024-12-31 00:00:00|     true|2024-02-27 00:00:00|   asia|postgres|
+|          4|     SAVE5000|       Save 5000 Yen|        fixed|        5000.0|               20000|                5000|        300|         89|               NULL|               NULL|    false|               NULL|   asia|postgres|
+|          5|   BLACKFRI30|Black Friday 30% Off|   percentage|          30.0|               15000|               30000|       1000|        678|2024-11-25 00:00:00|2024-11-29 00:00:00|    false|2024-02-29 00:00:00|   asia|postgres|
+|          6|    STUDENT15|    Student Discount|   percentage|          15.0|                3000|               15000|          0|        123|2024-01-01 00:00:00|2024-12-31 00:00:00|     true|2024-03-01 12:35:30|   asia|postgres|
+|          7|      LOYAL25|Loyalty Member 25...|   percentage|          25.0|               10000|               25000|        500|        234|2024-01-01 00:00:00|2024-12-31 00:00:00|     true|2024-03-02 00:00:00|   asia|postgres|
+|          8|     SUMMER20|      Summer Special|   percentage|          20.0|                8000|               12000|        750|        345|2024-06-01 00:00:00|2024-08-31 00:00:00|     true|2024-03-03 00:00:00|   asia|postgres|
+|          9|     FIRST100| First 100 Customers|        fixed|        2500.0|               10000|                2500|        100|        100|               NULL|               NULL|    false|               NULL|   asia|postgres|
+|         10|    WEEKEND10|     Weekend Special|   percentage|          10.0|                6000|                8000|          0|        456|2024-01-01 00:00:00|2024-12-31 00:00:00|     true|2024-05-03 00:00:00|   asia|postgres|
++-----------+-------------+--------------------+-------------+--------------+--------------------+--------------------+-----------+-----------+-------------------+-------------------+---------+-------------------+-------+--------+
+only showing top 10 rows
+[2025-06-09T04:27:10.779+0000] {logging_mixin.py:188} INFO - Successfully processed 20 records for discounts in asia
+[2025-06-09T07:07:24.452+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_asia.process_discounts_asia scheduled__2025-06-08T00:00:00+00:00 [queued]>
+[2025-06-09T07:07:24.467+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_asia.process_discounts_asia scheduled__2025-06-08T00:00:00+00:00 [queued]>
+[2025-06-09T07:07:24.468+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 2
+[2025-06-09T07:07:24.495+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_asia.process_discounts_asia> on 2025-06-08 00:00:00+00:00
+[2025-06-09T07:07:24.503+0000] {standard_task_runner.py:60} INFO - Started process 46718 to run task
+[2025-06-09T07:07:24.510+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_processor_7', 'process_region_asia.process_discounts_asia', 'scheduled__2025-06-08T00:00:00+00:00', '--job-id', '458', '--raw', '--subdir', 'DAGS_FOLDER/master2.py', '--cfg-path', '/tmp/tmpwuqogq9q']
+[2025-06-09T07:07:24.513+0000] {standard_task_runner.py:88} INFO - Job 458: Subtask process_region_asia.process_discounts_asia
+[2025-06-09T07:07:24.540+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-09T07:07:24.615+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_processor_7.process_region_asia.process_discounts_asia scheduled__2025-06-08T00:00:00+00:00 [running]> on host afcdbcf38bc0
+[2025-06-09T07:07:24.821+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_processor_7' AIRFLOW_CTX_TASK_ID='process_region_asia.process_discounts_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-08T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-08T00:00:00+00:00'
+[2025-06-09T07:07:30.105+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/master2.py", line 129, in process_table
+    spark = get_spark_session(f"Process_{table}_{region}_{load_date}")
+  File "/opt/airflow/dags/master2.py", line 119, in get_spark_session
+    .getOrCreate()
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/sql/session.py", line 497, in getOrCreate
+    sc = SparkContext.getOrCreate(sparkConf)
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/context.py", line 515, in getOrCreate
+    SparkContext(conf=conf or SparkConf())
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/context.py", line 201, in __init__
+    SparkContext._ensure_initialized(self, gateway=gateway, conf=conf)
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/context.py", line 436, in _ensure_initialized
+    SparkContext._gateway = gateway or launch_gateway(conf)
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/java_gateway.py", line 107, in launch_gateway
+    raise PySparkRuntimeError(
+pyspark.errors.exceptions.base.PySparkRuntimeError: [JAVA_GATEWAY_EXITED] Java gateway process exited before sending its port number.
+[2025-06-09T07:07:30.123+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=multi_region_processor_7, task_id=process_region_asia.process_discounts_asia, execution_date=20250608T000000, start_date=20250609T070724, end_date=20250609T070730
+[2025-06-09T07:07:30.145+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 458 for task process_region_asia.process_discounts_asia ([JAVA_GATEWAY_EXITED] Java gateway process exited before sending its port number.; 46718)
+[2025-06-09T07:07:30.183+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-06-09T07:07:30.247+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

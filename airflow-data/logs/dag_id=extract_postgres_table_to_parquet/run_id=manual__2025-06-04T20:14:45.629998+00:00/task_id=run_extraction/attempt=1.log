@@ -1,0 +1,27 @@
+[2025-06-04T20:14:46.201+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction manual__2025-06-04T20:14:45.629998+00:00 [queued]>
+[2025-06-04T20:14:46.216+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction manual__2025-06-04T20:14:45.629998+00:00 [queued]>
+[2025-06-04T20:14:46.217+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-04T20:14:46.232+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_extraction> on 2025-06-04 20:14:45.629998+00:00
+[2025-06-04T20:14:46.237+0000] {standard_task_runner.py:60} INFO - Started process 6130 to run task
+[2025-06-04T20:14:46.240+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'extract_postgres_table_to_parquet', 'run_extraction', 'manual__2025-06-04T20:14:45.629998+00:00', '--job-id', '68', '--raw', '--subdir', 'DAGS_FOLDER/asia/landing.py', '--cfg-path', '/tmp/tmpreptot00']
+[2025-06-04T20:14:46.244+0000] {standard_task_runner.py:88} INFO - Job 68: Subtask run_extraction
+[2025-06-04T20:14:46.322+0000] {task_command.py:423} INFO - Running <TaskInstance: extract_postgres_table_to_parquet.run_extraction manual__2025-06-04T20:14:45.629998+00:00 [running]> on host d21a88c59131
+[2025-06-04T20:14:46.445+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='extract_postgres_table_to_parquet' AIRFLOW_CTX_TASK_ID='run_extraction' AIRFLOW_CTX_EXECUTION_DATE='2025-06-04T20:14:45.629998+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-04T20:14:45.629998+00:00'
+[2025-06-04T20:14:46.446+0000] {logging_mixin.py:188} INFO - Starting extraction for table: customers in region: asia
+[2025-06-04T20:14:46.458+0000] {logging_mixin.py:188} INFO - [INFO] Last extracted timestamp: 2025-06-04 06:57:02.199
+[2025-06-04T20:14:54.048+0000] {logging_mixin.py:188} INFO - +-------+-----------------+-------+------+----------------+----------+------+--------------------+----------+-------+--------+--------------------+-------+--------+
+|cust_id|            email|  fname| lname|           phone|birth_date|   sex|            reg_date|login_time|segment|  source|             created|_region| _source|
++-------+-----------------+-------+------+----------------+----------+------+--------------------+----------+-------+--------+--------------------+-------+--------+
+|      1|tanaka@example.jp|Hiroshi|Tanaka|+81-90-1234-5678|1985-04-12|     M|2025-06-04 06:57:...|      NULL|Regular|  Online|2025-06-04 06:57:...|   asia|postgres|
+|      2|suzuki@example.jp|   Yuki|Suzuki|   090-8765-4321|1990-11-23|Female|2025-06-04 06:57:...|      NULL|    VIP|   Store|2025-06-04 06:57:...|   asia|postgres|
+|      3|  kato@example.jp|  Akiko|  Kato|    03-1234-5678|1978-07-05|     F|2025-06-04 06:57:...|      NULL|    New|Referral|2025-06-04 06:57:...|   asia|postgres|
+|      4|yamada@example.jp|   Taro|Yamada|   080-1122-3344|1988-02-19|     M| 2025-06-05 08:15:00|      NULL|Regular|  Online|2025-07-05 06:57:...|   asia|postgres|
++-------+-----------------+-------+------+----------------+----------+------+--------------------+----------+-------+--------+--------------------+-------+--------+
+[2025-06-04T20:14:54.049+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=asia/table=customers/load_date=2025-06-05/
+[2025-06-04T20:14:55.218+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-06-04T20:14:55.222+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable 'last_extracted_parquet_timestamp_asia_customers' to 2025-07-05 06:57:02.199
+[2025-06-04T20:14:55.681+0000] {logging_mixin.py:188} INFO - Finished extraction for customers
+[2025-06-04T20:14:55.682+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-06-04T20:14:55.786+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=extract_postgres_table_to_parquet, task_id=run_extraction, execution_date=20250604T201445, start_date=20250604T201446, end_date=20250604T201455
+[2025-06-04T20:14:55.850+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-04T20:14:56.020+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

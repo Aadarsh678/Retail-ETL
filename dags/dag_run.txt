@@ -1,0 +1,243 @@
+from datetime import datetime, timedelta
+from airflow import DAG
+from airflow.decorators import task
+from pyspark.sql import SparkSession
+import sys
+import os
+import shutil
+import pendulum
+
+# Add paths for imports
+scripts_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
+if scripts_path not in sys.path:
+    sys.path.insert(0, scripts_path)
+
+# Add airflow root path for imports
+airflow_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
+if airflow_path not in sys.path:
+    sys.path.insert(0, airflow_path)
+
+# Import all transformation functions
+from scripts.etl.transform.cart_items import transform_cart_items
+from scripts.etl.transform.customer import transform_customers
+from scripts.etl.transform.orders import transform_order
+from scripts.etl.transform.categories import transform_categories
+from scripts.etl.transform.customer_addresses import transform_customer_addressess
+from scripts.etl.transform.discounts import transform_discounts
+from scripts.etl.transform.inventory import transform_inventory
+from scripts.etl.transform.order_items import transform_order_items
+from scripts.etl.transform.payments import transform_payments
+from scripts.etl.transform.product_reviews import transform_product_reviews
+from scripts.etl.transform.product_variants import transform_product_variants
+from scripts.etl.transform.products import transform_products
+from scripts.etl.transform.returns import transform_returns
+from scripts.etl.transform.shipments import transform_shipments
+from scripts.etl.transform.shopping_carts import transform_shopping_cart
+from scripts.etl.transform.wishlists import transform_whishlist
+
+# Configuration
+REGIONS = ["asia", "eu", "us"]
+TABLES = [
+    "categories", "products", "product_variants", "inventory", 
+    "customers", "customer_addresses", "discounts", "shopping_carts", 
+    "cart_items", "orders", "order_items", "payments", 
+    "shipments", "returns", "product_reviews", "wishlists"
+]
+
+# Table dependencies
+TABLE_DEPENDENCIES = {
+    "customers": [],
+    "categories": [],
+    "products": ["categories"],
+    "product_variants": ["products"],
+    "inventory": ["product_variants"],
+    "customer_addresses": ["customers"],
+    "shopping_carts": ["customers"],
+    "cart_items": ["shopping_carts", "product_variants"],
+    "orders": ["customers", "customer_addresses"],
+    "order_items": ["orders", "product_variants"],
+    "payments": ["orders"],
+    "shipments": ["orders"],
+    "returns": ["orders", "order_items"],
+    "product_reviews": ["products", "customers"],
+    "wishlists": ["customers", "products"],
+    "discounts": []
+}
+
+# Map table names to transformation functions
+TRANSFORMERS = {
+    "cart_items": transform_cart_items,
+    "customers": transform_customers,
+    "orders": transform_order,
+    "categories": transform_categories,
+    "customer_addresses": transform_customer_addressess,
+    "discounts": transform_discounts,
+    "inventory": transform_inventory,
+    "order_items": transform_order_items,
+    "payments": transform_payments,
+    "product_reviews": transform_product_reviews,
+    "product_variants": transform_product_variants,
+    "products": transform_products,
+    "returns": transform_returns,
+    "shipments": transform_shipments,
+    "shopping_carts": transform_shopping_cart,
+    "wishlists": transform_whishlist,
+}
+
+default_args = {
+    'owner': 'data-team',
+    'depends_on_past': False,
+    'retries': 1,
+    'retry_delay': timedelta(minutes=5),
+}
+
+dag = DAG(
+    'multi_region_processor_alternative',
+    default_args=default_args,
+    description='Multi-region data processing with separate transformation functions',
+    schedule="0 0 * * *",  # Daily at midnight
+    start_date=pendulum.datetime(2024, 1, 1, tz="UTC"),
+    catchup=False,
+    max_active_tasks=6,
+    tags=['multi-region', 'transformations']
+)
+
+def get_spark_session(app_name: str):
+    """Get Spark session with proper configuration"""
+    return SparkSession.builder \
+        .appName(app_name) \
+        .config("spark.jars.packages", "/opt/airflow/jars/snowflake-jdbc-3.13.17.jar,/opt/airflow/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar") \
+        .config("spark.driver.extraClassPath", "/opt/airflow/jars/*") \
+        .config("spark.executor.extraClassPath", "/opt/airflow/jars/*") \
+        .config("spark.sql.legacy.timeParserPolicy", "LEGACY") \
+        .config("spark.speculation", "false") \
+        .config("parquet.enable.summary-metadata", "false") \
+        .getOrCreate()
+
+def clear_output_path(path: str):
+    """Clear output path if it exists"""
+    if os.path.exists(path):
+        shutil.rmtree(path)
+        print(f"Cleared existing output path: {path}")
+
+@task
+def process_table(region: str, table: str, load_date: str):
+    """Process a single table for a specific region"""
+    
+    spark = None
+    try:
+        spark = get_spark_session(f"Process_{table}_{region}_{load_date}")
+        
+        # Input and output paths
+        input_path = f"/opt/airflow/data/raw/region={region}/table={table}/load_date={load_date}/"
+        output_path = f"/opt/airflow/data/processed/region={region}/table={table}/load_date={load_date}/"
+        
+        print(f"Processing {table} for region {region}")
+        print(f"Input path: {input_path}")
+        print(f"Output path: {output_path}")
+        
+        # Clear output path before processing
+        clear_output_path(output_path)
+        
+        # Read data
+        print(f"Reading data from {input_path}")
+        df_raw = spark.read.parquet(input_path)
+        
+        # Get transformation function and apply it
+        transform_func = TRANSFORMERS.get(table)
+        if transform_func:
+            print(f"Applying transformation for {table}")
+            df_transformed = transform_func(df_raw, region)
+        else:
+            # For tables without specific transformers, just pass through
+            df_transformed = df_raw
+            print(f"No transformer found for {table}, using raw data")
+        
+        # Write transformed data to parquet
+        print(f"Writing transformed data to {output_path}")
+        df_transformed.write.mode("overwrite").parquet(output_path)
+        df_transformed.show(10)
+        # Get record count for verification
+        record_count = df_transformed.count()
+        print(f"Successfully processed {record_count} records for {table} in {region}")
+        
+        return {
+            "region": region,
+            "table": table,
+            "record_count": record_count,
+            "status": "success",
+            "input_path": input_path,
+            "output_path": output_path
+        }
+        
+    except Exception as e:
+        error_msg = f"Error processing {table} for {region}: {str(e)}"
+        print(error_msg)
+        raise Exception(error_msg)
+    finally:
+        if spark:
+            print(f"Stopping Spark session for {table}_{region}")
+            spark.stop()
+
+@task
+def final_summary():
+    """Final summary of processing with proper completion status"""
+    print("All regions processed successfully!")
+    print("Processing Summary:")
+    print("- Asia region: Completed")
+    print("- EU region: Completed") 
+    print("- US region: Completed")
+    
+    return {
+        "status": "completed",
+        "timestamp": datetime.now().isoformat(),
+        "message": "All multi-region processing completed successfully"
+    }
+
+# Build the DAG without task groups
+with dag:
+    load_date = "2025-06-08"
+    
+    # Create all tasks for all regions
+    all_tasks = {}
+    
+    for region in REGIONS:
+        all_tasks[region] = {}
+        for table in TABLES:
+            task_id = f"process_{table}_{region}"
+            task_instance = process_table.override(task_id=task_id)(
+                region=region, table=table, load_date=load_date
+            )
+            all_tasks[region][table] = task_instance
+    
+    # Set up dependencies within each region
+    for region in REGIONS:
+        for table in TABLES:
+            deps = TABLE_DEPENDENCIES.get(table, [])
+            for dep_table in deps:
+                if dep_table in all_tasks[region]:
+                    all_tasks[region][dep_table] >> all_tasks[region][table]
+    
+    # Create final summary task
+    summary = final_summary()
+    
+    # Set dependencies - all final tasks from each region must complete before summary
+    final_tasks = []
+    for region in REGIONS:
+        # Find tables with no dependents (final tables in each region)
+        final_tables = []
+        for table in TABLES:
+            is_final = True
+            for other_table in TABLES:
+                if table in TABLE_DEPENDENCIES.get(other_table, []):
+                    is_final = False
+                    break
+            if is_final:
+                final_tables.append(table)
+        
+        # Add final tasks from this region
+        for table in final_tables:
+            final_tasks.append(all_tasks[region][table])
+    
+    # All final tasks must complete before summary
+    final_tasks >> summary

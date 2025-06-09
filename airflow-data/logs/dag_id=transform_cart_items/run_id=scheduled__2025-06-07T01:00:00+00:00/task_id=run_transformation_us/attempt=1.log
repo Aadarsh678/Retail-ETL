@@ -1,0 +1,60 @@
+[2025-06-08T17:15:47.208+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: transform_cart_items.run_transformation_us scheduled__2025-06-07T01:00:00+00:00 [queued]>
+[2025-06-08T17:15:47.226+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: transform_cart_items.run_transformation_us scheduled__2025-06-07T01:00:00+00:00 [queued]>
+[2025-06-08T17:15:47.227+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-08T17:15:47.253+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_transformation_us> on 2025-06-07 01:00:00+00:00
+[2025-06-08T17:15:47.263+0000] {standard_task_runner.py:60} INFO - Started process 65604 to run task
+[2025-06-08T17:15:47.266+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T17:15:47.274+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'transform_cart_items', 'run_transformation_us', 'scheduled__2025-06-07T01:00:00+00:00', '--job-id', '596', '--raw', '--subdir', 'DAGS_FOLDER/staging/cart_items_to_staging.py', '--cfg-path', '/tmp/tmp3v1tsjnr']
+[2025-06-08T17:15:47.277+0000] {standard_task_runner.py:88} INFO - Job 596: Subtask run_transformation_us
+[2025-06-08T17:15:47.317+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-08T17:15:47.429+0000] {task_command.py:423} INFO - Running <TaskInstance: transform_cart_items.run_transformation_us scheduled__2025-06-07T01:00:00+00:00 [running]> on host ca4d96b31043
+[2025-06-08T17:15:47.700+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='transform_cart_items' AIRFLOW_CTX_TASK_ID='run_transformation_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-07T01:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-07T01:00:00+00:00'
+[2025-06-08T17:15:47.706+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/staging/cart_items_to_staging.py", line 102, in run_transformation_us
+    transform_cart_items(
+TypeError: transform_cart_items() got an unexpected keyword argument 'table'
+[2025-06-08T17:15:47.751+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=transform_cart_items, task_id=run_transformation_us, execution_date=20250607T010000, start_date=20250608T171547, end_date=20250608T171547
+[2025-06-08T17:15:47.789+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 596 for task run_transformation_us (transform_cart_items() got an unexpected keyword argument 'table'; 65604)
+[2025-06-08T17:15:47.820+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-06-08T17:15:47.876+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-06-08T19:31:49.200+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: transform_cart_items.run_transformation_us scheduled__2025-06-07T01:00:00+00:00 [queued]>
+[2025-06-08T19:31:49.216+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: transform_cart_items.run_transformation_us scheduled__2025-06-07T01:00:00+00:00 [queued]>
+[2025-06-08T19:31:49.216+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-08T19:31:49.235+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_transformation_us> on 2025-06-07 01:00:00+00:00
+[2025-06-08T19:31:49.242+0000] {standard_task_runner.py:60} INFO - Started process 40340 to run task
+[2025-06-08T19:31:49.242+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T19:31:49.247+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'transform_cart_items', 'run_transformation_us', 'scheduled__2025-06-07T01:00:00+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/staging/cart_items_to_staging.py', '--cfg-path', '/tmp/tmp2_b_1sdj']
+[2025-06-08T19:31:49.249+0000] {standard_task_runner.py:88} INFO - Job 9: Subtask run_transformation_us
+[2025-06-08T19:31:49.281+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-08T19:31:49.355+0000] {task_command.py:423} INFO - Running <TaskInstance: transform_cart_items.run_transformation_us scheduled__2025-06-07T01:00:00+00:00 [running]> on host 098d7b977cb8
+[2025-06-08T19:31:49.558+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='transform_cart_items' AIRFLOW_CTX_TASK_ID='run_transformation_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-07T01:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-07T01:00:00+00:00'
+[2025-06-08T19:31:49.559+0000] {logging_mixin.py:188} INFO - Starting transformation for table: cart_items in region: us
+[2025-06-08T19:31:49.566+0000] {logging_mixin.py:188} INFO - Reading data from: /opt/airflow/data/raw/region=us/table=cart_items/load_date=2025-06-08/
+[2025-06-08T19:31:59.673+0000] {logging_mixin.py:188} INFO - [INFO] Processing 12 records for us
+[2025-06-08T19:32:00.246+0000] {logging_mixin.py:188} INFO - Sample transformed data for cart_items in us:
+[2025-06-08T19:32:04.581+0000] {logging_mixin.py:188} INFO - +------------+-------+----------+--------+--------------+-------------------+-------------------+-------+--------+
+|cart_item_id|cart_id|variant_id|quantity|unit_price_usd|added_at           |updated_at         |_region|_source |
++------------+-------+----------+--------+--------------+-------------------+-------------------+-------+--------+
+|1           |1      |2         |1       |1199.99       |2025-06-08 19:23:28|2025-06-08 19:23:28|us     |postgres|
+|2           |1      |8         |2       |24.99         |2025-06-08 19:23:28|2025-06-08 19:23:28|us     |postgres|
+|3           |2      |15        |1       |1449.99       |2025-06-08 19:23:28|2025-06-08 19:23:28|us     |postgres|
+|4           |3      |19        |1       |129.99        |2025-06-08 19:23:28|2025-06-08 19:23:28|us     |postgres|
+|5           |4      |6         |1       |399.99        |2025-06-08 19:23:28|2025-06-08 19:23:28|us     |postgres|
++------------+-------+----------+--------+--------------+-------------------+-------------------+-------+--------+
+only showing top 5 rows
+[2025-06-08T19:32:04.581+0000] {logging_mixin.py:188} INFO - Writing transformed data to: /opt/airflow/data/staging/cart_items/region=us/load_date=2025-06-08/
+[2025-06-08T19:32:06.697+0000] {logging_mixin.py:188} INFO - Successfully transformed 12 records for cart_items in us
+[2025-06-08T20:00:54.039+0000] {local_task_job_runner.py:302} WARNING - State of this instance has been externally set to success. Terminating instance.
+[2025-06-08T20:00:54.199+0000] {process_utils.py:131} INFO - Sending 15 to group 40340. PIDs of all processes in the group: [40340]
+[2025-06-08T20:00:54.203+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 40340
+[2025-06-08T20:00:54.269+0000] {taskinstance.py:2450} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-06-08T20:00:55.520+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=40340, status='terminated', exitcode=0, started='19:31:49') (40340) terminated with exit code 0

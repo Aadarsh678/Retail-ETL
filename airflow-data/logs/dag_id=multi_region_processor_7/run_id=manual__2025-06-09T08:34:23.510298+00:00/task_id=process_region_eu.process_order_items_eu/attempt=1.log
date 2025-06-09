@@ -1,0 +1,33 @@
+[2025-06-09T08:47:20.193+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_eu.process_order_items_eu manual__2025-06-09T08:34:23.510298+00:00 [queued]>
+[2025-06-09T08:47:20.224+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_eu.process_order_items_eu manual__2025-06-09T08:34:23.510298+00:00 [queued]>
+[2025-06-09T08:47:20.225+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-09T08:47:20.287+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_eu.process_order_items_eu> on 2025-06-09 08:34:23.510298+00:00
+[2025-06-09T08:47:20.298+0000] {standard_task_runner.py:60} INFO - Started process 6325 to run task
+[2025-06-09T08:47:20.303+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_processor_7', 'process_region_eu.process_order_items_eu', 'manual__2025-06-09T08:34:23.510298+00:00', '--job-id', '690', '--raw', '--subdir', 'DAGS_FOLDER/master2.py', '--cfg-path', '/tmp/tmpjvlsmafl']
+[2025-06-09T08:47:20.306+0000] {standard_task_runner.py:88} INFO - Job 690: Subtask process_region_eu.process_order_items_eu
+[2025-06-09T08:47:20.481+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_processor_7.process_region_eu.process_order_items_eu manual__2025-06-09T08:34:23.510298+00:00 [running]> on host afcdbcf38bc0
+[2025-06-09T08:47:20.856+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_processor_7' AIRFLOW_CTX_TASK_ID='process_region_eu.process_order_items_eu' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T08:34:23.510298+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-09T08:34:23.510298+00:00'
+[2025-06-09T08:47:34.928+0000] {logging_mixin.py:188} INFO - Processing order_items for region eu
+[2025-06-09T08:47:47.358+0000] {logging_mixin.py:188} INFO - STAGING_EU
+[2025-06-09T08:47:58.494+0000] {logging_mixin.py:188} INFO - +-------------+--------+----------+--------+--------------+--------+---------------+--------------------+-------+--------+
+|order_item_id|order_id|variant_id|quantity|unit_price_eur|vat_rate|total_price_eur|          created_at|_region| _source|
++-------------+--------+----------+--------+--------------+--------+---------------+--------------------+-------+--------+
+|            1|       1|         1|       1|       1199.99|   19.00|        1427.98|2025-06-08 19:22:...|     eu|postgres|
+|            2|       2|        11|       1|         89.99|   19.00|         107.08|2025-06-08 19:22:...|     eu|postgres|
+|            3|       3|        14|       1|       1599.99|   19.00|        1903.98|2025-06-08 19:22:...|     eu|postgres|
+|            4|       4|        14|       1|        249.99|   19.00|         297.48|2025-06-08 19:22:...|     eu|postgres|
+|            5|       5|        11|       1|        299.99|   19.00|         356.98|2025-06-08 19:22:...|     eu|postgres|
+|            6|       6|        18|       1|         79.99|   19.00|          95.18|2025-06-08 19:22:...|     eu|postgres|
+|            7|       7|        20|       1|        899.99|   19.00|        1070.98|2025-06-08 19:22:...|     eu|postgres|
+|            8|       8|        10|       1|        149.99|   19.00|         178.48|2025-06-08 19:22:...|     eu|postgres|
+|            9|       9|        14|       1|       1599.99|   19.00|        1903.98|2025-06-08 19:22:...|     eu|postgres|
+|           10|       9|         1|       1|        199.99|   19.00|         237.98|2025-06-08 19:22:...|     eu|postgres|
++-------------+--------+----------+--------+--------------+--------+---------------+--------------------+-------+--------+
+only showing top 10 rows
+[2025-06-09T08:47:58.499+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-09T08:48:13.694+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-09T08:48:14.625+0000] {logging_mixin.py:188} INFO - Successfully processed 22 records for order_items in eu
+[2025-06-09T08:48:16.106+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'eu', 'table': 'order_items', 'record_count': 22, 'status': 'success'}
+[2025-06-09T08:48:16.178+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_processor_7, task_id=process_region_eu.process_order_items_eu, execution_date=20250609T083423, start_date=20250609T084720, end_date=20250609T084816
+[2025-06-09T08:48:16.242+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-09T08:48:16.315+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,25 @@
+[2025-06-05T02:30:24.723+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction manual__2025-06-05T02:30:23.749851+00:00 [queued]>
+[2025-06-05T02:30:24.730+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction manual__2025-06-05T02:30:23.749851+00:00 [queued]>
+[2025-06-05T02:30:24.730+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-05T02:30:24.748+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_extraction> on 2025-06-05 02:30:23.749851+00:00
+[2025-06-05T02:30:24.751+0000] {standard_task_runner.py:60} INFO - Started process 1349 to run task
+[2025-06-05T02:30:24.753+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'extract_postgres_table_to_parquet', 'run_extraction', 'manual__2025-06-05T02:30:23.749851+00:00', '--job-id', '83', '--raw', '--subdir', 'DAGS_FOLDER/asia/landing.py', '--cfg-path', '/tmp/tmpiwngko2s']
+[2025-06-05T02:30:24.754+0000] {standard_task_runner.py:88} INFO - Job 83: Subtask run_extraction
+[2025-06-05T02:30:24.807+0000] {task_command.py:423} INFO - Running <TaskInstance: extract_postgres_table_to_parquet.run_extraction manual__2025-06-05T02:30:23.749851+00:00 [running]> on host dc545d099820
+[2025-06-05T02:30:24.899+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='extract_postgres_table_to_parquet' AIRFLOW_CTX_TASK_ID='run_extraction' AIRFLOW_CTX_EXECUTION_DATE='2025-06-05T02:30:23.749851+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-05T02:30:23.749851+00:00'
+[2025-06-05T02:30:24.899+0000] {logging_mixin.py:188} INFO - Starting extraction for table: customers1 in region: asia
+[2025-06-05T02:30:24.909+0000] {logging_mixin.py:188} INFO - [INFO] Last extracted timestamp: 2025-07-05 21:31:50.869
+[2025-06-05T02:30:28.057+0000] {logging_mixin.py:188} INFO - (SELECT * FROM asia.customers1 WHERE created > '2025-07-05 21:31:50.869') AS filtered_data
+[2025-06-05T02:30:32.554+0000] {logging_mixin.py:188} INFO - +-------+-----------------+-----+------+-------------+----------+---+-------------------+----------+---------+-------+------+-------------------+-------+--------+
+|cust_id|            email|fname| lname|        phone|birth_date|sex|           reg_date|login_time|is_active|segment|source|            created|_region| _source|
++-------+-----------------+-----+------+-------------+----------+---+-------------------+----------+---------+-------+------+-------------------+-------+--------+
+|      4|yamada@example.jp| Taro|Yamada|080-1122-3344|1988-02-19|  M|2025-07-06 09:15:00|      NULL|     NULL|Regular|Online|2025-07-06 09:15:00|   asia|postgres|
++-------+-----------------+-----+------+-------------+----------+---+-------------------+----------+---------+-------+------+-------------------+-------+--------+
+[2025-06-05T02:30:32.554+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=asia/table=customers1/load_date=2025-06-06/
+[2025-06-05T02:30:33.752+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-06-05T02:30:33.759+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable 'last_extracted_parquet_timestamp_asia_customers1' to 2025-07-06 09:15:00.000
+[2025-06-05T02:30:33.951+0000] {logging_mixin.py:188} INFO - Finished extraction for customers1
+[2025-06-05T02:30:33.951+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-06-05T02:30:33.969+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=extract_postgres_table_to_parquet, task_id=run_extraction, execution_date=20250605T023023, start_date=20250605T023024, end_date=20250605T023033
+[2025-06-05T02:30:34.005+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-05T02:30:34.037+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

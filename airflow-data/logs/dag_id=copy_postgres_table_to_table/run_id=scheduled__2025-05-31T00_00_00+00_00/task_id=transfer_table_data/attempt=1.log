@@ -1,0 +1,41 @@
+[2025-06-01T13:03:35.377+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: copy_postgres_table_to_table.transfer_table_data scheduled__2025-05-31T00:00:00+00:00 [queued]>
+[2025-06-01T13:03:35.383+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: copy_postgres_table_to_table.transfer_table_data scheduled__2025-05-31T00:00:00+00:00 [queued]>
+[2025-06-01T13:03:35.383+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-01T13:03:35.434+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): transfer_table_data> on 2025-05-31 00:00:00+00:00
+[2025-06-01T13:03:35.438+0000] {standard_task_runner.py:60} INFO - Started process 310 to run task
+[2025-06-01T13:03:35.442+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'copy_postgres_table_to_table', 'transfer_table_data', 'scheduled__2025-05-31T00:00:00+00:00', '--job-id', '8', '--raw', '--subdir', 'DAGS_FOLDER/asia/extract_load_staging_asia.py', '--cfg-path', '/tmp/tmpz_hi6bi8']
+[2025-06-01T13:03:35.443+0000] {standard_task_runner.py:88} INFO - Job 8: Subtask transfer_table_data
+[2025-06-01T13:03:35.577+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-01T13:03:35.620+0000] {task_command.py:423} INFO - Running <TaskInstance: copy_postgres_table_to_table.transfer_table_data scheduled__2025-05-31T00:00:00+00:00 [running]> on host d0dc6a6a24a2
+[2025-06-01T13:03:36.275+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='copy_postgres_table_to_table' AIRFLOW_CTX_TASK_ID='transfer_table_data' AIRFLOW_CTX_EXECUTION_DATE='2025-05-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-05-31T00:00:00+00:00'
+[2025-06-01T13:03:36.765+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/asia/extract_load_staging_asia.py", line 29, in transfer_table_data
+    .getOrCreate()
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/sql/session.py", line 497, in getOrCreate
+    sc = SparkContext.getOrCreate(sparkConf)
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/context.py", line 515, in getOrCreate
+    SparkContext(conf=conf or SparkConf())
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/context.py", line 201, in __init__
+    SparkContext._ensure_initialized(self, gateway=gateway, conf=conf)
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/context.py", line 436, in _ensure_initialized
+    SparkContext._gateway = gateway or launch_gateway(conf)
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/java_gateway.py", line 97, in launch_gateway
+    proc = Popen(command, **popen_kwargs)
+  File "/usr/local/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/local/lib/python3.10/subprocess.py", line 1863, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: '/usr/local/spark/./bin/spark-submit'
+[2025-06-01T13:03:36.840+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=copy_postgres_table_to_table, task_id=transfer_table_data, execution_date=20250531T000000, start_date=20250601T130335, end_date=20250601T130336
+[2025-06-01T13:03:37.002+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 8 for task transfer_table_data ([Errno 2] No such file or directory: '/usr/local/spark/./bin/spark-submit'; 310)
+[2025-06-01T13:03:37.017+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-06-01T13:03:37.034+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

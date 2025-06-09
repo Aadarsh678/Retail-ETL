@@ -1,0 +1,31 @@
+[2025-06-09T07:29:43.160+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_eu.process_customer_addresses_eu manual__2025-06-09T07:28:55.367695+00:00 [queued]>
+[2025-06-09T07:29:43.181+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_eu.process_customer_addresses_eu manual__2025-06-09T07:28:55.367695+00:00 [queued]>
+[2025-06-09T07:29:43.181+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-09T07:29:43.249+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_eu.process_customer_addresses_eu> on 2025-06-09 07:28:55.367695+00:00
+[2025-06-09T07:29:43.258+0000] {standard_task_runner.py:60} INFO - Started process 74533 to run task
+[2025-06-09T07:29:43.262+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_processor_7', 'process_region_eu.process_customer_addresses_eu', 'manual__2025-06-09T07:28:55.367695+00:00', '--job-id', '565', '--raw', '--subdir', 'DAGS_FOLDER/master2.py', '--cfg-path', '/tmp/tmp9qug5chk']
+[2025-06-09T07:29:43.265+0000] {standard_task_runner.py:88} INFO - Job 565: Subtask process_region_eu.process_customer_addresses_eu
+[2025-06-09T07:29:43.299+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-09T07:29:43.403+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_processor_7.process_region_eu.process_customer_addresses_eu manual__2025-06-09T07:28:55.367695+00:00 [running]> on host afcdbcf38bc0
+[2025-06-09T07:29:43.648+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_processor_7' AIRFLOW_CTX_TASK_ID='process_region_eu.process_customer_addresses_eu' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T07:28:55.367695+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-09T07:28:55.367695+00:00'
+[2025-06-09T07:29:53.820+0000] {logging_mixin.py:188} INFO - Processing customer_addresses for region eu
+[2025-06-09T07:30:12.688+0000] {logging_mixin.py:188} INFO - +----------+-----------+------------+--------------------+----------+--------------+-----------+-------+----------+-------------------+-------+--------+
+|address_id|customer_id|address_type|      street_address|      city|        region|postal_code|country|is_default|         created_at|_region| _source|
++----------+-----------+------------+--------------------+----------+--------------+-----------+-------+----------+-------------------+-------+--------+
+|         1|          1|     billing|  Unter den Linden 1|    Berlin|        Berlin|      10117|     DE|      true|2025-06-08 19:22:57|     eu|postgres|
+|         2|          1|    shipping|    Alexanderplatz 5|    Berlin|        Berlin|      10178|     DE|     false|2025-06-08 19:22:57|     eu|postgres|
+|         3|          2|     billing|   Calle Gran Vía 28|    Madrid|        Madrid|      28013|     ES|      true|2025-06-08 19:22:57|     eu|postgres|
+|         4|          3|     billing|Avenue des Champs...|     Paris| Île-de-France|      75008|     FR|      true|2025-06-08 19:22:57|     eu|postgres|
+|         5|          3|    shipping|    Rue de Rivoli 50|     Paris| Île-de-France|      75001|     FR|     false|2025-06-08 19:22:57|     eu|postgres|
+|         6|          4|     billing|   Via del Corso 123|      Rome|         Lazio|      00186|     IT|      true|2025-06-08 19:22:57|     eu|postgres|
+|         7|          5|     billing|          Strøget 15|Copenhagen|Capital Region|       1160|     DK|      true|2025-06-08 19:22:57|     eu|postgres|
+|         8|          6|     billing|Boulevard Saint-G...|     Paris| Île-de-France|      75006|     FR|      true|2025-06-08 19:22:57|     eu|postgres|
+|         9|          7|     billing|       Marienplatz 8|    Munich|       Bavaria|      80331|     DE|      true|2025-06-08 19:22:57|     eu|postgres|
+|        10|          8|     billing|Vitosha Boulevard 89|     Sofia|    Sofia City|       1000|     BG|      true|2025-06-08 19:22:57|     eu|postgres|
++----------+-----------+------------+--------------------+----------+--------------+-----------+-------+----------+-------------------+-------+--------+
+only showing top 10 rows
+[2025-06-09T07:30:17.355+0000] {logging_mixin.py:188} INFO - Successfully processed 54 records for customer_addresses in eu
+[2025-06-09T07:30:17.983+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'eu', 'table': 'customer_addresses', 'record_count': 54, 'status': 'success'}
+[2025-06-09T07:30:18.085+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_processor_7, task_id=process_region_eu.process_customer_addresses_eu, execution_date=20250609T072855, start_date=20250609T072943, end_date=20250609T073018
+[2025-06-09T07:30:18.177+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-09T07:30:18.372+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,88 @@
+[2025-06-08T18:34:44.323+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: transform_categories.run_transformation_asia manual__2025-06-08T18:31:59.110324+00:00 [queued]>
+[2025-06-08T18:34:44.358+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: transform_categories.run_transformation_asia manual__2025-06-08T18:31:59.110324+00:00 [queued]>
+[2025-06-08T18:34:44.359+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-08T18:34:44.419+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_transformation_asia> on 2025-06-08 18:31:59.110324+00:00
+[2025-06-08T18:34:44.435+0000] {standard_task_runner.py:60} INFO - Started process 38460 to run task
+[2025-06-08T18:34:44.435+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T18:34:44.447+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'transform_categories', 'run_transformation_asia', 'manual__2025-06-08T18:31:59.110324+00:00', '--job-id', '613', '--raw', '--subdir', 'DAGS_FOLDER/staging/categories_to_staging.py', '--cfg-path', '/tmp/tmp8c8lin90']
+[2025-06-08T18:34:44.452+0000] {standard_task_runner.py:88} INFO - Job 613: Subtask run_transformation_asia
+[2025-06-08T18:34:44.503+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-08T18:34:44.647+0000] {task_command.py:423} INFO - Running <TaskInstance: transform_categories.run_transformation_asia manual__2025-06-08T18:31:59.110324+00:00 [running]> on host 6ecd1ae3f40b
+[2025-06-08T18:34:44.754+0000] {clientserver.py:505} INFO - Error while sending or receiving.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 503, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+ConnectionResetError: [Errno 104] Connection reset by peer
+[2025-06-08T18:34:44.756+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T18:34:44.756+0000] {java_gateway.py:1052} INFO - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 503, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 506, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending
+[2025-06-08T18:34:44.764+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T18:34:44.898+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='transform_categories' AIRFLOW_CTX_TASK_ID='run_transformation_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-08T18:31:59.110324+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-08T18:31:59.110324+00:00'
+[2025-06-08T18:34:44.901+0000] {logging_mixin.py:188} INFO - Starting transformation for table: categories in region: asia
+[2025-06-08T18:34:44.961+0000] {logging_mixin.py:188} INFO - Reading data from: /opt/airflow/data/raw/region=asia/table=categories/load_date=2025-06-06/
+[2025-06-08T18:35:00.296+0000] {logging_mixin.py:188} INFO - [INFO] Processing 15 records for asia
+[2025-06-08T18:35:01.308+0000] {logging_mixin.py:188} INFO - Sample transformed data for asia:
+[2025-06-08T18:35:07.144+0000] {logging_mixin.py:188} INFO - +-------------+--------------+------------------+------------------------+---------+-------------------+-------------------+-------+--------+
+|categories_id|category_name |parent_category_id|category_path           |is_active|created_at         |updated_at         |_region|_source |
++-------------+--------------+------------------+------------------------+---------+-------------------+-------------------+-------+--------+
+|1            |Electronics   |NULL              |/Electronics            |true     |2024-01-01 09:00:00|2025-06-06 07:59:32|asia   |postgres|
+|2            |Smartphones   |1                 |/Electronics/Smartphones|true     |2024-01-02 00:00:00|2025-06-06 07:59:32|asia   |postgres|
+|3            |Laptops       |1                 |/Electronics/Laptops    |true     |2024-03-01 00:00:00|2025-06-06 07:59:32|asia   |postgres|
+|4            |Gaming Devices|1                 |/Electronics/Gaming     |true     |NULL               |2025-06-06 07:59:32|asia   |postgres|
+|5            |Clothing      |NULL              |/Clothing               |true     |2024-05-01 00:00:00|2025-06-06 07:59:32|asia   |postgres|
++-------------+--------------+------------------+------------------------+---------+-------------------+-------------------+-------+--------+
+only showing top 5 rows
+[2025-06-08T18:35:07.145+0000] {logging_mixin.py:188} INFO - Writing transformed data to: /opt/airflow/data/staging/categories/region=asia/load_date=2025-06-06/
+[2025-06-08T18:35:09.245+0000] {logging_mixin.py:188} INFO - Successfully transformed 15 records for asia
+[2025-06-08T19:20:35.978+0000] {local_task_job_runner.py:121} ERROR - Received SIGTERM. Terminating subprocesses
+[2025-06-08T19:20:36.137+0000] {process_utils.py:131} INFO - Sending 15 to group 38460. PIDs of all processes in the group: [38460]
+[2025-06-08T19:20:36.145+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 38460
+[2025-06-08T19:20:36.209+0000] {taskinstance.py:2450} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-06-08T19:20:36.800+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/staging/categories_to_staging.py", line 83, in run_transformation_asia
+    transform_categories_table(
+  File "/opt/airflow/dags/staging/../../scripts/pyspark_jobs/categories.py", line 77, in transform_categories_table
+    spark.stop()
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/sql/session.py", line 1796, in stop
+    self._sc.stop()
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/context.py", line 666, in stop
+    self._accumulatorServer.shutdown()
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/accumulators.py", line 316, in shutdown
+    SocketServer.TCPServer.shutdown(self)
+  File "/usr/local/lib/python3.10/socketserver.py", line 252, in shutdown
+    self.__is_shut_down.wait()
+  File "/usr/local/lib/python3.10/threading.py", line 607, in wait
+    signaled = self._cond.wait(timeout)
+  File "/usr/local/lib/python3.10/threading.py", line 320, in wait
+    waiter.acquire()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 2452, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+[2025-06-08T19:20:36.874+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=transform_categories, task_id=run_transformation_asia, execution_date=20250608T183159, start_date=20250608T183444, end_date=20250608T192036
+[2025-06-08T19:20:37.229+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 613 for task run_transformation_asia (Task received SIGTERM signal; 38460)
+[2025-06-08T19:20:37.297+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=38460, status='terminated', exitcode=1, started='18:34:44') (38460) terminated with exit code 1
+[2025-06-08T19:20:37.309+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 143
+[2025-06-08T19:20:37.534+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-06-08T19:20:39.844+0000] {local_task_job_runner.py:121} ERROR - Received SIGTERM. Terminating subprocesses
+[2025-06-08T19:20:39.845+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 143

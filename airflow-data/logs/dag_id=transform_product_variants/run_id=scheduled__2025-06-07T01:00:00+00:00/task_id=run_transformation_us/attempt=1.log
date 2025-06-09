@@ -1,0 +1,32 @@
+[2025-06-08T16:27:28.490+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: transform_product_variants.run_transformation_us scheduled__2025-06-07T01:00:00+00:00 [queued]>
+[2025-06-08T16:27:28.525+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: transform_product_variants.run_transformation_us scheduled__2025-06-07T01:00:00+00:00 [queued]>
+[2025-06-08T16:27:28.526+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-08T16:27:28.593+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_transformation_us> on 2025-06-07 01:00:00+00:00
+[2025-06-08T16:27:28.617+0000] {standard_task_runner.py:60} INFO - Started process 3978 to run task
+[2025-06-08T16:27:28.618+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T16:27:28.664+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'transform_product_variants', 'run_transformation_us', 'scheduled__2025-06-07T01:00:00+00:00', '--job-id', '503', '--raw', '--subdir', 'DAGS_FOLDER/staging/product_variants_to_staging.py', '--cfg-path', '/tmp/tmpoix_qhz4']
+[2025-06-08T16:27:28.667+0000] {standard_task_runner.py:88} INFO - Job 503: Subtask run_transformation_us
+[2025-06-08T16:27:28.782+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-08T16:27:28.979+0000] {task_command.py:423} INFO - Running <TaskInstance: transform_product_variants.run_transformation_us scheduled__2025-06-07T01:00:00+00:00 [running]> on host c10f2fed82e0
+[2025-06-08T16:27:29.486+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='transform_product_variants' AIRFLOW_CTX_TASK_ID='run_transformation_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-07T01:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-07T01:00:00+00:00'
+[2025-06-08T16:27:29.489+0000] {logging_mixin.py:188} INFO - Starting transformation for table: product_variants in region: us
+[2025-06-08T16:27:29.609+0000] {logging_mixin.py:188} INFO - Reading data from: /opt/airflow/data/raw/region=us/table=product_variants/load_date=2025-06-06/
+[2025-06-08T16:27:55.501+0000] {logging_mixin.py:188} INFO - [INFO] Processing 21 records for us
+[2025-06-08T16:27:56.140+0000] {logging_mixin.py:188} INFO - Sample transformed data for us:
+[2025-06-08T16:28:04.800+0000] {logging_mixin.py:188} INFO - +----------+----------+---------------------+--------------------------+-------------+-------------+--------------------+------------+---------+--------------------------+-------+--------+
+|variant_id|product_id|product_sku          |variant_name              |variant_type |variant_value|price_adjustment_usd|is_active_us|is_active|created_at                |_region|_source |
++----------+----------+---------------------+--------------------------+-------------+-------------+--------------------+------------+---------+--------------------------+-------+--------+
+|1         |1         |PRD-12001-BLACK-128GB|iPhone 15 Pro Black 128GB |color_storage|Black 128GB  |0.00                |true        |true     |2025-06-06 08:00:56.483003|us     |postgres|
+|2         |1         |PRD-12001-BLUE-256GB |iPhone 15 Pro Blue 256GB  |color_storage|Blue 256GB   |200.00              |true        |true     |2025-06-06 08:00:56.483003|us     |postgres|
+|3         |1         |PRD-12001-WHITE-512GB|iPhone 15 Pro White 512GB |color_storage|White 512GB  |400.00              |true        |true     |2025-06-06 08:00:56.483003|us     |postgres|
+|4         |2         |PRD-12002-SILVER-8GB |MacBook Air Silver 8GB RAM|color_memory |Silver 8GB   |0.00                |true        |true     |2025-06-06 08:00:56.483003|us     |postgres|
+|5         |2         |PRD-12002-GOLD-16GB  |MacBook Air Gold 16GB RAM |color_memory |Gold 16GB    |300.00              |true        |true     |2025-06-06 08:00:56.483003|us     |postgres|
++----------+----------+---------------------+--------------------------+-------------+-------------+--------------------+------------+---------+--------------------------+-------+--------+
+only showing top 5 rows
+[2025-06-08T16:28:04.814+0000] {logging_mixin.py:188} INFO - Writing transformed data to: /opt/airflow/data/staging/product_variants/region=us/load_date=2025-06-06/
+[2025-06-08T16:28:08.513+0000] {logging_mixin.py:188} INFO - Successfully transformed 21 records for us
+[2025-06-08T16:30:16.950+0000] {local_task_job_runner.py:302} WARNING - State of this instance has been externally set to failed. Terminating instance.
+[2025-06-08T16:30:17.028+0000] {process_utils.py:131} INFO - Sending 15 to group 3978. PIDs of all processes in the group: [3978]
+[2025-06-08T16:30:17.033+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 3978
+[2025-06-08T16:30:17.050+0000] {taskinstance.py:2450} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-06-08T16:30:17.981+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=3978, status='terminated', exitcode=0, started='16:27:27') (3978) terminated with exit code 0

@@ -1,0 +1,14 @@
+[2025-06-09T05:26:33.608+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_dag-100.process_table__38 manual__2025-06-09T05:21:31.537717+00:00 [queued]>
+[2025-06-09T05:26:33.633+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_dag-100.process_table__38 manual__2025-06-09T05:21:31.537717+00:00 [queued]>
+[2025-06-09T05:26:33.634+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-09T05:26:33.675+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_table__38> on 2025-06-09 05:21:31.537717+00:00
+[2025-06-09T05:26:33.688+0000] {standard_task_runner.py:60} INFO - Started process 4129 to run task
+[2025-06-09T05:26:33.690+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-09T05:26:33.706+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_dag-100', 'process_table__38', 'manual__2025-06-09T05:21:31.537717+00:00', '--job-id', '162', '--raw', '--subdir', 'DAGS_FOLDER/asia/staging_dag.py', '--cfg-path', '/tmp/tmps0vtlnjb']
+[2025-06-09T05:26:33.714+0000] {standard_task_runner.py:88} INFO - Job 162: Subtask process_table__38
+[2025-06-09T05:26:33.772+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-09T05:26:33.894+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_dag-100.process_table__38 manual__2025-06-09T05:21:31.537717+00:00 [running]> on host 847c6af56c4f
+[2025-06-09T05:26:34.212+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_dag-100' AIRFLOW_CTX_TASK_ID='process_table__38' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T05:21:31.537717+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-09T05:21:31.537717+00:00'
+[2025-06-09T05:26:34.236+0000] {logging_mixin.py:188} INFO - [INFO] Processing discounts for us
+[2025-06-09T05:26:34.239+0000] {logging_mixin.py:188} INFO - [INFO] Cleared output path: /opt/airflow/data/processed/region=us/table=discounts/load_date=2025-06-08/
+[2025-06-09T05:26:53.878+0000] {logging_mixin.py:188} INFO - [INFO] us/discounts - 20 records written.

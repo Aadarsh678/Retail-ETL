@@ -1,0 +1,31 @@
+[2025-06-09T07:24:21.599+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_us.process_customer_addresses_us manual__2025-06-09T07:23:36.480089+00:00 [queued]>
+[2025-06-09T07:24:21.614+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_us.process_customer_addresses_us manual__2025-06-09T07:23:36.480089+00:00 [queued]>
+[2025-06-09T07:24:21.614+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-09T07:24:21.641+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_us.process_customer_addresses_us> on 2025-06-09 07:23:36.480089+00:00
+[2025-06-09T07:24:21.650+0000] {standard_task_runner.py:60} INFO - Started process 63662 to run task
+[2025-06-09T07:24:21.654+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_processor_7', 'process_region_us.process_customer_addresses_us', 'manual__2025-06-09T07:23:36.480089+00:00', '--job-id', '523', '--raw', '--subdir', 'DAGS_FOLDER/master2.py', '--cfg-path', '/tmp/tmp01ghs0q3']
+[2025-06-09T07:24:21.656+0000] {standard_task_runner.py:88} INFO - Job 523: Subtask process_region_us.process_customer_addresses_us
+[2025-06-09T07:24:21.691+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-09T07:24:21.776+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_processor_7.process_region_us.process_customer_addresses_us manual__2025-06-09T07:23:36.480089+00:00 [running]> on host afcdbcf38bc0
+[2025-06-09T07:24:21.990+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_processor_7' AIRFLOW_CTX_TASK_ID='process_region_us.process_customer_addresses_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T07:23:36.480089+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-09T07:23:36.480089+00:00'
+[2025-06-09T07:24:31.816+0000] {logging_mixin.py:188} INFO - Processing customer_addresses for region us
+[2025-06-09T07:24:53.191+0000] {logging_mixin.py:188} INFO - +----------+-----------+------------+-----------------+------------+------------+-----------+-------+----------+-------------------+-------+--------+
+|address_id|customer_id|address_type|   street_address|        city|      region|postal_code|country|is_default|         created_at|_region| _source|
++----------+-----------+------------+-----------------+------------+------------+-----------+-------+----------+-------------------+-------+--------+
+|         1|          1|     billing|  123 Main Street|    New York|    New York|      10001|    USA|      true|2025-06-08 19:23:28|     us|postgres|
+|         2|          1|    shipping| 456 Broadway Ave|    New York|    New York|      10002|    USA|     false|2025-06-08 19:23:28|     us|postgres|
+|         3|          2|     billing|  789 Sunset Blvd| Los Angeles|  California|      90210|    USA|      true|2025-06-08 19:23:28|     us|postgres|
+|         4|          3|     billing|   321 Oak Street|     Chicago|    Illinois|      60601|    USA|      true|2025-06-08 19:23:28|     us|postgres|
+|         5|          3|    shipping|  654 Pine Avenue|     Chicago|    Illinois|      60602|    USA|     false|2025-06-08 19:23:28|     us|postgres|
+|         6|          4|     billing|    987 Elm Drive|     Houston|       Texas|      77001|    USA|      true|2025-06-08 19:23:28|     us|postgres|
+|         7|          5|     billing|   147 Maple Lane|     Phoenix|     Arizona|      85001|    USA|      true|2025-06-08 19:23:28|     us|postgres|
+|         8|          6|     billing|  258 Cedar Court|Philadelphia|Pennsylvania|      19101|    USA|      true|2025-06-08 19:23:28|     us|postgres|
+|         9|          7|     billing|   369 Birch Road| San Antonio|       Texas|      78201|    USA|      true|2025-06-08 19:23:28|     us|postgres|
+|        10|          8|     billing|741 Walnut Street|   San Diego|  California|      92101|    USA|      true|2025-06-08 19:23:28|     us|postgres|
++----------+-----------+------------+-----------------+------------+------------+-----------+-------+----------+-------------------+-------+--------+
+only showing top 10 rows
+[2025-06-09T07:24:56.812+0000] {logging_mixin.py:188} INFO - Successfully processed 54 records for customer_addresses in us
+[2025-06-09T07:24:57.037+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'us', 'table': 'customer_addresses', 'record_count': 54, 'status': 'success'}
+[2025-06-09T07:24:57.148+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_processor_7, task_id=process_region_us.process_customer_addresses_us, execution_date=20250609T072336, start_date=20250609T072421, end_date=20250609T072457
+[2025-06-09T07:24:57.290+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-09T07:24:57.411+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check

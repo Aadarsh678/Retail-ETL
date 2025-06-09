@@ -1,0 +1,97 @@
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import (
+    col, lit, when, coalesce, to_timestamp
+)
+
+spark = SparkSession.builder.appName("NormalizeMarketingCampaigns").getOrCreate()
+spark.conf.set("spark.sql.legacy.timeParserPolicy", "LEGACY")
+
+def safe_to_timestamp_multi_formats(date_col):
+    return coalesce(
+        to_timestamp(date_col, 'yyyy-MM-dd HH:mm:ss'),
+        to_timestamp(date_col, 'yyyy-MM-dd'),
+        to_timestamp(date_col, 'MM/dd/yyyy'),
+        to_timestamp(date_col, 'dd-MM-yyyy'),
+        to_timestamp(date_col, 'dd/MM/yyyy'),
+        to_timestamp(date_col, 'yyyy/MM/dd')
+    )
+
+# ASIA
+def transform_marketing_campaigns_asia(df):
+    return df.select(
+        col("campaign_id"),
+        col("name").alias("campaign_name"),
+        col("type").alias("campaign_type"),
+        col("channel"),
+        col("start_dt").alias("start_date"),
+        col("end_dt").alias("end_date"),
+        (col("budget_jpy").cast("double") / 100).alias("budget"),  # normalize to float
+        col("target").alias("target_audience"),
+        col("status").alias("campaign_status"),
+        lit(None).cast("boolean").alias("gdpr_compliant"),  # missing in ASIA
+        safe_to_timestamp_multi_formats(col("created")).alias("created_at"),
+        lit("asia").alias("_region"),
+        col("_source")
+    )
+
+# EU
+def transform_marketing_campaigns_eu(df):
+    return df.select(
+        col("campaign_id"),
+        col("campaign_name"),
+        col("campaign_type"),
+        col("channel"),
+        col("start_date"),
+        col("end_date"),
+        col("budget_eur").cast("double").alias("budget"),
+        col("target_audience"),
+        col("campaign_status"),
+        col("gdpr_compliant"),
+        safe_to_timestamp_multi_formats(col("created_at")).alias("created_at"),
+        lit("eu").alias("_region"),
+        col("_source")
+    )
+
+# US
+def transform_marketing_campaigns_us(df):
+    return df.select(
+        col("campaign_id"),
+        col("campaign_name"),
+        col("campaign_type"),
+        col("channel"),
+        col("start_date"),
+        col("end_date"),
+        col("budget_usd").cast("double").alias("budget"),
+        col("target_audience"),
+        col("campaign_status"),
+        lit(None).cast("boolean").alias("gdpr_compliant"),  # missing in US
+        safe_to_timestamp_multi_formats(col("created_at")).alias("created_at"),
+        lit("us").alias("_region"),
+        col("_source")
+    )
+
+regions = ["asia", "eu", "us"]
+load_date = "2025-06-05"
+base_raw_path = "/opt/airflow/data/raw/"
+
+for region in regions:
+    input_path = f"{base_raw_path}region={region}/table=marketing_campaigns/load_date={load_date}/"
+    print(f"\n=== Reading data for region: {region} ===")
+    df_raw = spark.read.parquet(input_path)
+
+    print(f"\n--- Raw Data for {region.upper()} ---")
+    df_raw.show(truncate=False)
+
+    if region == "asia":
+        df_transformed = transform_marketing_campaigns_asia(df_raw)
+    elif region == "eu":
+        df_transformed = transform_marketing_campaigns_eu(df_raw)
+    elif region == "us":
+        df_transformed = transform_marketing_campaigns_us(df_raw)
+    else:
+        raise ValueError(f"Unsupported region: {region}")
+
+    print(f"\n--- Transformed Data for {region.upper()} ---")
+    df_transformed.show(truncate=False, vertical=True)
+
+print("Marketing campaign transformations completed.")

@@ -1,0 +1,3 @@
+api_url: "https://api.exchangerate-api.com/v4/latest/USD"
+base_currency: "USD"
+timeout: 10

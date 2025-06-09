@@ -1,0 +1,30 @@
+[2025-06-06T09:03:15.396+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.extractions.run_extraction scheduled__2025-06-05T00:00:00+00:00 map_index=25 [queued]>
+[2025-06-06T09:03:15.545+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.extractions.run_extraction scheduled__2025-06-05T00:00:00+00:00 map_index=25 [queued]>
+[2025-06-06T09:03:15.545+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-06T09:03:15.590+0000] {taskinstance.py:2191} INFO - Executing <Mapped(_PythonDecoratedOperator): extractions.run_extraction> on 2025-06-05 00:00:00+00:00
+[2025-06-06T09:03:15.612+0000] {standard_task_runner.py:60} INFO - Started process 3238 to run task
+[2025-06-06T09:03:15.625+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'extract_postgres_table_to_parquet', 'extractions.run_extraction', 'scheduled__2025-06-05T00:00:00+00:00', '--job-id', '62', '--raw', '--subdir', 'DAGS_FOLDER/asia/landing.py', '--cfg-path', '/tmp/tmp8t3w_h0e', '--map-index', '25']
+[2025-06-06T09:03:15.636+0000] {standard_task_runner.py:88} INFO - Job 62: Subtask extractions.run_extraction
+[2025-06-06T09:03:15.973+0000] {task_command.py:423} INFO - Running <TaskInstance: extract_postgres_table_to_parquet.extractions.run_extraction scheduled__2025-06-05T00:00:00+00:00 map_index=25 [running]> on host 59a35f77855d
+[2025-06-06T09:03:16.903+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='extract_postgres_table_to_parquet' AIRFLOW_CTX_TASK_ID='extractions.run_extraction' AIRFLOW_CTX_EXECUTION_DATE='2025-06-05T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-05T00:00:00+00:00'
+[2025-06-06T09:03:16.935+0000] {logging_mixin.py:188} INFO - Starting extraction for table: shopping_carts in region: eu
+[2025-06-06T09:03:17.042+0000] {logging_mixin.py:188} INFO - [INFO] No variable found. Using default: 2000-01-01 00:00:00.000
+[2025-06-06T09:04:16.186+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/asia/landing.py", line 42, in run_extraction
+    extract_postgres_table(
+  File "/opt/airflow/dags/asia/../../scripts/pyspark_jobs/extract_to_parquet.py", line 39, in extract_postgres_table
+    timestamp_col = TABLE_CONFIG[table]["regions"][region]["timestamp_column"]
+KeyError: 'shopping_carts'
+[2025-06-06T09:04:18.073+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=extract_postgres_table_to_parquet, task_id=extractions.run_extraction, map_index=25, execution_date=20250605T000000, start_date=20250606T090315, end_date=20250606T090417
+[2025-06-06T09:04:20.683+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 62 for task extractions.run_extraction ('shopping_carts'; 3238)
+[2025-06-06T09:04:20.870+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-06-06T09:04:27.089+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

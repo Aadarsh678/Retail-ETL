@@ -1,0 +1,12 @@
+[2025-06-09T04:19:15.550+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_asia.process_customers_asia manual__2025-06-09T04:18:54.341856+00:00 [queued]>
+[2025-06-09T04:19:15.579+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_asia.process_customers_asia manual__2025-06-09T04:18:54.341856+00:00 [queued]>
+[2025-06-09T04:19:15.580+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-09T04:19:15.647+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_asia.process_customers_asia> on 2025-06-09 04:18:54.341856+00:00
+[2025-06-09T04:19:15.659+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-09T04:19:15.659+0000] {standard_task_runner.py:60} INFO - Started process 23090 to run task
+[2025-06-09T04:19:15.668+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_processor_7', 'process_region_asia.process_customers_asia', 'manual__2025-06-09T04:18:54.341856+00:00', '--job-id', '112', '--raw', '--subdir', 'DAGS_FOLDER/master2.py', '--cfg-path', '/tmp/tmpkjxf2jd_']
+[2025-06-09T04:19:15.671+0000] {standard_task_runner.py:88} INFO - Job 112: Subtask process_region_asia.process_customers_asia
+[2025-06-09T04:19:15.738+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-09T04:19:15.858+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_processor_7.process_region_asia.process_customers_asia manual__2025-06-09T04:18:54.341856+00:00 [running]> on host 847c6af56c4f
+[2025-06-09T04:19:16.213+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_processor_7' AIRFLOW_CTX_TASK_ID='process_region_asia.process_customers_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T04:18:54.341856+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-09T04:18:54.341856+00:00'
+[2025-06-09T04:19:16.267+0000] {logging_mixin.py:188} INFO - Processing customers for region asia

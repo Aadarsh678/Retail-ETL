@@ -1,0 +1,33 @@
+[2025-06-09T08:44:19.494+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_us.process_discounts_us manual__2025-06-09T08:34:23.510298+00:00 [queued]>
+[2025-06-09T08:44:19.545+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_us.process_discounts_us manual__2025-06-09T08:34:23.510298+00:00 [queued]>
+[2025-06-09T08:44:19.546+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-09T08:44:19.590+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_us.process_discounts_us> on 2025-06-09 08:34:23.510298+00:00
+[2025-06-09T08:44:19.609+0000] {standard_task_runner.py:60} INFO - Started process 1830 to run task
+[2025-06-09T08:44:19.623+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_processor_7', 'process_region_us.process_discounts_us', 'manual__2025-06-09T08:34:23.510298+00:00', '--job-id', '673', '--raw', '--subdir', 'DAGS_FOLDER/master2.py', '--cfg-path', '/tmp/tmp3amsxsk1']
+[2025-06-09T08:44:19.631+0000] {standard_task_runner.py:88} INFO - Job 673: Subtask process_region_us.process_discounts_us
+[2025-06-09T08:44:19.781+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_processor_7.process_region_us.process_discounts_us manual__2025-06-09T08:34:23.510298+00:00 [running]> on host afcdbcf38bc0
+[2025-06-09T08:44:20.000+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_processor_7' AIRFLOW_CTX_TASK_ID='process_region_us.process_discounts_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T08:34:23.510298+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-09T08:34:23.510298+00:00'
+[2025-06-09T08:44:33.515+0000] {logging_mixin.py:188} INFO - Processing discounts for region us
+[2025-06-09T08:44:46.503+0000] {logging_mixin.py:188} INFO - STAGING_US
+[2025-06-09T08:44:55.882+0000] {logging_mixin.py:188} INFO - +-----------+-------------+--------------------+-------------+--------------+--------------------+-----------------------+-----------+-----------+-------------------+-------------------+---------+-------------------+-------+--------+
+|discount_id|discount_code|       discount_name|discount_type|discount_value|minimum_order_amount|maximum_discount_amount|usage_limit|usage_count|         start_date|           end_date|is_active|         created_at|_region| _source|
++-----------+-------------+--------------------+-------------+--------------+--------------------+-----------------------+-----------+-----------+-------------------+-------------------+---------+-------------------+-------+--------+
+|          1|    WELCOME15|New Customer Welcome|   percentage|          15.0|                50.0|                  150.0|       1000|        287|2024-01-01 00:00:00|2024-12-31 23:59:59|     true|2025-06-08 19:23:28|     us|postgres|
+|          2|    SAVE25NOW|      Save 25% Today|   percentage|          25.0|               100.0|                  250.0|        500|        198|2024-03-01 00:00:00|2024-03-31 23:59:59|    false|2025-06-08 19:23:28|     us|postgres|
+|          3|   FREESHIP75|Free Shipping Ove...|free_shipping|           0.0|                75.0|                   25.0|          0|       1234|2024-01-01 00:00:00|2024-12-31 23:59:59|     true|2025-06-08 19:23:28|     us|postgres|
+|          4|    FLAT50OFF|        Flat $50 Off| fixed_amount|          50.0|               200.0|                   50.0|        300|        156|2024-02-01 00:00:00|2024-02-29 23:59:59|    false|2025-06-08 19:23:28|     us|postgres|
+|          5|BLACKFRIDAY40|Black Friday 40% Off|   percentage|          40.0|               150.0|                  400.0|       2000|       1876|2024-11-25 00:00:00|2024-11-29 23:59:59|    false|2025-06-08 19:23:28|     us|postgres|
+|          6|    STUDENT20|    Student Discount|   percentage|          20.0|                25.0|                  200.0|          0|        456|2024-01-01 00:00:00|2024-12-31 23:59:59|     true|2025-06-08 19:23:28|     us|postgres|
+|          7|     VIP30OFF|  VIP Member 30% Off|   percentage|          30.0|               100.0|                  300.0|       1000|        567|2024-01-01 00:00:00|2024-12-31 23:59:59|     true|2025-06-08 19:23:28|     us|postgres|
+|          8|     SUMMER20|  Summer Special 20%|   percentage|          20.0|                80.0|                  160.0|        750|        423|2024-06-01 00:00:00|2024-08-31 23:59:59|     true|2025-06-08 19:23:28|     us|postgres|
+|          9| FIRST100SAVE|First 100 Custome...| fixed_amount|          30.0|               100.0|                   30.0|        100|        100|2024-01-01 00:00:00|2024-01-31 23:59:59|    false|2025-06-08 19:23:28|     us|postgres|
+|         10|    WEEKEND12| Weekend Special 12%|   percentage|          12.0|                60.0|                  100.0|          0|        789|2024-01-01 00:00:00|2024-12-31 23:59:59|     true|2025-06-08 19:23:28|     us|postgres|
++-----------+-------------+--------------------+-------------+--------------+--------------------+-----------------------+-----------+-----------+-------------------+-------------------+---------+-------------------+-------+--------+
+only showing top 10 rows
+[2025-06-09T08:44:55.883+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-09T08:45:10.699+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-09T08:45:11.897+0000] {logging_mixin.py:188} INFO - Successfully processed 20 records for discounts in us
+[2025-06-09T08:45:13.235+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'us', 'table': 'discounts', 'record_count': 20, 'status': 'success'}
+[2025-06-09T08:45:13.310+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_processor_7, task_id=process_region_us.process_discounts_us, execution_date=20250609T083423, start_date=20250609T084419, end_date=20250609T084513
+[2025-06-09T08:45:13.402+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-09T08:45:13.483+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

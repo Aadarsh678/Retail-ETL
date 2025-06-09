@@ -1,0 +1,86 @@
+from pyspark.sql import SparkSession, DataFrame
+from pyspark.sql.types import StructType
+from pyspark.sql.functions import lit, col, coalesce
+import os
+import json
+
+def load_schema_registry(schema_registry_path: str) -> list[dict]:
+    # Loads all schema version files for the table
+    schema_versions = []
+    for file in sorted(os.listdir(schema_registry_path)):
+        if file.endswith(".json"):
+            with open(os.path.join(schema_registry_path, file)) as f:
+                schema_versions.append(json.load(f))
+    return schema_versions
+
+
+def get_latest_schema(schema_versions: list[dict]) -> StructType:
+    from pyspark.sql.types import StructType, StructField, StringType, IntegerType, TimestampType
+
+    # Build StructType from latest schema definition
+    latest_fields = schema_versions[-1]["fields"]
+    spark_types = {
+        "StringType": StringType(),
+        "IntegerType": IntegerType(),
+        "TimestampType": TimestampType()
+    }
+
+    return StructType([
+        StructField(f["name"], spark_types[f["type"]], f["nullable"])
+        for f in latest_fields
+    ])
+
+
+def align_df_to_schema(df: DataFrame, target_schema: StructType, rename_map: dict = None) -> DataFrame:
+    # Rename legacy columns if needed
+    if rename_map:
+        for legacy_col, new_col in rename_map.items():
+            if legacy_col in df.columns:
+                df = df.withColumnRenamed(legacy_col, new_col)
+
+    # Add missing columns
+    for field in target_schema.fields:
+        if field.name not in df.columns:
+            df = df.withColumn(field.name, lit(None).cast(field.dataType))
+
+    # Select and cast columns in correct order
+    df = df.select([col(field.name).cast(field.dataType) for field in target_schema.fields])
+    return df
+
+
+def load_and_merge_parquet_with_schema(
+    spark: SparkSession,
+    base_path: str,
+    region: str,
+    table: str,
+    load_date: str,
+    schema_registry_path: str,
+    rename_map: dict = None
+) -> DataFrame:
+    """
+    :param spark: SparkSession
+    :param base_path: Base path to parquet files
+    :param region: Region name (e.g., 'asia')
+    :param table: Table name (e.g., 'categories')
+    :param load_date: Load date in 'YYYY-MM-DD'
+    :param schema_registry_path: Path to schema registry JSON files
+    :param rename_map: Optional dict to rename legacy fields
+    :return: Unified Spark DataFrame
+    """
+    full_path = f"{base_path}/region={region}/table={table}/load_date={load_date}"
+    schema_versions = sorted([d for d in os.listdir(full_path) if d.startswith("schema_version=")])
+    registry = load_schema_registry(schema_registry_path)
+    latest_schema = get_latest_schema(registry)
+
+    df_list = []
+    for version_dir in schema_versions:
+        version_path = os.path.join(full_path, version_dir)
+        df = spark.read.parquet(version_path)
+        aligned_df = align_df_to_schema(df, latest_schema, rename_map)
+        df_list.append(aligned_df)
+
+    unified_df = df_list[0]
+    for df in df_list[1:]:
+        unified_df = unified_df.unionByName(df)
+
+    return unified_df

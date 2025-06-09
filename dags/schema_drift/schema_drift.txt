@@ -1,0 +1,37 @@
+from airflow import DAG
+from airflow.operators.bash import BashOperator
+from airflow.utils.dates import days_ago
+from datetime import datetime, timedelta
+
+# Configurable default arguments
+default_args = {
+    'owner': 'airflow',
+    'depends_on_past': False,
+    'email_on_failure': False,
+    'retries': 1,
+    'retry_delay': timedelta(minutes=5),
+}
+
+with DAG(
+    dag_id='schema_evolution_framework',
+    default_args=default_args,
+    description='Run schema evolution PySpark job on raw data',
+    schedule_interval=None,  # Run manually or trigger externally
+    start_date=days_ago(1),
+    catchup=False,
+    params={
+        "region": "asia",
+        "table": "customers",
+        "load_date": datetime.now().strftime("%Y-%m-%d"),
+    },
+) as dag:
+
+    run_schema_evolution_job = BashOperator(
+        task_id='run_schema_evolution',
+        bash_command=(
+            "spark-submit /opt/airflow/scripts/pyspark_jobs/schema_evolution.py "
+            "--region {{ params.region }} "
+            "--table {{ params.table }} "
+            "--load_date {{ params.load_date }}"
+        ),
+    )

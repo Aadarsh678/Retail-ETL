@@ -1,0 +1,13 @@
+postgres:
+  host: "localhost"
+  port: 5432
+  user: "etl_user"
+  dbname: "retail_db"
+  schema: "us"
+
+snowflake:
+  account: "my_account"
+  user: "snowflake_user"
+  warehouse: "COMPUTE_WH"
+  database: "RETAIL"
+  schema: "STAGING"

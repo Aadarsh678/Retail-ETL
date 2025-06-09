@@ -1,0 +1,33 @@
+[2025-06-09T08:50:33.144+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_us.process_cart_items_us manual__2025-06-09T08:34:23.510298+00:00 [queued]>
+[2025-06-09T08:50:33.178+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_us.process_cart_items_us manual__2025-06-09T08:34:23.510298+00:00 [queued]>
+[2025-06-09T08:50:33.179+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-09T08:50:33.225+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_us.process_cart_items_us> on 2025-06-09 08:34:23.510298+00:00
+[2025-06-09T08:50:33.240+0000] {standard_task_runner.py:60} INFO - Started process 11510 to run task
+[2025-06-09T08:50:33.246+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_processor_7', 'process_region_us.process_cart_items_us', 'manual__2025-06-09T08:34:23.510298+00:00', '--job-id', '713', '--raw', '--subdir', 'DAGS_FOLDER/master2.py', '--cfg-path', '/tmp/tmpb0oocp65']
+[2025-06-09T08:50:33.249+0000] {standard_task_runner.py:88} INFO - Job 713: Subtask process_region_us.process_cart_items_us
+[2025-06-09T08:50:33.390+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_processor_7.process_region_us.process_cart_items_us manual__2025-06-09T08:34:23.510298+00:00 [running]> on host afcdbcf38bc0
+[2025-06-09T08:50:33.649+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_processor_7' AIRFLOW_CTX_TASK_ID='process_region_us.process_cart_items_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T08:34:23.510298+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-09T08:34:23.510298+00:00'
+[2025-06-09T08:50:46.925+0000] {logging_mixin.py:188} INFO - Processing cart_items for region us
+[2025-06-09T08:50:59.328+0000] {logging_mixin.py:188} INFO - STAGING_US
+[2025-06-09T08:51:06.969+0000] {logging_mixin.py:188} INFO - +------------+-------+----------+--------+--------------+-------------------+-------------------+-------+--------+
+|cart_item_id|cart_id|variant_id|quantity|unit_price_usd|           added_at|         updated_at|_region| _source|
++------------+-------+----------+--------+--------------+-------------------+-------------------+-------+--------+
+|           1|      1|         2|       1|       1199.99|2025-06-08 19:23:28|2025-06-08 19:23:28|     us|postgres|
+|           2|      1|         8|       2|         24.99|2025-06-08 19:23:28|2025-06-08 19:23:28|     us|postgres|
+|           3|      2|        15|       1|       1449.99|2025-06-08 19:23:28|2025-06-08 19:23:28|     us|postgres|
+|           4|      3|        19|       1|        129.99|2025-06-08 19:23:28|2025-06-08 19:23:28|     us|postgres|
+|           5|      4|         6|       1|        399.99|2025-06-08 19:23:28|2025-06-08 19:23:28|     us|postgres|
+|           6|      5|        13|       1|        899.99|2025-06-08 19:23:28|2025-06-08 19:23:28|     us|postgres|
+|           1|      1|         2|       1|       1199.99|2025-06-08 19:23:28|2025-06-08 19:23:28|     us|postgres|
+|           2|      1|         8|       2|         24.99|2025-06-08 19:23:28|2025-06-08 19:23:28|     us|postgres|
+|           3|      2|        15|       1|       1449.99|2025-06-08 19:23:28|2025-06-08 19:23:28|     us|postgres|
+|           4|      3|        19|       1|        129.99|2025-06-08 19:23:28|2025-06-08 19:23:28|     us|postgres|
++------------+-------+----------+--------+--------------+-------------------+-------------------+-------+--------+
+only showing top 10 rows
+[2025-06-09T08:51:06.970+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-09T08:53:20.123+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-09T08:53:21.127+0000] {logging_mixin.py:188} INFO - Successfully processed 12 records for cart_items in us
+[2025-06-09T08:53:22.589+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'us', 'table': 'cart_items', 'record_count': 12, 'status': 'success'}
+[2025-06-09T08:53:22.625+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_processor_7, task_id=process_region_us.process_cart_items_us, execution_date=20250609T083423, start_date=20250609T085033, end_date=20250609T085322
+[2025-06-09T08:53:22.660+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-09T08:53:22.695+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check

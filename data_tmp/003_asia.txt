@@ -1,0 +1,298 @@
+#!/bin/bash
+
+psql -U "$POSTGRES_USER" -d retail_etl <<'EOF'
+BEGIN;
+-- Insert Categories with varied naming conventions
+INSERT INTO asia.categories (name, parent_id, path, active_flag, create_time) VALUES
+('Electronics', NULL, '/Electronics', 'Y', '2024-01-01 09:00:00'),
+('SMARTPHONES', 1, '/Electronics/Smartphones', 'Y', '2024/01/02 10:30:45'),
+('laptops', 1, '/Electronics/Laptops', 'Y', '01-03-2024 14:25:30'),
+('Gaming Devices', 1, '/Electronics/Gaming', 'Y', '2024.01.04 16:15:00'),
+('CLOTHING', NULL, '/Clothing', 'Y', '05/01/2024 08:45:20'),
+('mens fashion', 5, '/Clothing/Mens', 'Y', '2024-01-06'),
+('WOMENS FASHION', 5, '/Clothing/Womens', 'Y', '07/01/2024'),
+('Home & Living', NULL, '/Home-Living', 'Y', '2024-01-08 11:20:15'),
+('furniture', 8, '/Home-Living/Furniture', 'Y', '09-01-2024'),
+('BOOKS', NULL, '/Books', 'Y', '2024/01/10'),
+('beauty & cosmetics', NULL, '/Beauty-Cosmetics', 'Y', '11.01.2024'),
+('Sports Equipment', NULL, '/Sports', 'Y', '2024-01-12 13:40:25'),
+('automotive', NULL, '/Automotive', 'N', '13/01/2024 09:15:30'),
+('TOYS & HOBBIES', NULL, '/Toys-Hobbies', 'Y', '2024.01.14'),
+('jewelry & accessories', NULL, '/Jewelry-Accessories', 'Y', '15-01-2024 10:50:40');
+
+-- Insert Products with varied data and date formats
+INSERT INTO asia.products (item_code, name, description, cat_id, price_jpy, cost_jpy, weight_g, size_info, active_status, create_date) VALUES
+('JP-ITEM-001', 'iPhone 15 Pro', 'Latest Apple smartphone with advanced features', 2, 149800, 95000, 187.5, '146.7mm x 71.5mm x 7.8mm', 'ACTIVE', '2024-01-15 08:30:45'),
+('JP-ITEM-002', 'MACBOOK AIR M2', 'Apple MacBook Air with M2 chip', 3, 158000, 98000, 1240.0, '304.1mm x 215mm x 11.3mm', 'ACTIVE', '2024/01/16 10:15:20'),
+('JP-ITEM-003', 'playstation 5', 'Sony PlayStation 5 gaming console', 4, 59800, 42000, 4500.0, '390mm x 260mm x 104mm', 'ACTIVE', '17-01-2024 13:45:30'),
+('JP-ITEM-004', 'Cotton T-Shirt', 'Premium cotton t-shirt for men', 6, 3500, 1200, 180.0, 'Various sizes', 'ACTIVE', '2024.01.18 15:20:10'),
+('JP-ITEM-005', 'SUMMER DRESS', 'Elegant summer dress for women', 7, 8900, 3500, 300.0, 'Various sizes', 'ACTIVE', '19/01/2024 09:40:25'),
+('JP-ITEM-006', 'leather sofa', 'Premium leather 3-seater sofa', 9, 198000, 95000, 85000.0, '2200mm x 900mm x 850mm', 'ACTIVE', '2024-01-20'),
+('JP-ITEM-007', 'MANGA COLLECTION', 'Complete manga series collection', 10, 12500, 6000, 2500.0, '180mm x 120mm x 200mm', 'ACTIVE', '21/01/2024'),
+('JP-ITEM-008', 'facial serum', 'Premium anti-aging facial serum', 11, 9800, 3000, 50.0, '120mm x 40mm x 40mm', 'ACTIVE', '2024/01/22 11:30:15'),
+('JP-ITEM-009', 'MOUNTAIN BIKE', 'Professional mountain bike', 12, 89000, 45000, 12500.0, '1700mm x 650mm x 1100mm', 'ACTIVE', '23-01-2024 14:25:30'),
+('JP-ITEM-010', 'gundam model kit', 'Detailed Gundam plastic model kit', 14, 4500, 2200, 350.0, '300mm x 250mm x 100mm', 'ACTIVE', '2024.01.24 16:50:20'),
+('JP-ITEM-011', 'PEARL NECKLACE', 'Cultured pearl necklace with silver clasp', 15, 25000, 12000, 45.0, '450mm length', 'ACTIVE', '25/01/2024 10:15:40'),
+('JP-ITEM-012', 'rice cooker', 'Advanced fuzzy logic rice cooker', 8, 18500, 9000, 3500.0, '250mm x 300mm x 200mm', 'ACTIVE', '2024-01-26 12:40:15'),
+('JP-ITEM-013', 'ANDROID PHONE', 'Latest Android smartphone with AI features', 2, 98000, 60000, 195.0, '158mm x 73mm x 8.2mm', 'ACTIVE', '27/01/2024 15:20:30'),
+('JP-ITEM-014', 'wireless earbuds', 'Noise-cancelling wireless earbuds', 1, 19800, 8500, 58.0, '60mm x 50mm x 25mm', 'ACTIVE', '2024/01/28 09:45:10'),
+('JP-ITEM-015', 'TABLET DEVICE', 'High-performance tablet with stylus support', 1, 65000, 38000, 460.0, '250mm x 175mm x 6.3mm', 'ACTIVE', '29-01-2024 11:30:25'),
+('JP-ITEM-016', NULL, 'Discontinued product with missing name', 13, 12000, 6000, 750.0, 'Unknown dimensions', 'DISCONTINUED', '2024.01.30'),
+('JP-ITEM-017', 'limited edition watch', 'Special edition luxury watch', 15, 350000, 180000, 120.0, '42mm diameter x 12mm thickness', 'OUT_OF_STOCK', '31/01/2024');
+
+-- Insert Product Variants with varied data
+INSERT INTO asia.product_variants (product_id, sku, variant_name, variant_type, variant_value, price_diff_jpy, status, created) VALUES
+(1, 'JP-ITEM-001-BLACK-128GB', 'iPhone 15 Pro Black 128GB', 'color_storage', 'Black 128GB', 0, 'ACTIVE', '2024-02-01 08:30:00'),
+(1, 'JP-ITEM-001-BLUE-256GB', 'iPhone 15 Pro Blue 256GB', 'color_storage', 'Blue 256GB', 20000, 'ACTIVE', '2024/02/01 09:45:15'),
+(1, 'JP-ITEM-001-WHITE-512GB', 'iPhone 15 Pro White 512GB', 'color_storage', 'White 512GB', 40000, 'ACTIVE', '01-02-2024 11:20:30'),
+(2, 'JP-ITEM-002-SILVER-8GB', 'MacBook Air Silver 8GB', 'color_memory', 'Silver 8GB', 0, 'ACTIVE', '2024.02.02 13:15:45'),
+(2, 'JP-ITEM-002-GOLD-16GB', 'MacBook Air Gold 16GB', 'color_memory', 'Gold 16GB', 30000, 'ACTIVE', '03/02/2024 15:40:10'),
+(3, 'JP-ITEM-003-STANDARD', 'PlayStation 5 Standard', 'edition', 'Standard', 0, 'ACTIVE', '2024-02-04'),
+(3, 'JP-ITEM-003-DIGITAL', 'PlayStation 5 Digital', 'edition', 'Digital', -10000, 'ACTIVE', '05/02/2024'),
+(4, 'JP-ITEM-004-RED-M', 'Cotton T-Shirt Red Medium', 'color_size', 'Red M', 0, 'ACTIVE', '2024/02/06 10:25:30'),
+(4, 'JP-ITEM-004-BLUE-L', 'Cotton T-Shirt Blue Large', 'color_size', 'Blue L', 500, 'ACTIVE', '07-02-2024 12:50:15'),
+(4, 'JP-ITEM-004-BLACK-XL', 'Cotton T-Shirt Black XL', 'color_size', 'Black XL', 1000, 'ACTIVE', '2024.02.08 14:35:20'),
+(5, 'JP-ITEM-005-FLORAL-S', 'Summer Dress Floral Small', 'pattern_size', 'Floral S', 0, 'ACTIVE', '09/02/2024 09:15:40'),
+(5, 'JP-ITEM-005-SOLID-M', 'Summer Dress Solid Medium', 'pattern_size', 'Solid M', 0, 'ACTIVE', '2024-02-10 11:30:25'),
+(5, 'JP-ITEM-005-STRIPE-L', 'Summer Dress Stripe Large', 'pattern_size', 'Stripe L', 1500, 'ACTIVE', '11/02/2024 13:45:10'),
+(6, 'JP-ITEM-006-BROWN', 'Leather Sofa Brown', 'color', 'Brown', 0, 'ACTIVE', '2024/02/12 15:20:35'),
+(6, 'JP-ITEM-006-BLACK', 'Leather Sofa Black', 'color', 'Black', 15000, 'ACTIVE', '13-02-2024 08:40:50'),
+(7, 'JP-ITEM-007-COMPLETE', 'Manga Collection Complete Set', 'edition', 'Complete', 0, 'ACTIVE', '2024.02.14 10:15:30'),
+(7, 'JP-ITEM-007-DELUXE', 'Manga Collection Deluxe Edition', 'edition', 'Deluxe', 5000, 'ACTIVE', '15/02/2024 12:30:45'),
+(8, 'JP-ITEM-008-30ML', 'Facial Serum 30ml', 'size', '30ml', 0, 'ACTIVE', '2024-02-16 14:55:20'),
+(8, 'JP-ITEM-008-50ML', 'Facial Serum 50ml', 'size', '50ml', 3000, 'ACTIVE', '17/02/2024 16:40:15'),
+(9, 'JP-ITEM-009-RED-M', 'Mountain Bike Red Medium', 'color_size', 'Red M', 0, 'ACTIVE', '2024/02/18 09:25:30'),
+(9, 'JP-ITEM-009-BLUE-L', 'Mountain Bike Blue Large', 'color_size', 'Blue L', 5000, 'ACTIVE', '19-02-2024 11:50:45'),
+(10, 'JP-ITEM-010-BASIC', 'Gundam Model Kit Basic', 'edition', 'Basic', 0, 'ACTIVE', '2024.02.20 13:35:10'),
+(10, 'JP-ITEM-010-PREMIUM', 'Gundam Model Kit Premium', 'edition', 'Premium', 2500, 'ACTIVE', '21/02/2024 15:20:35');
+
+-- Insert Inventory data with varied date formats
+INSERT INTO asia.inventory (variant_id, warehouse, qty_available, qty_reserved, reorder_point, last_restock, updated) VALUES
+(1, 'TOKYO-01', 120, 25, 40, '2024-02-22 08:30:15', '2024-02-22 08:30:15'),
+(2, 'TOKYO-01', 80, 15, 30, '2024/02/23 10:45:30', '2024/02/23 10:45:30'),
+(3, 'OSAKA-02', 60, 10, 20, '24-02-2024 13:20:45', '24-02-2024 13:20:45'),
+(4, 'NAGOYA-03', 180, 30, 50, '2024.02.25 15:35:10', '2024.02.25 15:35:10'),
+(5, 'NAGOYA-03', 140, 25, 45, '26/02/2024 09:10:25', '26/02/2024 09:10:25'),
+(6, 'TOKYO-01', 90, 18, 35, '2024-02-27 11:45:40', '2024-02-27 11:45:40'),
+(7, 'FUKUOKA-04', 70, 12, 25, '2024/02/28 14:30:15', '2024/02/28 14:30:15'),
+(8, 'OSAKA-02', 250, 45, 75, '29-02-2024 16:15:30', '29-02-2024 16:15:30'),
+(9, 'TOKYO-01', 170, 30, 50, '2024.03.01 08:40:45', '2024.03.01 08:40:45'),
+(10, 'NAGOYA-03', 210, 40, 65, '02/03/2024 10:25:20', '02/03/2024 10:25:20'),
+(11, 'FUKUOKA-04', 100, 20, 35, '2024-03-03 12:50:35', '2024-03-03 12:50:35'),
+(12, 'OSAKA-02', 120, 25, 40, '2024/03/04 15:15:10', '2024/03/04 15:15:10'),
+(13, 'TOKYO-01', 150, 30, 45, '05-03-2024 08:30:25', '05-03-2024 08:30:25'),
+(14, 'NAGOYA-03', 85, 15, 30, '2024.03.06 10:45:40', '2024.03.06 10:45:40'),
+(15, 'FUKUOKA-04', 40, 8, 15, '07/03/2024 13:20:15', '07/03/2024 13:20:15'),
+(16, 'OSAKA-02', 380, 70, 110, '2024-03-08 15:35:30', '2024-03-08 15:35:30'),
+(17, 'TOKYO-01', 320, 60, 95, '2024/03/09 09:10:45', '2024/03/09 09:10:45'),
+(18, 'NAGOYA-03', 90, 18, 30, '10-03-2024 11:45:20', '10-03-2024 11:45:20'),
+(19, 'FUKUOKA-04', 130, 25, 45, '2024.03.11 14:30:35', '2024.03.11 14:30:35'),
+(20, 'OSAKA-02', 50, 10, 20, '12/03/2024 16:15:10', '12/03/2024 16:15:10'),
+(21, 'TOKYO-01', 75, 15, 25, '2024-03-13 08:40:25', '2024-03-13 08:40:25'),
+(22, 'NAGOYA-03', 110, 22, 35, '2024/03/14 10:25:40', '2024/03/14 10:25:40');
+
+-- Insert Customers with varied email, phone formats, and date formats
+INSERT INTO asia.customers (email, fname, lname, phone, birth_date, sex, reg_date, login_time, segment, source, created) VALUES
+-- Valid emails and phones
+('tanaka.yuki@email.jp', 'YUKI', 'TANAKA', '+81-3-1234-5678', '1985-04-12', 'M', '2024-01-15 09:30:45', '2024-02-20 14:25:30', 'premium', 'organic', '2024-01-15 09:30:45'),
+('sato.hanako@gmail.com', 'hanako', 'sato', '+81-6-8765-4321', '1990/07/22', 'F', '2024/01/16 11:45:20', '2024/02/21 16:40:15', 'regular', 'social_media', '2024-01-16 11:45:20'),
+('SUZUKI.TARO@YAHOO.CO.JP', 'Taro', 'SUZUKI', '+81-52-2345-6789', '15-05-1982', 'Male', '17-01-2024 13:20:35', '22-02-2024 09:15:40', 'new', 'referral', '2024-01-17 13:20:35'),
+('yamada.keiko@hotmail.com', 'Keiko', 'yamada', '+81-92-3456-7890', '1988.06.18', 'Female', '2024.01.18 15:35:10', '2024.02.23 11:30:25', 'regular', 'paid_ads', '2024-01-18 15:35:10'),
+('WATANABE.AKIRA@OUTLOOK.JP', 'akira', 'WATANABE', '+81-11-4567-8901', '25/09/1975', 'M', '19/01/2024 08:50:25', '24/02/2024 13:45:10', 'premium', 'email_campaign', '2024-01-19 08:50:25'),
+
+-- Invalid emails but valid phones
+('invalid.email.jp', 'Yumiko', 'Nakamura', '+81-3-5678-9012', '1992-01-30', 'F', '2024-01-20 10:15:40', '2024-02-25 15:20:35', 'regular', 'organic', '2024-01-20 10:15:40'),
+('@missing-local.jp', 'HIROSHI', 'ito', '+81-6-6789-0123', '1980/12/05', 'M', '2024/01/21 12:30:15', '2024/02/26 08:40:50', 'new', 'social_media', '2024-01-21 12:30:15'),
+('no-at-symbol.gmail.com', 'ayumi', 'KATO', '+81-52-7890-1234', '10-04-1987', 'Female', '22-01-2024 14:45:30', '27-02-2024 10:15:30', 'regular', 'referral', '2024-01-22 14:45:30'),
+('double@@email.jp', 'Takashi', 'saito', '+81-92-8901-2345', '1983.08.14', 'Male', '2024.01.23 16:20:45', '2024.02.28 12:30:45', 'premium', 'paid_ads', '2024-01-23 16:20:45'),
+('spaces in@email.jp', 'MIZUKI', 'KOBAYASHI', '+81-11-9012-3456', '03/06/1991', 'F', '24/01/2024 09:35:20', '29/02/2024 14:55:20', 'regular', 'email_campaign', '2024-01-24 09:35:20'),
+
+-- Valid emails but invalid phones
+('endo.kazuki@email.jp', 'kazuki', 'endo', '03-1234', '1986-10-20', 'M', '2024-01-25 11:50:35', '2024-03-01 16:40:15', 'new', 'organic', '2024-01-25 11:50:35'),
+('MATSUDA.RINA@GMAIL.COM', 'Rina', 'MATSUDA', 'not-a-phone', '1989/02/14', 'F', '2024/01/26 14:15:10', '2024/03/02 09:25:30', 'regular', 'social_media', '2024-01-26 14:15:10'),
+('kimura.daiki@yahoo.co.jp', 'Daiki', 'kimura', '+81-abc-def-ghij', '09-07-1984', 'Male', '27-01-2024 16:30:25', '03-03-2024 11:50:45', 'premium', 'referral', '2024-01-27 16:30:25'),
+('YOSHIDA.AIKO@HOTMAIL.COM', 'aiko', 'YOSHIDA', '++81-3-1234-5678', '1993.03.28', 'Female', '2024.01.28 08:45:40', '2024.03.04 13:35:10', 'regular', 'paid_ads', '2024-01-28 08:45:40'),
+('ikeda.ryo@gmail.com', 'Ryo', 'ikeda', '81-3-', '16/11/1981', 'M', '29/01/2024 10:20:15', '05/03/2024 15:20:35', 'new', 'email_campaign', '2024-01-29 10:20:15'),
+
+-- Both invalid
+('invalid@', 'SAKURA', 'hayashi', 'invalid-phone', '1990-09-12', 'F', '2024-01-30 12:35:30', '2024-03-06 08:40:50', 'regular', 'organic', '2024-01-30 12:35:30'),
+('.jp@domain', 'takuma', 'SASAKI', '03-', '1985/05/07', 'M', '2024/01/31 14:50:45', '2024/03/07 10:15:30', 'new', 'social_media', '2024-01-31 14:50:45'),
+('user@.jp', 'Momoko', 'yamaguchi', '+81-3-abc', '22-12-1988', 'Female', '01-02-2024 16:25:20', '08-03-2024 12:30:45', 'regular', 'referral', '2024-02-01 16:25:20'),
+('multiple@at@signs.jp', 'HARUTO', 'ishikawa', '03-1234-', '1982.08.01', 'Male', '2024.02.02 09:40:35', '2024.03.09 14:55:20', 'premium', 'paid_ads', '2024-02-02 09:40:35'),
+('user@domain.', 'nanami', 'INOUE', 'phone123', '18/04/1987', 'F', '03/02/2024 11:15:10', '10/03/2024 16:40:15', 'regular', 'email_campaign', '2024-02-03 11:15:10'),
+
+-- Additional valid customers with varied data
+('takahashi.sota@web.jp', 'Sota', 'Takahashi', '+81-3-1111-2222', '1979-06-25', 'M', '2024-02-04 13:30:25', '2024-03-11 09:25:30', 'premium', 'organic', '2024-02-04 13:30:25'),
+('MIYAZAKI.HINA@DOCOMO.NE.JP', 'hina', 'MIYAZAKI', '+81-6-3333-4444', '1994/01/10', 'F', '2024/02/05 15:45:40', '2024/03/12 11:50:45', 'regular', 'social_media', '2024-02-05 15:45:40'),
+('kondo.yuto@company.jp', 'Yuto', 'kondo', '+81-52-5555-6666', '05-10-1986', 'Male', '06-02-2024 08:20:15', '13-03-2024 13:35:10', 'new', 'referral', '2024-02-06 08:20:15'),
+('HASEGAWA.YUNA@MAIL.JP', 'yuna', 'HASEGAWA', '+81-92-7777-8888', '1991.07.30', 'Female', '2024.02.07 10:35:30', '2024.03.14 15:20:35', 'regular', 'paid_ads', '2024-02-07 10:35:30'),
+('fujita.ren@email.ne.jp', 'Ren', 'fujita', '+81-11-9999-0000', '17/02/1983', 'M', '08/02/2024 12:50:45', '15/03/2024 08:40:50', 'premium', 'email_campaign', '2024-02-08 12:50:45');
+
+
+-- Insert Customer Addresses
+INSERT INTO asia.customer_addresses (cust_id, addr_type, street, city, prefecture, postal, country, is_default) VALUES
+(1, 'billing', '1-2-3 Chiyoda', 'Tokyo', 'Tokyo', '100-0001', 'Japan', 'Y'),
+(1, 'shipping', '4-5-6 Minato', 'Tokyo', 'Tokyo', '105-0001', 'Japan', 'N'),
+(2, 'billing', '7-8-9 Naniwa', 'Osaka', 'Osaka', '556-0001', 'Japan', 'Y'),
+(3, 'billing', '10-11-12 Nakamura', 'Nagoya', 'Aichi', '450-0001', 'Japan', 'Y'),
+(3, 'shipping', '13-14-15 Higashi', 'Nagoya', 'Aichi', '461-0001', 'Japan', 'N'),
+(4, 'billing', '16-17-18 Hakata', 'Fukuoka', 'Fukuoka', '812-0011', 'Japan', 'Y'),
+(5, 'billing', '19-20-21 Chuo', 'Sapporo', 'Hokkaido', '060-0001', 'Japan', 'Y'),
+(6, 'billing', '22-23-24 Aoba', 'Yokohama', 'Kanagawa', '225-0001', 'Japan', 'Y'),
+(7, 'billing', '25-26-27 Nishi', 'Kobe', 'Hyogo', '651-0001', 'Japan', 'Y'),
+(8, 'billing', '28-29-30 Kita', 'Kyoto', 'Kyoto', '603-8001', 'Japan', 'Y'),
+(9, 'billing', '31-32-33 Miyakojima', 'Osaka', 'Osaka', '534-0001', 'Japan', 'Y'),
+(10, 'billing', '34-35-36 Naka', 'Hiroshima', 'Hiroshima', '730-0001', 'Japan', 'Y'),
+(11, 'billing', '37-38-39 Wakabayashi', 'Sendai', 'Miyagi', '984-0001', 'Japan', 'Y'),
+(12, 'billing', '40-41-42 Chuo', 'Kumamoto', 'Kumamoto', '860-0001', 'Japan', 'Y'),
+(13, 'billing', '43-44-45 Higashi', 'Okayama', 'Okayama', '703-8001', 'Japan', 'Y'),
+(14, 'billing', '46-47-48 Minami', 'Kagoshima', 'Kagoshima', '892-0001', 'Japan', 'Y'),
+(15, 'billing', '49-50-51 Nishi', 'Niigata', 'Niigata', '950-2001', 'Japan', 'Y'),
+(16, 'billing', '52-53-54 Kita', 'Shizuoka', 'Shizuoka', '420-0001', 'Japan', 'Y'),
+(17, 'billing', '55-56-57 Chuo', 'Matsuyama', 'Ehime', '790-0001', 'Japan', 'Y'),
+(18, 'billing', '58-59-60 Higashi', 'Utsunomiya', 'Tochigi', '321-0901', 'Japan', 'Y'),
+(19, 'billing', '61-62-63 Minami', 'Kanazawa', 'Ishikawa', '920-0001', 'Japan', 'Y'),
+(20, 'billing', '64-65-66 Nishi', 'Nagasaki', 'Nagasaki', '850-0001', 'Japan', 'Y'),
+(21, 'billing', '67-68-69 Kita', 'Naha', 'Okinawa', '900-0001', 'Japan', 'Y'),
+(22, 'billing', '70-71-72 Chuo', 'Takamatsu', 'Kagawa', '760-0001', 'Japan', 'Y'),
+(23, 'billing', '73-74-75 Higashi', 'Mito', 'Ibaraki', '310-0001', 'Japan', 'Y'),
+(24, 'billing', '76-77-78 Minami', 'Kochi', 'Kochi', '780-0001', 'Japan', 'Y'),
+(25, 'billing', '79-80-81 Nishi', 'Akita', 'Akita', '010-0001', 'Japan', 'Y');
+
+-- Insert Marketing Campaigns with varied date formats
+INSERT INTO asia.marketing_campaigns (name, type, channel, start_dt, end_dt, budget_jpy, target, status, created) VALUES
+('SPRING FESTIVAL SALE', 'seasonal', 'email', '2024-03-01', '2024-03-31', 1500000, 'All customers nationwide', 'active', '2024-02-15 09:30:45'),
+('golden week special', 'promotional', 'social', '2024/04/27', '2024/05/06', 2500000, 'Families and travelers', 'scheduled', '2024/02/16 11:45:20'),
+('Summer Clearance', 'seasonal', 'display', '01-06-2024', '30-06-2024', 1200000, 'Young adults 18-35', 'scheduled', '17-02-2024 13:20:35'),
+('BACK TO SCHOOL CAMPAIGN', 'seasonal', 'multi_channel', '2024.07.15', '2024.08.31', 1800000, 'Students and parents', 'scheduled', '2024.02.18 15:35:10'),
+('autumn fashion collection', 'product_launch', 'social', '01/09/2024', '30/09/2024', 2000000, 'Fashion-conscious women 25-45', 'scheduled', '19/02/2024 08:50:25'),
+('Winter Holiday Sale', 'seasonal', 'email', '2024-12-01', '2024-12-25', 3000000, 'Gift buyers and families', 'scheduled', '2024-02-20 10:15:40'),
+('NEW YEAR CAMPAIGN', 'promotional', 'multi_channel', '2024/12/26', '2025/01/15', 2800000, 'All customer segments', 'scheduled', '2024/02/21 12:30:15'),
+('valentine special', 'seasonal', 'social', '01-02-2025', '14-02-2025', 1000000, 'Couples and gift buyers', 'scheduled', '22-02-2024 14:45:30'),
+('Spring Electronics', 'product_launch', 'display', '2025.03.01', '2025.03.31', 1500000, 'Tech enthusiasts', 'scheduled', '2024.02.23 16:20:45'),
+('CHERRY BLOSSOM FESTIVAL', 'seasonal', 'multi_channel', '25/03/2025', '15/04/2025', 2200000, 'Tourists and locals', 'scheduled', '24/02/2024 09:35:20');
+
+-- Insert Discounts with varied date formats
+INSERT INTO asia.discounts (code, name, type, value, min_order_jpy, max_discount_jpy, usage_limit, usage_count, start_dt, end_dt, active, created) VALUES
+('WELCOME10', 'New Customer Welcome', 'percentage', 10.00, 5000, 10000, 1000, 234, '2024-01-01', '2024-12-31', 'Y', '2024-02-25 11:50:35'),
+('SPRING25', 'Spring Sale 25% Off', 'percentage', 25.00, 10000, 20000, 500, 156, '2024/03/01', '2024/03/31', 'N', '2024/02/26 14:15:10'),
+('FREESHIP', 'Free Shipping', 'shipping', 0.00, 8000, 1500, 2000, 567, '01-03-2024', '31-12-2024', 'Y', '27-02-2024 16:30:25'),
+('SAVE5000', 'Save 5000 Yen', 'fixed', 5000.00, 20000, 5000, 300, 89, '2024.02.01', '2024.02.29', 'N', '2024.02.28 08:45:40'),
+('BLACKFRI30', 'Black Friday 30% Off', 'percentage', 30.00, 15000, 30000, 1000, 678, '25/11/2024', '29/11/2024', 'N', '29/02/2024 10:20:15'),
+('STUDENT15', 'Student Discount', 'percentage', 15.00, 3000, 15000, 0, 123, '2024-01-01', '2024-12-31', 'Y', '2024-03-01 12:35:30'),
+('LOYAL25', 'Loyalty Member 25% Off', 'percentage', 25.00, 10000, 25000, 500, 234, '2024/01/01', '2024/12/31', 'Y', '2024/03/02 14:50:45'),
+('SUMMER20', 'Summer Special', 'percentage', 20.00, 8000, 12000, 750, 345, '01-06-2024', '31-08-2024', 'Y', '03-03-2024 16:25:20'),
+('FIRST100', 'First 100 Customers', 'fixed', 2500.00, 10000, 2500, 100, 100, '2024.01.01', '2024.01.31', 'N', '2024.03.04 09:40:35'),
+('WEEKEND10', 'Weekend Special', 'percentage', 10.00, 6000, 8000, 0, 456, '01/01/2024', '31/12/2024', 'Y', '05/03/2024 11:15:10');
+
+-- Insert Orders and Order Items with varied date formats
+INSERT INTO asia.orders (order_no, cust_id, status, order_time, subtotal_jpy, tax_jpy, shipping_jpy, discount_jpy, total_jpy, billing_addr_id, shipping_addr_id, campaign_id, discount_id, processed_date) VALUES
+('JP-ORD-100001', 1, 'delivered', '2024-03-05 13:30:25', 149800, 14980, 1000, 14980, 150800, 1, 2, 1, 1, '2024-03-06 09:15:40'),
+('JP-ORD-100002', 2, 'shipped', '2024/03/06 15:45:40', 8900, 890, 800, 0, 10590, 3, 3, 2, NULL, '2024/03/07 11:30:15'),
+('JP-ORD-100003', 3, 'processing', '07-03-2024 08:20:15', 198000, 19800, 0, 49500, 168300, 4, 5, 3, 3, '08-03-2024 13:45:30'),
+('JP-ORD-100004', 4, 'delivered', '2024.03.08 10:35:30', 19800, 1980, 1000, 4950, 17830, 6, 6, 4, 4, '2024.03.09 15:20:45'),
+('JP-ORD-100005', 5, 'cancelled', '09/03/2024 12:50:45', 25000, 2500, 800, 0, 28300, 7, 7, 5, NULL, '10/03/2024 08:40:20'),
+('JP-ORD-100006', 6, 'delivered', '2024-03-10 15:15:20', 9800, 980, 500, 1470, 9810, 8, 8, 6, 6, '2024-03-11 10:15:35'),
+('JP-ORD-100007', 7, 'shipped', '2024/03/11 08:30:35', 89000, 8900, 1500, 22250, 77150, 9, 9, 7, 7, '2024/03/12 12:30:50'),
+('JP-ORD-100008', 8, 'processing', '12-03-2024 10:45:50', 4500, 450, 800, 900, 4850, 10, 10, 8, 8, '13-03-2024 14:45:15'),
+('JP-ORD-100009', 9, 'delivered', '2024.03.13 13:10:15', 158000, 15800, 0, 0, 173800, 11, 11, 9, NULL, '2024.03.14 16:20:30'),
+('JP-ORD-100010', 10, 'returned', '14/03/2024 15:25:30', 12500, 1250, 500, 1250, 13000, 12, 12, 10, 9, '15/03/2024 09:35:45');
+
+-- Insert Order Items
+INSERT INTO asia.order_items (order_id, variant_id, qty, unit_price_jpy, total_price_jpy, created) VALUES
+(1, 1, 1, 149800, 149800, '2024-03-05 13:35:40'),
+(2, 11, 1, 8900, 8900, '2024-03-06 15:50:25'),
+(3, 14, 1, 198000, 198000, '2024-03-07 08:25:30'),
+(4, 14, 1, 19800, 19800, '2024-03-08 10:40:45'),
+(5, 11, 1, 25000, 25000, '2024-03-09 12:55:20'),
+(6, 18, 1, 9800, 9800, '2024-03-10 15:20:35'),
+(7, 20, 1, 89000, 89000, '2024-03-11 08:35:50'),
+(8, 10, 1, 4500, 4500, '2024-03-12 10:50:15'),
+(9, 4, 1, 158000, 158000, '2024-03-13 13:15:30'),
+(10, 16, 1, 12500, 12500, '2024-03-14 15:30:45');
+
+-- Insert Shopping Carts and Cart Items with varied date formats
+INSERT INTO asia.shopping_carts (cust_id, session_id, created, updated, abandoned) VALUES
+(1, 'sess_jp_abc123def456', '2024-03-15 09:30:45', '2024-03-15 10:45:20', NULL),
+(2, 'sess_jp_ghi789jkl012', '2024/03/16 11:15:35', '2024/03/16 11:30:10', '2024/03/16 12:45:25'),
+(3, 'sess_jp_mno345pqr678', '17-03-2024 13:20:50', '17-03-2024 14:35:15', NULL),
+(4, 'sess_jp_stu901vwx234', '2024.03.18 15:40:30', '2024.03.18 16:15:45', '2024.03.18 17:30:20'),
+(5, 'sess_jp_yza567bcd890', '19/03/2024 08:45:15', '19/03/2024 09:20:30', NULL);
+
+INSERT INTO asia.cart_items (cart_id, variant_id, qty, unit_price_jpy, added, updated) VALUES
+(1, 2, 1, 169800, '2024-03-15 09:35:20', '2024-03-15 09:35:20'),
+(1, 8, 2, 3500, '2024-03-15 09:40:35', '2024-03-15 09:40:35'),
+(2, 15, 1, 213000, '2024-03-16 11:20:10', '2024-03-16 11:20:10'),
+(3, 19, 1, 12800, '2024-03-17 13:25:45', '2024-03-17 13:25:45'),
+(4, 6, 1, 49800, '2024-03-18 15:45:30', '2024-03-18 15:45:30'),
+(5, 12, 1, 8900, '2024-03-19 08:50:15', '2024-03-19 08:50:15');
+
+-- Insert Payments with varied date formats
+INSERT INTO asia.payments (order_id, method, status, amount_jpy, payment_time, transaction_ref, gateway_resp, created) VALUES
+(1, 'credit_card', 'completed', 150800, '2024-03-05 14:15:30', 'txn_jp_cc_001', 'Payment successful', '2024-03-05 14:15:30'),
+(2, 'konbini', 'completed', 10590, '2024/03/06 16:30:45', 'txn_jp_kb_002', 'Payment received at 7-Eleven', '2024/03/06 16:30:45'),
+(3, 'bank_transfer', 'pending', 168300, '07-03-2024 09:45:20', 'txn_jp_bt_003', 'Awaiting bank confirmation', '07-03-2024 09:45:20'),
+(4, 'credit_card', 'completed', 17830, '2024.03.08 11:20:35', 'txn_jp_cc_004', 'Payment successful', '2024.03.08 11:20:35'),
+(5, 'credit_card', 'failed', 28300, '09/03/2024 13:35:50', 'txn_jp_cc_005', 'Card declined', '09/03/2024 13:35:50'),
+(6, 'konbini', 'completed', 9810, '2024-03-10 16:50:15', 'txn_jp_kb_006', 'Payment received at Lawson', '2024-03-10 16:50:15'),
+(7, 'credit_card', 'completed', 77150, '2024/03/11 09:15:30', 'txn_jp_cc_007', 'Payment successful', '2024/03/11 09:15:30'),
+(8, 'bank_transfer', 'completed', 4850, '12-03-2024 11:30:45', 'txn_jp_bt_008', 'Transfer confirmed', '12-03-2024 11:30:45'),
+(9, 'credit_card', 'completed', 173800, '2024.03.13 14:45:20', 'txn_jp_cc_009', 'Payment successful', '2024.03.13 14:45:20'),
+(10, 'konbini', 'refunded', 13000, '14/03/2024 16:20:35', 'txn_jp_kb_010', 'Payment refunded', '14/03/2024 16:20:35');
+
+-- Insert Shipments with varied date formats
+INSERT INTO asia.shipments (order_id, tracking_no, carrier, method, shipped_time, est_delivery, actual_delivery, status, created, updated) VALUES
+(1, 'YMT123456789JP', 'Yamato', 'Standard', '2024-03-06 10:30:45', '2024-03-08', '2024-03-08 14:15:30', 'delivered', '2024-03-06 10:30:45', '2024-03-08 14:15:30'),
+(2, 'SGW987654321JP', 'Sagawa', 'Express', '2024/03/07 12:45:20', '2024/03/09', NULL, 'in_transit', '2024/03/07 12:45:20', '2024/03/07 12:45:20'),
+(3, NULL, 'Japan Post', 'Standard', NULL, NULL, NULL, 'preparing', '07-03-2024 15:20:35', '07-03-2024 15:20:35'),
+(4, 'YMT456789012JP', 'Yamato', 'Next Day', '2024.03.09 09:35:50', '2024.03.10', '2024.03.10 13:50:15', 'delivered', '2024.03.09 09:35:50', '2024.03.10 13:50:15'),
+(6, 'SGW234567890JP', 'Sagawa', 'Same Day', '10/03/2024 11:15:30', '10/03/2024', '10/03/2024 17:30:45', 'delivered', '10/03/2024 11:15:30', '10/03/2024 17:30:45'),
+(7, 'YMT345678901JP', 'Yamato', 'Standard', '2024-03-12 13:40:15', '2024-03-14', NULL, 'in_transit', '2024-03-12 13:40:15', '2024-03-12 13:40:15'),
+(8, 'SGW456789012JP', 'Sagawa', 'Express', '2024/03/13 15:55:30', '2024/03/15', NULL, 'in_transit', '2024/03/13 15:55:30', '2024/03/13 15:55:30'),
+(9, 'YMT567890123JP', 'Yamato', 'Standard', '14-03-2024 09:10:45', '16-03-2024', '16-03-2024 11:25:30', 'delivered', '14-03-2024 09:10:45', '16-03-2024 11:25:30');
+
+-- Insert Returns with varied date formats
+INSERT INTO asia.returns (order_id, reason, status, return_time, refund_jpy, refund_time, created) VALUES
+(5, 'Changed mind', 'approved', '2024-03-11 10:30:45', 28300, '2024-03-12 14:15:30', '2024-03-11 10:30:45'),
+(10, 'Product defective', 'processing', '2024/03/16 12:45:20', 13000, NULL, '2024/03/16 12:45:20');
+
+-- Insert Product Reviews with varied data
+INSERT INTO asia.product_reviews (product_id, cust_id, order_id, rating, title, review_text, verified, helpful_count) VALUES
+(1, 1, 1, 5, 'EXCELLENT PHONE!', 'Amazing camera quality and battery life. Highly recommended!', 'Y', 15),
+(5, 2, 2, 4, 'beautiful dress', 'Nice fabric and fit, but color slightly different from photo', 'Y', 8),
+(6, 3, 3, 5, 'Perfect Sofa', 'Comfortable and well-made. Great value for money.', 'Y', 22),
+(14, 4, 4, 3, 'AVERAGE EARBUDS', 'Sound quality is okay but not exceptional for the price', 'Y', 5),
+(7, 10, 10, 1, 'poor quality manga', 'Pages were damaged and print quality was bad', 'Y', 2),
+(1, 5, NULL, 4, 'Good but expensive', 'Great phone but overpriced compared to competitors', 'N', 3),
+(9, 7, 7, 5, 'AMAZING BIKE!', 'Perfect for mountain trails. Excellent build quality.', 'Y', 18),
+(10, 8, 8, 4, 'fun model kit', 'Great detail but some pieces were difficult to assemble', 'Y', 7);
+
+-- Insert Wishlists with varied date formats
+INSERT INTO asia.wishlists (cust_id, product_id, added) VALUES
+(1, 2, '2024-03-17 09:30:45'),
+(1, 9, '2024-03-17 09:35:20'),
+(1, 11, '2024-03-17 09:40:15'),
+(2, 1, '2024/03/18 11:15:30'),
+(2, 6, '2024/03/18 11:20:45'),
+(2, 8, '2024/03/18 11:25:10'),
+(3, 4, '19-03-2024 13:40:25'),
+(3, 7, '19-03-2024 13:45:40'),
+(3, 12, '19-03-2024 13:50:15'),
+(4, 3, '2024.03.20 15:25:30'),
+(4, 5, '2024.03.20 15:30:45'),
+(4, 10, '2024.03.20 15:35:20'),
+(5, 2, '21/03/2024 08:50:35'),
+(5, 6, '21/03/2024 08:55:10'),
+(5, 13, '21/03/2024 09:00:25');
+
+
+
+COMMIT;
+EOF
+
+# Capture status
+if [ $? -eq 0 ]; then
+  echo "Transaction committed successfully."
+else
+  echo "Transaction failed. Rolled back."
+fi

@@ -1,0 +1,55 @@
+[2025-06-09T06:13:08.608+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: transform_categories.run_transformation_us manual__2025-06-09T06:01:19.740445+00:00 [queued]>
+[2025-06-09T06:13:08.623+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: transform_categories.run_transformation_us manual__2025-06-09T06:01:19.740445+00:00 [queued]>
+[2025-06-09T06:13:08.623+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-09T06:13:08.648+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_transformation_us> on 2025-06-09 06:01:19.740445+00:00
+[2025-06-09T06:13:08.655+0000] {standard_task_runner.py:60} INFO - Started process 64027 to run task
+[2025-06-09T06:13:08.656+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-09T06:13:08.663+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'transform_categories', 'run_transformation_us', 'manual__2025-06-09T06:01:19.740445+00:00', '--job-id', '10', '--raw', '--subdir', 'DAGS_FOLDER/staging/categories_to_staging.py', '--cfg-path', '/tmp/tmpk322fmo7']
+[2025-06-09T06:13:08.665+0000] {standard_task_runner.py:88} INFO - Job 10: Subtask run_transformation_us
+[2025-06-09T06:13:08.695+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-09T06:13:08.786+0000] {task_command.py:423} INFO - Running <TaskInstance: transform_categories.run_transformation_us manual__2025-06-09T06:01:19.740445+00:00 [running]> on host 64d899e082be
+[2025-06-09T06:13:09.056+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='transform_categories' AIRFLOW_CTX_TASK_ID='run_transformation_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T06:01:19.740445+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-09T06:01:19.740445+00:00'
+[2025-06-09T06:13:09.058+0000] {logging_mixin.py:188} INFO - Starting transformation for table: categories in region: us
+[2025-06-09T06:13:09.137+0000] {logging_mixin.py:188} INFO - Reading data from: /opt/airflow/data/raw/region=us/table=categories/load_date=2025-06-08/
+[2025-06-09T06:13:09.183+0000] {clientserver.py:505} INFO - Error while sending or receiving.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 503, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+ConnectionResetError: [Errno 104] Connection reset by peer
+[2025-06-09T06:13:09.189+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-09T06:13:09.190+0000] {java_gateway.py:1052} INFO - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 503, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 506, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending
+[2025-06-09T06:13:09.202+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-09T06:13:20.321+0000] {logging_mixin.py:188} INFO - [INFO] Processing 30 records for us
+[2025-06-09T06:13:21.246+0000] {logging_mixin.py:188} INFO - Sample transformed data for us:
+[2025-06-09T06:13:26.319+0000] {logging_mixin.py:188} INFO - +-----------+---------------+------------------+------------------------+---------+-------------------+-------------------+-------+--------+
+|category_id|category_name  |parent_category_id|category_path           |is_active|created_at         |updated_at         |_region|_source |
++-----------+---------------+------------------+------------------------+---------+-------------------+-------------------+-------+--------+
+|1          |Electronics    |NULL              |/Electronics            |true     |2025-06-08 19:23:27|2025-06-08 19:23:27|us     |postgres|
+|2          |Smartphones    |1                 |/Electronics/Smartphones|true     |2025-06-08 19:23:27|2025-06-08 19:23:27|us     |postgres|
+|3          |Laptops        |1                 |/Electronics/Laptops    |true     |2025-06-08 19:23:27|2025-06-08 19:23:27|us     |postgres|
+|4          |Gaming Consoles|1                 |/Electronics/Gaming     |true     |2025-06-08 19:23:27|2025-06-08 19:23:27|us     |postgres|
+|5          |Clothing       |NULL              |/Clothing               |true     |2025-06-08 19:23:27|2025-06-08 19:23:27|us     |postgres|
++-----------+---------------+------------------+------------------------+---------+-------------------+-------------------+-------+--------+
+only showing top 5 rows
+[2025-06-09T06:13:26.320+0000] {logging_mixin.py:188} INFO - Writing transformed data to: /opt/airflow/data/staging/categories/region=us/load_date=2025-06-08/
+[2025-06-09T06:13:27.981+0000] {logging_mixin.py:188} INFO - Successfully transformed 30 records for us
+[2025-06-09T06:15:56.129+0000] {local_task_job_runner.py:296} WARNING - DagRun timed out after 0:03:01.158461.
+[2025-06-09T06:16:01.197+0000] {local_task_job_runner.py:296} WARNING - DagRun timed out after 0:03:06.225956.
+[2025-06-09T06:16:01.197+0000] {local_task_job_runner.py:302} WARNING - State of this instance has been externally set to skipped. Terminating instance.
+[2025-06-09T06:16:01.201+0000] {process_utils.py:131} INFO - Sending 15 to group 64027. PIDs of all processes in the group: [64027]
+[2025-06-09T06:16:01.202+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 64027
+[2025-06-09T06:16:01.202+0000] {taskinstance.py:2450} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-06-09T06:16:01.294+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=64027, status='terminated', exitcode=0, started='06:13:08') (64027) terminated with exit code 0

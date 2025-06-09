@@ -1,0 +1,48 @@
+from airflow import DAG
+from airflow.operators.dagrun_operator import TriggerDagRunOperator
+from datetime import datetime
+
+DEFAULT_ARGS = {
+    "start_date": datetime(2024, 6, 1),
+    "catchup": False,
+}
+
+DAG_IDS = [
+    "transform_categories",
+    "transform_products",
+    "transform_product_variants",
+    "transform_inventory",
+    "transform_customers",
+    "transform_customer_addressess",
+    "transform_discounts",
+    "transform_shopping_cart",
+    "transform_cart_items",
+    "transform_orders",
+    "transform_order_items",
+    "transform_payments",
+    "transform_shipments",
+    "transform_returns",
+    "transform_product_review",
+    "transform_wishlists",
+]
+
+with DAG(
+    dag_id="master_transform_parallel_dag",
+    default_args=DEFAULT_ARGS,
+    schedule_interval="@daily",
+    tags=["master", "orchestration", "parallel"],
+) as dag:
+
+    trigger_tasks = []
+
+    for dag_id in DAG_IDS:
+        trigger = TriggerDagRunOperator(
+            task_id=f"trigger_{dag_id}",
+            trigger_dag_id=dag_id,
+            execution_date="{{ ds }}",
+            reset_dag_run=True,
+            wait_for_completion=False,
+        )
+        trigger_tasks.append(trigger)
+
+    # No dependencies needed — all tasks run in parallel

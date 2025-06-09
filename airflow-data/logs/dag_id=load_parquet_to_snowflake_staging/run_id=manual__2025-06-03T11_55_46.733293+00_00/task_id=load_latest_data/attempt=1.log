@@ -1,0 +1,100 @@
+[2025-06-03T11:55:50.480+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: load_parquet_to_snowflake_staging.load_latest_data manual__2025-06-03T11:55:46.733293+00:00 [queued]>
+[2025-06-03T11:55:50.485+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: load_parquet_to_snowflake_staging.load_latest_data manual__2025-06-03T11:55:46.733293+00:00 [queued]>
+[2025-06-03T11:55:50.486+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-03T11:55:50.578+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): load_latest_data> on 2025-06-03 11:55:46.733293+00:00
+[2025-06-03T11:55:50.584+0000] {standard_task_runner.py:60} INFO - Started process 229 to run task
+[2025-06-03T11:55:50.586+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'load_parquet_to_snowflake_staging', 'load_latest_data', 'manual__2025-06-03T11:55:46.733293+00:00', '--job-id', '316', '--raw', '--subdir', 'DAGS_FOLDER/asia/staging_dag.py', '--cfg-path', '/tmp/tmpajt0hcz_']
+[2025-06-03T11:55:50.587+0000] {standard_task_runner.py:88} INFO - Job 316: Subtask load_latest_data
+[2025-06-03T11:55:50.701+0000] {task_command.py:423} INFO - Running <TaskInstance: load_parquet_to_snowflake_staging.load_latest_data manual__2025-06-03T11:55:46.733293+00:00 [running]> on host fbffe4c27949
+[2025-06-03T11:55:50.988+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='load_parquet_to_snowflake_staging' AIRFLOW_CTX_TASK_ID='load_latest_data' AIRFLOW_CTX_EXECUTION_DATE='2025-06-03T11:55:46.733293+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-03T11:55:46.733293+00:00'
+[2025-06-03T11:55:51.068+0000] {logging_mixin.py:188} INFO - [INFO] Variable not found, defaulting to 2000-01-01 00:00:00
+[2025-06-03T11:56:30.886+0000] {logging_mixin.py:188} INFO - Reading Parquet from /opt/airflow/data/raw/region=asia/table=customers/load_date=2025-06-03/
+[2025-06-03T11:56:31.017+0000] {logging_mixin.py:188} INFO - Filtering data for _load_date > 2000-01-01 00:00:00
+[2025-06-03T11:56:31.926+0000] {logging_mixin.py:188} INFO - Writing filtered data to Snowflake table: staging.customers
+[2025-06-03T11:56:32.131+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/asia/staging_dag.py", line 59, in load_latest_data
+    load_parquet_to_snowflake(REGION, TABLE, latest_date, min_load_date=last_loaded_timestamp)
+  File "/opt/airflow/dags/asia/../../scripts/pyspark_jobs/load_parquet_snowflake_staging.py", line 39, in load_parquet_to_snowflake
+    .save()
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/sql/readwriter.py", line 1461, in save
+    self._jwrite.save()
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: An error occurred while calling o53.save.
+: org.apache.spark.SparkClassNotFoundException: [DATA_SOURCE_NOT_FOUND] Failed to find the data source: snowflake. Please find packages at `https://spark.apache.org/third-party-projects.html`.
+	at org.apache.spark.sql.errors.QueryExecutionErrors$.dataSourceNotFoundError(QueryExecutionErrors.scala:725)
+	at org.apache.spark.sql.execution.datasources.DataSource$.lookupDataSource(DataSource.scala:647)
+	at org.apache.spark.sql.execution.datasources.DataSource$.lookupDataSourceV2(DataSource.scala:697)
+	at org.apache.spark.sql.DataFrameWriter.lookupV2Provider(DataFrameWriter.scala:873)
+	at org.apache.spark.sql.DataFrameWriter.saveInternal(DataFrameWriter.scala:260)
+	at org.apache.spark.sql.DataFrameWriter.save(DataFrameWriter.scala:251)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.ClassNotFoundException: snowflake.DefaultSource
+	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:476)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:594)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	at org.apache.spark.sql.execution.datasources.DataSource$.$anonfun$lookupDataSource$5(DataSource.scala:633)
+	at scala.util.Try$.apply(Try.scala:213)
+	at org.apache.spark.sql.execution.datasources.DataSource$.$anonfun$lookupDataSource$4(DataSource.scala:633)
+	at scala.util.Failure.orElse(Try.scala:224)
+	at org.apache.spark.sql.execution.datasources.DataSource$.lookupDataSource(DataSource.scala:633)
+	... 16 more
+
+[2025-06-03T11:56:32.227+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=load_parquet_to_snowflake_staging, task_id=load_latest_data, execution_date=20250603T115546, start_date=20250603T115550, end_date=20250603T115632
+[2025-06-03T11:56:32.456+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 316 for task load_latest_data (An error occurred while calling o53.save.
+: org.apache.spark.SparkClassNotFoundException: [DATA_SOURCE_NOT_FOUND] Failed to find the data source: snowflake. Please find packages at `https://spark.apache.org/third-party-projects.html`.
+	at org.apache.spark.sql.errors.QueryExecutionErrors$.dataSourceNotFoundError(QueryExecutionErrors.scala:725)
+	at org.apache.spark.sql.execution.datasources.DataSource$.lookupDataSource(DataSource.scala:647)
+	at org.apache.spark.sql.execution.datasources.DataSource$.lookupDataSourceV2(DataSource.scala:697)
+	at org.apache.spark.sql.DataFrameWriter.lookupV2Provider(DataFrameWriter.scala:873)
+	at org.apache.spark.sql.DataFrameWriter.saveInternal(DataFrameWriter.scala:260)
+	at org.apache.spark.sql.DataFrameWriter.save(DataFrameWriter.scala:251)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.ClassNotFoundException: snowflake.DefaultSource
+	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:476)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:594)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	at org.apache.spark.sql.execution.datasources.DataSource$.$anonfun$lookupDataSource$5(DataSource.scala:633)
+	at scala.util.Try$.apply(Try.scala:213)
+	at org.apache.spark.sql.execution.datasources.DataSource$.$anonfun$lookupDataSource$4(DataSource.scala:633)
+	at scala.util.Failure.orElse(Try.scala:224)
+	at org.apache.spark.sql.execution.datasources.DataSource$.lookupDataSource(DataSource.scala:633)
+	... 16 more
+; 229)
+[2025-06-03T11:56:32.494+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-06-03T11:56:32.517+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

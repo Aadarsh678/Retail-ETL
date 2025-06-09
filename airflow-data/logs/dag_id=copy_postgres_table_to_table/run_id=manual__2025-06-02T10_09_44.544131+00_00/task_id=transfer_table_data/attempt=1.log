@@ -1,0 +1,18 @@
+[2025-06-02T10:09:46.926+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: copy_postgres_table_to_table.transfer_table_data manual__2025-06-02T10:09:44.544131+00:00 [queued]>
+[2025-06-02T10:09:46.932+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: copy_postgres_table_to_table.transfer_table_data manual__2025-06-02T10:09:44.544131+00:00 [queued]>
+[2025-06-02T10:09:46.932+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-02T10:09:46.980+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): transfer_table_data> on 2025-06-02 10:09:44.544131+00:00
+[2025-06-02T10:09:46.985+0000] {standard_task_runner.py:60} INFO - Started process 216 to run task
+[2025-06-02T10:09:46.987+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'copy_postgres_table_to_table', 'transfer_table_data', 'manual__2025-06-02T10:09:44.544131+00:00', '--job-id', '98', '--raw', '--subdir', 'DAGS_FOLDER/asia/extract_load_staging_asia.py', '--cfg-path', '/tmp/tmpltwcslaq']
+[2025-06-02T10:09:46.988+0000] {standard_task_runner.py:88} INFO - Job 98: Subtask transfer_table_data
+[2025-06-02T10:09:47.251+0000] {task_command.py:423} INFO - Running <TaskInstance: copy_postgres_table_to_table.transfer_table_data manual__2025-06-02T10:09:44.544131+00:00 [running]> on host 25d29d43af3f
+[2025-06-02T10:09:48.885+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='copy_postgres_table_to_table' AIRFLOW_CTX_TASK_ID='transfer_table_data' AIRFLOW_CTX_EXECUTION_DATE='2025-06-02T10:09:44.544131+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-02T10:09:44.544131+00:00'
+[2025-06-02T10:09:48.885+0000] {logging_mixin.py:188} INFO - url: rlfsvmi-spb81014.snowflakecomputing.com
+[2025-06-02T10:09:48.886+0000] {logging_mixin.py:188} INFO - Postgres JDBC URL: jdbc:postgresql://retail-postgres:5432/retail_etl
+[2025-06-02T10:09:48.886+0000] {logging_mixin.py:188} INFO - Postgres User: retail_etl
+[2025-06-02T10:09:48.886+0000] {logging_mixin.py:188} INFO - Postgres Password is set: True
+[2025-06-02T10:09:48.886+0000] {logging_mixin.py:188} INFO - Postgres Driver: org.postgresql.Driver
+[2025-06-02T10:10:52.962+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-06-02T10:10:52.976+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=copy_postgres_table_to_table, task_id=transfer_table_data, execution_date=20250602T100944, start_date=20250602T100946, end_date=20250602T101052
+[2025-06-02T10:10:53.920+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-02T10:10:54.090+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,8 @@
+[2025-06-08T16:18:59.841+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: transform_shopping_cart.run_transformation_us scheduled__2025-06-07T01:00:00+00:00 [queued]>
+[2025-06-08T16:21:57.283+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: transform_shopping_cart.run_transformation_us scheduled__2025-06-07T01:00:00+00:00 [queued]>
+[2025-06-08T16:21:58.244+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-08T16:22:04.997+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_transformation_us> on 2025-06-07 01:00:00+00:00
+[2025-06-08T16:22:05.257+0000] {standard_task_runner.py:60} INFO - Started process 5488 to run task
+[2025-06-08T16:22:05.278+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T16:22:06.254+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'transform_shopping_cart', 'run_transformation_us', 'scheduled__2025-06-07T01:00:00+00:00', '--job-id', '472', '--raw', '--subdir', 'DAGS_FOLDER/staging/shopping_carts_to_staging.py', '--cfg-path', '/tmp/tmp55ssffa7']
+[2025-06-08T16:22:06.301+0000] {standard_task_runner.py:88} INFO - Job 472: Subtask run_transformation_us

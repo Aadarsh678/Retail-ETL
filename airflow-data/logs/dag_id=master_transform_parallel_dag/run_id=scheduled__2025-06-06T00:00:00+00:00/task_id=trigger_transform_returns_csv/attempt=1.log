@@ -1,0 +1,13 @@
+[2025-06-08T13:07:39.877+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: master_transform_parallel_dag.trigger_transform_returns_csv scheduled__2025-06-06T00:00:00+00:00 [queued]>
+[2025-06-08T13:07:39.903+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: master_transform_parallel_dag.trigger_transform_returns_csv scheduled__2025-06-06T00:00:00+00:00 [queued]>
+[2025-06-08T13:07:39.904+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-08T13:07:39.945+0000] {taskinstance.py:2191} INFO - Executing <Task(TriggerDagRunOperator): trigger_transform_returns_csv> on 2025-06-06 00:00:00+00:00
+[2025-06-08T13:07:39.964+0000] {standard_task_runner.py:60} INFO - Started process 2614 to run task
+[2025-06-08T13:07:39.989+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'master_transform_parallel_dag', 'trigger_transform_returns_csv', 'scheduled__2025-06-06T00:00:00+00:00', '--job-id', '221', '--raw', '--subdir', 'DAGS_FOLDER/master_staging.py', '--cfg-path', '/tmp/tmpwj3xzndn']
+[2025-06-08T13:07:40.029+0000] {standard_task_runner.py:88} INFO - Job 221: Subtask trigger_transform_returns_csv
+[2025-06-08T13:07:40.143+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-08T13:07:40.382+0000] {task_command.py:423} INFO - Running <TaskInstance: master_transform_parallel_dag.trigger_transform_returns_csv scheduled__2025-06-06T00:00:00+00:00 [running]> on host 0999767a4da3
+[2025-06-08T13:07:41.016+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='master_transform_parallel_dag' AIRFLOW_CTX_TASK_ID='trigger_transform_returns_csv' AIRFLOW_CTX_EXECUTION_DATE='2025-06-06T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-06T00:00:00+00:00'
+[2025-06-08T13:07:41.695+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=master_transform_parallel_dag, task_id=trigger_transform_returns_csv, execution_date=20250606T000000, start_date=20250608T130739, end_date=20250608T130741
+[2025-06-08T13:07:41.872+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-08T13:07:41.990+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

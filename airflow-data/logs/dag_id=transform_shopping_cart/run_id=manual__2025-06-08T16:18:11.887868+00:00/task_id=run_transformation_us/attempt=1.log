@@ -1,0 +1,26 @@
+[2025-06-08T16:27:58.565+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: transform_shopping_cart.run_transformation_us manual__2025-06-08T16:18:11.887868+00:00 [queued]>
+[2025-06-08T16:27:58.649+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: transform_shopping_cart.run_transformation_us manual__2025-06-08T16:18:11.887868+00:00 [queued]>
+[2025-06-08T16:27:58.649+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-08T16:27:58.748+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_transformation_us> on 2025-06-08 16:18:11.887868+00:00
+[2025-06-08T16:27:58.765+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T16:27:58.766+0000] {standard_task_runner.py:60} INFO - Started process 4714 to run task
+[2025-06-08T16:27:58.835+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'transform_shopping_cart', 'run_transformation_us', 'manual__2025-06-08T16:18:11.887868+00:00', '--job-id', '505', '--raw', '--subdir', 'DAGS_FOLDER/staging/shopping_carts_to_staging.py', '--cfg-path', '/tmp/tmptduzt0lc']
+[2025-06-08T16:27:58.866+0000] {standard_task_runner.py:88} INFO - Job 505: Subtask run_transformation_us
+[2025-06-08T16:27:59.551+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-08T16:27:59.756+0000] {task_command.py:423} INFO - Running <TaskInstance: transform_shopping_cart.run_transformation_us manual__2025-06-08T16:18:11.887868+00:00 [running]> on host c10f2fed82e0
+[2025-06-08T16:28:00.524+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='transform_shopping_cart' AIRFLOW_CTX_TASK_ID='run_transformation_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-08T16:18:11.887868+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-08T16:18:11.887868+00:00'
+[2025-06-08T16:28:00.532+0000] {logging_mixin.py:188} INFO - Starting transformation for table: shopping_carts in region: us
+[2025-06-08T16:28:00.667+0000] {logging_mixin.py:188} INFO - Reading data from: /opt/airflow/data/raw/region=us/table=shopping_carts/load_date=2025-06-06/
+[2025-06-08T16:28:14.880+0000] {logging_mixin.py:188} INFO - [INFO] Processing 5 records for us
+[2025-06-08T16:28:15.528+0000] {logging_mixin.py:188} INFO - Sample transformed data for us:
+[2025-06-08T16:28:19.664+0000] {logging_mixin.py:188} INFO - +-------+-----------+--------------------+-------------------+-------------------+-------------------+------------+-------+--------+
+|cart_id|customer_id|session_id          |created_at         |updated_at         |abandoned_at       |is_abandoned|_region|_source |
++-------+-----------+--------------------+-------------------+-------------------+-------------------+------------+-------+--------+
+|1      |1          |sess_us_abc123def456|2025-06-06 08:00:56|2025-06-06 08:00:56|NULL               |false       |us     |postgres|
+|2      |2          |sess_us_ghi789jkl012|2025-06-06 08:00:56|2025-06-06 08:00:56|2024-02-01 14:30:00|true        |us     |postgres|
+|3      |3          |sess_us_mno345pqr678|2025-06-06 08:00:56|2025-06-06 08:00:56|NULL               |false       |us     |postgres|
+|4      |4          |sess_us_stu901vwx234|2025-06-06 08:00:56|2025-06-06 08:00:56|2024-02-02 09:45:00|true        |us     |postgres|
+|5      |5          |sess_us_yza567bcd890|2025-06-06 08:00:56|2025-06-06 08:00:56|NULL               |false       |us     |postgres|
++-------+-----------+--------------------+-------------------+-------------------+-------------------+------------+-------+--------+
+[2025-06-08T16:28:19.664+0000] {logging_mixin.py:188} INFO - Writing transformed data to: /opt/airflow/data/staging/shopping_carts/region=us/load_date=2025-06-06/
+[2025-06-08T16:28:21.570+0000] {logging_mixin.py:188} INFO - Successfully transformed 5 records for us

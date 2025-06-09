@@ -1,0 +1,81 @@
+[2025-06-09T04:54:01.270+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_processor_alternative.process_categories_asia scheduled__2025-06-08T00:00:00+00:00 [queued]>
+[2025-06-09T04:54:01.289+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_processor_alternative.process_categories_asia scheduled__2025-06-08T00:00:00+00:00 [queued]>
+[2025-06-09T04:54:01.290+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-09T04:54:01.334+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_categories_asia> on 2025-06-08 00:00:00+00:00
+[2025-06-09T04:54:01.343+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-09T04:54:01.343+0000] {standard_task_runner.py:60} INFO - Started process 1148 to run task
+[2025-06-09T04:54:01.357+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_processor_alternative', 'process_categories_asia', 'scheduled__2025-06-08T00:00:00+00:00', '--job-id', '154', '--raw', '--subdir', 'DAGS_FOLDER/dag_run.py', '--cfg-path', '/tmp/tmphu55uc2z']
+[2025-06-09T04:54:01.360+0000] {standard_task_runner.py:88} INFO - Job 154: Subtask process_categories_asia
+[2025-06-09T04:54:01.410+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-09T04:54:01.515+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_processor_alternative.process_categories_asia scheduled__2025-06-08T00:00:00+00:00 [running]> on host 847c6af56c4f
+[2025-06-09T04:54:02.087+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_processor_alternative' AIRFLOW_CTX_TASK_ID='process_categories_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-08T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-08T00:00:00+00:00'
+[2025-06-09T04:54:02.105+0000] {logging_mixin.py:188} INFO - 🔄 Processing categories for region asia
+[2025-06-09T04:54:02.105+0000] {logging_mixin.py:188} INFO - 📂 Input path: /opt/airflow/data/raw/region=asia/table=categories/load_date=2025-06-08/
+[2025-06-09T04:54:02.106+0000] {logging_mixin.py:188} INFO - 📁 Output path: /opt/airflow/data/processed/region=asia/table=categories/load_date=2025-06-08/
+[2025-06-09T04:54:02.107+0000] {logging_mixin.py:188} INFO - 📖 Reading data from /opt/airflow/data/raw/region=asia/table=categories/load_date=2025-06-08/
+[2025-06-09T04:54:11.364+0000] {logging_mixin.py:188} INFO - 🔧 Applying transformation for categories
+[2025-06-09T04:54:12.813+0000] {logging_mixin.py:188} INFO - 💾 Writing transformed data to /opt/airflow/data/processed/region=asia/table=categories/load_date=2025-06-08/
+[2025-06-09T04:54:26.192+0000] {logging_mixin.py:188} INFO - +-------------+--------------+------------------+--------------------+---------+-------------------+-------------------+-------+--------+
+|categories_id| category_name|parent_category_id|       category_path|is_active|         created_at|         updated_at|_region| _source|
++-------------+--------------+------------------+--------------------+---------+-------------------+-------------------+-------+--------+
+|            1|   Electronics|              NULL|        /Electronics|     true|2024-01-01 09:00:00|2025-06-08 19:23:06|   asia|postgres|
+|            2|   Smartphones|                 1|/Electronics/Smar...|     true|2024-01-02 00:00:00|2025-06-08 19:23:06|   asia|postgres|
+|            3|       Laptops|                 1|/Electronics/Laptops|     true|2024-03-01 00:00:00|2025-06-08 19:23:06|   asia|postgres|
+|            4|Gaming Devices|                 1| /Electronics/Gaming|     true|               NULL|2025-06-08 19:23:06|   asia|postgres|
+|            5|      Clothing|              NULL|           /Clothing|     true|2024-05-01 00:00:00|2025-06-08 19:23:06|   asia|postgres|
+|            6|  Mens Fashion|                 5|      /Clothing/Mens|     true|2024-01-06 00:00:00|2025-06-08 19:23:06|   asia|postgres|
+|            7|Womens Fashion|                 5|    /Clothing/Womens|     true|2024-07-01 00:00:00|2025-06-08 19:23:06|   asia|postgres|
+|            8| Home & Living|              NULL|        /Home-Living|     true|2024-01-08 11:20:15|2025-06-08 19:23:06|   asia|postgres|
+|            9|     Furniture|                 8|/Home-Living/Furn...|     true|2024-01-09 00:00:00|2025-06-08 19:23:06|   asia|postgres|
+|           10|         Books|              NULL|              /Books|     true|2024-01-10 00:00:00|2025-06-08 19:23:06|   asia|postgres|
++-------------+--------------+------------------+--------------------+---------+-------------------+-------------------+-------+--------+
+only showing top 10 rows
+[2025-06-09T04:54:28.446+0000] {logging_mixin.py:188} INFO - ✅ Successfully processed 30 records for categories in asia
+[2025-06-09T04:54:28.447+0000] {logging_mixin.py:188} INFO - 🛑 Stopping Spark session for categories_asia
+[2025-06-09T06:55:46.700+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_processor_alternative.process_categories_asia scheduled__2025-06-08T00:00:00+00:00 [queued]>
+[2025-06-09T06:55:46.718+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_processor_alternative.process_categories_asia scheduled__2025-06-08T00:00:00+00:00 [queued]>
+[2025-06-09T06:55:46.719+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-09T06:55:46.759+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_categories_asia> on 2025-06-08 00:00:00+00:00
+[2025-06-09T06:55:46.769+0000] {standard_task_runner.py:60} INFO - Started process 41373 to run task
+[2025-06-09T06:55:46.774+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_processor_alternative', 'process_categories_asia', 'scheduled__2025-06-08T00:00:00+00:00', '--job-id', '25', '--raw', '--subdir', 'DAGS_FOLDER/dag_run.py', '--cfg-path', '/tmp/tmpm8cghbwx']
+[2025-06-09T06:55:46.776+0000] {standard_task_runner.py:88} INFO - Job 25: Subtask process_categories_asia
+[2025-06-09T06:55:46.811+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-09T06:55:46.901+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_processor_alternative.process_categories_asia scheduled__2025-06-08T00:00:00+00:00 [running]> on host afcdbcf38bc0
+[2025-06-09T06:55:47.097+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_processor_alternative' AIRFLOW_CTX_TASK_ID='process_categories_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-08T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-08T00:00:00+00:00'
+[2025-06-09T06:55:52.869+0000] {logging_mixin.py:188} INFO - Error processing categories for asia: [JAVA_GATEWAY_EXITED] Java gateway process exited before sending its port number.
+[2025-06-09T06:55:52.871+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/opt/airflow/dags/dag_run.py", line 129, in process_table
+    spark = get_spark_session(f"Process_{table}_{region}_{load_date}")
+  File "/opt/airflow/dags/dag_run.py", line 115, in get_spark_session
+    .getOrCreate()
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/sql/session.py", line 497, in getOrCreate
+    sc = SparkContext.getOrCreate(sparkConf)
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/context.py", line 515, in getOrCreate
+    SparkContext(conf=conf or SparkConf())
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/context.py", line 201, in __init__
+    SparkContext._ensure_initialized(self, gateway=gateway, conf=conf)
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/context.py", line 436, in _ensure_initialized
+    SparkContext._gateway = gateway or launch_gateway(conf)
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/java_gateway.py", line 107, in launch_gateway
+    raise PySparkRuntimeError(
+pyspark.errors.exceptions.base.PySparkRuntimeError: [JAVA_GATEWAY_EXITED] Java gateway process exited before sending its port number.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/dag_run.py", line 176, in process_table
+    raise Exception(error_msg)
+Exception: Error processing categories for asia: [JAVA_GATEWAY_EXITED] Java gateway process exited before sending its port number.
+[2025-06-09T06:55:52.912+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=multi_region_processor_alternative, task_id=process_categories_asia, execution_date=20250608T000000, start_date=20250609T065546, end_date=20250609T065552
+[2025-06-09T06:55:52.941+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 25 for task process_categories_asia (Error processing categories for asia: [JAVA_GATEWAY_EXITED] Java gateway process exited before sending its port number.; 41373)
+[2025-06-09T06:55:52.996+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-06-09T06:55:53.159+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

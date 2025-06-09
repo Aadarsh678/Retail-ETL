@@ -1,0 +1,84 @@
+[2025-06-08T14:52:42.937+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: transform_customers_csv.run_transformation_eu scheduled__2025-06-04T00:00:00+00:00 [queued]>
+[2025-06-08T14:52:42.966+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: transform_customers_csv.run_transformation_eu scheduled__2025-06-04T00:00:00+00:00 [queued]>
+[2025-06-08T14:52:42.967+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-08T14:52:43.005+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_transformation_eu> on 2025-06-04 00:00:00+00:00
+[2025-06-08T14:52:43.026+0000] {standard_task_runner.py:60} INFO - Started process 25788 to run task
+[2025-06-08T14:52:43.041+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'transform_customers_csv', 'run_transformation_eu', 'scheduled__2025-06-04T00:00:00+00:00', '--job-id', '426', '--raw', '--subdir', 'DAGS_FOLDER/staging/customer_to_staging.py', '--cfg-path', '/tmp/tmpdz_ut4uc']
+[2025-06-08T14:52:43.051+0000] {standard_task_runner.py:88} INFO - Job 426: Subtask run_transformation_eu
+[2025-06-08T14:52:43.110+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-08T14:52:43.242+0000] {task_command.py:423} INFO - Running <TaskInstance: transform_customers_csv.run_transformation_eu scheduled__2025-06-04T00:00:00+00:00 [running]> on host f7e9b9614623
+[2025-06-08T14:52:43.805+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='transform_customers_csv' AIRFLOW_CTX_TASK_ID='run_transformation_eu' AIRFLOW_CTX_EXECUTION_DATE='2025-06-04T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-04T00:00:00+00:00'
+[2025-06-08T14:52:43.809+0000] {logging_mixin.py:188} INFO - Starting transformation for table: customers in region: eu
+[2025-06-08T14:53:12.397+0000] {logging_mixin.py:188} INFO - Reading data from: /opt/airflow/data/raw/region=eu/table=customers/load_date=2025-06-06/
+[2025-06-08T14:53:52.336+0000] {local_task_job_runner.py:296} WARNING - DagRun timed out after 1:00:04.238334.
+[2025-06-08T14:53:56.275+0000] {logging_mixin.py:188} INFO - [INFO] Processing 25 records for eu
+[2025-06-08T14:53:57.736+0000] {local_task_job_runner.py:296} WARNING - DagRun timed out after 1:00:09.643780.
+[2025-06-08T14:53:57.749+0000] {local_task_job_runner.py:302} WARNING - State of this instance has been externally set to skipped. Terminating instance.
+[2025-06-08T14:53:57.827+0000] {process_utils.py:131} INFO - Sending 15 to group 25788. PIDs of all processes in the group: [25806, 25788]
+[2025-06-08T14:53:57.860+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 25788
+[2025-06-08T14:53:57.873+0000] {taskinstance.py:2450} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-06-08T14:53:57.887+0000] {clientserver.py:538} INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/local/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 2452, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+[2025-06-08T14:53:57.909+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T14:53:57.927+0000] {java_gateway.py:1055} ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/local/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 2452, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+[2025-06-08T14:53:57.937+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T14:53:57.950+0000] {logging_mixin.py:188} INFO - Error transforming data for eu: functions does not exist in the JVM
+[2025-06-08T14:53:58.286+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/staging/customer_to_staging.py", line 91, in run_transformation_eu
+    transform_customers_table(
+  File "/opt/airflow/scripts/pyspark_jobs/customer.py", line 68, in transform_customers_table
+    raise e
+  File "/opt/airflow/scripts/pyspark_jobs/customer.py", line 50, in transform_customers_table
+    df_transformed = transform_customers(df_raw, region)
+  File "/opt/airflow/scripts/etl/transform/customer.py", line 146, in transform_customers
+    return transform_eu(df)
+  File "/opt/airflow/scripts/etl/transform/customer.py", line 106, in transform_eu
+    mask_name_udf(col("last_name_masked")).alias("last_name"),
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/sql/utils.py", line 174, in wrapped
+    return f(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/sql/functions.py", line 223, in col
+    return _invoke_function("col", col)
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/sql/functions.py", line 96, in _invoke_function
+    jf = _get_jvm_function(name, SparkContext._active_spark_context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/sql/functions.py", line 87, in _get_jvm_function
+    return getattr(sc._jvm.functions, name)
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1725, in __getattr__
+    raise Py4JError(message)
+py4j.protocol.Py4JError: functions does not exist in the JVM
+[2025-06-08T14:53:58.499+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=transform_customers_csv, task_id=run_transformation_eu, execution_date=20250604T000000, start_date=20250608T145242, end_date=20250608T145358
+[2025-06-08T14:53:58.733+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 426 for task run_transformation_eu (functions does not exist in the JVM; 25788)
+[2025-06-08T14:53:58.801+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=25788, status='terminated', exitcode=1, started='14:52:43') (25788) terminated with exit code 1
+[2025-06-08T14:53:59.152+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=25806, status='terminated', started='14:52:44') (25806) terminated with exit code None

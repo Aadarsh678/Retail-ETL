@@ -1,0 +1,128 @@
+[2025-06-09T08:27:44.345+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_us.process_customers_us manual__2025-06-09T08:25:44.177066+00:00 [queued]>
+[2025-06-09T08:27:44.372+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_us.process_customers_us manual__2025-06-09T08:25:44.177066+00:00 [queued]>
+[2025-06-09T08:27:44.373+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 2
+[2025-06-09T08:27:44.403+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_us.process_customers_us> on 2025-06-09 08:25:44.177066+00:00
+[2025-06-09T08:27:44.411+0000] {standard_task_runner.py:60} INFO - Started process 106712 to run task
+[2025-06-09T08:27:44.416+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_processor_7', 'process_region_us.process_customers_us', 'manual__2025-06-09T08:25:44.177066+00:00', '--job-id', '653', '--raw', '--subdir', 'DAGS_FOLDER/master2.py', '--cfg-path', '/tmp/tmpoxps7a3n']
+[2025-06-09T08:27:44.420+0000] {standard_task_runner.py:88} INFO - Job 653: Subtask process_region_us.process_customers_us
+[2025-06-09T08:27:44.518+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_processor_7.process_region_us.process_customers_us manual__2025-06-09T08:25:44.177066+00:00 [running]> on host afcdbcf38bc0
+[2025-06-09T08:27:44.755+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_processor_7' AIRFLOW_CTX_TASK_ID='process_region_us.process_customers_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T08:25:44.177066+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-09T08:25:44.177066+00:00'
+[2025-06-09T08:27:58.072+0000] {logging_mixin.py:188} INFO - Processing customers for region us
+[2025-06-09T08:28:21.478+0000] {logging_mixin.py:188} INFO - +-----------+--------------------+-----------+---------+-----+----------+------+-------------------+----------+----------------+-------------------+-------------------+-------------------+---------+-------+--------+
+|customer_id|               email| first_name|last_name|phone|birth_date|gender|  registration_date|last_login|customer_segment|acquisition_channel|         created_at|         updated_at|is_active|_region| _source|
++-----------+--------------------+-----------+---------+-----+----------+------+-------------------+----------+----------------+-------------------+-------------------+-------------------+---------+-------+--------+
+|          1|john.smith@email.com|       John|    Smith| NULL|1985-03-15|  Male|2025-06-08 19:23:28|      NULL|             vip|         google_ads|2025-06-08 19:23:28|2025-06-08 19:23:28|     true|     us|postgres|
+|          2|maria.gonzalez@gm...|      Maria| Gonzalez| NULL|1990-07-22|Female|2025-06-08 19:23:28|      NULL|         regular|           facebook|2025-06-08 19:23:28|2025-06-08 19:23:28|     true|     us|postgres|
+|          3|david.johnson@yah...|      David|  Johnson| NULL|1982-11-08|  Male|2025-06-08 19:23:28|      NULL|             new|           referral|2025-06-08 19:23:28|2025-06-08 19:23:28|     true|     us|postgres|
+|          4|sarah.williams@ho...|      Sarah| Williams| NULL|1988-05-12|Female|2025-06-08 19:23:28|      NULL|         regular|            organic|2025-06-08 19:23:28|2025-06-08 19:23:28|     true|     us|postgres|
+|          5|michael.brown@out...|    Michael|    Brown| NULL|1975-09-30|  Male|2025-06-08 19:23:28|      NULL|             vip|     email_campaign|2025-06-08 19:23:28|2025-06-08 19:23:28|     true|     us|postgres|
+|          6|                NULL|   Jennifer|    Davis| NULL|1992-01-18|Female|2025-06-08 19:23:28|      NULL|         regular|       social_media|2025-06-08 19:23:28|2025-06-08 19:23:28|     true|     us|postgres|
+|          7|                NULL|     Robert|   Miller| NULL|1980-12-05|  Male|2025-06-08 19:23:28|      NULL|             new|         google_ads|2025-06-08 19:23:28|2025-06-08 19:23:28|     true|     us|postgres|
+|          8|                NULL|       Lisa|   Wilson| NULL|1987-04-25|Female|2025-06-08 19:23:28|      NULL|         regular|           referral|2025-06-08 19:23:28|2025-06-08 19:23:28|     true|     us|postgres|
+|          9|                NULL|Christopher|    Moore| NULL|1983-08-14|  Male|2025-06-08 19:23:28|      NULL|             vip|           facebook|2025-06-08 19:23:28|2025-06-08 19:23:28|     true|     us|postgres|
+|         10|                NULL|     Amanda|   Taylor| NULL|1991-06-03|Female|2025-06-08 19:23:28|      NULL|         regular|            organic|2025-06-08 19:23:28|2025-06-08 19:23:28|     true|     us|postgres|
++-----------+--------------------+-----------+---------+-----+----------+------+-------------------+----------+----------------+-------------------+-------------------+-------------------+---------+-------+--------+
+only showing top 10 rows
+[2025-06-09T08:28:21.484+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-09T08:28:27.312+0000] {logging_mixin.py:188} INFO - Error processing customers for us: An error occurred while calling o203.save.
+: net.snowflake.client.jdbc.SnowflakeSQLException: Cannot perform CREATE TEMPSTAGE. This session does not have a current database. Call 'USE DATABASE', or use a qualified name.
+	at net.snowflake.client.jdbc.SnowflakeUtil.checkErrorAndThrowExceptionSub(SnowflakeUtil.java:127)
+	at net.snowflake.client.jdbc.SnowflakeUtil.checkErrorAndThrowException(SnowflakeUtil.java:67)
+	at net.snowflake.client.core.StmtUtil.pollForOutput(StmtUtil.java:451)
+	at net.snowflake.client.core.StmtUtil.execute(StmtUtil.java:354)
+	at net.snowflake.client.core.SFStatement.executeHelper(SFStatement.java:487)
+	at net.snowflake.client.core.SFStatement.executeQueryInternal(SFStatement.java:198)
+	at net.snowflake.client.core.SFStatement.executeQuery(SFStatement.java:135)
+	at net.snowflake.client.core.SFStatement.execute(SFStatement.java:767)
+	at net.snowflake.client.core.SFStatement.execute(SFStatement.java:677)
+	at net.snowflake.client.jdbc.SnowflakeStatementV1.executeQueryInternal(SnowflakeStatementV1.java:238)
+	at net.snowflake.client.jdbc.SnowflakePreparedStatementV1.executeQuery(SnowflakePreparedStatementV1.java:117)
+	at net.snowflake.spark.snowflake.JDBCWrapper.$anonfun$executePreparedQueryInterruptibly$1(SnowflakeJDBCWrapper.scala:205)
+	at net.snowflake.spark.snowflake.JDBCWrapper.$anonfun$executeInterruptibly$2(SnowflakeJDBCWrapper.scala:252)
+	at scala.concurrent.Future$.$anonfun$apply$1(Future.scala:659)
+	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+	at scala.util.Success.map(Try.scala:213)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+[2025-06-09T08:28:28.148+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/master2.py", line 207, in process_table
+    write_to_snowflake(df_transformed, table_name=table, region=region, sf_options=SF_OPTIONS)
+  File "/opt/airflow/dags/master2.py", line 197, in write_to_snowflake
+    .save()
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/sql/readwriter.py", line 1461, in save
+    self._jwrite.save()
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: An error occurred while calling o203.save.
+: net.snowflake.client.jdbc.SnowflakeSQLException: Cannot perform CREATE TEMPSTAGE. This session does not have a current database. Call 'USE DATABASE', or use a qualified name.
+	at net.snowflake.client.jdbc.SnowflakeUtil.checkErrorAndThrowExceptionSub(SnowflakeUtil.java:127)
+	at net.snowflake.client.jdbc.SnowflakeUtil.checkErrorAndThrowException(SnowflakeUtil.java:67)
+	at net.snowflake.client.core.StmtUtil.pollForOutput(StmtUtil.java:451)
+	at net.snowflake.client.core.StmtUtil.execute(StmtUtil.java:354)
+	at net.snowflake.client.core.SFStatement.executeHelper(SFStatement.java:487)
+	at net.snowflake.client.core.SFStatement.executeQueryInternal(SFStatement.java:198)
+	at net.snowflake.client.core.SFStatement.executeQuery(SFStatement.java:135)
+	at net.snowflake.client.core.SFStatement.execute(SFStatement.java:767)
+	at net.snowflake.client.core.SFStatement.execute(SFStatement.java:677)
+	at net.snowflake.client.jdbc.SnowflakeStatementV1.executeQueryInternal(SnowflakeStatementV1.java:238)
+	at net.snowflake.client.jdbc.SnowflakePreparedStatementV1.executeQuery(SnowflakePreparedStatementV1.java:117)
+	at net.snowflake.spark.snowflake.JDBCWrapper.$anonfun$executePreparedQueryInterruptibly$1(SnowflakeJDBCWrapper.scala:205)
+	at net.snowflake.spark.snowflake.JDBCWrapper.$anonfun$executeInterruptibly$2(SnowflakeJDBCWrapper.scala:252)
+	at scala.concurrent.Future$.$anonfun$apply$1(Future.scala:659)
+	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+	at scala.util.Success.map(Try.scala:213)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+[2025-06-09T08:28:28.198+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=multi_region_processor_7, task_id=process_region_us.process_customers_us, execution_date=20250609T082544, start_date=20250609T082744, end_date=20250609T082828
+[2025-06-09T08:28:28.261+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 653 for task process_region_us.process_customers_us (An error occurred while calling o203.save.
+: net.snowflake.client.jdbc.SnowflakeSQLException: Cannot perform CREATE TEMPSTAGE. This session does not have a current database. Call 'USE DATABASE', or use a qualified name.
+	at net.snowflake.client.jdbc.SnowflakeUtil.checkErrorAndThrowExceptionSub(SnowflakeUtil.java:127)
+	at net.snowflake.client.jdbc.SnowflakeUtil.checkErrorAndThrowException(SnowflakeUtil.java:67)
+	at net.snowflake.client.core.StmtUtil.pollForOutput(StmtUtil.java:451)
+	at net.snowflake.client.core.StmtUtil.execute(StmtUtil.java:354)
+	at net.snowflake.client.core.SFStatement.executeHelper(SFStatement.java:487)
+	at net.snowflake.client.core.SFStatement.executeQueryInternal(SFStatement.java:198)
+	at net.snowflake.client.core.SFStatement.executeQuery(SFStatement.java:135)
+	at net.snowflake.client.core.SFStatement.execute(SFStatement.java:767)
+	at net.snowflake.client.core.SFStatement.execute(SFStatement.java:677)
+	at net.snowflake.client.jdbc.SnowflakeStatementV1.executeQueryInternal(SnowflakeStatementV1.java:238)
+	at net.snowflake.client.jdbc.SnowflakePreparedStatementV1.executeQuery(SnowflakePreparedStatementV1.java:117)
+	at net.snowflake.spark.snowflake.JDBCWrapper.$anonfun$executePreparedQueryInterruptibly$1(SnowflakeJDBCWrapper.scala:205)
+	at net.snowflake.spark.snowflake.JDBCWrapper.$anonfun$executeInterruptibly$2(SnowflakeJDBCWrapper.scala:252)
+	at scala.concurrent.Future$.$anonfun$apply$1(Future.scala:659)
+	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+	at scala.util.Success.map(Try.scala:213)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+; 106712)
+[2025-06-09T08:28:28.302+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-06-09T08:28:28.431+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

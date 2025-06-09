@@ -1,0 +1,27 @@
+[2025-06-08T16:30:42.316+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: transform_product_variants.run_transformation_eu manual__2025-06-08T16:30:22.770871+00:00 [queued]>
+[2025-06-08T16:30:42.484+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: transform_product_variants.run_transformation_eu manual__2025-06-08T16:30:22.770871+00:00 [queued]>
+[2025-06-08T16:30:42.495+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-08T16:30:42.730+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_transformation_eu> on 2025-06-08 16:30:22.770871+00:00
+[2025-06-08T16:30:42.750+0000] {standard_task_runner.py:60} INFO - Started process 11426 to run task
+[2025-06-08T16:30:42.752+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T16:30:42.802+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'transform_product_variants', 'run_transformation_eu', 'manual__2025-06-08T16:30:22.770871+00:00', '--job-id', '509', '--raw', '--subdir', 'DAGS_FOLDER/staging/product_variants_to_staging.py', '--cfg-path', '/tmp/tmpsp4vpyy1']
+[2025-06-08T16:30:42.807+0000] {standard_task_runner.py:88} INFO - Job 509: Subtask run_transformation_eu
+[2025-06-08T16:30:44.840+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-08T16:30:50.770+0000] {task_command.py:423} INFO - Running <TaskInstance: transform_product_variants.run_transformation_eu manual__2025-06-08T16:30:22.770871+00:00 [running]> on host c10f2fed82e0
+[2025-06-08T16:31:08.808+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='transform_product_variants' AIRFLOW_CTX_TASK_ID='run_transformation_eu' AIRFLOW_CTX_EXECUTION_DATE='2025-06-08T16:30:22.770871+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-08T16:30:22.770871+00:00'
+[2025-06-08T16:31:09.123+0000] {logging_mixin.py:188} INFO - Starting transformation for table: product_variants in region: eu
+[2025-06-08T16:31:10.028+0000] {logging_mixin.py:188} INFO - Reading data from: /opt/airflow/data/raw/region=eu/table=product_variants/load_date=2025-06-06/
+[2025-06-08T16:31:57.677+0000] {logging_mixin.py:188} INFO - [INFO] Processing 21 records for eu
+[2025-06-08T16:31:58.119+0000] {logging_mixin.py:188} INFO - Sample transformed data for eu:
+[2025-06-08T16:33:01.003+0000] {logging_mixin.py:188} INFO - +----------+----------+---------------------------+-------------------------+-------------+-------------+--------------+------------+---------+--------------------------+-------+--------+
+|variant_id|product_id|product_sku                |variant_name             |variant_type |variant_value|price_diff_eur|is_active_eu|is_active|created_at                |_region|_source |
++----------+----------+---------------------------+-------------------------+-------------+-------------+--------------+------------+---------+--------------------------+-------+--------+
+|1         |1         |EU-SKU-PHONE001-BLACK-128GB|iPhone 15 Pro Black 128GB|color_storage|Black 128GB  |0.00          |1           |true     |2025-06-06 08:01:32.546626|eu     |postgres|
+|2         |1         |EU-SKU-PHONE001-BLUE-256GB |iPhone 15 Pro Blue 256GB |color_storage|Blue 256GB   |200.00        |1           |true     |2025-06-06 08:01:32.546626|eu     |postgres|
+|3         |1         |EU-SKU-PHONE001-WHITE-512GB|iPhone 15 Pro White 512GB|color_storage|White 512GB  |400.00        |1           |true     |2025-06-06 08:01:32.546626|eu     |postgres|
+|4         |2         |EU-SKU-LAPTOP001-SILVER-8GB|MacBook Air Silver 8GB   |color_memory |Silver 8GB   |0.00          |1           |true     |2025-06-06 08:01:32.546626|eu     |postgres|
+|5         |2         |EU-SKU-LAPTOP001-GOLD-16GB |MacBook Air Gold 16GB    |color_memory |Gold 16GB    |300.00        |1           |true     |2025-06-06 08:01:32.546626|eu     |postgres|
++----------+----------+---------------------------+-------------------------+-------------+-------------+--------------+------------+---------+--------------------------+-------+--------+
+only showing top 5 rows
+[2025-06-08T16:33:01.005+0000] {logging_mixin.py:188} INFO - Writing transformed data to: /opt/airflow/data/staging/product_variants/region=eu/load_date=2025-06-06/
+[2025-06-08T16:33:03.772+0000] {logging_mixin.py:188} INFO - Successfully transformed 21 records for eu

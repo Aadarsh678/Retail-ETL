@@ -1,0 +1,31 @@
+[2025-06-08T15:31:12.588+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: transform_customers_csv.run_transformation_us manual__2025-06-08T15:31:10.466026+00:00 [queued]>
+[2025-06-08T15:31:12.616+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: transform_customers_csv.run_transformation_us manual__2025-06-08T15:31:10.466026+00:00 [queued]>
+[2025-06-08T15:31:12.618+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-08T15:31:12.673+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_transformation_us> on 2025-06-08 15:31:10.466026+00:00
+[2025-06-08T15:31:12.687+0000] {standard_task_runner.py:60} INFO - Started process 136227 to run task
+[2025-06-08T15:31:12.693+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'transform_customers_csv', 'run_transformation_us', 'manual__2025-06-08T15:31:10.466026+00:00', '--job-id', '462', '--raw', '--subdir', 'DAGS_FOLDER/staging/customer_to_staging.py', '--cfg-path', '/tmp/tmp69abyfsq']
+[2025-06-08T15:31:12.697+0000] {standard_task_runner.py:88} INFO - Job 462: Subtask run_transformation_us
+[2025-06-08T15:31:12.743+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-08T15:31:12.857+0000] {task_command.py:423} INFO - Running <TaskInstance: transform_customers_csv.run_transformation_us manual__2025-06-08T15:31:10.466026+00:00 [running]> on host f7e9b9614623
+[2025-06-08T15:31:13.125+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='transform_customers_csv' AIRFLOW_CTX_TASK_ID='run_transformation_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-08T15:31:10.466026+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-08T15:31:10.466026+00:00'
+[2025-06-08T15:31:13.127+0000] {logging_mixin.py:188} INFO - Starting transformation for table: customers in region: us
+[2025-06-08T15:31:22.441+0000] {logging_mixin.py:188} INFO - Reading data from: /opt/airflow/data/raw/region=us/table=customers/load_date=2025-06-06/
+[2025-06-08T15:31:35.068+0000] {logging_mixin.py:188} INFO - [INFO] Processing 25 records for us
+[2025-06-08T15:31:36.168+0000] {logging_mixin.py:188} INFO - Sample transformed data for us:
+[2025-06-08T15:31:43.329+0000] {logging_mixin.py:188} INFO - +-----------+--------------------------+----------+---------+-----+----------+------+-------------------+----------+----------------+-------------------+-------------------+-------------------+---------+-------+--------+
+|customer_id|email                     |first_name|last_name|phone|birth_date|gender|registration_date  |last_login|customer_segment|acquisition_channel|created_at         |updated_at         |is_active|_region|_source |
++-----------+--------------------------+----------+---------+-----+----------+------+-------------------+----------+----------------+-------------------+-------------------+-------------------+---------+-------+--------+
+|1          |john.smith@email.com      |John      |Smith    |NULL |1985-03-15|Male  |2025-06-06 08:00:56|NULL      |vip             |google_ads         |2025-06-06 08:00:56|2025-06-06 08:00:56|true     |us     |postgres|
+|2          |maria.gonzalez@gmail.com  |Maria     |Gonzalez |NULL |1990-07-22|Female|2025-06-06 08:00:56|NULL      |regular         |facebook           |2025-06-06 08:00:56|2025-06-06 08:00:56|true     |us     |postgres|
+|3          |david.johnson@yahoo.com   |David     |Johnson  |NULL |1982-11-08|Male  |2025-06-06 08:00:56|NULL      |new             |referral           |2025-06-06 08:00:56|2025-06-06 08:00:56|true     |us     |postgres|
+|4          |sarah.williams@hotmail.com|Sarah     |Williams |NULL |1988-05-12|Female|2025-06-06 08:00:56|NULL      |regular         |organic            |2025-06-06 08:00:56|2025-06-06 08:00:56|true     |us     |postgres|
+|5          |michael.brown@outlook.com |Michael   |Brown    |NULL |1975-09-30|Male  |2025-06-06 08:00:56|NULL      |vip             |email_campaign     |2025-06-06 08:00:56|2025-06-06 08:00:56|true     |us     |postgres|
++-----------+--------------------------+----------+---------+-----+----------+------+-------------------+----------+----------------+-------------------+-------------------+-------------------+---------+-------+--------+
+only showing top 5 rows
+[2025-06-08T15:31:43.330+0000] {logging_mixin.py:188} INFO - Writing transformed data to: /opt/airflow/data/staging/customers/region=us/load_date=2025-06-06/
+[2025-06-08T15:31:46.239+0000] {logging_mixin.py:188} INFO - Successfully transformed 25 records for us
+[2025-06-08T15:31:47.099+0000] {logging_mixin.py:188} INFO - Finished transformation for customers in region us
+[2025-06-08T15:31:47.100+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-06-08T15:31:47.143+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=transform_customers_csv, task_id=run_transformation_us, execution_date=20250608T153110, start_date=20250608T153112, end_date=20250608T153147
+[2025-06-08T15:31:47.227+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-08T15:31:47.288+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

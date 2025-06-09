@@ -1,0 +1,27 @@
+[2025-06-08T17:17:18.741+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: transform_cart_items.run_transformation_us manual__2025-06-08T17:16:59.938815+00:00 [queued]>
+[2025-06-08T17:17:18.778+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: transform_cart_items.run_transformation_us manual__2025-06-08T17:16:59.938815+00:00 [queued]>
+[2025-06-08T17:17:18.779+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-08T17:17:18.813+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_transformation_us> on 2025-06-08 17:16:59.938815+00:00
+[2025-06-08T17:17:18.833+0000] {standard_task_runner.py:60} INFO - Started process 10707 to run task
+[2025-06-08T17:17:18.833+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-08T17:17:18.848+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'transform_cart_items', 'run_transformation_us', 'manual__2025-06-08T17:16:59.938815+00:00', '--job-id', '599', '--raw', '--subdir', 'DAGS_FOLDER/staging/cart_items_to_staging.py', '--cfg-path', '/tmp/tmpbh4ndvmf']
+[2025-06-08T17:17:18.853+0000] {standard_task_runner.py:88} INFO - Job 599: Subtask run_transformation_us
+[2025-06-08T17:17:18.931+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-08T17:17:19.087+0000] {task_command.py:423} INFO - Running <TaskInstance: transform_cart_items.run_transformation_us manual__2025-06-08T17:16:59.938815+00:00 [running]> on host 52074d34e08f
+[2025-06-08T17:17:19.439+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='transform_cart_items' AIRFLOW_CTX_TASK_ID='run_transformation_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-08T17:16:59.938815+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-08T17:16:59.938815+00:00'
+[2025-06-08T17:17:19.442+0000] {logging_mixin.py:188} INFO - Starting transformation for table: cart_items in region: us
+[2025-06-08T17:17:19.518+0000] {logging_mixin.py:188} INFO - Reading data from: /opt/airflow/data/raw/region=us/table=cart_items/load_date=2025-06-06/
+[2025-06-08T17:17:37.348+0000] {logging_mixin.py:188} INFO - [INFO] Processing 6 records for us
+[2025-06-08T17:17:38.423+0000] {logging_mixin.py:188} INFO - Sample transformed data for us:
+[2025-06-08T17:17:45.829+0000] {logging_mixin.py:188} INFO - +------------+-------+----------+--------+--------------+-------------------+-------------------+-------+--------+
+|cart_item_id|cart_id|variant_id|quantity|unit_price_usd|added_at           |updated_at         |_region|_source |
++------------+-------+----------+--------+--------------+-------------------+-------------------+-------+--------+
+|1           |1      |2         |1       |1199.99       |2025-06-06 08:00:56|2025-06-06 08:00:56|us     |postgres|
+|2           |1      |8         |2       |24.99         |2025-06-06 08:00:56|2025-06-06 08:00:56|us     |postgres|
+|3           |2      |15        |1       |1449.99       |2025-06-06 08:00:56|2025-06-06 08:00:56|us     |postgres|
+|4           |3      |19        |1       |129.99        |2025-06-06 08:00:56|2025-06-06 08:00:56|us     |postgres|
+|5           |4      |6         |1       |399.99        |2025-06-06 08:00:56|2025-06-06 08:00:56|us     |postgres|
++------------+-------+----------+--------+--------------+-------------------+-------------------+-------+--------+
+only showing top 5 rows
+[2025-06-08T17:17:45.829+0000] {logging_mixin.py:188} INFO - Writing transformed data to: /opt/airflow/data/staging/cart_items/region=us/load_date=2025-06-06/
+[2025-06-08T17:17:48.539+0000] {logging_mixin.py:188} INFO - Successfully transformed 6 records for us

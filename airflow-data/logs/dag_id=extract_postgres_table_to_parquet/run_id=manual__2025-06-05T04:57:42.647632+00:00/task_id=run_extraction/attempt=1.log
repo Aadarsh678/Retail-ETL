@@ -1,0 +1,31 @@
+[2025-06-05T04:57:43.689+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction manual__2025-06-05T04:57:42.647632+00:00 [queued]>
+[2025-06-05T04:57:43.697+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction manual__2025-06-05T04:57:42.647632+00:00 [queued]>
+[2025-06-05T04:57:43.698+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-05T04:57:43.711+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_extraction> on 2025-06-05 04:57:42.647632+00:00
+[2025-06-05T04:57:43.716+0000] {standard_task_runner.py:60} INFO - Started process 789 to run task
+[2025-06-05T04:57:43.720+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'extract_postgres_table_to_parquet', 'run_extraction', 'manual__2025-06-05T04:57:42.647632+00:00', '--job-id', '86', '--raw', '--subdir', 'DAGS_FOLDER/asia/landing.py', '--cfg-path', '/tmp/tmp_k7rs7gk']
+[2025-06-05T04:57:43.722+0000] {standard_task_runner.py:88} INFO - Job 86: Subtask run_extraction
+[2025-06-05T04:57:43.778+0000] {task_command.py:423} INFO - Running <TaskInstance: extract_postgres_table_to_parquet.run_extraction manual__2025-06-05T04:57:42.647632+00:00 [running]> on host f8ee8f7b238f
+[2025-06-05T04:57:43.877+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='extract_postgres_table_to_parquet' AIRFLOW_CTX_TASK_ID='run_extraction' AIRFLOW_CTX_EXECUTION_DATE='2025-06-05T04:57:42.647632+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-05T04:57:42.647632+00:00'
+[2025-06-05T04:57:43.878+0000] {logging_mixin.py:188} INFO - Starting extraction for table: customers1 in region: asia
+[2025-06-05T04:57:43.889+0000] {logging_mixin.py:188} INFO - [INFO] Last extracted timestamp: 2025-07-06 09:15:00.000
+[2025-06-05T04:57:48.467+0000] {logging_mixin.py:188} INFO - (SELECT * FROM asia.customers1 WHERE created > '2025-07-06 09:15:00.000') AS filtered_data
+[2025-06-05T04:57:53.230+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/asia/landing.py", line 29, in run_extraction
+    extract_postgres_table(
+  File "/opt/airflow/dags/asia/../../scripts/pyspark_jobs/extract_to_parquet.py", line 43, in extract_postgres_table
+    raise AirflowSkipException(f"No new data to extract from {region}.{table}")
+NameError: name 'AirflowSkipException' is not defined
+[2025-06-05T04:57:53.244+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=extract_postgres_table_to_parquet, task_id=run_extraction, execution_date=20250605T045742, start_date=20250605T045743, end_date=20250605T045753
+[2025-06-05T04:57:53.259+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 86 for task run_extraction (name 'AirflowSkipException' is not defined; 789)
+[2025-06-05T04:57:53.286+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-06-05T04:57:53.304+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,31 @@
+[2025-06-09T07:27:06.037+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_asia.process_wishlists_asia manual__2025-06-09T07:23:36.480089+00:00 [queued]>
+[2025-06-09T07:27:06.068+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_processor_7.process_region_asia.process_wishlists_asia manual__2025-06-09T07:23:36.480089+00:00 [queued]>
+[2025-06-09T07:27:06.069+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-09T07:27:06.112+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_asia.process_wishlists_asia> on 2025-06-09 07:23:36.480089+00:00
+[2025-06-09T07:27:06.125+0000] {standard_task_runner.py:60} INFO - Started process 70317 to run task
+[2025-06-09T07:27:06.137+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_processor_7', 'process_region_asia.process_wishlists_asia', 'manual__2025-06-09T07:23:36.480089+00:00', '--job-id', '549', '--raw', '--subdir', 'DAGS_FOLDER/master2.py', '--cfg-path', '/tmp/tmpb4hm3v4u']
+[2025-06-09T07:27:06.144+0000] {standard_task_runner.py:88} INFO - Job 549: Subtask process_region_asia.process_wishlists_asia
+[2025-06-09T07:27:06.210+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-09T07:27:06.316+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_processor_7.process_region_asia.process_wishlists_asia manual__2025-06-09T07:23:36.480089+00:00 [running]> on host afcdbcf38bc0
+[2025-06-09T07:27:06.562+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_processor_7' AIRFLOW_CTX_TASK_ID='process_region_asia.process_wishlists_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T07:23:36.480089+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-09T07:23:36.480089+00:00'
+[2025-06-09T07:27:20.053+0000] {logging_mixin.py:188} INFO - Processing wishlists for region asia
+[2025-06-09T07:27:41.555+0000] {logging_mixin.py:188} INFO - +-----------+-----------+----------+-------------------+-------+--------+
+|wishlist_id|customer_id|product_id|           added_at|_region| _source|
++-----------+-----------+----------+-------------------+-------+--------+
+|          1|          1|         2|2024-03-17 09:30:45|   asia|postgres|
+|          2|          1|         9|2024-03-17 09:35:20|   asia|postgres|
+|          3|          1|        11|2024-03-17 09:40:15|   asia|postgres|
+|          4|          2|         1|2024-03-18 00:00:00|   asia|postgres|
+|          5|          2|         6|2024-03-18 00:00:00|   asia|postgres|
+|          6|          2|         8|2024-03-18 00:00:00|   asia|postgres|
+|          7|          3|         4|2024-03-19 00:00:00|   asia|postgres|
+|          8|          3|         7|2024-03-19 00:00:00|   asia|postgres|
+|          9|          3|        12|2024-03-19 00:00:00|   asia|postgres|
+|         10|          4|         3|               NULL|   asia|postgres|
++-----------+-----------+----------+-------------------+-------+--------+
+only showing top 10 rows
+[2025-06-09T07:27:46.014+0000] {logging_mixin.py:188} INFO - Successfully processed 30 records for wishlists in asia
+[2025-06-09T07:27:46.442+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'asia', 'table': 'wishlists', 'record_count': 30, 'status': 'success'}
+[2025-06-09T07:27:46.545+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_processor_7, task_id=process_region_asia.process_wishlists_asia, execution_date=20250609T072336, start_date=20250609T072706, end_date=20250609T072746
+[2025-06-09T07:27:46.618+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-09T07:27:46.704+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
