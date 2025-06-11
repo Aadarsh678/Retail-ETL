@@ -1,0 +1,32 @@
+[2025-06-11T15:54:02.574+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_us.process_discounts_us scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T15:54:02.599+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_us.process_discounts_us scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T15:54:02.600+0000] {taskinstance.py:2170} INFO - Starting attempt 3 of 2
+[2025-06-11T15:54:02.630+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_us.process_discounts_us> on 2025-06-10 00:00:00+00:00
+[2025-06-11T15:54:02.657+0000] {standard_task_runner.py:60} INFO - Started process 298 to run task
+[2025-06-11T15:54:02.667+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_us.process_discounts_us', 'scheduled__2025-06-10T00:00:00+00:00', '--job-id', '137', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmp0q78cdze']
+[2025-06-11T15:54:02.671+0000] {standard_task_runner.py:88} INFO - Job 137: Subtask process_region_us.process_discounts_us
+[2025-06-11T15:54:02.828+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_us.process_discounts_us scheduled__2025-06-10T00:00:00+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T15:54:03.364+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_us.process_discounts_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-10T00:00:00+00:00'
+[2025-06-11T15:54:34.674+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://5950010ae7c1:34053/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:34053/jars/snowflake-jdbc-3.13.17.jar)
+[2025-06-11T15:54:34.679+0000] {logging_mixin.py:188} INFO - Processing discounts for region us
+[2025-06-11T15:54:34.716+0000] {logging_mixin.py:188} INFO - /opt/airflow/data/raw/region=us/table=discounts/load_date=2025-06-11
+[2025-06-11T15:55:35.711+0000] {logging_mixin.py:188} INFO - Error processing discounts for us: transform_discounts_us() takes 1 positional argument but 2 were given
+[2025-06-11T15:55:41.494+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/master_dag.py", line 242, in process_table
+    df_transformed = transform_func(df_raw, region,exchange_rates)
+  File "/opt/airflow/scripts/etl/transform/discounts.py", line 146, in transform_discounts
+    return transform_discounts_us(df,exchange_rates)
+TypeError: transform_discounts_us() takes 1 positional argument but 2 were given
+[2025-06-11T15:55:43.363+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=multi_region_transform_staging_v2, task_id=process_region_us.process_discounts_us, execution_date=20250610T000000, start_date=20250611T155402, end_date=20250611T155542
+[2025-06-11T15:55:44.643+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 137 for task process_region_us.process_discounts_us (transform_discounts_us() takes 1 positional argument but 2 were given; 298)
+[2025-06-11T15:55:44.808+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-06-11T15:55:47.403+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,32 @@
+[2025-06-11T18:10:58.854+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_asia.process_categories_asia manual__2025-06-11T18:10:56.178185+00:00 [queued]>
+[2025-06-11T18:10:58.868+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_asia.process_categories_asia manual__2025-06-11T18:10:56.178185+00:00 [queued]>
+[2025-06-11T18:10:58.868+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T18:10:58.884+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_asia.process_categories_asia> on 2025-06-11 18:10:56.178185+00:00
+[2025-06-11T18:10:58.892+0000] {standard_task_runner.py:60} INFO - Started process 102023 to run task
+[2025-06-11T18:10:58.897+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_asia.process_categories_asia', 'manual__2025-06-11T18:10:56.178185+00:00', '--job-id', '564', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmpmtr1o8i4']
+[2025-06-11T18:10:58.900+0000] {standard_task_runner.py:88} INFO - Job 564: Subtask process_region_asia.process_categories_asia
+[2025-06-11T18:10:58.991+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_asia.process_categories_asia manual__2025-06-11T18:10:56.178185+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T18:10:59.173+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_asia.process_categories_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T18:10:56.178185+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T18:10:56.178185+00:00'
+[2025-06-11T18:11:14.700+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://5950010ae7c1:46427/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:46427/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T18:11:14.702+0000] {logging_mixin.py:188} INFO - Processing categories for region asia
+[2025-06-11T18:11:14.731+0000] {logging_mixin.py:188} INFO - /opt/airflow/data/raw/region=asia/table=categories/load_date=2025-06-11
+[2025-06-11T18:11:46.000+0000] {logging_mixin.py:188} INFO - STAGING_ASIA
+[2025-06-11T18:11:49.907+0000] {logging_mixin.py:188} INFO - +-------------+--------------+------------------+--------------------+---------+-------------------+-------------------+-------+--------+
+|categories_id| category_name|parent_category_id|       category_path|is_active|         created_at|         updated_at|_region| _source|
++-------------+--------------+------------------+--------------------+---------+-------------------+-------------------+-------+--------+
+|            1|   Electronics|              NULL|        /Electronics|     true|2024-01-01 09:00:00|2025-06-11 02:14:04|   asia|postgres|
+|            2|   Smartphones|                 1|/Electronics/Smar...|     true|2024-01-02 00:00:00|2025-06-11 02:14:04|   asia|postgres|
+|            3|       Laptops|                 1|/Electronics/Laptops|     true|2024-03-01 00:00:00|2025-06-11 02:14:04|   asia|postgres|
+|            4|Gaming Devices|                 1| /Electronics/Gaming|     true|               NULL|2025-06-11 02:14:04|   asia|postgres|
+|            5|      Clothing|              NULL|           /Clothing|     true|2024-05-01 00:00:00|2025-06-11 02:14:04|   asia|postgres|
+|            6|  Mens Fashion|                 5|      /Clothing/Mens|     true|2024-01-06 00:00:00|2025-06-11 02:14:04|   asia|postgres|
+|            7|Womens Fashion|                 5|    /Clothing/Womens|     true|2024-07-01 00:00:00|2025-06-11 02:14:04|   asia|postgres|
+|            8| Home & Living|              NULL|        /Home-Living|     true|2024-01-08 11:20:15|2025-06-11 02:14:04|   asia|postgres|
+|            9|     Furniture|                 8|/Home-Living/Furn...|     true|2024-01-09 00:00:00|2025-06-11 02:14:04|   asia|postgres|
+|           10|         Books|              NULL|              /Books|     true|2024-01-10 00:00:00|2025-06-11 02:14:04|   asia|postgres|
++-------------+--------------+------------------+--------------------+---------+-------------------+-------------------+-------+--------+
+only showing top 10 rows
+[2025-06-11T18:11:49.908+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-11T18:12:02.090+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-11T18:12:02.482+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-06-11T18:12:04.097+0000] {logging_mixin.py:188} INFO - Successfully processed 15 records for categories in asia

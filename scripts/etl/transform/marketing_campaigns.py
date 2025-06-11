@@ -25,10 +25,11 @@ def safe_to_timestamp_multi_formats(date_col):
     )
 def normalize_active(flag_col):
     return (
-        when(lower(col(flag_col)).isin("y", "yes"), True)
-        .when(lower(col(flag_col)).isin("n", "no"), False)
+        when(lower(col(flag_col)).isin("y", "yes", "active"), True)
+        .when(lower(col(flag_col)).isin("n", "no", "completed", "scheduled"), False)
         .otherwise(None)
     )
+
 
 # ASIA
 def transform_marketing_campaigns_asia(df,exchange_rates: dict):
@@ -38,9 +39,9 @@ def transform_marketing_campaigns_asia(df,exchange_rates: dict):
         col("name").alias("campaign_name"),
         col("type").alias("campaign_type"),
         col("channel"),
-        col("start_dt").alias("start_date"),
-        col("end_dt").alias("end_date"),
-        (col("budget_jpy").lit(rate)).alias("budget_usd"),  # normalize to float
+        safe_to_timestamp_multi_formats(col("start_dt")).alias("start_date"),
+        safe_to_timestamp_multi_formats(col("end_dt")).alias("end_date"),
+        (col("budget_jpy") * lit(rate)).alias("budget_usd"),  # normalize to float
         col("target").alias("target_audience"),
         normalize_active("status").alias("campaign_status"),
         lit(None).cast("boolean").alias("gdpr_compliant"),  # missing in ASIA
@@ -57,11 +58,11 @@ def transform_marketing_campaigns_eu(df,exchange_rates: dict):
         col("campaign_name"),
         col("campaign_type"),
         col("channel"),
-        col("start_date"),
-        col("end_date"),
-        (col("budget_eur").lit(rate)).alias("budget_usd"),
+        safe_to_timestamp_multi_formats(col("start_date")).alias("start_date"),
+        safe_to_timestamp_multi_formats(col("end_date")).alias("end_date"),
+        (col("budget_eur") *lit(rate)).alias("budget_usd"),
         col("target_audience"),
-        col("campaign_status"),
+        normalize_active("campaign_status").alias("campaign_status"),
         col("gdpr_compliant"),
         safe_to_timestamp_multi_formats(col("created_at")).alias("created_at"),
         lit("eu").alias("_region"),
@@ -69,7 +70,7 @@ def transform_marketing_campaigns_eu(df,exchange_rates: dict):
     )
 
 # US
-def transform_marketing_campaigns_us(df):
+def transform_marketing_campaigns_us(df,exchange_rates: dict):
     return df.select(
         col("campaign_id"),
         col("campaign_name"),
@@ -79,7 +80,7 @@ def transform_marketing_campaigns_us(df):
         col("end_date"),
         col("budget_usd").cast("double").alias("budget_usd"),
         col("target_audience"),
-        col("campaign_status"),
+        normalize_active("campaign_status").alias("campaign_status"),
         lit(None).cast("boolean").alias("gdpr_compliant"),  # missing in US
         safe_to_timestamp_multi_formats(col("created_at")).alias("created_at"),
         lit("us").alias("_region"),

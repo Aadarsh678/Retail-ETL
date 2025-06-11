@@ -1,0 +1,12 @@
+[2025-06-11T15:47:29.281+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_asia.process_marketing_campaigns_asia scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T15:47:29.303+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_asia.process_marketing_campaigns_asia scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T15:47:29.304+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 2
+[2025-06-11T15:47:29.336+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_asia.process_marketing_campaigns_asia> on 2025-06-10 00:00:00+00:00
+[2025-06-11T15:47:29.356+0000] {standard_task_runner.py:60} INFO - Started process 326 to run task
+[2025-06-11T15:47:29.367+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_asia.process_marketing_campaigns_asia', 'scheduled__2025-06-10T00:00:00+00:00', '--job-id', '102', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmp2ltm2na5']
+[2025-06-11T15:47:29.373+0000] {standard_task_runner.py:88} INFO - Job 102: Subtask process_region_asia.process_marketing_campaigns_asia
+[2025-06-11T15:47:29.573+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_asia.process_marketing_campaigns_asia scheduled__2025-06-10T00:00:00+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T15:47:29.776+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_asia.process_marketing_campaigns_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-10T00:00:00+00:00'
+[2025-06-11T15:48:02.347+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://5950010ae7c1:41909/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:41909/jars/snowflake-jdbc-3.13.17.jar)
+[2025-06-11T15:48:02.401+0000] {logging_mixin.py:188} INFO - Processing marketing_campaigns for region asia
+[2025-06-11T15:48:08.196+0000] {logging_mixin.py:188} INFO - /opt/airflow/data/raw/region=asia/table=marketing_campaigns/load_date=2025-06-11

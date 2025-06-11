@@ -1,0 +1,35 @@
+[2025-06-11T15:54:02.443+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_discounts_eu scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T15:54:02.490+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_discounts_eu scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T15:54:02.495+0000] {taskinstance.py:2170} INFO - Starting attempt 3 of 2
+[2025-06-11T15:54:02.568+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_eu.process_discounts_eu> on 2025-06-10 00:00:00+00:00
+[2025-06-11T15:54:02.580+0000] {standard_task_runner.py:60} INFO - Started process 297 to run task
+[2025-06-11T15:54:02.588+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_eu.process_discounts_eu', 'scheduled__2025-06-10T00:00:00+00:00', '--job-id', '134', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmpb155leri']
+[2025-06-11T15:54:02.592+0000] {standard_task_runner.py:88} INFO - Job 134: Subtask process_region_eu.process_discounts_eu
+[2025-06-11T15:54:02.790+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_discounts_eu scheduled__2025-06-10T00:00:00+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T15:54:03.309+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_eu.process_discounts_eu' AIRFLOW_CTX_EXECUTION_DATE='2025-06-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-10T00:00:00+00:00'
+[2025-06-11T15:54:34.670+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://5950010ae7c1:43623/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:43623/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T15:54:34.672+0000] {logging_mixin.py:188} INFO - Processing discounts for region eu
+[2025-06-11T15:54:34.727+0000] {logging_mixin.py:188} INFO - /opt/airflow/data/raw/region=eu/table=discounts/load_date=2025-06-11
+[2025-06-11T15:55:41.678+0000] {logging_mixin.py:188} INFO - STAGING_EU
+[2025-06-11T15:55:47.256+0000] {logging_mixin.py:188} INFO - +-----------+-------------+--------------------+-------------+--------------+--------------------+--------------------+-----------+-----------+-------------------+-------------------+---------+-------------------+-------+--------+
+|discount_id|discount_code|       discount_name|discount_type|discount_value|minimum_order_amount|maximum_order_amount|usage_limit|usage_count|         start_date|           end_date|is_active|         created_at|_region| _source|
++-----------+-------------+--------------------+-------------+--------------+--------------------+--------------------+-----------+-----------+-------------------+-------------------+---------+-------------------+-------+--------+
+|          1|    WELCOME10|New Customer Welcome|   percentage|          10.0|                54.0|               108.0|       1000|        234|2023-12-31 23:00:00|2024-12-31 22:59:59|        1|2025-06-11 02:14:31|     eu|postgres|
+|          2|     SPRING20| Spring Sale 20% Off|   percentage|          20.0|               108.0|               216.0|        500|        156|2024-02-29 23:00:00|2024-03-31 22:59:59|        0|2025-06-11 02:14:31|     eu|postgres|
+|          3|     FREESHIP|       Free Shipping|     shipping|           0.0|                81.0|  16.200000000000003|       2000|        567|2023-12-31 23:00:00|2024-12-31 22:59:59|        1|2025-06-11 02:14:31|     eu|postgres|
+|          4|    SAVE50EUR|        Save 50 Euro|        fixed|          50.0|               216.0|                54.0|        300|         89|2024-01-31 23:00:00|2024-02-29 22:59:59|        0|2025-06-11 02:14:31|     eu|postgres|
+|          5|BLACKFRIDAY30|Black Friday 30% Off|   percentage|          30.0|               162.0|               324.0|       1000|        678|2024-11-24 23:00:00|2024-11-29 22:59:59|        0|2025-06-11 02:14:31|     eu|postgres|
+|          6|    STUDENT15|    Student Discount|   percentage|          15.0|  32.400000000000006|               162.0|          0|        123|2023-12-31 23:00:00|2024-12-31 22:59:59|        1|2025-06-11 02:14:31|     eu|postgres|
+|          7|    LOYALTY25|Loyalty Member 25...|   percentage|          25.0|               108.0|               270.0|        500|        234|2023-12-31 23:00:00|2024-12-31 22:59:59|        1|2025-06-11 02:14:31|     eu|postgres|
+|          8|     SUMMER15|      Summer Special|   percentage|          15.0|                86.4|  129.60000000000002|        750|        345|2024-05-31 23:00:00|2024-08-31 22:59:59|        1|2025-06-11 02:14:31|     eu|postgres|
+|          9|     FIRST100| First 100 Customers|        fixed|          25.0|               108.0|                27.0|        100|        100|2023-12-31 23:00:00|2024-01-31 22:59:59|        0|2025-06-11 02:14:31|     eu|postgres|
+|         10|    WEEKEND10|     Weekend Special|   percentage|          10.0|   64.80000000000001|                86.4|          0|        456|2023-12-31 23:00:00|2024-12-31 22:59:59|        1|2025-06-11 02:14:31|     eu|postgres|
++-----------+-------------+--------------------+-------------+--------------+--------------------+--------------------+-----------+-----------+-------------------+-------------------+---------+-------------------+-------+--------+
+[2025-06-11T15:55:47.261+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-11T15:55:57.432+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-11T15:55:57.566+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-06-11T15:55:57.921+0000] {logging_mixin.py:188} INFO - Successfully processed 10 records for discounts in eu
+[2025-06-11T15:56:00.366+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'eu', 'table': 'discounts', 'record_count': 10, 'status': 'success'}
+[2025-06-11T15:56:00.658+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_transform_staging_v2, task_id=process_region_eu.process_discounts_eu, execution_date=20250610T000000, start_date=20250611T155402, end_date=20250611T155600
+[2025-06-11T15:56:00.935+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T15:56:01.307+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

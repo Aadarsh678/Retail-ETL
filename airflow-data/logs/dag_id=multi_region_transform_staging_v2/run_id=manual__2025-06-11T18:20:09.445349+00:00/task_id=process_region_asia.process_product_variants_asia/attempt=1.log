@@ -1,0 +1,36 @@
+[2025-06-11T18:22:24.943+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_asia.process_product_variants_asia manual__2025-06-11T18:20:09.445349+00:00 [queued]>
+[2025-06-11T18:22:24.963+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_asia.process_product_variants_asia manual__2025-06-11T18:20:09.445349+00:00 [queued]>
+[2025-06-11T18:22:24.964+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T18:22:24.994+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_asia.process_product_variants_asia> on 2025-06-11 18:20:09.445349+00:00
+[2025-06-11T18:22:25.008+0000] {standard_task_runner.py:60} INFO - Started process 6280 to run task
+[2025-06-11T18:22:25.014+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_asia.process_product_variants_asia', 'manual__2025-06-11T18:20:09.445349+00:00', '--job-id', '622', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmpcrzvto6e']
+[2025-06-11T18:22:25.018+0000] {standard_task_runner.py:88} INFO - Job 622: Subtask process_region_asia.process_product_variants_asia
+[2025-06-11T18:22:25.174+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_asia.process_product_variants_asia manual__2025-06-11T18:20:09.445349+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T18:22:25.498+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_asia.process_product_variants_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T18:20:09.445349+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T18:20:09.445349+00:00'
+[2025-06-11T18:22:38.446+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://5950010ae7c1:33017/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:33017/jars/snowflake-jdbc-3.13.17.jar)
+[2025-06-11T18:22:38.452+0000] {logging_mixin.py:188} INFO - Processing product_variants for region asia
+[2025-06-11T18:22:38.492+0000] {logging_mixin.py:188} INFO - /opt/airflow/data/raw/region=asia/table=product_variants/load_date=2025-06-11
+[2025-06-11T18:23:07.580+0000] {logging_mixin.py:188} INFO - STAGING_ASIA
+[2025-06-11T18:23:09.420+0000] {logging_mixin.py:188} INFO - +----------+----------+--------------------+--------------------+-------------+-------------+--------------+---------+-------------------+-------+--------+
+|variant_id|product_id|         product_sku|        variant_name| variant_type|variant_value|price_diff_usd|is_active|         created_at|_region| _source|
++----------+----------+--------------------+--------------------+-------------+-------------+--------------+---------+-------------------+-------+--------+
+|         1|         1|JP-ITEM-001-BLACK...|iPhone 15 Pro Bla...|color_storage|  Black 128GB|           0.0|     true|2024-02-01 08:30:00|   asia|postgres|
+|         2|         1|JP-ITEM-001-BLUE-...|iPhone 15 Pro Blu...|color_storage|   Blue 256GB|         136.0|     true|               NULL|   asia|postgres|
+|         3|         1|JP-ITEM-001-WHITE...|iPhone 15 Pro Whi...|color_storage|  White 512GB|         272.0|     true|               NULL|   asia|postgres|
+|         5|         2|JP-ITEM-002-GOLD-...|MacBook Air Gold ...| color_memory|    Gold 16GB|         204.0|     true|               NULL|   asia|postgres|
+|         6|         3|JP-ITEM-003-STANDARD|PlayStation 5 Sta...|      edition|     Standard|           0.0|     true|2024-02-04 00:00:00|   asia|postgres|
+|         7|         3| JP-ITEM-003-DIGITAL|PlayStation 5 Dig...|      edition|      Digital|         -68.0|     true|               NULL|   asia|postgres|
+|         8|         4|   JP-ITEM-004-RED-M|Cotton T-Shirt Re...|   color_size|        Red M|           0.0|     true|               NULL|   asia|postgres|
+|         9|         4|  JP-ITEM-004-BLUE-L|Cotton T-Shirt Bl...|   color_size|       Blue L|           3.4|     true|               NULL|   asia|postgres|
+|        11|         5|JP-ITEM-005-FLORAL-S|Summer Dress Flor...| pattern_size|     Floral S|           0.0|     true|               NULL|   asia|postgres|
+|        12|         5| JP-ITEM-005-SOLID-M|Summer Dress Soli...| pattern_size|      Solid M|           0.0|     true|2024-02-10 11:30:25|   asia|postgres|
++----------+----------+--------------------+--------------------+-------------+-------------+--------------+---------+-------------------+-------+--------+
+only showing top 10 rows
+[2025-06-11T18:23:09.421+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-11T18:23:19.430+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-11T18:23:19.439+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-06-11T18:23:19.648+0000] {logging_mixin.py:188} INFO - Successfully processed 19 records for product_variants in asia
+[2025-06-11T18:23:22.001+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'asia', 'table': 'product_variants', 'record_count': 19, 'status': 'success'}
+[2025-06-11T18:23:22.076+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_transform_staging_v2, task_id=process_region_asia.process_product_variants_asia, execution_date=20250611T182009, start_date=20250611T182224, end_date=20250611T182322
+[2025-06-11T18:23:22.149+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T18:23:22.256+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check

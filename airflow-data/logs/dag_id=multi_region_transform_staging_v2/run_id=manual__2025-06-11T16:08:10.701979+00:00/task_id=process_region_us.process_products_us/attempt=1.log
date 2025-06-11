@@ -1,0 +1,36 @@
+[2025-06-11T16:09:16.688+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_us.process_products_us manual__2025-06-11T16:08:10.701979+00:00 [queued]>
+[2025-06-11T16:09:16.705+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_us.process_products_us manual__2025-06-11T16:08:10.701979+00:00 [queued]>
+[2025-06-11T16:09:16.706+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T16:09:16.769+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_us.process_products_us> on 2025-06-11 16:08:10.701979+00:00
+[2025-06-11T16:09:16.785+0000] {standard_task_runner.py:60} INFO - Started process 24772 to run task
+[2025-06-11T16:09:16.788+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_us.process_products_us', 'manual__2025-06-11T16:08:10.701979+00:00', '--job-id', '193', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmpcjkcemah']
+[2025-06-11T16:09:16.792+0000] {standard_task_runner.py:88} INFO - Job 193: Subtask process_region_us.process_products_us
+[2025-06-11T16:09:16.886+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_us.process_products_us manual__2025-06-11T16:08:10.701979+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T16:09:17.030+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_us.process_products_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T16:08:10.701979+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T16:08:10.701979+00:00'
+[2025-06-11T16:09:29.924+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://5950010ae7c1:36871/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:36871/jars/snowflake-jdbc-3.13.17.jar)
+[2025-06-11T16:09:29.926+0000] {logging_mixin.py:188} INFO - Processing products for region us
+[2025-06-11T16:09:29.996+0000] {logging_mixin.py:188} INFO - /opt/airflow/data/raw/region=us/table=products/load_date=2025-06-11
+[2025-06-11T16:10:00.045+0000] {logging_mixin.py:188} INFO - STAGING_US
+[2025-06-11T16:10:03.665+0000] {logging_mixin.py:188} INFO - +----------+-----------+--------------------+--------------------+-----------+--------+--------+---------+---------+--------+---------+---------+-------------------+-------------------+-------+--------+
+|product_id|product_sku|        product_name| product_description|category_id|base_usd|cost_usd|weight_kg|length_cm|width_cm|height_cm|is_active|         created_at|         updated_at|_region| _source|
++----------+-----------+--------------------+--------------------+-----------+--------+--------+---------+---------+--------+---------+---------+-------------------+-------------------+-------+--------+
+|         1|  PRD-12001|       Iphone 15 Pro|Latest Apple smar...|          2|  999.99|  650.00|     0.22|      6.1|     3.0|     0.33|     true|2025-06-11 02:14:19|2025-06-11 02:14:19|     us|postgres|
+|         2|  PRD-12002|      Macbook Air M2|Apple MacBook Air...|          3| 1199.99|  800.00|     1.22|    11.97|    8.36|     0.44|     true|2025-06-11 02:14:19|2025-06-11 02:14:19|     us|postgres|
+|         3|  PRD-12003|       Playstation 5|Sony PlayStation ...|          4|  499.99|  350.00|     4.49|     15.4|    10.2|      4.1|     true|2025-06-11 02:14:19|2025-06-11 02:14:19|     us|postgres|
+|         4|  PRD-12004|      Cotton T-shirt|Premium 100% cott...|          6|   24.99|    8.00|      0.2|     28.0|    20.0|      1.0|     true|2025-06-11 02:14:19|2025-06-11 02:14:19|     us|postgres|
+|         5|  PRD-12005|        Summer Dress|Floral print midi...|          7|   79.99|   25.00|      0.3|     36.0|    24.0|      2.0|     true|2025-06-11 02:14:19|2025-06-11 02:14:19|     us|postgres|
+|         6|  PRD-12006|    Leather Recliner|Genuine leather p...|          9| 1299.99|  650.00|     85.0|     32.0|    36.0|     40.0|     true|2025-06-11 02:14:19|2025-06-11 02:14:19|     us|postgres|
+|         7|  PRD-12007|Data Science Hand...|Complete guide to...|         10|   49.99|   15.00|      0.5|     9.25|     7.5|      1.2|     true|2025-06-11 02:14:19|2025-06-11 02:14:19|     us|postgres|
+|         8|  PRD-12008|    Anti Aging Serum|Advanced peptide ...|         11|   89.99|   20.00|     0.05|      4.0|     1.5|      1.5|     true|2025-06-11 02:14:19|2025-06-11 02:14:19|     us|postgres|
+|         9|  PRD-12009|       Mountain Bike|Professional 21-s...|         12|  799.99|  400.00|    15.51|     68.0|    44.0|     25.0|     true|2025-06-11 02:14:19|2025-06-11 02:14:19|     us|postgres|
+|        10|  PRD-12010|Lego Architecture...|Famous landmarks ...|         14|  199.99|   80.00|     2.09|     15.0|    10.0|      3.0|     true|2025-06-11 02:14:19|2025-06-11 02:14:19|     us|postgres|
++----------+-----------+--------------------+--------------------+-----------+--------+--------+---------+---------+--------+---------+---------+-------------------+-------------------+-------+--------+
+only showing top 10 rows
+[2025-06-11T16:10:03.666+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-11T16:10:14.406+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-11T16:10:14.429+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-06-11T16:10:14.993+0000] {logging_mixin.py:188} INFO - Successfully processed 15 records for products in us
+[2025-06-11T16:10:17.680+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'us', 'table': 'products', 'record_count': 15, 'status': 'success'}
+[2025-06-11T16:10:17.767+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_transform_staging_v2, task_id=process_region_us.process_products_us, execution_date=20250611T160810, start_date=20250611T160916, end_date=20250611T161017
+[2025-06-11T16:10:17.864+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T16:10:17.980+0000] {taskinstance.py:3280} INFO - 3 downstream tasks scheduled from follow-on schedule check

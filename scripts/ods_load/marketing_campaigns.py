@@ -1,88 +1,89 @@
 def get_merge_query_marketing_campaigns_union() -> str:
     return """
-    MERGE INTO ODS.MARKETING_CAMPAIGNS AS ods
-    USING (
-        -- ASIA
-        SELECT
-            campaign_id,
-            campaign_name,
-            campaign_type,
-            channel,
-            start_date AS start_date,
-            end_date AS end_date,
-            CAST(budget_usd AS DECIMAL(10,2)) As budget_usd, 
-            target_audience,
-            campaign_status,
-            NULL AS is_gdpr_compliant,
-            created_at AS created_at,
-            NULL AS updated_at,
-            'ASIA' AS source_region,
-            _source AS source_system
-        FROM STAGING_ASIA.MARKETING_CAMPAIGNS asia
+MERGE INTO ODS.MARKETING_CAMPAIGNS AS ODS
+USING (
+    -- ASIA
+    SELECT
+        campaign_id,
+        campaign_name,
+        campaign_type,
+        channel,
+        start_date,
+        end_date,
+        CAST(budget_usd AS DECIMAL(10,2)) AS budget_usd,
+        target_audience,
+        campaign_status,
+        NULL AS is_gdpr_compliant,
+        CAST(created_at AS TIMESTAMP) AS created_at,
+        created_at AS updated_at,
+        'ASIA' AS source_region,
+        _source AS source_system
+    FROM staging_asia.marketing_campaigns
 
-        UNION ALL
+    UNION ALL
 
-        -- EU
-        SELECT
-            campaign_id,
-            campaign_name,
-            campaign_type,
-            channel,
-            start_date,
-            end_date,
-            CAST(budget_usd AS DECIMAL(10,2)) As budget_usd, 
-            target_audience,
-            campaign_status,
-            is_gdpr_compliant,
-            created_at,
-            updated_at,
-            'EU' AS source_region,
-            _source AS source_system
-        FROM STAGING_EU.MARKETING_CAMPAIGNS eu
+    -- EU
+    SELECT
+        CAMPAIGN_ID,
+        CAMPAIGN_NAME,
+        CAMPAIGN_TYPE,
+        CHANNEL,
+        START_DATE,
+        END_DATE,
+        CAST(BUDGET_USD AS DECIMAL(10,2)) AS BUDGET_USD, 
+        TARGET_AUDIENCE,
+        CAMPAIGN_STATUS,
+        GDPR_COMPLIANT AS IS_GDPR_COMPLIANT,
+        CREATED_AT,
+        created_at AS updated_at,
+        'EU' AS SOURCE_REGION,
+        _SOURCE AS SOURCE_SYSTEM
+    FROM STAGING_EU.MARKETING_CAMPAIGNS
 
-        UNION ALL
+    UNION ALL
 
-        -- US
-        SELECT
-            campaign_id,
-            campaign_name,
-            campaign_type,
-            channel,
-            start_date,
-            end_date,
-            budget_usd,
-            target_audience,
-            campaign_status,
-            NULL AS is_gdpr_compliant,
-            created_at,
-            updated_at,
-            'US' AS source_region,
-            _source AS source_system
-        FROM STAGING_US.MARKETING_CAMPAIGNS
-    ) AS src
-    ON ods.campaign_id = src.campaign_id AND ods.source_region = src.source_region
+    -- US
+    SELECT
+        CAMPAIGN_ID,
+        CAMPAIGN_NAME,
+        CAMPAIGN_TYPE,
+        CHANNEL,
+        START_DATE,
+        END_DATE,
+        BUDGET_USD,
+        TARGET_AUDIENCE,
+        CAMPAIGN_STATUS,
+        NULL AS IS_GDPR_COMPLIANT,
+        CREATED_AT,
+        created_at AS updated_at,
+        'US' AS SOURCE_REGION,
+        _SOURCE AS SOURCE_SYSTEM
+    FROM STAGING_US.MARKETING_CAMPAIGNS
+) AS SRC
+ON ODS.CAMPAIGN_ID = SRC.CAMPAIGN_ID AND ODS.SOURCE_REGION = SRC.SOURCE_REGION
 
-    WHEN MATCHED THEN UPDATE SET
-        campaign_name = src.campaign_name,
-        campaign_type = src.campaign_type,
-        channel = src.channel,
-        start_date = src.start_date,
-        end_date = src.end_date,
-        budget_usd = src.budget_usd,
-        target_audience = src.target_audience,
-        campaign_status = src.campaign_status,
-        is_gdpr_compliant = src.is_gdpr_compliant,
-        created_at = src.created_at,
-        updated_at = src.updated_at,
-        source_system = src.source_system
+WHEN MATCHED THEN UPDATE SET
+    CAMPAIGN_NAME = SRC.CAMPAIGN_NAME,
+    CAMPAIGN_TYPE = SRC.CAMPAIGN_TYPE,
+    CHANNEL = SRC.CHANNEL,
+    START_DATE = SRC.START_DATE,
+    END_DATE = SRC.END_DATE,
+    BUDGET_USD = SRC.BUDGET_USD,
+    TARGET_AUDIENCE = SRC.TARGET_AUDIENCE,
+    CAMPAIGN_STATUS = SRC.CAMPAIGN_STATUS,
+    IS_GDPR_COMPLIANT = SRC.IS_GDPR_COMPLIANT,
+    CREATED_AT = SRC.CREATED_AT,
+    UPDATED_AT = SRC.UPDATED_AT,
+    SOURCE_SYSTEM = SRC.SOURCE_SYSTEM
 
-    WHEN NOT MATCHED THEN INSERT (
-        campaign_id, campaign_name, campaign_type, channel, start_date, end_date,
-        budget_usd, target_audience, campaign_status, is_gdpr_compliant,
-        created_at, updated_at, source_region, source_system
-    ) VALUES (
-        src.campaign_id, src.campaign_name, src.campaign_type, src.channel, src.start_date, src.end_date,
-        src.budget_usd, src.target_audience, src.campaign_status, src.is_gdpr_compliant,
-        src.created_at, src.updated_at, src.source_region, src.source_system
-    );
+WHEN NOT MATCHED THEN INSERT (
+    CAMPAIGN_ID, CAMPAIGN_NAME, CAMPAIGN_TYPE, CHANNEL, START_DATE, END_DATE,
+    BUDGET_USD, TARGET_AUDIENCE, CAMPAIGN_STATUS, IS_GDPR_COMPLIANT,
+    CREATED_AT, UPDATED_AT, SOURCE_REGION, SOURCE_SYSTEM
+) VALUES (
+    SRC.CAMPAIGN_ID, SRC.CAMPAIGN_NAME, SRC.CAMPAIGN_TYPE, SRC.CHANNEL, SRC.START_DATE, SRC.END_DATE,
+    SRC.BUDGET_USD, SRC.TARGET_AUDIENCE, SRC.CAMPAIGN_STATUS, SRC.IS_GDPR_COMPLIANT,
+    SRC.CREATED_AT, SRC.UPDATED_AT, SRC.SOURCE_REGION, SRC.SOURCE_SYSTEM
+);
+
     """

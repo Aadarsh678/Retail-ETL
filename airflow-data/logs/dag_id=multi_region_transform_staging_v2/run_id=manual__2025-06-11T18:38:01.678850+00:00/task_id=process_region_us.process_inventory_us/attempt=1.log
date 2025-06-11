@@ -1,0 +1,16 @@
+[2025-06-11T18:39:55.955+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_us.process_inventory_us manual__2025-06-11T18:38:01.678850+00:00 [queued]>
+[2025-06-11T18:39:55.976+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_us.process_inventory_us manual__2025-06-11T18:38:01.678850+00:00 [queued]>
+[2025-06-11T18:39:55.977+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T18:39:56.008+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_us.process_inventory_us> on 2025-06-11 18:38:01.678850+00:00
+[2025-06-11T18:39:56.025+0000] {standard_task_runner.py:60} INFO - Started process 34948 to run task
+[2025-06-11T18:39:56.032+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_us.process_inventory_us', 'manual__2025-06-11T18:38:01.678850+00:00', '--job-id', '782', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmp598320h0']
+[2025-06-11T18:39:56.037+0000] {standard_task_runner.py:88} INFO - Job 782: Subtask process_region_us.process_inventory_us
+[2025-06-11T18:39:56.183+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_us.process_inventory_us manual__2025-06-11T18:38:01.678850+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T18:39:56.428+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_us.process_inventory_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T18:38:01.678850+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T18:38:01.678850+00:00'
+[2025-06-11T18:40:10.067+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://5950010ae7c1:46293/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:46293/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T18:40:10.068+0000] {logging_mixin.py:188} INFO - Processing inventory for region us
+[2025-06-11T18:40:10.099+0000] {logging_mixin.py:188} INFO - Skipping inventory for us, already processed for 2025-06-11
+[2025-06-11T18:40:10.620+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'us', 'table': 'inventory', 'record_count': 0, 'status': 'skipped'}
+[2025-06-11T18:40:10.725+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_transform_staging_v2, task_id=process_region_us.process_inventory_us, execution_date=20250611T183801, start_date=20250611T183955, end_date=20250611T184010
+[2025-06-11T18:40:10.848+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T18:40:10.947+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

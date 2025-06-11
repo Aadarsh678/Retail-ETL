@@ -1,0 +1,12 @@
+[2025-06-11T15:47:26.989+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction_asia manual__2025-06-11T14:51:16.168139+00:00 [queued]>
+[2025-06-11T15:47:27.008+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction_asia manual__2025-06-11T14:51:16.168139+00:00 [queued]>
+[2025-06-11T15:47:27.008+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-11T15:47:27.034+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_extraction_asia> on 2025-06-11 14:51:16.168139+00:00
+[2025-06-11T15:47:27.058+0000] {standard_task_runner.py:60} INFO - Started process 210 to run task
+[2025-06-11T15:47:27.064+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'extract_postgres_table_to_parquet', 'run_extraction_asia', 'manual__2025-06-11T14:51:16.168139+00:00', '--job-id', '95', '--raw', '--subdir', 'DAGS_FOLDER/asia/landing.py', '--cfg-path', '/tmp/tmpumrmqczp']
+[2025-06-11T15:47:27.068+0000] {standard_task_runner.py:88} INFO - Job 95: Subtask run_extraction_asia
+[2025-06-11T15:47:27.352+0000] {task_command.py:423} INFO - Running <TaskInstance: extract_postgres_table_to_parquet.run_extraction_asia manual__2025-06-11T14:51:16.168139+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T15:47:27.685+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='extract_postgres_table_to_parquet' AIRFLOW_CTX_TASK_ID='run_extraction_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T14:51:16.168139+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T14:51:16.168139+00:00'
+[2025-06-11T15:47:27.687+0000] {logging_mixin.py:188} INFO - Starting extraction for table: categories in region: asia
+[2025-06-11T15:47:27.687+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:48:07.249+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:43007/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:43007/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:43007/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)

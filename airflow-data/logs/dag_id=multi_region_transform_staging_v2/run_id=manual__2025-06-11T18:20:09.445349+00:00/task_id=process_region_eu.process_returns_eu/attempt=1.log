@@ -1,0 +1,27 @@
+[2025-06-11T18:25:29.831+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_returns_eu manual__2025-06-11T18:20:09.445349+00:00 [queued]>
+[2025-06-11T18:25:29.857+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_returns_eu manual__2025-06-11T18:20:09.445349+00:00 [queued]>
+[2025-06-11T18:25:29.857+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T18:25:29.887+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_eu.process_returns_eu> on 2025-06-11 18:20:09.445349+00:00
+[2025-06-11T18:25:29.900+0000] {standard_task_runner.py:60} INFO - Started process 11803 to run task
+[2025-06-11T18:25:29.907+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_eu.process_returns_eu', 'manual__2025-06-11T18:20:09.445349+00:00', '--job-id', '641', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmp5o3dy01h']
+[2025-06-11T18:25:29.911+0000] {standard_task_runner.py:88} INFO - Job 641: Subtask process_region_eu.process_returns_eu
+[2025-06-11T18:25:30.075+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_returns_eu manual__2025-06-11T18:20:09.445349+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T18:25:30.388+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_eu.process_returns_eu' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T18:20:09.445349+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T18:20:09.445349+00:00'
+[2025-06-11T18:25:42.982+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://5950010ae7c1:34973/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:34973/jars/snowflake-jdbc-3.13.17.jar)
+[2025-06-11T18:25:42.983+0000] {logging_mixin.py:188} INFO - Processing returns for region eu
+[2025-06-11T18:25:43.018+0000] {logging_mixin.py:188} INFO - /opt/airflow/data/raw/region=eu/table=returns/load_date=2025-06-11
+[2025-06-11T18:26:10.960+0000] {logging_mixin.py:188} INFO - STAGING_EU
+[2025-06-11T18:26:12.730+0000] {logging_mixin.py:188} INFO - +---------+--------+-----------------+-------------+--------------------+------------------+-------------------+--------------------+-----------------------+-------+--------+
+|return_id|order_id|    return_reason|return_status|    return_timestamp|     refund_amount|   refund_timestamp|          created_at|cooling_off_period_days|_region| _source|
++---------+--------+-----------------+-------------+--------------------+------------------+-------------------+--------------------+-----------------------+-------+--------+
+|        1|       5|     Changed mind|     approved|2025-06-11 02:14:...| 392.0076000000001|2024-01-25 13:30:00|2025-06-11 02:14:...|                     14|     eu|postgres|
+|        2|      10|Product defective|   processing|2025-06-11 02:14:...|46.202400000000004|               NULL|2025-06-11 02:14:...|                     14|     eu|postgres|
++---------+--------+-----------------+-------------+--------------------+------------------+-------------------+--------------------+-----------------------+-------+--------+
+[2025-06-11T18:26:12.730+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-11T18:26:21.414+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-11T18:26:21.451+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-06-11T18:26:22.163+0000] {logging_mixin.py:188} INFO - Successfully processed 2 records for returns in eu
+[2025-06-11T18:26:25.055+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'eu', 'table': 'returns', 'record_count': 2, 'status': 'success'}
+[2025-06-11T18:26:25.145+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_transform_staging_v2, task_id=process_region_eu.process_returns_eu, execution_date=20250611T182009, start_date=20250611T182529, end_date=20250611T182625
+[2025-06-11T18:26:25.230+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T18:26:25.335+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

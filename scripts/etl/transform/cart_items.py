@@ -53,7 +53,7 @@ def transform_cart_items_eu(df,exchange_rates: dict):
 
 
 # --- US ---
-def transform_cart_items_us(df):
+def transform_cart_items_us(df,exchange_rates: dict):
     return df.select(
         col("cart_item_id"),
         col("cart_id"),

@@ -1,0 +1,48 @@
+[2025-06-11T16:19:07.826+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_order_items_eu manual__2025-06-11T16:17:59.548374+00:00 [queued]>
+[2025-06-11T16:19:07.846+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_order_items_eu manual__2025-06-11T16:17:59.548374+00:00 [queued]>
+[2025-06-11T16:19:07.846+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T16:19:07.871+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_eu.process_order_items_eu> on 2025-06-11 16:17:59.548374+00:00
+[2025-06-11T16:19:07.883+0000] {standard_task_runner.py:60} INFO - Started process 42535 to run task
+[2025-06-11T16:19:07.888+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_eu.process_order_items_eu', 'manual__2025-06-11T16:17:59.548374+00:00', '--job-id', '261', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmpnrdtb54n']
+[2025-06-11T16:19:07.891+0000] {standard_task_runner.py:88} INFO - Job 261: Subtask process_region_eu.process_order_items_eu
+[2025-06-11T16:19:08.011+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_order_items_eu manual__2025-06-11T16:17:59.548374+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T16:19:08.208+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_eu.process_order_items_eu' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T16:17:59.548374+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T16:17:59.548374+00:00'
+[2025-06-11T16:19:21.724+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://5950010ae7c1:39041/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:39041/jars/snowflake-jdbc-3.13.17.jar)
+[2025-06-11T16:19:21.726+0000] {logging_mixin.py:188} INFO - Processing order_items for region eu
+[2025-06-11T16:19:21.772+0000] {logging_mixin.py:188} INFO - /opt/airflow/data/raw/region=eu/table=order_items/load_date=2025-06-11
+[2025-06-11T16:19:48.978+0000] {logging_mixin.py:188} INFO - Error processing order_items for eu: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `_region(` cannot be resolved. Did you mean one of the following? [`_region`, `_source`, `order_id`, `created_at`, `quantity`].;
+'Project [order_item_id#0, order_id#1, variant_id#2, quantity#3, (cast(unit_price_eur#4 as double) * 1.08) AS unit_price_usd#43, vat_rate#5, (cast(total_price_eur#6 as double) * 1.08) AS total_price_usd#44, created_at#7, '_region(, _source#9]
++- Relation [order_item_id#0,order_id#1,variant_id#2,quantity#3,unit_price_eur#4,vat_rate#5,total_price_eur#6,created_at#7,_region#8,_source#9] parquet
+[2025-06-11T16:19:50.965+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/master_dag.py", line 242, in process_table
+    df_transformed = transform_func(df_raw, region,exchange_rates)
+  File "/opt/airflow/scripts/etl/transform/order_items.py", line 116, in transform_order_items
+    return transform_order_items_eu(df,exchange_rates)
+  File "/opt/airflow/scripts/etl/transform/order_items.py", line 62, in transform_order_items_eu
+    return df.select(
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/sql/dataframe.py", line 3227, in select
+    jdf = self._jdf.select(self._jcols(*cols))
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.AnalysisException: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `_region(` cannot be resolved. Did you mean one of the following? [`_region`, `_source`, `order_id`, `created_at`, `quantity`].;
+'Project [order_item_id#0, order_id#1, variant_id#2, quantity#3, (cast(unit_price_eur#4 as double) * 1.08) AS unit_price_usd#43, vat_rate#5, (cast(total_price_eur#6 as double) * 1.08) AS total_price_usd#44, created_at#7, '_region(, _source#9]
++- Relation [order_item_id#0,order_id#1,variant_id#2,quantity#3,unit_price_eur#4,vat_rate#5,total_price_eur#6,created_at#7,_region#8,_source#9] parquet
+
+[2025-06-11T16:19:51.020+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=multi_region_transform_staging_v2, task_id=process_region_eu.process_order_items_eu, execution_date=20250611T161759, start_date=20250611T161907, end_date=20250611T161951
+[2025-06-11T16:19:51.063+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 261 for task process_region_eu.process_order_items_eu ([UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `_region(` cannot be resolved. Did you mean one of the following? [`_region`, `_source`, `order_id`, `created_at`, `quantity`].;
+'Project [order_item_id#0, order_id#1, variant_id#2, quantity#3, (cast(unit_price_eur#4 as double) * 1.08) AS unit_price_usd#43, vat_rate#5, (cast(total_price_eur#6 as double) * 1.08) AS total_price_usd#44, created_at#7, '_region(, _source#9]
++- Relation [order_item_id#0,order_id#1,variant_id#2,quantity#3,unit_price_eur#4,vat_rate#5,total_price_eur#6,created_at#7,_region#8,_source#9] parquet
+; 42535)
+[2025-06-11T16:19:51.141+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-06-11T16:19:51.252+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

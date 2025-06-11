@@ -1,0 +1,34 @@
+[2025-06-11T15:54:02.428+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_asia.process_marketing_campaigns_asia scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T15:54:02.456+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_asia.process_marketing_campaigns_asia scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T15:54:02.457+0000] {taskinstance.py:2170} INFO - Starting attempt 3 of 2
+[2025-06-11T15:54:02.492+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_asia.process_marketing_campaigns_asia> on 2025-06-10 00:00:00+00:00
+[2025-06-11T15:54:02.536+0000] {standard_task_runner.py:60} INFO - Started process 295 to run task
+[2025-06-11T15:54:02.547+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_asia.process_marketing_campaigns_asia', 'scheduled__2025-06-10T00:00:00+00:00', '--job-id', '132', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmpwowdjh50']
+[2025-06-11T15:54:02.552+0000] {standard_task_runner.py:88} INFO - Job 132: Subtask process_region_asia.process_marketing_campaigns_asia
+[2025-06-11T15:54:02.722+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_asia.process_marketing_campaigns_asia scheduled__2025-06-10T00:00:00+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T15:54:03.183+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_asia.process_marketing_campaigns_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-10T00:00:00+00:00'
+[2025-06-11T15:54:34.674+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://5950010ae7c1:35105/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:35105/jars/snowflake-jdbc-3.13.17.jar)
+[2025-06-11T15:54:34.680+0000] {logging_mixin.py:188} INFO - Processing marketing_campaigns for region asia
+[2025-06-11T15:54:34.725+0000] {logging_mixin.py:188} INFO - /opt/airflow/data/raw/region=asia/table=marketing_campaigns/load_date=2025-06-11
+[2025-06-11T15:55:35.233+0000] {logging_mixin.py:188} INFO - Error processing marketing_campaigns for asia: 'Column' object is not callable
+[2025-06-11T15:55:37.953+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/master_dag.py", line 242, in process_table
+    df_transformed = transform_func(df_raw, region,exchange_rates)
+  File "/opt/airflow/scripts/etl/transform/marketing_campaigns.py", line 93, in transform_marketing_campaigns
+    return transform_marketing_campaigns_asia(df, exchange_rates)
+  File "/opt/airflow/scripts/etl/transform/marketing_campaigns.py", line 43, in transform_marketing_campaigns_asia
+    (col("budget_jpy").lit(rate)).alias("budget_usd"),  # normalize to float
+TypeError: 'Column' object is not callable
+[2025-06-11T15:55:41.445+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=multi_region_transform_staging_v2, task_id=process_region_asia.process_marketing_campaigns_asia, execution_date=20250610T000000, start_date=20250611T155402, end_date=20250611T155541
+[2025-06-11T15:55:42.605+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 132 for task process_region_asia.process_marketing_campaigns_asia ('Column' object is not callable; 295)
+[2025-06-11T15:55:43.184+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-06-11T15:55:45.363+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

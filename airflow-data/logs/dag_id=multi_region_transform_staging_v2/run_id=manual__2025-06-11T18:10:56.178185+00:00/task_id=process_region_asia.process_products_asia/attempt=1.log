@@ -1,0 +1,91 @@
+[2025-06-11T18:18:44.923+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_asia.process_products_asia manual__2025-06-11T18:10:56.178185+00:00 [queued]>
+[2025-06-11T18:18:44.948+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_asia.process_products_asia manual__2025-06-11T18:10:56.178185+00:00 [queued]>
+[2025-06-11T18:18:44.950+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T18:18:45.054+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_asia.process_products_asia> on 2025-06-11 18:10:56.178185+00:00
+[2025-06-11T18:18:45.073+0000] {standard_task_runner.py:60} INFO - Started process 1193 to run task
+[2025-06-11T18:18:45.086+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_asia.process_products_asia', 'manual__2025-06-11T18:10:56.178185+00:00', '--job-id', '601', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmpl1bpxzwf']
+[2025-06-11T18:18:45.093+0000] {standard_task_runner.py:88} INFO - Job 601: Subtask process_region_asia.process_products_asia
+[2025-06-11T18:18:45.301+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_asia.process_products_asia manual__2025-06-11T18:10:56.178185+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T18:18:45.615+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_asia.process_products_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T18:10:56.178185+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T18:10:56.178185+00:00'
+[2025-06-11T18:18:59.439+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://5950010ae7c1:37161/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:37161/jars/snowflake-jdbc-3.13.17.jar)
+[2025-06-11T18:18:59.441+0000] {logging_mixin.py:188} INFO - Processing products for region asia
+[2025-06-11T18:18:59.472+0000] {logging_mixin.py:188} INFO - /opt/airflow/data/raw/region=asia/table=products/load_date=2025-06-11
+[2025-06-11T18:19:28.721+0000] {logging_mixin.py:188} INFO - STAGING_ASIA
+[2025-06-11T18:19:33.794+0000] {logging_mixin.py:188} INFO - +----------+-----------+----------------+--------------------+-----------+------------------+------------------+---------+------------------+--------+------------------+---------+-------------------+-------+--------+
+|product_id|product_sku|    product_name| product_description|category_id|          base_usd|          cost_usd|weight_kg|         length_cm|width_cm|         height_cm|is_active|         created_at|_region| _source|
++----------+-----------+----------------+--------------------+-----------+------------------+------------------+---------+------------------+--------+------------------+---------+-------------------+-------+--------+
+|         1|JP-ITEM-001|   Iphone 15 Pro|Latest Apple smar...|          2|           1018.64|             646.0|     0.19|14.669999999999998|    7.15|              0.78|     true|2024-01-15 08:30:45|   asia|postgres|
+|         2|JP-ITEM-002|  Macbook Air M2|Apple MacBook Air...|          3|1074.3999999999999|             666.4|     1.24|30.410000000000004|    21.5|1.1300000000000001|     true|2024-01-16 00:00:00|   asia|postgres|
+|         3|JP-ITEM-003|   Playstation 5|Sony PlayStation ...|          4|            406.64|285.59999999999997|     4.50|              39.0|    26.0|              10.4|     true|2024-01-17 00:00:00|   asia|postgres|
+|         5|JP-ITEM-005|    Summer Dress|Elegant summer dr...|          7|60.519999999999996|23.799999999999997|     0.30|              NULL|    NULL|              NULL|     true|2024-01-19 00:00:00|   asia|postgres|
+|         6|JP-ITEM-006|    Leather Sofa|Premium leather 3...|          9|1346.3999999999999|             646.0|    85.00|             220.0|    90.0|              85.0|     true|2024-01-20 00:00:00|   asia|postgres|
+|         7|JP-ITEM-007|Manga Collection|Complete manga se...|         10|              85.0|              40.8|     2.50|              18.0|    12.0|              20.0|     true|2024-01-21 00:00:00|   asia|postgres|
+|         8|JP-ITEM-008|    Facial Serum|Premium anti-agin...|         11|             66.64|              20.4|     0.05|              12.0|     4.0|               4.0|     true|2024-01-22 00:00:00|   asia|postgres|
+|         9|JP-ITEM-009|   Mountain Bike|Professional moun...|         12| 605.1999999999999|             306.0|    12.50|             170.0|    65.0|             110.0|     true|2024-01-23 00:00:00|   asia|postgres|
+|        11|JP-ITEM-011|  Pearl Necklace|Cultured pearl ne...|         15|             170.0|              81.6|     0.05|              45.0|    NULL|              NULL|     true|2024-01-25 00:00:00|   asia|postgres|
+|        12|JP-ITEM-012|     Rice Cooker|Advanced fuzzy lo...|          8|             125.8|61.199999999999996|     3.50|              25.0|    30.0|              20.0|     true|2024-01-26 12:40:15|   asia|postgres|
++----------+-----------+----------------+--------------------+-----------+------------------+------------------+---------+------------------+--------+------------------+---------+-------------------+-------+--------+
+only showing top 10 rows
+[2025-06-11T18:19:33.795+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-11T18:19:42.599+0000] {local_task_job_runner.py:302} WARNING - State of this instance has been externally set to failed. Terminating instance.
+[2025-06-11T18:19:43.885+0000] {process_utils.py:131} INFO - Sending 15 to group 1193. PIDs of all processes in the group: [1196, 1208, 1193]
+[2025-06-11T18:19:43.896+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 1193
+[2025-06-11T18:19:43.900+0000] {taskinstance.py:2450} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-06-11T18:19:43.904+0000] {clientserver.py:538} INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/local/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 2452, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+[2025-06-11T18:19:43.926+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-11T18:19:43.932+0000] {java_gateway.py:1055} ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/local/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 2452, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+[2025-06-11T18:19:43.943+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-11T18:19:43.945+0000] {logging_mixin.py:188} INFO - Error processing products for asia: An error occurred while calling o156.save
+[2025-06-11T18:19:44.083+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/master_dag.py", line 283, in process_table
+    write_to_snowflake(
+  File "/opt/airflow/dags/master_dag.py", line 273, in write_to_snowflake
+    ).mode("overwrite").save()
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/sql/readwriter.py", line 1461, in save
+    self._jwrite.save()
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o156.save
+[2025-06-11T18:19:44.161+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=multi_region_transform_staging_v2, task_id=process_region_asia.process_products_asia, execution_date=20250611T181056, start_date=20250611T181844, end_date=20250611T181944
+[2025-06-11T18:19:44.289+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 601 for task process_region_asia.process_products_asia (An error occurred while calling o156.save; 1193)
+[2025-06-11T18:19:44.994+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=1193, status='terminated', exitcode=1, started='18:18:45') (1193) terminated with exit code 1
+[2025-06-11T18:19:48.165+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=1196, status='terminated', started='18:18:45') (1196) terminated with exit code None
+[2025-06-11T18:19:48.166+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=1208, status='terminated', started='18:18:45') (1208) terminated with exit code None

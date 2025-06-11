@@ -100,7 +100,7 @@ def transform_wishlists_us(df):
 # print("Wishlist normalization completed.")
 
 
-def transform_whishlist(df: DataFrame, region: str) -> DataFrame:
+def transform_whishlist(df: DataFrame, region: str,exchange_rates: dict) -> DataFrame:
     if region == "asia":
         return transform_wishlists_asia(df)
     elif region == "eu":

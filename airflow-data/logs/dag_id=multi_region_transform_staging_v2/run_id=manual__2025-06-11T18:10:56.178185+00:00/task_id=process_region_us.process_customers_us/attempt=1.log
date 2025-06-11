@@ -1,0 +1,30 @@
+[2025-06-11T18:10:58.805+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_us.process_customers_us manual__2025-06-11T18:10:56.178185+00:00 [queued]>
+[2025-06-11T18:10:58.817+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_us.process_customers_us manual__2025-06-11T18:10:56.178185+00:00 [queued]>
+[2025-06-11T18:10:58.817+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T18:10:58.838+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_us.process_customers_us> on 2025-06-11 18:10:56.178185+00:00
+[2025-06-11T18:10:58.847+0000] {standard_task_runner.py:60} INFO - Started process 102021 to run task
+[2025-06-11T18:10:58.851+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_us.process_customers_us', 'manual__2025-06-11T18:10:56.178185+00:00', '--job-id', '562', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmplt0a5tyw']
+[2025-06-11T18:10:58.853+0000] {standard_task_runner.py:88} INFO - Job 562: Subtask process_region_us.process_customers_us
+[2025-06-11T18:10:58.953+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_us.process_customers_us manual__2025-06-11T18:10:56.178185+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T18:10:59.129+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_us.process_customers_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T18:10:56.178185+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T18:10:56.178185+00:00'
+[2025-06-11T18:11:14.699+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://5950010ae7c1:33779/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:33779/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T18:11:14.701+0000] {logging_mixin.py:188} INFO - Processing customers for region us
+[2025-06-11T18:11:14.728+0000] {logging_mixin.py:188} INFO - /opt/airflow/data/raw/region=us/table=customers/load_date=2025-06-11
+[2025-06-11T18:11:47.114+0000] {logging_mixin.py:188} INFO - STAGING_US
+[2025-06-11T18:11:52.628+0000] {logging_mixin.py:188} INFO - +-----------+--------------------+-----------+---------+-----+----------+------+-------------------+----------+----------------+-------------------+-------------------+-------------------+---------+-------+--------+
+|customer_id|               email| first_name|last_name|phone|birth_date|gender|  registration_date|last_login|customer_segment|acquisition_channel|         created_at|         updated_at|is_active|_region| _source|
++-----------+--------------------+-----------+---------+-----+----------+------+-------------------+----------+----------------+-------------------+-------------------+-------------------+---------+-------+--------+
+|          1|john.smith@email.com|       John|    Smith| NULL|1985-03-15|  Male|2025-06-11 02:14:19|      NULL|             vip|         google_ads|2025-06-11 02:14:19|2025-06-11 02:14:19|     true|     us|postgres|
+|          2|maria.gonzalez@gm...|      Maria| Gonzalez| NULL|1990-07-22|Female|2025-06-11 02:14:19|      NULL|         regular|           facebook|2025-06-11 02:14:19|2025-06-11 02:14:19|     true|     us|postgres|
+|          3|david.johnson@yah...|      David|  Johnson| NULL|1982-11-08|  Male|2025-06-11 02:14:19|      NULL|             new|           referral|2025-06-11 02:14:19|2025-06-11 02:14:19|     true|     us|postgres|
+|          4|sarah.williams@ho...|      Sarah| Williams| NULL|1988-05-12|Female|2025-06-11 02:14:19|      NULL|         regular|            organic|2025-06-11 02:14:19|2025-06-11 02:14:19|     true|     us|postgres|
+|          5|michael.brown@out...|    Michael|    Brown| NULL|1975-09-30|  Male|2025-06-11 02:14:19|      NULL|             vip|     email_campaign|2025-06-11 02:14:19|2025-06-11 02:14:19|     true|     us|postgres|
+|          6|                NULL|   Jennifer|    Davis| NULL|1992-01-18|Female|2025-06-11 02:14:19|      NULL|         regular|       social_media|2025-06-11 02:14:19|2025-06-11 02:14:19|     true|     us|postgres|
+|          7|                NULL|     Robert|   Miller| NULL|1980-12-05|  Male|2025-06-11 02:14:19|      NULL|             new|         google_ads|2025-06-11 02:14:19|2025-06-11 02:14:19|     true|     us|postgres|
+|          8|                NULL|       Lisa|   Wilson| NULL|1987-04-25|Female|2025-06-11 02:14:19|      NULL|         regular|           referral|2025-06-11 02:14:19|2025-06-11 02:14:19|     true|     us|postgres|
+|          9|                NULL|Christopher|    Moore| NULL|1983-08-14|  Male|2025-06-11 02:14:19|      NULL|             vip|           facebook|2025-06-11 02:14:19|2025-06-11 02:14:19|     true|     us|postgres|
+|         10|                NULL|     Amanda|   Taylor| NULL|1991-06-03|Female|2025-06-11 02:14:19|      NULL|         regular|            organic|2025-06-11 02:14:19|2025-06-11 02:14:19|     true|     us|postgres|
++-----------+--------------------+-----------+---------+-----+----------+------+-------------------+----------+----------------+-------------------+-------------------+-------------------+---------+-------+--------+
+only showing top 10 rows
+[2025-06-11T18:11:52.630+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-11T18:12:04.935+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake

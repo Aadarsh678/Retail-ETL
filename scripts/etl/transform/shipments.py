@@ -125,7 +125,7 @@ def transform_shipments_us(df):
 # print("Shipment normalization completed.")
 
 
-def transform_shipments(df: DataFrame, region: str) -> DataFrame:
+def transform_shipments(df: DataFrame, region: str,exchange_rates: dict) -> DataFrame:
     if region == "asia":
         return transform_shipments_asia(df)
     elif region == "eu":

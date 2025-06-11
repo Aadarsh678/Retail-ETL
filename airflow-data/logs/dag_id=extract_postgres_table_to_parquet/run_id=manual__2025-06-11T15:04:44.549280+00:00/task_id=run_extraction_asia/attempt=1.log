@@ -1,0 +1,187 @@
+[2025-06-11T15:56:44.935+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction_asia manual__2025-06-11T15:04:44.549280+00:00 [queued]>
+[2025-06-11T15:56:44.961+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction_asia manual__2025-06-11T15:04:44.549280+00:00 [queued]>
+[2025-06-11T15:56:44.962+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-11T15:56:45.006+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_extraction_asia> on 2025-06-11 15:04:44.549280+00:00
+[2025-06-11T15:56:45.021+0000] {standard_task_runner.py:60} INFO - Started process 8416 to run task
+[2025-06-11T15:56:45.028+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'extract_postgres_table_to_parquet', 'run_extraction_asia', 'manual__2025-06-11T15:04:44.549280+00:00', '--job-id', '147', '--raw', '--subdir', 'DAGS_FOLDER/asia/landing.py', '--cfg-path', '/tmp/tmpeymx4qlu']
+[2025-06-11T15:56:45.031+0000] {standard_task_runner.py:88} INFO - Job 147: Subtask run_extraction_asia
+[2025-06-11T15:56:45.251+0000] {task_command.py:423} INFO - Running <TaskInstance: extract_postgres_table_to_parquet.run_extraction_asia manual__2025-06-11T15:04:44.549280+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T15:56:45.610+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='extract_postgres_table_to_parquet' AIRFLOW_CTX_TASK_ID='run_extraction_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T15:04:44.549280+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T15:04:44.549280+00:00'
+[2025-06-11T15:56:45.615+0000] {logging_mixin.py:188} INFO - Starting extraction for table: categories in region: asia
+[2025-06-11T15:56:45.617+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:57:12.694+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:41381/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:41381/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:41381/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T15:57:32.729+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.categories
+[2025-06-11T15:57:33.498+0000] {logging_mixin.py:188} INFO - Starting extraction for table: products in region: asia
+[2025-06-11T15:57:33.501+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:57:35.394+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:34903/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:34903/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:34903/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T15:58:42.134+0000] {job.py:213} ERROR - Job heartbeat got an exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3371, in _wrap_pool_connect
+    return fn()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 327, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 894, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 493, in checkout
+    rec = pool._do_get()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 256, in _do_get
+    return self._create_connection()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 273, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 388, in __init__
+    self.__connect()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 690, in __connect
+    with util.safe_reraise():
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 686, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 574, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/home/airflow/.local/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/jobs/job.py", line 187, in heartbeat
+    self._merge_from(Job._fetch_from_db(self, session))
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/api_internal/internal_api_call.py", line 114, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/utils/session.py", line 76, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/jobs/job.py", line 308, in _fetch_from_db
+    session.merge(job)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 3056, in merge
+    return self._merge(
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 3136, in _merge
+    merged = self.get(
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2853, in get
+    return self._get_impl(
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2975, in _get_impl
+    return db_load_fn(
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/orm/loading.py", line 530, in load_on_pk_identity
+    session.execute(
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1716, in execute
+    conn = self._connection_for_bind(bind)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1555, in _connection_for_bind
+    return self._transaction._connection_for_bind(
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 750, in _connection_for_bind
+    conn = bind.connect()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/future/engine.py", line 412, in connect
+    return super(Engine, self).connect()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3325, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3404, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3374, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2208, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3371, in _wrap_pool_connect
+    return fn()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 327, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 894, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 493, in checkout
+    rec = pool._do_get()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 256, in _do_get
+    return self._create_connection()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 273, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 388, in __init__
+    self.__connect()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 690, in __connect
+    with util.safe_reraise():
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 686, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 574, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/home/airflow/.local/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not translate host name "postgres" to address: Temporary failure in name resolution
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2025-06-11T15:58:55.448+0000] {job.py:221} ERROR - Job heartbeat failed with error. Scheduler is in unhealthy state
+[2025-06-11T16:01:54.360+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.products
+[2025-06-11T16:01:56.002+0000] {logging_mixin.py:188} INFO - Starting extraction for table: product_variants in region: asia
+[2025-06-11T16:01:56.025+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T16:01:58.225+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:35061/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:35061/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:35061/jars/postgresql-42.7.3.jar)
+[2025-06-11T16:02:04.890+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.product_variants
+[2025-06-11T16:02:05.874+0000] {logging_mixin.py:188} INFO - Starting extraction for table: inventory in region: asia
+[2025-06-11T16:02:05.875+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T16:02:07.187+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:34449/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:34449/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:34449/jars/postgresql-42.7.3.jar)
+[2025-06-11T16:02:11.297+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.inventory
+[2025-06-11T16:02:12.281+0000] {logging_mixin.py:188} INFO - Starting extraction for table: customers in region: asia
+[2025-06-11T16:02:12.281+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T16:02:13.991+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:39253/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:39253/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:39253/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T16:02:21.363+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.customers
+[2025-06-11T16:02:22.349+0000] {logging_mixin.py:188} INFO - Starting extraction for table: customer_addresses in region: asia
+[2025-06-11T16:02:22.350+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T16:02:24.802+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:36035/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:36035/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:36035/jars/snowflake-jdbc-3.13.17.jar)
+[2025-06-11T16:02:32.095+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.customer_addresses
+[2025-06-11T16:02:33.100+0000] {logging_mixin.py:188} INFO - Starting extraction for table: marketing_campaigns in region: asia
+[2025-06-11T16:02:33.102+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T16:02:35.374+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:36119/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:36119/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:36119/jars/postgresql-42.7.3.jar)
+[2025-06-11T16:02:42.614+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.marketing_campaigns
+[2025-06-11T16:02:43.663+0000] {logging_mixin.py:188} INFO - Starting extraction for table: discounts in region: asia
+[2025-06-11T16:02:43.692+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T16:02:45.494+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:39691/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:39691/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:39691/jars/snowflake-jdbc-3.13.17.jar)
+[2025-06-11T16:02:52.176+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.discounts
+[2025-06-11T16:02:53.222+0000] {logging_mixin.py:188} INFO - Starting extraction for table: shopping_carts in region: asia
+[2025-06-11T16:02:53.223+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T16:02:54.815+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:39041/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:39041/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:39041/jars/postgresql-42.7.3.jar)
+[2025-06-11T16:03:00.924+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.shopping_carts
+[2025-06-11T16:03:01.910+0000] {logging_mixin.py:188} INFO - Starting extraction for table: cart_items in region: asia
+[2025-06-11T16:03:01.913+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T16:03:03.551+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:37979/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:37979/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:37979/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T16:03:09.588+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.cart_items
+[2025-06-11T16:03:10.598+0000] {logging_mixin.py:188} INFO - Starting extraction for table: orders in region: asia
+[2025-06-11T16:03:10.603+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T16:03:11.921+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:36921/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:36921/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:36921/jars/postgresql-42.7.3.jar)
+[2025-06-11T16:03:17.458+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.orders
+[2025-06-11T16:03:18.494+0000] {logging_mixin.py:188} INFO - Starting extraction for table: order_items in region: asia
+[2025-06-11T16:03:18.502+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T16:03:19.496+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:40237/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:40237/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:40237/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T16:03:21.307+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.order_items
+[2025-06-11T16:03:22.343+0000] {logging_mixin.py:188} INFO - Starting extraction for table: shipments in region: asia
+[2025-06-11T16:03:22.344+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T16:03:23.503+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:45283/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:45283/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:45283/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T16:03:27.105+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.shipments
+[2025-06-11T16:03:28.116+0000] {logging_mixin.py:188} INFO - Starting extraction for table: returns in region: asia
+[2025-06-11T16:03:28.118+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T16:03:28.825+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:43957/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:43957/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:43957/jars/postgresql-42.7.3.jar)
+[2025-06-11T16:03:32.106+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.returns
+[2025-06-11T16:03:33.105+0000] {logging_mixin.py:188} INFO - Starting extraction for table: product_reviews in region: asia
+[2025-06-11T16:03:33.106+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T16:03:33.692+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:43131/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:43131/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:43131/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T16:03:38.828+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.product_reviews
+[2025-06-11T16:03:39.839+0000] {logging_mixin.py:188} INFO - Starting extraction for table: payments in region: asia
+[2025-06-11T16:03:39.843+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T16:03:41.317+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:44261/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:44261/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:44261/jars/postgresql-42.7.3.jar)
+[2025-06-11T16:03:43.420+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.payments
+[2025-06-11T16:03:44.424+0000] {logging_mixin.py:188} INFO - Starting extraction for table: wishlists in region: asia
+[2025-06-11T16:03:44.425+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T16:03:45.227+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:36413/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:36413/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:36413/jars/postgresql-42.7.3.jar)
+[2025-06-11T16:03:48.485+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.wishlists
+[2025-06-11T16:03:49.472+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-06-11T16:03:49.858+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=extract_postgres_table_to_parquet, task_id=run_extraction_asia, execution_date=20250611T150444, start_date=20250611T155644, end_date=20250611T160349
+[2025-06-11T16:03:50.365+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T16:03:50.880+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

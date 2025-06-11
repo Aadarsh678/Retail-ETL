@@ -200,7 +200,7 @@ def transform_payments_eu(df: DataFrame, exchange_rates: dict) -> DataFrame:
 
 
 # --- US ---
-def transform_payments_us(df: DataFrame) -> DataFrame:
+def transform_payments_us(df: DataFrame,exchange_rates: dict) -> DataFrame:
     return df.select(
         col("payment_id"),
         col("order_id"),

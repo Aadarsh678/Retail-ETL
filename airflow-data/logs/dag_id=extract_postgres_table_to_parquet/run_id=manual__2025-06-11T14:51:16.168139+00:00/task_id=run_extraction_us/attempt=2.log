@@ -1,0 +1,155 @@
+[2025-06-11T15:54:00.055+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction_us manual__2025-06-11T14:51:16.168139+00:00 [queued]>
+[2025-06-11T15:54:00.074+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction_us manual__2025-06-11T14:51:16.168139+00:00 [queued]>
+[2025-06-11T15:54:00.075+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 1
+[2025-06-11T15:54:00.109+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_extraction_us> on 2025-06-11 14:51:16.168139+00:00
+[2025-06-11T15:54:00.122+0000] {standard_task_runner.py:60} INFO - Started process 224 to run task
+[2025-06-11T15:54:00.135+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'extract_postgres_table_to_parquet', 'run_extraction_us', 'manual__2025-06-11T14:51:16.168139+00:00', '--job-id', '129', '--raw', '--subdir', 'DAGS_FOLDER/asia/landing.py', '--cfg-path', '/tmp/tmp1pphr0g_']
+[2025-06-11T15:54:00.138+0000] {standard_task_runner.py:88} INFO - Job 129: Subtask run_extraction_us
+[2025-06-11T15:54:00.266+0000] {task_command.py:423} INFO - Running <TaskInstance: extract_postgres_table_to_parquet.run_extraction_us manual__2025-06-11T14:51:16.168139+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T15:54:01.006+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='extract_postgres_table_to_parquet' AIRFLOW_CTX_TASK_ID='run_extraction_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T14:51:16.168139+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T14:51:16.168139+00:00'
+[2025-06-11T15:54:01.019+0000] {logging_mixin.py:188} INFO - Starting extraction for table: categories in region: us
+[2025-06-11T15:54:01.020+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:54:39.314+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:41579/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:41579/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:41579/jars/snowflake-jdbc-3.13.17.jar)
+[2025-06-11T15:55:01.459+0000] {logging_mixin.py:188} INFO - [INFO] No data found in us.categories
+[2025-06-11T15:55:02.462+0000] {logging_mixin.py:188} INFO - Starting extraction for table: products in region: us
+[2025-06-11T15:55:02.463+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:55:04.670+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:37937/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:37937/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:37937/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T15:55:08.781+0000] {logging_mixin.py:188} INFO - [INFO] No data found in us.products
+[2025-06-11T15:55:09.842+0000] {logging_mixin.py:188} INFO - Starting extraction for table: product_variants in region: us
+[2025-06-11T15:55:09.849+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:55:11.880+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:43251/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:43251/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:43251/jars/postgresql-42.7.3.jar)
+[2025-06-11T15:55:16.789+0000] {logging_mixin.py:188} INFO - [INFO] No data found in us.product_variants
+[2025-06-11T15:55:17.817+0000] {logging_mixin.py:188} INFO - Starting extraction for table: inventory in region: us
+[2025-06-11T15:55:17.821+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:55:19.495+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:33973/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:33973/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:33973/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T15:55:25.727+0000] {logging_mixin.py:188} INFO - [INFO] No data found in us.inventory
+[2025-06-11T15:55:26.701+0000] {logging_mixin.py:188} INFO - Starting extraction for table: customers in region: us
+[2025-06-11T15:55:26.706+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:55:30.015+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:45249/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:45249/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:45249/jars/snowflake-jdbc-3.13.17.jar)
+[2025-06-11T15:55:39.882+0000] {logging_mixin.py:188} INFO - [INFO] No data found in us.customers
+[2025-06-11T15:55:41.743+0000] {logging_mixin.py:188} INFO - Starting extraction for table: customer_addresses in region: us
+[2025-06-11T15:55:41.744+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:55:44.902+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:34725/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:34725/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:34725/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T15:55:49.836+0000] {logging_mixin.py:188} INFO - [INFO] No data found in us.customer_addresses
+[2025-06-11T15:55:50.821+0000] {logging_mixin.py:188} INFO - Starting extraction for table: marketing_campaigns in region: us
+[2025-06-11T15:55:50.822+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:55:51.552+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:39797/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:39797/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:39797/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T15:55:54.141+0000] {logging_mixin.py:188} INFO - [INFO] No data found in us.marketing_campaigns
+[2025-06-11T15:55:55.186+0000] {logging_mixin.py:188} INFO - Starting extraction for table: discounts in region: us
+[2025-06-11T15:55:55.188+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:55:55.593+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:41703/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:41703/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:41703/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T15:55:57.624+0000] {logging_mixin.py:188} INFO - [INFO] No data found in us.discounts
+[2025-06-11T15:55:58.626+0000] {logging_mixin.py:188} INFO - Starting extraction for table: shopping_carts in region: us
+[2025-06-11T15:55:58.627+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:55:59.094+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:38823/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:38823/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:38823/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T15:56:01.535+0000] {logging_mixin.py:188} INFO - [INFO] No data found in us.shopping_carts
+[2025-06-11T15:56:02.527+0000] {logging_mixin.py:188} INFO - Starting extraction for table: cart_items in region: us
+[2025-06-11T15:56:02.527+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:56:02.878+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:40877/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:40877/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:40877/jars/snowflake-jdbc-3.13.17.jar)
+[2025-06-11T15:56:05.056+0000] {logging_mixin.py:188} INFO - [INFO] No data found in us.cart_items
+[2025-06-11T15:56:06.058+0000] {logging_mixin.py:188} INFO - Starting extraction for table: orders in region: us
+[2025-06-11T15:56:06.059+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:56:06.796+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:40649/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:40649/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:40649/jars/snowflake-jdbc-3.13.17.jar)
+[2025-06-11T15:56:08.680+0000] {logging_mixin.py:188} INFO - [INFO] No data found in us.orders
+[2025-06-11T15:56:09.674+0000] {logging_mixin.py:188} INFO - Starting extraction for table: order_items in region: us
+[2025-06-11T15:56:09.675+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:56:10.004+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:32919/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:32919/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:32919/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T15:56:11.818+0000] {logging_mixin.py:188} INFO - [INFO] No data found in us.order_items
+[2025-06-11T15:56:12.818+0000] {logging_mixin.py:188} INFO - Starting extraction for table: shipments in region: us
+[2025-06-11T15:56:12.819+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:56:13.370+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:39751/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:39751/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:39751/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T15:56:15.684+0000] {logging_mixin.py:188} INFO - [INFO] No data found in us.shipments
+[2025-06-11T15:56:16.678+0000] {logging_mixin.py:188} INFO - Starting extraction for table: returns in region: us
+[2025-06-11T15:56:16.678+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:56:17.255+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:45725/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:45725/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:45725/jars/snowflake-jdbc-3.13.17.jar)
+[2025-06-11T15:56:17.547+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/asia/landing.py", line 72, in run_extraction_us
+    extract_postgres_table(
+  File "/opt/airflow/dags/asia/../../scripts/pyspark_jobs/extract_to_parquet.py", line 205, in extract_postgres_table
+    .load()
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/sql/readwriter.py", line 314, in load
+    return self._df(self._jreader.load())
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: An error occurred while calling o754.load.
+: org.postgresql.util.PSQLException: ERROR: relation "us.returns" does not exist
+  Position: 30
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCRDD$.getQueryOutputSchema(JDBCRDD.scala:68)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCRDD$.resolveTable(JDBCRDD.scala:58)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCRelation$.getSchema(JDBCRelation.scala:241)
+	at org.apache.spark.sql.execution.datasources.jdbc.JdbcRelationProvider.createRelation(JdbcRelationProvider.scala:37)
+	at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:346)
+	at org.apache.spark.sql.DataFrameReader.loadV1Source(DataFrameReader.scala:229)
+	at org.apache.spark.sql.DataFrameReader.$anonfun$load$2(DataFrameReader.scala:211)
+	at scala.Option.getOrElse(Option.scala:189)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:211)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:172)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+[2025-06-11T15:56:17.989+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=extract_postgres_table_to_parquet, task_id=run_extraction_us, execution_date=20250611T145116, start_date=20250611T155400, end_date=20250611T155617
+[2025-06-11T15:56:18.296+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 129 for task run_extraction_us (An error occurred while calling o754.load.
+: org.postgresql.util.PSQLException: ERROR: relation "us.returns" does not exist
+  Position: 30
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCRDD$.getQueryOutputSchema(JDBCRDD.scala:68)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCRDD$.resolveTable(JDBCRDD.scala:58)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCRelation$.getSchema(JDBCRelation.scala:241)
+	at org.apache.spark.sql.execution.datasources.jdbc.JdbcRelationProvider.createRelation(JdbcRelationProvider.scala:37)
+	at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:346)
+	at org.apache.spark.sql.DataFrameReader.loadV1Source(DataFrameReader.scala:229)
+	at org.apache.spark.sql.DataFrameReader.$anonfun$load$2(DataFrameReader.scala:211)
+	at scala.Option.getOrElse(Option.scala:189)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:211)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:172)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+; 224)
+[2025-06-11T15:56:18.369+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-06-11T15:56:18.723+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

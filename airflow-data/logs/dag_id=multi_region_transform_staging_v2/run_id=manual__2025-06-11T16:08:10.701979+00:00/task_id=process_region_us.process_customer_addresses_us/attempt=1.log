@@ -1,0 +1,36 @@
+[2025-06-11T16:10:17.810+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_us.process_customer_addresses_us manual__2025-06-11T16:08:10.701979+00:00 [queued]>
+[2025-06-11T16:10:17.842+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_us.process_customer_addresses_us manual__2025-06-11T16:08:10.701979+00:00 [queued]>
+[2025-06-11T16:10:17.844+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T16:10:17.887+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_us.process_customer_addresses_us> on 2025-06-11 16:08:10.701979+00:00
+[2025-06-11T16:10:17.905+0000] {standard_task_runner.py:60} INFO - Started process 26631 to run task
+[2025-06-11T16:10:17.910+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_us.process_customer_addresses_us', 'manual__2025-06-11T16:08:10.701979+00:00', '--job-id', '198', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmpjlquhul4']
+[2025-06-11T16:10:17.913+0000] {standard_task_runner.py:88} INFO - Job 198: Subtask process_region_us.process_customer_addresses_us
+[2025-06-11T16:10:18.046+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_us.process_customer_addresses_us manual__2025-06-11T16:08:10.701979+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T16:10:18.253+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_us.process_customer_addresses_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T16:08:10.701979+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T16:08:10.701979+00:00'
+[2025-06-11T16:10:32.017+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://5950010ae7c1:35347/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:35347/jars/snowflake-jdbc-3.13.17.jar)
+[2025-06-11T16:10:32.019+0000] {logging_mixin.py:188} INFO - Processing customer_addresses for region us
+[2025-06-11T16:10:32.053+0000] {logging_mixin.py:188} INFO - /opt/airflow/data/raw/region=us/table=customer_addresses/load_date=2025-06-11
+[2025-06-11T16:11:03.105+0000] {logging_mixin.py:188} INFO - STAGING_US
+[2025-06-11T16:11:06.459+0000] {logging_mixin.py:188} INFO - +----------+-----------+------------+-----------------+------------+------------+-----------+-------+----------+-------------------+-------+--------+
+|address_id|customer_id|address_type|   street_address|        city|      region|postal_code|country|is_default|         created_at|_region| _source|
++----------+-----------+------------+-----------------+------------+------------+-----------+-------+----------+-------------------+-------+--------+
+|         1|          1|     billing|  123 Main Street|    New York|    New York|      10001|    USA|      true|2025-06-11 02:14:19|     us|postgres|
+|         2|          1|    shipping| 456 Broadway Ave|    New York|    New York|      10002|    USA|     false|2025-06-11 02:14:19|     us|postgres|
+|         3|          2|     billing|  789 Sunset Blvd| Los Angeles|  California|      90210|    USA|      true|2025-06-11 02:14:19|     us|postgres|
+|         4|          3|     billing|   321 Oak Street|     Chicago|    Illinois|      60601|    USA|      true|2025-06-11 02:14:19|     us|postgres|
+|         5|          3|    shipping|  654 Pine Avenue|     Chicago|    Illinois|      60602|    USA|     false|2025-06-11 02:14:19|     us|postgres|
+|         6|          4|     billing|    987 Elm Drive|     Houston|       Texas|      77001|    USA|      true|2025-06-11 02:14:19|     us|postgres|
+|         7|          5|     billing|   147 Maple Lane|     Phoenix|     Arizona|      85001|    USA|      true|2025-06-11 02:14:19|     us|postgres|
+|         8|          6|     billing|  258 Cedar Court|Philadelphia|Pennsylvania|      19101|    USA|      true|2025-06-11 02:14:19|     us|postgres|
+|         9|          7|     billing|   369 Birch Road| San Antonio|       Texas|      78201|    USA|      true|2025-06-11 02:14:19|     us|postgres|
+|        10|          8|     billing|741 Walnut Street|   San Diego|  California|      92101|    USA|      true|2025-06-11 02:14:19|     us|postgres|
++----------+-----------+------------+-----------------+------------+------------+-----------+-------+----------+-------------------+-------+--------+
+only showing top 10 rows
+[2025-06-11T16:11:06.461+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-11T16:11:15.654+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-11T16:11:15.666+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-06-11T16:11:16.053+0000] {logging_mixin.py:188} INFO - Successfully processed 27 records for customer_addresses in us
+[2025-06-11T16:11:18.434+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'us', 'table': 'customer_addresses', 'record_count': 27, 'status': 'success'}
+[2025-06-11T16:11:18.467+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_transform_staging_v2, task_id=process_region_us.process_customer_addresses_us, execution_date=20250611T160810, start_date=20250611T161017, end_date=20250611T161118
+[2025-06-11T16:11:18.525+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T16:11:18.564+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check

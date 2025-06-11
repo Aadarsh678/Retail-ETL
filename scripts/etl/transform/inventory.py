@@ -121,7 +121,7 @@ def transform_inventory_us(df):
 # print("Regional transformations with GDPR compliance completed.")
 
 
-def transform_inventory(df: DataFrame, region: str) -> DataFrame:
+def transform_inventory(df: DataFrame, region: str,exchange_rates: dict) -> DataFrame:
     if region == "asia":
         return transform_inventory_asia(df)
     elif region == "eu":

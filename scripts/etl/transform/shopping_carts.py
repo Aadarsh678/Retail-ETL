@@ -107,7 +107,7 @@ def transform_cart_us(df):
 # print("Shopping cart normalization with regional differences complete.")
 
 
-def transform_shopping_cart(df: DataFrame, region: str) -> DataFrame:
+def transform_shopping_cart(df: DataFrame, region: str,exchange_rates: dict) -> DataFrame:
     if region == "asia":
         return transform_cart_asia(df)
     elif region == "eu":

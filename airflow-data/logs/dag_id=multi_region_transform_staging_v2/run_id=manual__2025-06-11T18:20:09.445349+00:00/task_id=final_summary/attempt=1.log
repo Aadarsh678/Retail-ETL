@@ -1,0 +1,14 @@
+[2025-06-11T18:28:59.796+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.final_summary manual__2025-06-11T18:20:09.445349+00:00 [queued]>
+[2025-06-11T18:28:59.805+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.final_summary manual__2025-06-11T18:20:09.445349+00:00 [queued]>
+[2025-06-11T18:28:59.805+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T18:28:59.815+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): final_summary> on 2025-06-11 18:20:09.445349+00:00
+[2025-06-11T18:28:59.822+0000] {standard_task_runner.py:60} INFO - Started process 17841 to run task
+[2025-06-11T18:28:59.824+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'final_summary', 'manual__2025-06-11T18:20:09.445349+00:00', '--job-id', '658', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmpr51hlve4']
+[2025-06-11T18:28:59.826+0000] {standard_task_runner.py:88} INFO - Job 658: Subtask final_summary
+[2025-06-11T18:28:59.875+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.final_summary manual__2025-06-11T18:20:09.445349+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T18:28:59.964+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='final_summary' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T18:20:09.445349+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T18:20:09.445349+00:00'
+[2025-06-11T18:28:59.965+0000] {logging_mixin.py:188} INFO -  All regions processed successfully!
+[2025-06-11T18:28:59.965+0000] {python.py:201} INFO - Done. Returned value was: {'status': 'completed'}
+[2025-06-11T18:28:59.993+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_transform_staging_v2, task_id=final_summary, execution_date=20250611T182009, start_date=20250611T182859, end_date=20250611T182859
+[2025-06-11T18:29:00.036+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T18:29:00.053+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

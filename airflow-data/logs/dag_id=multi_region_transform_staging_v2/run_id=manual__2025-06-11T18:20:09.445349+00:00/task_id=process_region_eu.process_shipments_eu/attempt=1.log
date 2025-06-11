@@ -1,0 +1,33 @@
+[2025-06-11T18:25:23.411+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_shipments_eu manual__2025-06-11T18:20:09.445349+00:00 [queued]>
+[2025-06-11T18:25:23.423+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_shipments_eu manual__2025-06-11T18:20:09.445349+00:00 [queued]>
+[2025-06-11T18:25:23.424+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T18:25:23.438+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_eu.process_shipments_eu> on 2025-06-11 18:20:09.445349+00:00
+[2025-06-11T18:25:23.446+0000] {standard_task_runner.py:60} INFO - Started process 11369 to run task
+[2025-06-11T18:25:23.451+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_eu.process_shipments_eu', 'manual__2025-06-11T18:20:09.445349+00:00', '--job-id', '638', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmp3g5ulb0y']
+[2025-06-11T18:25:23.452+0000] {standard_task_runner.py:88} INFO - Job 638: Subtask process_region_eu.process_shipments_eu
+[2025-06-11T18:25:23.519+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_shipments_eu manual__2025-06-11T18:20:09.445349+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T18:25:23.669+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_eu.process_shipments_eu' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T18:20:09.445349+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T18:20:09.445349+00:00'
+[2025-06-11T18:25:33.923+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://5950010ae7c1:37015/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:37015/jars/snowflake-jdbc-3.13.17.jar)
+[2025-06-11T18:25:33.925+0000] {logging_mixin.py:188} INFO - Processing shipments for region eu
+[2025-06-11T18:25:34.002+0000] {logging_mixin.py:188} INFO - /opt/airflow/data/raw/region=eu/table=shipments/load_date=2025-06-11
+[2025-06-11T18:26:04.072+0000] {logging_mixin.py:188} INFO - STAGING_EU
+[2025-06-11T18:26:06.948+0000] {logging_mixin.py:188} INFO - +-----------+--------+----------------+-------+---------------+-------------------+-----------------------+-------------------------+---------------+--------------------+--------------------+-------+--------+
+|shipment_id|order_id| tracking_number|carrier|shipping_method|  shipped_timestamp|estimated_delivery_date|actual_delivery_timestamp|shipment_status|          created_at|          updated_at|_region| _source|
++-----------+--------+----------------+-------+---------------+-------------------+-----------------------+-------------------------+---------------+--------------------+--------------------+-------+--------+
+|          1|       1|   DHL1234567890|    DHL|       Standard|2024-01-16 13:30:00|             2024-01-18|      2024-01-18 15:45:00|      delivered|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          2|       2|   DPD9876543210|    DPD|        Express|2024-01-17 09:15:00|             2024-01-19|                     NULL|     in_transit|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          3|       3|HERMES5555666677| Hermes|       Standard|               NULL|                   NULL|                     NULL|        pending|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          4|       4|POSTNL1111222233| PostNL|        Express|2024-01-18 08:45:00|             2024-01-20|      2024-01-19 13:20:00|      delivered|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          5|       6|   DHL2222333344|    DHL|       Same Day|2024-01-19 10:30:00|             2024-01-19|      2024-01-19 17:15:00|      delivered|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          6|       7|   DPD7777888899|    DPD|       Standard|2024-01-20 12:20:00|             2024-01-22|                     NULL|     in_transit|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          7|       8|HERMES4444555566| Hermes|        Express|2024-01-21 14:45:00|             2024-01-23|                     NULL|     in_transit|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          8|       9|   DHL6666777788|    DHL|       Standard|2024-01-22 07:30:00|             2024-01-24|      2024-01-24 11:10:00|      delivered|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
++-----------+--------+----------------+-------+---------------+-------------------+-----------------------+-------------------------+---------------+--------------------+--------------------+-------+--------+
+[2025-06-11T18:26:06.949+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-11T18:26:16.635+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-11T18:26:16.653+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-06-11T18:26:16.998+0000] {logging_mixin.py:188} INFO - Successfully processed 8 records for shipments in eu
+[2025-06-11T18:26:19.369+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'eu', 'table': 'shipments', 'record_count': 8, 'status': 'success'}
+[2025-06-11T18:26:19.415+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_transform_staging_v2, task_id=process_region_eu.process_shipments_eu, execution_date=20250611T182009, start_date=20250611T182523, end_date=20250611T182619
+[2025-06-11T18:26:19.467+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T18:26:19.508+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

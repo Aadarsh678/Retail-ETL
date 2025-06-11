@@ -1,0 +1,36 @@
+[2025-06-11T18:24:30.316+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_order_items_eu manual__2025-06-11T18:20:09.445349+00:00 [queued]>
+[2025-06-11T18:24:30.353+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_order_items_eu manual__2025-06-11T18:20:09.445349+00:00 [queued]>
+[2025-06-11T18:24:30.354+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T18:24:30.404+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_eu.process_order_items_eu> on 2025-06-11 18:20:09.445349+00:00
+[2025-06-11T18:24:30.427+0000] {standard_task_runner.py:60} INFO - Started process 10074 to run task
+[2025-06-11T18:24:30.437+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_eu.process_order_items_eu', 'manual__2025-06-11T18:20:09.445349+00:00', '--job-id', '636', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmp6m3qkc8z']
+[2025-06-11T18:24:30.444+0000] {standard_task_runner.py:88} INFO - Job 636: Subtask process_region_eu.process_order_items_eu
+[2025-06-11T18:24:30.625+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_order_items_eu manual__2025-06-11T18:20:09.445349+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T18:24:30.954+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_eu.process_order_items_eu' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T18:20:09.445349+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T18:20:09.445349+00:00'
+[2025-06-11T18:24:44.019+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://5950010ae7c1:46587/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:46587/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T18:24:44.020+0000] {logging_mixin.py:188} INFO - Processing order_items for region eu
+[2025-06-11T18:24:44.064+0000] {logging_mixin.py:188} INFO - /opt/airflow/data/raw/region=eu/table=order_items/load_date=2025-06-11
+[2025-06-11T18:25:13.375+0000] {logging_mixin.py:188} INFO - STAGING_EU
+[2025-06-11T18:25:15.262+0000] {logging_mixin.py:188} INFO - +-------------+--------+----------+--------+------------------+--------+------------------+--------------------+-------+--------+
+|order_item_id|order_id|variant_id|quantity|    unit_price_usd|vat_rate|   total_price_usd|          created_at|_region| _source|
++-------------+--------+----------+--------+------------------+--------+------------------+--------------------+-------+--------+
+|            1|       1|         1|       1|         1295.9892|   19.00|1542.2184000000002|2025-06-11 02:14:...|     eu|postgres|
+|            2|       2|        11|       1|           97.1892|   19.00|          115.6464|2025-06-11 02:14:...|     eu|postgres|
+|            3|       3|        14|       1|1727.9892000000002|   19.00|         2056.2984|2025-06-11 02:14:...|     eu|postgres|
+|            4|       4|        14|       1|269.98920000000004|   19.00|321.27840000000003|2025-06-11 02:14:...|     eu|postgres|
+|            5|       5|        11|       1|323.98920000000004|   19.00|          385.5384|2025-06-11 02:14:...|     eu|postgres|
+|            6|       6|        18|       1|           86.3892|   19.00|102.79440000000001|2025-06-11 02:14:...|     eu|postgres|
+|            7|       7|        20|       1| 971.9892000000001|   19.00|         1156.6584|2025-06-11 02:14:...|     eu|postgres|
+|            8|       8|        10|       1|          161.9892|   19.00|          192.7584|2025-06-11 02:14:...|     eu|postgres|
+|            9|       9|        14|       1|1727.9892000000002|   19.00|         2056.2984|2025-06-11 02:14:...|     eu|postgres|
+|           10|       9|         1|       1|          215.9892|   19.00|          257.0184|2025-06-11 02:14:...|     eu|postgres|
++-------------+--------+----------+--------+------------------+--------+------------------+--------------------+-------+--------+
+only showing top 10 rows
+[2025-06-11T18:25:15.263+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-11T18:25:23.920+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-11T18:25:23.943+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-06-11T18:25:24.324+0000] {logging_mixin.py:188} INFO - Successfully processed 11 records for order_items in eu
+[2025-06-11T18:25:27.152+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'eu', 'table': 'order_items', 'record_count': 11, 'status': 'success'}
+[2025-06-11T18:25:27.248+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_transform_staging_v2, task_id=process_region_eu.process_order_items_eu, execution_date=20250611T182009, start_date=20250611T182430, end_date=20250611T182527
+[2025-06-11T18:25:27.329+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T18:25:27.430+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

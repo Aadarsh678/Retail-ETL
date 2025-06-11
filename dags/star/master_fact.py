@@ -91,7 +91,7 @@ def run_merge_query(table_name: str):
 def star_fact_merge_tasks():
     tasks = {}
     for table in TABLES:
-        @task(task_id=f"star_dim_{table}")
+        @task(task_id=f"star_fact_{table}")
         def merge_table(t=table):
             run_merge_query(t)
         tasks[table] = merge_table()

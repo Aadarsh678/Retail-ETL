@@ -1,0 +1,81 @@
+[2025-06-11T15:53:59.978+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction_asia manual__2025-06-11T14:51:16.168139+00:00 [queued]>
+[2025-06-11T15:53:59.997+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction_asia manual__2025-06-11T14:51:16.168139+00:00 [queued]>
+[2025-06-11T15:54:00.000+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 1
+[2025-06-11T15:54:00.032+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_extraction_asia> on 2025-06-11 14:51:16.168139+00:00
+[2025-06-11T15:54:00.041+0000] {standard_task_runner.py:60} INFO - Started process 223 to run task
+[2025-06-11T15:54:00.080+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'extract_postgres_table_to_parquet', 'run_extraction_asia', 'manual__2025-06-11T14:51:16.168139+00:00', '--job-id', '128', '--raw', '--subdir', 'DAGS_FOLDER/asia/landing.py', '--cfg-path', '/tmp/tmpi3dfs8us']
+[2025-06-11T15:54:00.082+0000] {standard_task_runner.py:88} INFO - Job 128: Subtask run_extraction_asia
+[2025-06-11T15:54:00.246+0000] {task_command.py:423} INFO - Running <TaskInstance: extract_postgres_table_to_parquet.run_extraction_asia manual__2025-06-11T14:51:16.168139+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T15:54:00.772+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='extract_postgres_table_to_parquet' AIRFLOW_CTX_TASK_ID='run_extraction_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T14:51:16.168139+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T14:51:16.168139+00:00'
+[2025-06-11T15:54:00.786+0000] {logging_mixin.py:188} INFO - Starting extraction for table: categories in region: asia
+[2025-06-11T15:54:00.787+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:54:39.116+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:33853/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:33853/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:33853/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T15:55:01.635+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.categories
+[2025-06-11T15:55:02.583+0000] {logging_mixin.py:188} INFO - Starting extraction for table: products in region: asia
+[2025-06-11T15:55:02.589+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:55:04.751+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:41103/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:41103/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:41103/jars/snowflake-jdbc-3.13.17.jar)
+[2025-06-11T15:55:09.303+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.products
+[2025-06-11T15:55:10.174+0000] {logging_mixin.py:188} INFO - Starting extraction for table: product_variants in region: asia
+[2025-06-11T15:55:10.179+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:55:12.221+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:46015/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:46015/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:46015/jars/postgresql-42.7.3.jar)
+[2025-06-11T15:55:15.827+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.product_variants
+[2025-06-11T15:55:16.794+0000] {logging_mixin.py:188} INFO - Starting extraction for table: inventory in region: asia
+[2025-06-11T15:55:16.795+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:55:18.960+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:44629/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:44629/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:44629/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T15:55:25.714+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.inventory
+[2025-06-11T15:55:26.705+0000] {logging_mixin.py:188} INFO - Starting extraction for table: customers in region: asia
+[2025-06-11T15:55:26.717+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:55:30.548+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:44669/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:44669/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:44669/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T15:55:40.051+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.customers
+[2025-06-11T15:55:41.879+0000] {logging_mixin.py:188} INFO - Starting extraction for table: customer_addresses in region: asia
+[2025-06-11T15:55:41.881+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:55:45.002+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:33273/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:33273/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:33273/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T15:55:49.829+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.customer_addresses
+[2025-06-11T15:55:50.809+0000] {logging_mixin.py:188} INFO - Starting extraction for table: marketing_campaigns in region: asia
+[2025-06-11T15:55:50.810+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:55:51.469+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:43279/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:43279/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:43279/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T15:55:53.764+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.marketing_campaigns
+[2025-06-11T15:55:54.765+0000] {logging_mixin.py:188} INFO - Starting extraction for table: discounts in region: asia
+[2025-06-11T15:55:54.765+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:55:54.957+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:44227/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:44227/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:44227/jars/postgresql-42.7.3.jar)
+[2025-06-11T15:55:57.016+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.discounts
+[2025-06-11T15:55:58.028+0000] {logging_mixin.py:188} INFO - Starting extraction for table: shopping_carts in region: asia
+[2025-06-11T15:55:58.028+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:55:58.345+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:40069/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:40069/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:40069/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T15:56:00.509+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.shopping_carts
+[2025-06-11T15:56:01.508+0000] {logging_mixin.py:188} INFO - Starting extraction for table: cart_items in region: asia
+[2025-06-11T15:56:01.509+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:56:01.906+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:39919/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:39919/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:39919/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T15:56:04.164+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.cart_items
+[2025-06-11T15:56:05.167+0000] {logging_mixin.py:188} INFO - Starting extraction for table: orders in region: asia
+[2025-06-11T15:56:05.168+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:56:05.425+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:35317/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:35317/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:35317/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T15:56:07.676+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.orders
+[2025-06-11T15:56:08.691+0000] {logging_mixin.py:188} INFO - Starting extraction for table: order_items in region: asia
+[2025-06-11T15:56:08.692+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:56:09.011+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:36949/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:36949/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:36949/jars/postgresql-42.7.3.jar)
+[2025-06-11T15:56:10.589+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.order_items
+[2025-06-11T15:56:11.587+0000] {logging_mixin.py:188} INFO - Starting extraction for table: shipments in region: asia
+[2025-06-11T15:56:11.587+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:56:11.834+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:44639/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:44639/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:44639/jars/postgresql-42.7.3.jar)
+[2025-06-11T15:56:13.957+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.shipments
+[2025-06-11T15:56:14.924+0000] {logging_mixin.py:188} INFO - Starting extraction for table: returns in region: asia
+[2025-06-11T15:56:14.925+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:56:15.228+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:42891/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:42891/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:42891/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T15:56:17.556+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.returns
+[2025-06-11T15:56:18.523+0000] {logging_mixin.py:188} INFO - Starting extraction for table: product_reviews in region: asia
+[2025-06-11T15:56:18.523+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:56:19.181+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:34431/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:34431/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:34431/jars/postgresql-42.7.3.jar)
+[2025-06-11T15:56:22.867+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.product_reviews
+[2025-06-11T15:56:23.844+0000] {logging_mixin.py:188} INFO - Starting extraction for table: payments in region: asia
+[2025-06-11T15:56:23.846+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:56:25.315+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:38333/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:38333/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:38333/jars/postgresql-42.7.3.jar)
+[2025-06-11T15:56:28.153+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.payments
+[2025-06-11T15:56:29.149+0000] {logging_mixin.py:188} INFO - Starting extraction for table: wishlists in region: asia
+[2025-06-11T15:56:29.149+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:56:29.747+0000] {logging_mixin.py:188} INFO - Vector(spark://5950010ae7c1:45795/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:45795/jars/postgresql-42.7.3.jar, spark://5950010ae7c1:45795/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T15:56:33.283+0000] {logging_mixin.py:188} INFO - [INFO] No data found in asia.wishlists
+[2025-06-11T15:56:34.275+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-06-11T15:56:34.766+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=extract_postgres_table_to_parquet, task_id=run_extraction_asia, execution_date=20250611T145116, start_date=20250611T155359, end_date=20250611T155634
+[2025-06-11T15:56:35.363+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T15:56:35.837+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

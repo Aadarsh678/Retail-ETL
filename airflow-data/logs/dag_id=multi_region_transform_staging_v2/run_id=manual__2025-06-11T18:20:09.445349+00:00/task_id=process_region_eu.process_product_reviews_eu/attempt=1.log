@@ -1,0 +1,33 @@
+[2025-06-11T18:27:17.207+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_product_reviews_eu manual__2025-06-11T18:20:09.445349+00:00 [queued]>
+[2025-06-11T18:27:17.216+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_product_reviews_eu manual__2025-06-11T18:20:09.445349+00:00 [queued]>
+[2025-06-11T18:27:17.217+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T18:27:17.227+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_eu.process_product_reviews_eu> on 2025-06-11 18:20:09.445349+00:00
+[2025-06-11T18:27:17.233+0000] {standard_task_runner.py:60} INFO - Started process 14741 to run task
+[2025-06-11T18:27:17.236+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_eu.process_product_reviews_eu', 'manual__2025-06-11T18:20:09.445349+00:00', '--job-id', '649', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmp8f1g9of0']
+[2025-06-11T18:27:17.237+0000] {standard_task_runner.py:88} INFO - Job 649: Subtask process_region_eu.process_product_reviews_eu
+[2025-06-11T18:27:17.289+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_product_reviews_eu manual__2025-06-11T18:20:09.445349+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T18:27:17.401+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_eu.process_product_reviews_eu' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T18:20:09.445349+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T18:20:09.445349+00:00'
+[2025-06-11T18:27:23.688+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://5950010ae7c1:46827/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:46827/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T18:27:23.689+0000] {logging_mixin.py:188} INFO - Processing product_reviews for region eu
+[2025-06-11T18:27:23.713+0000] {logging_mixin.py:188} INFO - /opt/airflow/data/raw/region=eu/table=product_reviews/load_date=2025-06-11
+[2025-06-11T18:27:51.182+0000] {logging_mixin.py:188} INFO - STAGING_EU
+[2025-06-11T18:27:54.385+0000] {logging_mixin.py:188} INFO - +---------+----------+-----------+--------+------+------------------+--------------------+--------------------+-------------+-----------------+--------------------+-------+--------+
+|review_id|product_id|customer_id|order_id|rating|      review_title|         review_text|is_verified_purchase|helpful_votes|moderation_status|          created_at|_region| _source|
++---------+----------+-----------+--------+------+------------------+--------------------+--------------------+-------------+-----------------+--------------------+-------+--------+
+|        1|         1|          1|       1|     5|  EXCELLENT PHONE!|Amazing camera qu...|                true|           15|         approved|2025-06-11 02:14:...|     eu|postgres|
+|        2|         5|          2|       2|     4|   beautiful dress|Nice fabric and f...|                true|            8|         approved|2025-06-11 02:14:...|     eu|postgres|
+|        3|         6|          3|       3|     5|      Perfect Sofa|Comfortable and w...|                true|           22|         approved|2025-06-11 02:14:...|     eu|postgres|
+|        4|        14|          4|       4|     3|AVERAGE HEADPHONES|Sound quality is ...|                true|            5|         approved|2025-06-11 02:14:...|     eu|postgres|
+|        5|         7|         10|      10|     1| poor quality book|Pages were damage...|                true|            2|         approved|2025-06-11 02:14:...|     eu|postgres|
+|        6|         1|          5|    NULL|     4|Good but expensive|Great phone but o...|               false|            3|          pending|2025-06-11 02:14:...|     eu|postgres|
+|        7|         9|          7|       7|     5|     AMAZING BIKE!|Perfect for mount...|                true|           18|         approved|2025-06-11 02:14:...|     eu|postgres|
+|        8|        10|          8|       8|     4|      fun lego set|Kids love it but ...|                true|            7|         approved|2025-06-11 02:14:...|     eu|postgres|
++---------+----------+-----------+--------+------+------------------+--------------------+--------------------+-------------+-----------------+--------------------+-------+--------+
+[2025-06-11T18:27:54.386+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-11T18:28:04.121+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-11T18:28:04.154+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-06-11T18:28:04.645+0000] {logging_mixin.py:188} INFO - Successfully processed 8 records for product_reviews in eu
+[2025-06-11T18:28:07.392+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'eu', 'table': 'product_reviews', 'record_count': 8, 'status': 'success'}
+[2025-06-11T18:28:07.445+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_transform_staging_v2, task_id=process_region_eu.process_product_reviews_eu, execution_date=20250611T182009, start_date=20250611T182717, end_date=20250611T182807
+[2025-06-11T18:28:07.488+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T18:28:07.541+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

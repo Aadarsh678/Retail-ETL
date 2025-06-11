@@ -76,7 +76,7 @@ def transform_returns_eu(df,exchange_rates: dict):
 
 
 # --- US ---
-def transform_returns_us(df):
+def transform_returns_us(df,exchange_rates: dict):
     return df.select(
         col("return_id"),
         col("order_id"),

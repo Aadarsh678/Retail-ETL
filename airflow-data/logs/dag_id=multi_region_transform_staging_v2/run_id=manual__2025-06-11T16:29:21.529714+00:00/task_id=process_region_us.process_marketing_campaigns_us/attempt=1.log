@@ -1,0 +1,16 @@
+[2025-06-11T16:31:39.566+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_us.process_marketing_campaigns_us manual__2025-06-11T16:29:21.529714+00:00 [queued]>
+[2025-06-11T16:31:39.596+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_us.process_marketing_campaigns_us manual__2025-06-11T16:29:21.529714+00:00 [queued]>
+[2025-06-11T16:31:39.597+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T16:31:39.630+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_us.process_marketing_campaigns_us> on 2025-06-11 16:29:21.529714+00:00
+[2025-06-11T16:31:39.645+0000] {standard_task_runner.py:60} INFO - Started process 69734 to run task
+[2025-06-11T16:31:39.652+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_us.process_marketing_campaigns_us', 'manual__2025-06-11T16:29:21.529714+00:00', '--job-id', '395', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmp89jr9xvv']
+[2025-06-11T16:31:39.656+0000] {standard_task_runner.py:88} INFO - Job 395: Subtask process_region_us.process_marketing_campaigns_us
+[2025-06-11T16:31:39.812+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_us.process_marketing_campaigns_us manual__2025-06-11T16:29:21.529714+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T16:31:40.093+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_us.process_marketing_campaigns_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T16:29:21.529714+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T16:29:21.529714+00:00'
+[2025-06-11T16:31:48.966+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://5950010ae7c1:39589/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:39589/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T16:31:48.967+0000] {logging_mixin.py:188} INFO - Processing marketing_campaigns for region us
+[2025-06-11T16:31:48.991+0000] {logging_mixin.py:188} INFO - Skipping marketing_campaigns for us, already processed for 2025-06-11
+[2025-06-11T16:31:49.132+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'us', 'table': 'marketing_campaigns', 'record_count': 0, 'status': 'skipped'}
+[2025-06-11T16:31:49.183+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_transform_staging_v2, task_id=process_region_us.process_marketing_campaigns_us, execution_date=20250611T162921, start_date=20250611T163139, end_date=20250611T163149
+[2025-06-11T16:31:49.224+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T16:31:49.289+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

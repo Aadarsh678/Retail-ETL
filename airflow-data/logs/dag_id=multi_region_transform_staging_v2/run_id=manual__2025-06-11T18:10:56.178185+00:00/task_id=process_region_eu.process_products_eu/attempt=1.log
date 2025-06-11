@@ -1,0 +1,117 @@
+[2025-06-11T18:18:44.874+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_products_eu manual__2025-06-11T18:10:56.178185+00:00 [queued]>
+[2025-06-11T18:18:44.918+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_products_eu manual__2025-06-11T18:10:56.178185+00:00 [queued]>
+[2025-06-11T18:18:44.919+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T18:18:44.991+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_eu.process_products_eu> on 2025-06-11 18:10:56.178185+00:00
+[2025-06-11T18:18:45.036+0000] {standard_task_runner.py:60} INFO - Started process 1191 to run task
+[2025-06-11T18:18:45.058+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_eu.process_products_eu', 'manual__2025-06-11T18:10:56.178185+00:00', '--job-id', '600', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmp32dzoxvb']
+[2025-06-11T18:18:45.066+0000] {standard_task_runner.py:88} INFO - Job 600: Subtask process_region_eu.process_products_eu
+[2025-06-11T18:18:45.286+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_products_eu manual__2025-06-11T18:10:56.178185+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T18:18:45.577+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_eu.process_products_eu' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T18:10:56.178185+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T18:10:56.178185+00:00'
+[2025-06-11T18:18:57.456+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://5950010ae7c1:40817/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:40817/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T18:18:57.717+0000] {logging_mixin.py:188} INFO - Processing products for region eu
+[2025-06-11T18:18:57.778+0000] {logging_mixin.py:188} INFO - /opt/airflow/data/raw/region=eu/table=products/load_date=2025-06-11
+[2025-06-11T18:19:26.933+0000] {logging_mixin.py:188} INFO - STAGING_EU
+[2025-06-11T18:19:33.898+0000] {logging_mixin.py:188} INFO - +----------+----------------+------------------+--------------------+-----------+------------------+------------------+--------+---------+---------+--------+---------+-------------+---------+-------------------+-------------------+-------+--------+
+|product_id|     product_sku|      product_name| product_description|category_id|          base_usd|          cost_usd|vat_rate|weight_kg|length_cm|width_cm|height_cm|energy_rating|is_active|         created_at|         updated_at|_region| _source|
++----------+----------------+------------------+--------------------+-----------+------------------+------------------+--------+---------+---------+--------+---------+-------------+---------+-------------------+-------------------+-------+--------+
+|         1| EU-SKU-PHONE001|     Iphone 15 Pro|Latest Apple smar...|          2|         1295.9892|             864.0|   19.00|     0.22|    15.90|    7.60|     0.83|         NULL|     true|2025-06-11 02:14:31|2025-06-11 02:14:31|     eu|postgres|
+|         2|EU-SKU-LAPTOP001|    Macbook Air M2|Apple MacBook Air...|          3|1403.9892000000002| 972.0000000000001|   19.00|     1.24|    30.41|   21.24|     1.13|          A++|     true|2025-06-11 02:14:31|2025-06-11 02:14:31|     eu|postgres|
+|         3|  EU-SKU-GAME001|     Playstation 5|Sony PlayStation ...|          4| 539.9892000000001|             378.0|   19.00|     4.50|    39.00|   26.00|    10.40|            B|     true|2025-06-11 02:14:31|2025-06-11 02:14:31|     eu|postgres|
+|         4| EU-SKU-SHIRT001|    Cotton T-shirt|Premium cotton t-...|          6|           32.3892|             12.96|   19.00|     0.20|    30.00|   25.00|     2.00|         NULL|     true|2025-06-11 02:14:31|2025-06-11 02:14:31|     eu|postgres|
+|         5| EU-SKU-DRESS001|      Summer Dress|Elegant summer dr...|          7|           97.1892|37.800000000000004|   19.00|     0.30|    40.00|   30.00|     3.00|         NULL|     true|2025-06-11 02:14:31|2025-06-11 02:14:31|     eu|postgres|
+|         6|  EU-SKU-SOFA001|      Leather Sofa|Premium leather 3...|          9|1727.9892000000002|             864.0|   19.00|    85.00|   220.00|   90.00|    85.00|         NULL|     true|2025-06-11 02:14:31|2025-06-11 02:14:31|     eu|postgres|
+|         7|  EU-SKU-BOOK001|Data Privacy Guide|Complete guide to...|         10| 43.18920000000001|16.200000000000003|    7.00|     0.50|    24.00|   17.00|     2.50|         NULL|     true|2025-06-11 02:14:31|2025-06-11 02:14:31|     eu|postgres|
+|         8| EU-SKU-CREAM001|  Anti Aging Cream|Premium anti-agin...|         11|           86.3892|              27.0|   19.00|     0.05|     8.00|    8.00|     6.00|         NULL|     true|2025-06-11 02:14:31|2025-06-11 02:14:31|     eu|postgres|
+|         9|  EU-SKU-BIKE001|     Mountain Bike|Professional moun...|         12| 971.9892000000001|486.00000000000006|   19.00|    15.50|   180.00|   65.00|   110.00|         NULL|     true|2025-06-11 02:14:31|2025-06-11 02:14:31|     eu|postgres|
+|        10|   EU-SKU-TOY001|   Lego Castle Set|Medieval castle L...|         14|          161.9892|              81.0|   19.00|     2.10|    35.00|   25.00|    15.00|         NULL|     true|2025-06-11 02:14:31|2025-06-11 02:14:31|     eu|postgres|
++----------+----------------+------------------+--------------------+-----------+------------------+------------------+--------+---------+---------+--------+---------+-------------+---------+-------------------+-------------------+-------+--------+
+only showing top 10 rows
+[2025-06-11T18:19:33.903+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-11T18:19:46.510+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-11T18:19:46.873+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-06-11T18:19:47.612+0000] {logging_mixin.py:188} INFO - Successfully processed 15 records for products in eu
+[2025-06-11T18:19:47.681+0000] {local_task_job_runner.py:302} WARNING - State of this instance has been externally set to failed. Terminating instance.
+[2025-06-11T18:19:47.809+0000] {process_utils.py:131} INFO - Sending 15 to group 1191. PIDs of all processes in the group: [1195, 1199, 1191]
+[2025-06-11T18:19:47.816+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 1191
+[2025-06-11T18:19:47.820+0000] {taskinstance.py:2450} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-06-11T18:19:47.831+0000] {clientserver.py:538} INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/local/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 2452, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+[2025-06-11T18:19:47.845+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-11T18:19:47.853+0000] {java_gateway.py:1055} ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/local/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 2452, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+[2025-06-11T18:19:47.863+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-11T18:19:48.033+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/pyspark/context.py:657 RuntimeWarning: Unable to cleanly shutdown Spark JVM process. It is possible that the process has crashed, been killed or may also be in a zombie state.
+[2025-06-11T18:19:48.467+0000] {clientserver.py:538} INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/local/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [Errno 104] Connection reset by peer
+[2025-06-11T18:19:48.468+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-11T18:19:48.484+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/local/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/master_dag.py", line 305, in process_table
+    spark.stop()
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/sql/session.py", line 1799, in stop
+    self._jvm.SparkSession.clearDefaultSession()
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1712, in __getattr__
+    answer = self._gateway_client.send_command(
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1036, in send_command
+    connection = self._get_connection()
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 284, in _get_connection
+    connection = self._create_new_connection()
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 291, in _create_new_connection
+    connection.connect_to_java_server()
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 443, in connect_to_java_server
+    self._authenticate_connection()
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 459, in _authenticate_connection
+    answer = self.send_command(cmd)
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+[2025-06-11T18:19:48.572+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=multi_region_transform_staging_v2, task_id=process_region_eu.process_products_eu, execution_date=20250611T181056, start_date=20250611T181844, end_date=20250611T181948
+[2025-06-11T18:19:48.687+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 600 for task process_region_eu.process_products_eu (Error while sending or receiving; 1191)
+[2025-06-11T18:19:48.744+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=1191, status='terminated', exitcode=1, started='18:18:45') (1191) terminated with exit code 1
+[2025-06-11T18:19:48.747+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=1199, status='terminated', started='18:18:45') (1199) terminated with exit code None
+[2025-06-11T18:19:48.748+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=1195, status='terminated', started='18:18:45') (1195) terminated with exit code None

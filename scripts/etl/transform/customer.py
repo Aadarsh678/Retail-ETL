@@ -188,7 +188,7 @@ def transform_us(df):
     )
 
 
-def transform_customers(df: DataFrame, region: str) -> DataFrame:
+def transform_customers(df: DataFrame, region: str,exchange_rates: dict) -> DataFrame:
     if region == "asia":
         return transform_asia(df)
     elif region == "eu":

@@ -1,0 +1,2 @@
+[2025-06-11T16:04:00.557+0000] {taskinstance.py:1946} INFO - Dependencies not met for <TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_categories_eu manual__2025-06-11T15:56:28.438220+00:00 [failed]>, dependency 'Task Instance State' FAILED: Task is in the 'failed' state.
+[2025-06-11T16:04:00.564+0000] {local_task_job_runner.py:160} INFO - Task is not able to be run

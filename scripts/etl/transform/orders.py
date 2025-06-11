@@ -226,7 +226,7 @@ def transform_orders_eu(df: DataFrame, exchange_rates: dict) -> DataFrame:
 
 
 # --- US ---
-def transform_orders_us(df: DataFrame) -> DataFrame:
+def transform_orders_us(df: DataFrame, exchange_rates: dict) -> DataFrame:
     return df.select(
         col("order_id"),
         col("order_number").alias("order_reference"),

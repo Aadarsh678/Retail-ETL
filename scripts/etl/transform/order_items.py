@@ -68,13 +68,13 @@ def transform_order_items_eu(df,exchange_rates: dict):
         col("vat_rate"),
         (col("total_price_eur")* lit(rate)).alias("total_price_usd"),
         col("created_at"),
-        col("_region("),
+        col("_region"),
         col("_source"),
     )
 
 
 # --- US ---
-def transform_order_items_us(df):
+def transform_order_items_us(df,exchange_rates: dict):
     return df.select(
         col("order_item_id"),
         col("order_id"),

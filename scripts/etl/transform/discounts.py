@@ -88,7 +88,7 @@ def transform_discounts_eu(df,exchange_rates: dict):
 
 
 # US
-def transform_discounts_us(df):
+def transform_discounts_us(df,exchange_rates: dict):
     return df.select(
         col("discount_id"),
         col("discount_code"),

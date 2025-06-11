@@ -134,7 +134,7 @@ def transform_customer_addresses_us(df):
 
 
 # print("Regional transformations with GDPR compliance completed.")
-def transform_customer_addressess(df: DataFrame, region: str) -> DataFrame:
+def transform_customer_addressess(df: DataFrame, region: str,exchange_rates: dict) -> DataFrame:
     if region == "asia":
         return transform_customer_addresses_asia(df)
     elif region == "eu":

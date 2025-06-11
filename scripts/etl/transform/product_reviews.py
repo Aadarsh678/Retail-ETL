@@ -123,7 +123,7 @@ def transform_product_reviews_us(df):
 # print("Product reviews normalization completed.")
 
 
-def transform_product_reviews(df: DataFrame, region: str) -> DataFrame:
+def transform_product_reviews(df: DataFrame, region: str,exchange_rates: dict) -> DataFrame:
     if region == "asia":
         return transform_product_reviews_asia(df)
     elif region == "eu":

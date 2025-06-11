@@ -1,0 +1,35 @@
+[2025-06-11T18:39:03.082+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_marketing_campaigns_eu manual__2025-06-11T18:38:01.678850+00:00 [queued]>
+[2025-06-11T18:39:03.101+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_marketing_campaigns_eu manual__2025-06-11T18:38:01.678850+00:00 [queued]>
+[2025-06-11T18:39:03.102+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T18:39:03.128+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_eu.process_marketing_campaigns_eu> on 2025-06-11 18:38:01.678850+00:00
+[2025-06-11T18:39:03.142+0000] {standard_task_runner.py:60} INFO - Started process 32285 to run task
+[2025-06-11T18:39:03.147+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_eu.process_marketing_campaigns_eu', 'manual__2025-06-11T18:38:01.678850+00:00', '--job-id', '768', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmpj6un7cjf']
+[2025-06-11T18:39:03.151+0000] {standard_task_runner.py:88} INFO - Job 768: Subtask process_region_eu.process_marketing_campaigns_eu
+[2025-06-11T18:39:03.278+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_eu.process_marketing_campaigns_eu manual__2025-06-11T18:38:01.678850+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T18:39:03.672+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_eu.process_marketing_campaigns_eu' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T18:38:01.678850+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T18:38:01.678850+00:00'
+[2025-06-11T18:39:18.210+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://5950010ae7c1:42547/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:42547/jars/snowflake-jdbc-3.13.17.jar)
+[2025-06-11T18:39:18.212+0000] {logging_mixin.py:188} INFO - Processing marketing_campaigns for region eu
+[2025-06-11T18:39:18.255+0000] {logging_mixin.py:188} INFO - /opt/airflow/data/raw/region=eu/table=marketing_campaigns/load_date=2025-06-11
+[2025-06-11T18:39:50.999+0000] {logging_mixin.py:188} INFO - STAGING_EU
+[2025-06-11T18:39:53.713+0000] {logging_mixin.py:188} INFO - +-----------+--------------------+--------------+-----------------+-------------------+-------------------+------------------+--------------------+---------------+--------------+--------------------+-------+--------+
+|campaign_id|       campaign_name| campaign_type|          channel|         start_date|           end_date|        budget_usd|     target_audience|campaign_status|gdpr_compliant|          created_at|_region| _source|
++-----------+--------------------+--------------+-----------------+-------------------+-------------------+------------------+--------------------+---------------+--------------+--------------------+-------+--------+
+|          1|SPRING ELECTRONIC...|      seasonal|            email|2024-03-01 00:00:00|2024-03-31 00:00:00|16200.000000000002|Electronics enthu...|           NULL|          true|2025-06-11 02:14:...|     eu|postgres|
+|          2|summer fashion co...|product_launch|     social_media|2024-06-01 00:00:00|2024-08-31 00:00:00|           27000.0|Fashion-conscious...|           NULL|          true|2025-06-11 02:14:...|     eu|postgres|
+|          3|Back to School Ca...|      seasonal|      paid_search|2024-08-15 00:00:00|2024-09-15 00:00:00|           12960.0|Students and parents|           NULL|          true|2025-06-11 02:14:...|     eu|postgres|
+|          4|BLACK FRIDAY MEGA...|   promotional|    multi_channel|2024-11-25 00:00:00|2024-11-29 00:00:00|           54000.0|All customer segm...|           NULL|          true|2025-06-11 02:14:...|     eu|postgres|
+|          5|  holiday gift guide|      seasonal|content_marketing|2024-12-01 00:00:00|2024-12-24 00:00:00|            8640.0|         Gift buyers|           NULL|          true|2025-06-11 02:14:...|     eu|postgres|
+|          6|New Year Fitness ...|     lifestyle|       influencer|2024-01-01 00:00:00|2024-01-31 00:00:00|           19440.0|Health and fitnes...|           NULL|          true|2025-06-11 02:14:...|     eu|postgres|
+|          7|VALENTINE JEWELRY...|      seasonal|      display_ads|2024-02-01 00:00:00|2024-02-14 00:00:00|           10800.0|Couples and gift ...|           NULL|          true|2025-06-11 02:14:...|     eu|postgres|
+|          8|eco friendly prod...|sustainability|            email|2024-04-22 00:00:00|2024-05-22 00:00:00| 8100.000000000001|Environmentally c...|           NULL|          true|2025-06-11 02:14:...|     eu|postgres|
+|          9|Gaming Console La...|product_launch| gaming_platforms|2024-03-15 00:00:00|2024-04-15 00:00:00|32400.000000000004|   Gamers aged 16-40|           NULL|          true|2025-06-11 02:14:...|     eu|postgres|
+|         10|  MOTHER DAY SPECIAL|      seasonal|     social_media|2024-05-01 00:00:00|2024-05-12 00:00:00|            6480.0|Children buying f...|           NULL|          true|2025-06-11 02:14:...|     eu|postgres|
++-----------+--------------------+--------------+-----------------+-------------------+-------------------+------------------+--------------------+---------------+--------------+--------------------+-------+--------+
+[2025-06-11T18:39:53.715+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-11T18:40:05.801+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-11T18:40:05.838+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-06-11T18:40:06.523+0000] {logging_mixin.py:188} INFO - Successfully processed 10 records for marketing_campaigns in eu
+[2025-06-11T18:40:09.298+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'eu', 'table': 'marketing_campaigns', 'record_count': 10, 'status': 'success'}
+[2025-06-11T18:40:09.400+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_transform_staging_v2, task_id=process_region_eu.process_marketing_campaigns_eu, execution_date=20250611T183801, start_date=20250611T183903, end_date=20250611T184009
+[2025-06-11T18:40:09.481+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T18:40:09.602+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

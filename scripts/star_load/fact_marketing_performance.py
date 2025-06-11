@@ -27,7 +27,7 @@ USING (
           ON mp.campaign_id = mc.campaign_id 
          AND mp.source_region = mc.source_region
         
-        WHERE mc.campaign_status = 'Active'  -- Only active campaigns
+        WHERE LOWER(mc.campaign_status) = 'active'   -- Only active campaigns
           AND mp.record_date IS NOT NULL
         
         GROUP BY 

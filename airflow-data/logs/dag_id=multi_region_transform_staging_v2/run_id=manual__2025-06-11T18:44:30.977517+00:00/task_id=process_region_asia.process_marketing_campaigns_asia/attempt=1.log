@@ -1,0 +1,33 @@
+[2025-06-11T18:45:39.860+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_asia.process_marketing_campaigns_asia manual__2025-06-11T18:44:30.977517+00:00 [queued]>
+[2025-06-11T18:45:39.885+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_asia.process_marketing_campaigns_asia manual__2025-06-11T18:44:30.977517+00:00 [queued]>
+[2025-06-11T18:45:39.886+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T18:45:39.910+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_asia.process_marketing_campaigns_asia> on 2025-06-11 18:44:30.977517+00:00
+[2025-06-11T18:45:39.923+0000] {standard_task_runner.py:60} INFO - Started process 43724 to run task
+[2025-06-11T18:45:39.929+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_asia.process_marketing_campaigns_asia', 'manual__2025-06-11T18:44:30.977517+00:00', '--job-id', '825', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmpnjvvwd0a']
+[2025-06-11T18:45:39.933+0000] {standard_task_runner.py:88} INFO - Job 825: Subtask process_region_asia.process_marketing_campaigns_asia
+[2025-06-11T18:45:40.090+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_asia.process_marketing_campaigns_asia manual__2025-06-11T18:44:30.977517+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T18:45:40.360+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_asia.process_marketing_campaigns_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T18:44:30.977517+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T18:44:30.977517+00:00'
+[2025-06-11T18:45:52.677+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://5950010ae7c1:44315/jars/snowflake-jdbc-3.13.17.jar, spark://5950010ae7c1:44315/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar)
+[2025-06-11T18:45:52.679+0000] {logging_mixin.py:188} INFO - Processing marketing_campaigns for region asia
+[2025-06-11T18:45:52.721+0000] {logging_mixin.py:188} INFO - /opt/airflow/data/raw/region=asia/table=marketing_campaigns/load_date=2025-06-11
+[2025-06-11T18:46:25.515+0000] {logging_mixin.py:188} INFO - STAGING_ASIA
+[2025-06-11T18:46:28.290+0000] {logging_mixin.py:188} INFO - +-----------+--------------------+--------------+-------------+-------------------+-------------------+----------+--------------------+---------------+--------------+-------------------+-------+--------+
+|campaign_id|       campaign_name| campaign_type|      channel|         start_date|           end_date|budget_usd|     target_audience|campaign_status|gdpr_compliant|         created_at|_region| _source|
++-----------+--------------------+--------------+-------------+-------------------+-------------------+----------+--------------------+---------------+--------------+-------------------+-------+--------+
+|          1|SPRING FESTIVAL SALE|      seasonal|        email|2024-03-01 00:00:00|2024-03-31 00:00:00|   10200.0|All customers nat...|           true|          NULL|2024-02-15 09:30:45|   asia|postgres|
+|          2| golden week special|   promotional|       social|2024-04-27 00:00:00|2024-05-06 00:00:00|   17000.0|Families and trav...|          false|          NULL|2024-02-16 00:00:00|   asia|postgres|
+|          3|    Summer Clearance|      seasonal|      display|2024-06-01 00:00:00|2024-06-30 00:00:00|    8160.0|  Young adults 18-35|          false|          NULL|2024-02-17 00:00:00|   asia|postgres|
+|          5|autumn fashion co...|product_launch|       social|2024-01-09 00:00:00|2024-09-30 00:00:00|   13600.0|Fashion-conscious...|          false|          NULL|2024-02-19 00:00:00|   asia|postgres|
+|          6| Winter Holiday Sale|      seasonal|        email|2024-12-01 00:00:00|2024-12-25 00:00:00|   20400.0|Gift buyers and f...|          false|          NULL|2024-02-20 10:15:40|   asia|postgres|
+|          7|   NEW YEAR CAMPAIGN|   promotional|multi_channel|2024-12-26 00:00:00|2025-01-15 00:00:00|   19040.0|All customer segm...|          false|          NULL|2024-02-21 00:00:00|   asia|postgres|
+|          8|   valentine special|      seasonal|       social|2025-02-01 00:00:00|2025-02-14 00:00:00|    6800.0|Couples and gift ...|          false|          NULL|2024-02-22 00:00:00|   asia|postgres|
+|         10|CHERRY BLOSSOM FE...|      seasonal|multi_channel|2025-03-25 00:00:00|2025-04-15 00:00:00|   14960.0| Tourists and locals|          false|          NULL|2024-02-24 00:00:00|   asia|postgres|
++-----------+--------------------+--------------+-------------+-------------------+-------------------+----------+--------------------+---------------+--------------+-------------------+-------+--------+
+[2025-06-11T18:46:28.291+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-11T18:46:40.932+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-11T18:46:40.953+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-06-11T18:46:41.582+0000] {logging_mixin.py:188} INFO - Successfully processed 8 records for marketing_campaigns in asia
+[2025-06-11T18:46:44.934+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'asia', 'table': 'marketing_campaigns', 'record_count': 8, 'status': 'success'}
+[2025-06-11T18:46:45.029+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_transform_staging_v2, task_id=process_region_asia.process_marketing_campaigns_asia, execution_date=20250611T184430, start_date=20250611T184539, end_date=20250611T184645
+[2025-06-11T18:46:45.106+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T18:46:45.213+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

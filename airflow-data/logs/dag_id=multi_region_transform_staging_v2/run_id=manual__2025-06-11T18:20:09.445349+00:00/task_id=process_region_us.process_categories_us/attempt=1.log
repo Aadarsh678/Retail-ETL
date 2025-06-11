@@ -1,0 +1,36 @@
+[2025-06-11T18:20:12.151+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_us.process_categories_us manual__2025-06-11T18:20:09.445349+00:00 [queued]>
+[2025-06-11T18:20:12.163+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_us.process_categories_us manual__2025-06-11T18:20:09.445349+00:00 [queued]>
+[2025-06-11T18:20:12.164+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T18:20:12.187+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_us.process_categories_us> on 2025-06-11 18:20:09.445349+00:00
+[2025-06-11T18:20:12.196+0000] {standard_task_runner.py:60} INFO - Started process 2555 to run task
+[2025-06-11T18:20:12.200+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_us.process_categories_us', 'manual__2025-06-11T18:20:09.445349+00:00', '--job-id', '612', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmpkk7sf0qx']
+[2025-06-11T18:20:12.203+0000] {standard_task_runner.py:88} INFO - Job 612: Subtask process_region_us.process_categories_us
+[2025-06-11T18:20:12.286+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_us.process_categories_us manual__2025-06-11T18:20:09.445349+00:00 [running]> on host 5950010ae7c1
+[2025-06-11T18:20:12.453+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_us.process_categories_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T18:20:09.445349+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T18:20:09.445349+00:00'
+[2025-06-11T18:20:29.359+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://5950010ae7c1:37723/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://5950010ae7c1:37723/jars/snowflake-jdbc-3.13.17.jar)
+[2025-06-11T18:20:29.361+0000] {logging_mixin.py:188} INFO - Processing categories for region us
+[2025-06-11T18:20:29.389+0000] {logging_mixin.py:188} INFO - /opt/airflow/data/raw/region=us/table=categories/load_date=2025-06-11
+[2025-06-11T18:21:00.044+0000] {logging_mixin.py:188} INFO - STAGING_US
+[2025-06-11T18:21:05.190+0000] {logging_mixin.py:188} INFO - +-----------+---------------+------------------+--------------------+---------+-------------------+-------------------+-------+--------+
+|category_id|  category_name|parent_category_id|       category_path|is_active|         created_at|         updated_at|_region| _source|
++-----------+---------------+------------------+--------------------+---------+-------------------+-------------------+-------+--------+
+|          1|    Electronics|              NULL|        /Electronics|     true|2025-06-11 02:14:19|2025-06-11 02:14:19|     us|postgres|
+|          2|    Smartphones|                 1|/Electronics/Smar...|     true|2025-06-11 02:14:19|2025-06-11 02:14:19|     us|postgres|
+|          3|        Laptops|                 1|/Electronics/Laptops|     true|2025-06-11 02:14:19|2025-06-11 02:14:19|     us|postgres|
+|          4|Gaming Consoles|                 1| /Electronics/Gaming|     true|2025-06-11 02:14:19|2025-06-11 02:14:19|     us|postgres|
+|          5|       Clothing|              NULL|           /Clothing|     true|2025-06-11 02:14:19|2025-06-11 02:14:19|     us|postgres|
+|          6|   Mens Apparel|                 5|      /Clothing/Mens|     true|2025-06-11 02:14:19|2025-06-11 02:14:19|     us|postgres|
+|          7| Womens Apparel|                 5|    /Clothing/Womens|     true|2025-06-11 02:14:19|2025-06-11 02:14:19|     us|postgres|
+|          8|  Home & Garden|              NULL|        /Home-Garden|     true|2025-06-11 02:14:19|2025-06-11 02:14:19|     us|postgres|
+|          9|      Furniture|                 8|/Home-Garden/Furn...|     true|2025-06-11 02:14:19|2025-06-11 02:14:19|     us|postgres|
+|         10|          Books|              NULL|              /Books|     true|2025-06-11 02:14:19|2025-06-11 02:14:19|     us|postgres|
++-----------+---------------+------------------+--------------------+---------+-------------------+-------------------+-------+--------+
+only showing top 10 rows
+[2025-06-11T18:21:05.301+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-11T18:21:16.902+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-11T18:21:16.918+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-06-11T18:21:17.222+0000] {logging_mixin.py:188} INFO - Successfully processed 15 records for categories in us
+[2025-06-11T18:21:19.613+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'us', 'table': 'categories', 'record_count': 15, 'status': 'success'}
+[2025-06-11T18:21:19.722+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_transform_staging_v2, task_id=process_region_us.process_categories_us, execution_date=20250611T182009, start_date=20250611T182012, end_date=20250611T182119
+[2025-06-11T18:21:19.811+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T18:21:20.173+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
