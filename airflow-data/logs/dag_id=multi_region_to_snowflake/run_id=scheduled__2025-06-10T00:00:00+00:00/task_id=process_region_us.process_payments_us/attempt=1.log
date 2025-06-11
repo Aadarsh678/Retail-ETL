@@ -1,0 +1,34 @@
+[2025-06-11T02:45:23.781+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_to_snowflake.process_region_us.process_payments_us scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T02:45:23.801+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_to_snowflake.process_region_us.process_payments_us scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T02:45:23.801+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T02:45:23.827+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_us.process_payments_us> on 2025-06-10 00:00:00+00:00
+[2025-06-11T02:45:23.841+0000] {standard_task_runner.py:60} INFO - Started process 48961 to run task
+[2025-06-11T02:45:23.846+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_to_snowflake', 'process_region_us.process_payments_us', 'scheduled__2025-06-10T00:00:00+00:00', '--job-id', '1274', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmpfkkmx7pg']
+[2025-06-11T02:45:23.849+0000] {standard_task_runner.py:88} INFO - Job 1274: Subtask process_region_us.process_payments_us
+[2025-06-11T02:45:24.003+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_to_snowflake.process_region_us.process_payments_us scheduled__2025-06-10T00:00:00+00:00 [running]> on host 5039a2bbff84
+[2025-06-11T02:45:24.301+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_to_snowflake' AIRFLOW_CTX_TASK_ID='process_region_us.process_payments_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-10T00:00:00+00:00'
+[2025-06-11T02:45:37.959+0000] {logging_mixin.py:188} INFO - Processing payments for region us
+[2025-06-11T02:45:51.440+0000] {logging_mixin.py:188} INFO - STAGING_US
+[2025-06-11T02:46:02.676+0000] {logging_mixin.py:188} INFO - +----------+--------+--------------+--------------+------------------+--------------------+--------------+--------------------+--------------------+-------+--------+
+|payment_id|order_id|payment_method|payment_status|payment_amount_usd|   payment_timestamp|transaction_id|    gateway_response|          created_at|_region| _source|
++----------+--------+--------------+--------------+------------------+--------------------+--------------+--------------------+--------------------+-------+--------+
+|         1|       1|   credit_card|     completed|            950.48|2025-06-08 19:23:...| txn_cc_us_001|Payment successfu...|2025-06-08 19:23:...|     us|postgres|
+|         2|       2|        paypal|     completed|             96.97|2025-06-08 19:23:...| txn_pp_us_002|PayPal payment co...|2025-06-08 19:23:...|     us|postgres|
+|         3|       3|     apple_pay|       pending|           1098.49|2025-06-08 19:23:...| txn_ap_us_003|Apple Pay processing|2025-06-08 19:23:...|     us|postgres|
+|         4|       4|   credit_card|     completed|            276.23|2025-06-08 19:23:...| txn_cc_us_004|Payment successfu...|2025-06-08 19:23:...|     us|postgres|
+|         5|       5|   credit_card|        failed|            279.85|2025-06-08 19:23:...| txn_cc_us_005|Declined - Insuff...|2025-06-08 19:23:...|     us|postgres|
+|         6|       6| bank_transfer|     completed|             85.86|2025-06-08 19:23:...| txn_bt_us_006|ACH transfer comp...|2025-06-08 19:23:...|     us|postgres|
+|         7|       7|        paypal|     completed|            729.98|2025-06-08 19:23:...| txn_pp_us_007|PayPal payment co...|2025-06-08 19:23:...|     us|postgres|
+|         8|       8|   credit_card|     completed|            190.48|2025-06-08 19:23:...| txn_cc_us_008|Payment successfu...|2025-06-08 19:23:...|     us|postgres|
+|         9|       9|     apple_pay|     completed|           1739.98|2025-06-08 19:23:...| txn_ap_us_009| Apple Pay completed|2025-06-08 19:23:...|     us|postgres|
+|        10|      10|   credit_card|      refunded|             49.36|2025-06-08 19:23:...| txn_cc_us_010|Payment refunded ...|2025-06-08 19:23:...|     us|postgres|
++----------+--------+--------------+--------------+------------------+--------------------+--------------+--------------------+--------------------+-------+--------+
+only showing top 10 rows
+[2025-06-11T02:46:02.677+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-11T02:46:17.159+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-11T02:46:17.176+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-06-11T02:46:18.181+0000] {logging_mixin.py:188} INFO - Successfully processed 20 records for payments in us
+[2025-06-11T02:46:19.640+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'us', 'table': 'payments', 'record_count': 20, 'status': 'success'}
+[2025-06-11T02:46:19.736+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_to_snowflake, task_id=process_region_us.process_payments_us, execution_date=20250610T000000, start_date=20250611T024523, end_date=20250611T024619
+[2025-06-11T02:46:19.841+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T02:46:19.954+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

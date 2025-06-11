@@ -1,0 +1,22 @@
+[2025-06-11T11:25:08.594+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: master_etl_dag_v3.fetch_currency_rates scheduled__2025-06-10T02:00:00+00:00 [queued]>
+[2025-06-11T11:25:08.604+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: master_etl_dag_v3.fetch_currency_rates scheduled__2025-06-10T02:00:00+00:00 [queued]>
+[2025-06-11T11:25:08.604+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T11:25:08.629+0000] {taskinstance.py:2191} INFO - Executing <Task(TriggerDagRunOperator): fetch_currency_rates> on 2025-06-10 02:00:00+00:00
+[2025-06-11T11:25:08.635+0000] {standard_task_runner.py:60} INFO - Started process 5266 to run task
+[2025-06-11T11:25:08.640+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'master_etl_dag_v3', 'fetch_currency_rates', 'scheduled__2025-06-10T02:00:00+00:00', '--job-id', '1597', '--raw', '--subdir', 'DAGS_FOLDER/dwh/etl_pipeline.py', '--cfg-path', '/tmp/tmp0kvg78gu']
+[2025-06-11T11:25:08.642+0000] {standard_task_runner.py:88} INFO - Job 1597: Subtask fetch_currency_rates
+[2025-06-11T11:25:08.671+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-06-11T11:25:08.754+0000] {task_command.py:423} INFO - Running <TaskInstance: master_etl_dag_v3.fetch_currency_rates scheduled__2025-06-10T02:00:00+00:00 [running]> on host 8b0a421f0af7
+[2025-06-11T11:25:08.937+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data_team' AIRFLOW_CTX_DAG_ID='master_etl_dag_v3' AIRFLOW_CTX_TASK_ID='fetch_currency_rates' AIRFLOW_CTX_EXECUTION_DATE='2025-06-10T02:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-10T02:00:00+00:00'
+[2025-06-11T11:25:09.089+0000] {trigger_dagrun.py:210} INFO - Waiting for store_exchange_rates_to_snowflake on 2025-06-11 11:25:08.938756+00:00 to become allowed state ['success'] ...
+[2025-06-11T11:25:39.205+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/trigger_dagrun.py", line 221, in execute
+    raise AirflowException(f"{self.trigger_dag_id} failed with failed states {state}")
+airflow.exceptions.AirflowException: store_exchange_rates_to_snowflake failed with failed states failed
+[2025-06-11T11:25:39.212+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=master_etl_dag_v3, task_id=fetch_currency_rates, execution_date=20250610T020000, start_date=20250611T112508, end_date=20250611T112539
+[2025-06-11T11:25:39.341+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 1597 for task fetch_currency_rates (store_exchange_rates_to_snowflake failed with failed states failed; 5266)
+[2025-06-11T11:25:39.403+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-06-11T11:25:39.509+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

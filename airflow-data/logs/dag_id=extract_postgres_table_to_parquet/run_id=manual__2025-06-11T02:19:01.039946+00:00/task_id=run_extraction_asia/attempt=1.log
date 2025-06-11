@@ -1,0 +1,81 @@
+[2025-06-11T02:19:02.345+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction_asia manual__2025-06-11T02:19:01.039946+00:00 [queued]>
+[2025-06-11T02:19:02.368+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction_asia manual__2025-06-11T02:19:01.039946+00:00 [queued]>
+[2025-06-11T02:19:02.368+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-11T02:19:02.400+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_extraction_asia> on 2025-06-11 02:19:01.039946+00:00
+[2025-06-11T02:19:02.413+0000] {standard_task_runner.py:60} INFO - Started process 21549 to run task
+[2025-06-11T02:19:02.418+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'extract_postgres_table_to_parquet', 'run_extraction_asia', 'manual__2025-06-11T02:19:01.039946+00:00', '--job-id', '1203', '--raw', '--subdir', 'DAGS_FOLDER/asia/landing.py', '--cfg-path', '/tmp/tmp8juizmoz']
+[2025-06-11T02:19:02.422+0000] {standard_task_runner.py:88} INFO - Job 1203: Subtask run_extraction_asia
+[2025-06-11T02:19:02.550+0000] {task_command.py:423} INFO - Running <TaskInstance: extract_postgres_table_to_parquet.run_extraction_asia manual__2025-06-11T02:19:01.039946+00:00 [running]> on host 5039a2bbff84
+[2025-06-11T02:19:02.766+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='extract_postgres_table_to_parquet' AIRFLOW_CTX_TASK_ID='run_extraction_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T02:19:01.039946+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T02:19:01.039946+00:00'
+[2025-06-11T02:19:02.770+0000] {logging_mixin.py:188} INFO - Starting extraction for table: categories in region: asia
+[2025-06-11T02:19:02.773+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T02:19:17.059+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2025-06-11 02:14:04
+[2025-06-11T02:19:19.561+0000] {logging_mixin.py:188} INFO - [INFO] No new records found in asia.categories
+[2025-06-11T02:19:20.554+0000] {logging_mixin.py:188} INFO - Starting extraction for table: products in region: asia
+[2025-06-11T02:19:20.555+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T02:19:22.842+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2024-01-31 00:00:00
+[2025-06-11T02:19:24.239+0000] {logging_mixin.py:188} INFO - [INFO] No new records found in asia.products
+[2025-06-11T02:19:25.237+0000] {logging_mixin.py:188} INFO - Starting extraction for table: product_variants in region: asia
+[2025-06-11T02:19:25.238+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T02:19:27.336+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2024-11-02 00:00:00
+[2025-06-11T02:19:28.519+0000] {logging_mixin.py:188} INFO - [INFO] No new records found in asia.product_variants
+[2025-06-11T02:19:29.517+0000] {logging_mixin.py:188} INFO - Starting extraction for table: inventory in region: asia
+[2025-06-11T02:19:29.518+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T02:19:31.708+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2024-12-03 00:00:00
+[2025-06-11T02:19:32.652+0000] {logging_mixin.py:188} INFO - [INFO] No new records found in asia.inventory
+[2025-06-11T02:19:33.654+0000] {logging_mixin.py:188} INFO - Starting extraction for table: customers in region: asia
+[2025-06-11T02:19:33.654+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T02:19:36.216+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2024-02-08 12:50:45
+[2025-06-11T02:19:37.218+0000] {logging_mixin.py:188} INFO - [INFO] No new records found in asia.customers
+[2025-06-11T02:19:38.216+0000] {logging_mixin.py:188} INFO - Starting extraction for table: customer_addresses in region: asia
+[2025-06-11T02:19:38.217+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T02:19:39.992+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2025-06-11 02:14:04
+[2025-06-11T02:19:40.678+0000] {logging_mixin.py:188} INFO - [INFO] No new records found in asia.customer_addresses
+[2025-06-11T02:19:41.675+0000] {logging_mixin.py:188} INFO - Starting extraction for table: marketing_campaigns in region: asia
+[2025-06-11T02:19:41.675+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T02:19:43.562+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2024-02-24 00:00:00
+[2025-06-11T02:19:44.150+0000] {logging_mixin.py:188} INFO - [INFO] No new records found in asia.marketing_campaigns
+[2025-06-11T02:19:45.149+0000] {logging_mixin.py:188} INFO - Starting extraction for table: discounts in region: asia
+[2025-06-11T02:19:45.149+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T02:19:46.722+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2024-05-03 00:00:00
+[2025-06-11T02:19:47.302+0000] {logging_mixin.py:188} INFO - [INFO] No new records found in asia.discounts
+[2025-06-11T02:19:48.299+0000] {logging_mixin.py:188} INFO - Starting extraction for table: shopping_carts in region: asia
+[2025-06-11T02:19:48.299+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T02:19:49.692+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2024-03-19 00:00:00
+[2025-06-11T02:19:50.191+0000] {logging_mixin.py:188} INFO - [INFO] No new records found in asia.shopping_carts
+[2025-06-11T02:19:51.190+0000] {logging_mixin.py:188} INFO - Starting extraction for table: cart_items in region: asia
+[2025-06-11T02:19:51.190+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T02:19:52.625+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2024-03-19 08:50:15
+[2025-06-11T02:19:53.120+0000] {logging_mixin.py:188} INFO - [INFO] No new records found in asia.cart_items
+[2025-06-11T02:19:54.112+0000] {logging_mixin.py:188} INFO - Starting extraction for table: orders in region: asia
+[2025-06-11T02:19:54.113+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T02:19:55.772+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2024-10-03 00:00:00
+[2025-06-11T02:19:56.322+0000] {logging_mixin.py:188} INFO - [INFO] No new records found in asia.orders
+[2025-06-11T02:19:57.322+0000] {logging_mixin.py:188} INFO - Starting extraction for table: order_items in region: asia
+[2025-06-11T02:19:57.322+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T02:19:58.641+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2024-03-14 15:30:45
+[2025-06-11T02:19:59.102+0000] {logging_mixin.py:188} INFO - [INFO] No new records found in asia.order_items
+[2025-06-11T02:20:00.096+0000] {logging_mixin.py:188} INFO - Starting extraction for table: shipments in region: asia
+[2025-06-11T02:20:00.097+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T02:20:01.809+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2024-10-03 00:00:00
+[2025-06-11T02:20:02.462+0000] {logging_mixin.py:188} INFO - [INFO] No new records found in asia.shipments
+[2025-06-11T02:20:03.458+0000] {logging_mixin.py:188} INFO - Starting extraction for table: returns in region: asia
+[2025-06-11T02:20:03.459+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T02:20:05.141+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2024-03-16 00:00:00
+[2025-06-11T02:20:05.723+0000] {logging_mixin.py:188} INFO - [INFO] No new records found in asia.returns
+[2025-06-11T02:20:06.720+0000] {logging_mixin.py:188} INFO - Starting extraction for table: product_reviews in region: asia
+[2025-06-11T02:20:06.720+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T02:20:08.280+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2025-06-11 02:14:04
+[2025-06-11T02:20:08.748+0000] {logging_mixin.py:188} INFO - [INFO] No new records found in asia.product_reviews
+[2025-06-11T02:20:09.747+0000] {logging_mixin.py:188} INFO - Starting extraction for table: payments in region: asia
+[2025-06-11T02:20:09.747+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T02:20:10.786+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2024-09-03 00:00:00
+[2025-06-11T02:20:11.297+0000] {logging_mixin.py:188} INFO - [INFO] No new records found in asia.payments
+[2025-06-11T02:20:12.298+0000] {logging_mixin.py:188} INFO - Starting extraction for table: wishlists in region: asia
+[2025-06-11T02:20:12.298+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T02:20:13.344+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2024-03-21 00:00:00
+[2025-06-11T02:20:13.647+0000] {logging_mixin.py:188} INFO - [INFO] No new records found in asia.wishlists
+[2025-06-11T02:20:14.639+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-06-11T02:20:14.652+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=extract_postgres_table_to_parquet, task_id=run_extraction_asia, execution_date=20250611T021901, start_date=20250611T021902, end_date=20250611T022014
+[2025-06-11T02:20:14.679+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T02:20:14.697+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

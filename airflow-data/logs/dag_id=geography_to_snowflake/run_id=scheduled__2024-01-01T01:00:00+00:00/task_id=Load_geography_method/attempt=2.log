@@ -1,0 +1,231 @@
+[2025-06-10T19:06:10.350+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: geography_to_snowflake.Load_geography_method scheduled__2024-01-01T01:00:00+00:00 [queued]>
+[2025-06-10T19:06:10.357+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: geography_to_snowflake.Load_geography_method scheduled__2024-01-01T01:00:00+00:00 [queued]>
+[2025-06-10T19:06:10.358+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 2
+[2025-06-10T19:06:10.369+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): Load_geography_method> on 2024-01-01 01:00:00+00:00
+[2025-06-10T19:06:10.375+0000] {standard_task_runner.py:60} INFO - Started process 9366 to run task
+[2025-06-10T19:06:10.377+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'geography_to_snowflake', 'Load_geography_method', 'scheduled__2024-01-01T01:00:00+00:00', '--job-id', '1115', '--raw', '--subdir', 'DAGS_FOLDER/star/geography.py', '--cfg-path', '/tmp/tmp6sej57hs']
+[2025-06-10T19:06:10.379+0000] {standard_task_runner.py:88} INFO - Job 1115: Subtask Load_geography_method
+[2025-06-10T19:06:10.432+0000] {task_command.py:423} INFO - Running <TaskInstance: geography_to_snowflake.Load_geography_method scheduled__2024-01-01T01:00:00+00:00 [running]> on host 9820768629fb
+[2025-06-10T19:06:10.513+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='geography_to_snowflake' AIRFLOW_CTX_TASK_ID='Load_geography_method' AIRFLOW_CTX_EXECUTION_DATE='2024-01-01T01:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-01T01:00:00+00:00'
+[2025-06-10T19:06:29.519+0000] {logging_mixin.py:188} INFO - Error processing geography data: An error occurred while calling o45.save.
+: net.snowflake.client.jdbc.SnowflakeSQLException: SQL compilation error:
+syntax error line 1 at position 44 unexpected ')'.
+	at net.snowflake.client.jdbc.SnowflakeUtil.checkErrorAndThrowExceptionSub(SnowflakeUtil.java:127)
+	at net.snowflake.client.jdbc.SnowflakeUtil.checkErrorAndThrowException(SnowflakeUtil.java:67)
+	at net.snowflake.client.core.StmtUtil.pollForOutput(StmtUtil.java:456)
+	at net.snowflake.client.core.StmtUtil.execute(StmtUtil.java:366)
+	at net.snowflake.client.core.SFStatement.executeHelper(SFStatement.java:468)
+	at net.snowflake.client.core.SFStatement.executeQueryInternal(SFStatement.java:196)
+	at net.snowflake.client.core.SFStatement.executeQuery(SFStatement.java:133)
+	at net.snowflake.client.core.SFStatement.execute(SFStatement.java:746)
+	at net.snowflake.client.core.SFStatement.execute(SFStatement.java:656)
+	at net.snowflake.client.jdbc.SnowflakeStatementV1.executeQueryInternal(SnowflakeStatementV1.java:236)
+	at net.snowflake.client.jdbc.SnowflakePreparedStatementV1.executeQuery(SnowflakePreparedStatementV1.java:118)
+	at net.snowflake.spark.snowflake.JDBCWrapper.$anonfun$executePreparedQueryInterruptibly$1(SnowflakeJDBCWrapper.scala:331)
+	at net.snowflake.spark.snowflake.JDBCWrapper.$anonfun$executeInterruptibly$2(SnowflakeJDBCWrapper.scala:378)
+	at scala.concurrent.Future$.$anonfun$apply$1(Future.scala:659)
+	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+	at scala.util.Success.map(Try.scala:213)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+[2025-06-10T19:06:29.520+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/star/geography.py", line 61, in Load_geography_method
+    raise e
+  File "/opt/airflow/dags/star/geography.py", line 56, in Load_geography_method
+    upsert_geography_from_csv_spark('/opt/airflow/data/lookup/geography.csv')
+  File "/opt/airflow/scripts/star_load/geography.py", line 61, in upsert_geography_from_csv_spark
+    .save()
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/sql/readwriter.py", line 1461, in save
+    self._jwrite.save()
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: An error occurred while calling o45.save.
+: net.snowflake.client.jdbc.SnowflakeSQLException: SQL compilation error:
+syntax error line 1 at position 44 unexpected ')'.
+	at net.snowflake.client.jdbc.SnowflakeUtil.checkErrorAndThrowExceptionSub(SnowflakeUtil.java:127)
+	at net.snowflake.client.jdbc.SnowflakeUtil.checkErrorAndThrowException(SnowflakeUtil.java:67)
+	at net.snowflake.client.core.StmtUtil.pollForOutput(StmtUtil.java:456)
+	at net.snowflake.client.core.StmtUtil.execute(StmtUtil.java:366)
+	at net.snowflake.client.core.SFStatement.executeHelper(SFStatement.java:468)
+	at net.snowflake.client.core.SFStatement.executeQueryInternal(SFStatement.java:196)
+	at net.snowflake.client.core.SFStatement.executeQuery(SFStatement.java:133)
+	at net.snowflake.client.core.SFStatement.execute(SFStatement.java:746)
+	at net.snowflake.client.core.SFStatement.execute(SFStatement.java:656)
+	at net.snowflake.client.jdbc.SnowflakeStatementV1.executeQueryInternal(SnowflakeStatementV1.java:236)
+	at net.snowflake.client.jdbc.SnowflakePreparedStatementV1.executeQuery(SnowflakePreparedStatementV1.java:118)
+	at net.snowflake.spark.snowflake.JDBCWrapper.$anonfun$executePreparedQueryInterruptibly$1(SnowflakeJDBCWrapper.scala:331)
+	at net.snowflake.spark.snowflake.JDBCWrapper.$anonfun$executeInterruptibly$2(SnowflakeJDBCWrapper.scala:378)
+	at scala.concurrent.Future$.$anonfun$apply$1(Future.scala:659)
+	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+	at scala.util.Success.map(Try.scala:213)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+[2025-06-10T19:06:29.538+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=geography_to_snowflake, task_id=Load_geography_method, execution_date=20240101T010000, start_date=20250610T190610, end_date=20250610T190629
+[2025-06-10T19:06:29.555+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 1115 for task Load_geography_method (An error occurred while calling o45.save.
+: net.snowflake.client.jdbc.SnowflakeSQLException: SQL compilation error:
+syntax error line 1 at position 44 unexpected ')'.
+	at net.snowflake.client.jdbc.SnowflakeUtil.checkErrorAndThrowExceptionSub(SnowflakeUtil.java:127)
+	at net.snowflake.client.jdbc.SnowflakeUtil.checkErrorAndThrowException(SnowflakeUtil.java:67)
+	at net.snowflake.client.core.StmtUtil.pollForOutput(StmtUtil.java:456)
+	at net.snowflake.client.core.StmtUtil.execute(StmtUtil.java:366)
+	at net.snowflake.client.core.SFStatement.executeHelper(SFStatement.java:468)
+	at net.snowflake.client.core.SFStatement.executeQueryInternal(SFStatement.java:196)
+	at net.snowflake.client.core.SFStatement.executeQuery(SFStatement.java:133)
+	at net.snowflake.client.core.SFStatement.execute(SFStatement.java:746)
+	at net.snowflake.client.core.SFStatement.execute(SFStatement.java:656)
+	at net.snowflake.client.jdbc.SnowflakeStatementV1.executeQueryInternal(SnowflakeStatementV1.java:236)
+	at net.snowflake.client.jdbc.SnowflakePreparedStatementV1.executeQuery(SnowflakePreparedStatementV1.java:118)
+	at net.snowflake.spark.snowflake.JDBCWrapper.$anonfun$executePreparedQueryInterruptibly$1(SnowflakeJDBCWrapper.scala:331)
+	at net.snowflake.spark.snowflake.JDBCWrapper.$anonfun$executeInterruptibly$2(SnowflakeJDBCWrapper.scala:378)
+	at scala.concurrent.Future$.$anonfun$apply$1(Future.scala:659)
+	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+	at scala.util.Success.map(Try.scala:213)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+; 9366)
+[2025-06-10T19:06:29.569+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-06-10T19:06:29.601+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-06-11T14:51:19.378+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: geography_to_snowflake.Load_geography_method scheduled__2024-01-01T01:00:00+00:00 [queued]>
+[2025-06-11T14:51:19.412+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: geography_to_snowflake.Load_geography_method scheduled__2024-01-01T01:00:00+00:00 [queued]>
+[2025-06-11T14:51:19.412+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 2
+[2025-06-11T14:51:19.472+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): Load_geography_method> on 2024-01-01 01:00:00+00:00
+[2025-06-11T14:51:19.486+0000] {standard_task_runner.py:60} INFO - Started process 436 to run task
+[2025-06-11T14:51:19.491+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'geography_to_snowflake', 'Load_geography_method', 'scheduled__2024-01-01T01:00:00+00:00', '--job-id', '48', '--raw', '--subdir', 'DAGS_FOLDER/star/geography.py', '--cfg-path', '/tmp/tmpxyho4ei0']
+[2025-06-11T14:51:19.495+0000] {standard_task_runner.py:88} INFO - Job 48: Subtask Load_geography_method
+[2025-06-11T14:51:19.756+0000] {task_command.py:423} INFO - Running <TaskInstance: geography_to_snowflake.Load_geography_method scheduled__2024-01-01T01:00:00+00:00 [running]> on host 94d2ab00ac05
+[2025-06-11T14:51:20.115+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='geography_to_snowflake' AIRFLOW_CTX_TASK_ID='Load_geography_method' AIRFLOW_CTX_EXECUTION_DATE='2024-01-01T01:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-01T01:00:00+00:00'
+[2025-06-11T14:53:01.420+0000] {job.py:213} ERROR - Job heartbeat got an exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3371, in _wrap_pool_connect
+    return fn()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 327, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 894, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 493, in checkout
+    rec = pool._do_get()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 256, in _do_get
+    return self._create_connection()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 273, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 388, in __init__
+    self.__connect()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 690, in __connect
+    with util.safe_reraise():
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 686, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 574, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/home/airflow/.local/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/jobs/job.py", line 187, in heartbeat
+    self._merge_from(Job._fetch_from_db(self, session))
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/api_internal/internal_api_call.py", line 114, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/utils/session.py", line 76, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/jobs/job.py", line 308, in _fetch_from_db
+    session.merge(job)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 3056, in merge
+    return self._merge(
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 3136, in _merge
+    merged = self.get(
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2853, in get
+    return self._get_impl(
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2975, in _get_impl
+    return db_load_fn(
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/orm/loading.py", line 530, in load_on_pk_identity
+    session.execute(
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1716, in execute
+    conn = self._connection_for_bind(bind)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1555, in _connection_for_bind
+    return self._transaction._connection_for_bind(
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 750, in _connection_for_bind
+    conn = bind.connect()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/future/engine.py", line 412, in connect
+    return super(Engine, self).connect()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3325, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3404, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3374, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2208, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3371, in _wrap_pool_connect
+    return fn()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 327, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 894, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 493, in checkout
+    rec = pool._do_get()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 256, in _do_get
+    return self._create_connection()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 273, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 388, in __init__
+    self.__connect()
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 690, in __connect
+    with util.safe_reraise():
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 686, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 574, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/airflow/.local/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/home/airflow/.local/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not translate host name "postgres" to address: Temporary failure in name resolution
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2025-06-11T14:56:23.461+0000] {job.py:221} ERROR - Job heartbeat failed with error. Scheduler is in unhealthy state

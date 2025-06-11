@@ -5,8 +5,8 @@ CREATE TABLE IF NOT EXISTS staging_asia.categories (
     parent_category_id INTEGER,
     category_path VARCHAR,
     is_active BOOLEAN DEFAULT TRUE,
-    created_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     _region VARCHAR(10) DEFAULT 'asia' NOT NULL,
     _source VARCHAR(50) DEFAULT 'postgres' NOT NULL
 );
@@ -18,15 +18,31 @@ CREATE TABLE IF NOT EXISTS staging_asia.products (
     product_name VARCHAR(255),
     product_description VARCHAR,
     category_id INTEGER,
-    price_usd NUMBER(10,2),
-    cost_usd NUMBER(10,2),
+    price_usd NUMBER(10,0),
+    cost_usd NUMBER(10,0),
     weight_kg NUMBER(8,3),
     length_cm NUMBER(8,2),
     width_cm NUMBER(8,2),
     height_cm NUMBER(8,2),
     is_active BOOLEAN DEFAULT TRUE,
-    created_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     _region VARCHAR(10) DEFAULT 'asia' NOT NULL,
+    _source VARCHAR(50) DEFAULT 'postgres' NOT NULL
+);
+
+---marketing
+CREATE TABLE IF NOT EXISTS staging_asia.marketing_campaigns (
+    campaign_id INTEGER AUTOINCREMENT PRIMARY KEY,
+    campaign_name VARCHAR(255) NOT NULL, -- Simplified field name
+    campaign_type VARCHAR(50), -- Simplified
+    channel VARCHAR(100),
+    start_date TIMESTAMP, -- Different field name format
+    end_date TIMESTAMP,
+    budget_usd DECIMAL(12,2), 
+    target_audience TEXT, -- Simplified field name
+    campaign_status VARCHAR(20),
+    created_at VARCHAR(50),
+    _region VARCHAR(10) DEFAULT 'Asia' NOT NULL,
     _source VARCHAR(50) DEFAULT 'postgres' NOT NULL
 );
 
@@ -38,10 +54,10 @@ CREATE TABLE IF NOT EXISTS staging_asia.product_variants (
     variant_name VARCHAR(100),
     variant_type VARCHAR(50),
     variant_value VARCHAR(100),
-    price_diff_usd NUMBER(10,2) DEFAULT 0,
+    price_diff_usd NUMBER(10,0) DEFAULT 0,
     is_active BOOLEAN DEFAULT TRUE,
-    created_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     _region VARCHAR(10) DEFAULT 'asia' NOT NULL,
     _source VARCHAR(50) DEFAULT 'postgres' NOT NULL
 );
@@ -54,8 +70,8 @@ CREATE TABLE IF NOT EXISTS staging_asia.inventory (
     quantity_available INTEGER DEFAULT 0,
     quantity_reserved INTEGER DEFAULT 0,
     reorder_level INTEGER DEFAULT 10,
-    last_restocked_at TIMESTAMP_LTZ,
-    updated_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
+    last_restocked_at TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     _region VARCHAR(10) DEFAULT 'asia' NOT NULL,
     _source VARCHAR(50) DEFAULT 'postgres' NOT NULL
 );
@@ -67,13 +83,13 @@ CREATE TABLE IF NOT EXISTS staging_asia.customers (
     first_name VARCHAR(100),
     last_name VARCHAR(100),
     phone VARCHAR(50),
-    birth_date TIMESTAMP_LTZ,
+    birth_date TIMESTAMP,
     gender VARCHAR(20),
-    registration_date TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
-    last_login TIMESTAMP_LTZ,
+    registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_login TIMESTAMP,
     customer_segment VARCHAR(50),
     acquisition_channel VARCHAR(100),
-    created_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     _region VARCHAR(10) DEFAULT 'asia' NOT NULL,
     _source VARCHAR(50) DEFAULT 'postgres' NOT NULL
 );
@@ -89,7 +105,7 @@ CREATE TABLE IF NOT EXISTS staging_asia.customer_addresses (
     postal_code VARCHAR(20),
     country VARCHAR(100) NOT NULL,
     is_default BOOLEAN DEFAULT FALSE,
-    created_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     _region VARCHAR(10) DEFAULT 'asia' NOT NULL,
     _source VARCHAR(50) DEFAULT 'postgres' NOT NULL
 );
@@ -105,10 +121,10 @@ CREATE TABLE IF NOT EXISTS staging_asia.discounts (
     maximum_discount_amount NUMBER(10,2),
     usage_limit INTEGER,
     usage_count INTEGER DEFAULT 0,
-    start_date TIMESTAMP_LTZ,
-    end_date TIMESTAMP_LTZ,
+    start_date TIMESTAMP,
+    end_date TIMESTAMP,
     is_active BOOLEAN DEFAULT TRUE,
-    created_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     _region VARCHAR(10) DEFAULT 'asia' NOT NULL,
     _source VARCHAR(50) DEFAULT 'postgres' NOT NULL
 );
@@ -118,9 +134,9 @@ CREATE TABLE IF NOT EXISTS staging_asia.shopping_carts (
     cart_id INTEGER AUTOINCREMENT PRIMARY KEY,
     customer_id INTEGER,
     session_id VARCHAR(255),
-    created_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
-    abandoned_at TIMESTAMP_LTZ,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    abandoned_at TIMESTAMP,
     _region VARCHAR(10) DEFAULT 'asia' NOT NULL,
     _source VARCHAR(50) DEFAULT 'postgres' NOT NULL
 );
@@ -131,9 +147,9 @@ CREATE TABLE IF NOT EXISTS staging_asia.cart_items (
     cart_id INTEGER,
     variant_id INTEGER,
     quantity INTEGER NOT NULL,
-    unit_price_usd NUMBER(10,2) NOT NULL,
-    added_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
+    unit_price_usd NUMBER(10,0) NOT NULL,
+    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     _region VARCHAR(10) DEFAULT 'asia' NOT NULL,
     _source VARCHAR(50) DEFAULT 'postgres' NOT NULL
 );
@@ -144,17 +160,17 @@ CREATE TABLE IF NOT EXISTS staging_asia.orders (
     order_reference VARCHAR(60),
     customer_id INTEGER,
     order_status VARCHAR(30),
-    order_timestamp TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
-    subtotal_usd NUMBER(12,2),
-    tax_amount_usd NUMBER(12,2),
-    shipping_amount_usd NUMBER(12,2),
-    discount_amount_usd NUMBER(12,2),
-    total_amount_usd NUMBER(12,2),
+    order_timestamp TIMESTAMP,
+    subtotal_usd NUMBER(12,0),
+    tax_amount_usd NUMBER(12,0),
+    shipping_amount_usd NUMBER(12,0),
+    discount_amount_usd NUMBER(12,0),
+    total_amount_usd NUMBER(12,0),
     billing_address_id INTEGER,
     shipping_address_id INTEGER,
     campaign_id INTEGER,
     discount_id INTEGER,
-    created_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     _region VARCHAR(10) DEFAULT 'asia' NOT NULL,
     _source VARCHAR(50) DEFAULT 'postgres' NOT NULL
 );
@@ -165,9 +181,9 @@ CREATE TABLE IF NOT EXISTS staging_asia.order_items (
     order_id INTEGER,
     variant_id INTEGER,
     quantity INTEGER NOT NULL,
-    unit_price_usd NUMBER(10,2) NOT NULL,
-    total_price_usd NUMBER(10,2) NOT NULL,
-    created_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
+    unit_price_usd NUMBER(20,10) NOT NULL,
+    total_price_usd NUMBER(10,0) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     _region VARCHAR(10) DEFAULT 'asia' NOT NULL,
     _source VARCHAR(50) DEFAULT 'postgres' NOT NULL
 );
@@ -178,11 +194,11 @@ CREATE TABLE IF NOT EXISTS staging_asia.payments (
     order_id INTEGER,
     payment_method VARCHAR(50),
     payment_status VARCHAR(20),
-    payment_amount_usd NUMBER(12,2) NOT NULL,
-    payment_timestamp TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
+    payment_amount_usd NUMBER(12,0) NOT NULL,
+    payment_timestamp TIMESTAMP,
     transaction_id VARCHAR(255),
     gateway_response VARCHAR,
-    created_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     _region VARCHAR(10) DEFAULT 'asia' NOT NULL,
     _source VARCHAR(50) DEFAULT 'postgres' NOT NULL
 );
@@ -194,12 +210,12 @@ CREATE TABLE IF NOT EXISTS staging_asia.shipments (
     tracking_number VARCHAR(100),
     carrier VARCHAR(100),
     shipping_method VARCHAR(100),
-    shipped_timestamp TIMESTAMP_LTZ,
-    estimated_delivery_date TIMESTAMP_LTZ,
-    actual_delivery_timestamp TIMESTAMP_LTZ,
+    shipped_timestamp TIMESTAMP,
+    estimated_delivery_date TIMESTAMP,
+    actual_delivery_timestamp TIMESTAMP,
     shipment_status VARCHAR(20),
-    created_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     _region VARCHAR(10) DEFAULT 'asia' NOT NULL,
     _source VARCHAR(50) DEFAULT 'postgres' NOT NULL
 );
@@ -210,10 +226,10 @@ CREATE TABLE IF NOT EXISTS staging_asia.returns (
     order_id INTEGER,
     return_reason VARCHAR(255),
     return_status VARCHAR(20),
-    return_timestamp TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
+    return_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     refund_amount NUMBER(10,2),
-    refund_timestamp TIMESTAMP_LTZ,
-    created_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
+    refund_timestamp TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     _region VARCHAR(10) DEFAULT 'asia' NOT NULL,
     _source VARCHAR(50) DEFAULT 'postgres' NOT NULL
 );
@@ -224,12 +240,12 @@ CREATE TABLE IF NOT EXISTS staging_asia.product_reviews (
     product_id INTEGER,
     customer_id INTEGER,
     order_id INTEGER,
-    rating INTEGER CHECK (rating BETWEEN 1 AND 5),
+    rating INTEGER ,
     review_title VARCHAR(255),
     review_text VARCHAR,
     is_verified_purchase BOOLEAN DEFAULT FALSE,
     helpful_votes INTEGER DEFAULT 0,
-    created_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     _region VARCHAR(10) DEFAULT 'asia' NOT NULL,
     _source VARCHAR(50) DEFAULT 'postgres' NOT NULL
 );
@@ -239,7 +255,7 @@ CREATE TABLE IF NOT EXISTS staging_asia.wishlists (
     wishlist_id INTEGER AUTOINCREMENT PRIMARY KEY,
     customer_id INTEGER,
     product_id INTEGER,
-    added_at TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP,
+    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     _region VARCHAR(10) DEFAULT 'asia' NOT NULL,
     _source VARCHAR(50) DEFAULT 'postgres' NOT NULL
 );

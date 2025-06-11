@@ -1,0 +1,1 @@
+[2025-06-11T11:45:20.823+0000] {scheduler_job_runner.py:781} ERROR - Executor reports task instance <TaskInstance: master_etl_dag_v3.transform_to_staging scheduled__2025-06-10T02:00:00+00:00 [queued]> finished (failed) although the task says it's queued. (Info: None) Was the task killed externally?

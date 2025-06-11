@@ -1,0 +1,1 @@
+[2025-06-11T11:22:47.735+0000] {scheduler_job_runner.py:781} ERROR - Executor reports task instance <TaskInstance: multi_region_to_snowflake.process_region_us.process_customers_us manual__2025-06-11T10:38:44.877649+00:00 [queued]> finished (failed) although the task says it's queued. (Info: None) Was the task killed externally?

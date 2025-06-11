@@ -1,0 +1,504 @@
+[2025-06-09T18:10:46.344+0000] {processor.py:161} INFO - Started process (PID=4805) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:10:46.344+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:10:46.346+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:10:46.346+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:10:46.349+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:10:46.348+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:10:46.349+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:10:46.369+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.028 seconds
+[2025-06-09T18:11:16.511+0000] {processor.py:161} INFO - Started process (PID=4925) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:11:16.514+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:11:16.520+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:11:16.519+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:11:16.527+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:11:16.526+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:11:16.528+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:11:16.558+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.055 seconds
+[2025-06-09T18:11:46.765+0000] {processor.py:161} INFO - Started process (PID=5045) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:11:46.766+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:11:46.768+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:11:46.768+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:11:46.772+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:11:46.772+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:11:46.773+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:11:46.806+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.045 seconds
+[2025-06-09T18:12:16.958+0000] {processor.py:161} INFO - Started process (PID=5165) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:12:16.960+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:12:16.962+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:12:16.961+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:12:16.966+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:12:16.965+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:12:16.967+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:12:16.997+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.041 seconds
+[2025-06-09T18:12:47.163+0000] {processor.py:161} INFO - Started process (PID=5285) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:12:47.166+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:12:47.171+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:12:47.170+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:12:47.178+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:12:47.177+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:12:47.179+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:12:47.208+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.053 seconds
+[2025-06-09T18:13:17.473+0000] {processor.py:161} INFO - Started process (PID=5405) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:13:17.474+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:13:17.478+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:13:17.477+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:13:17.484+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:13:17.483+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:13:17.484+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:13:17.523+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.054 seconds
+[2025-06-09T18:13:47.838+0000] {processor.py:161} INFO - Started process (PID=5525) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:13:47.840+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:13:47.845+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:13:47.844+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:13:47.852+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:13:47.850+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:13:47.852+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:13:47.881+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.052 seconds
+[2025-06-09T18:14:18.730+0000] {processor.py:161} INFO - Started process (PID=5645) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:14:18.732+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:14:18.735+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:14:18.735+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:14:18.738+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:14:18.737+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:14:18.738+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:14:18.759+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.031 seconds
+[2025-06-09T18:14:48.962+0000] {processor.py:161} INFO - Started process (PID=5765) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:14:48.964+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:14:48.965+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:14:48.965+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:14:48.968+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:14:48.967+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:14:48.968+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:14:48.988+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.028 seconds
+[2025-06-09T18:15:19.889+0000] {processor.py:161} INFO - Started process (PID=5885) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:15:19.891+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:15:19.895+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:15:19.894+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:15:19.902+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:15:19.901+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:15:19.903+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:15:19.931+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.050 seconds
+[2025-06-09T18:15:50.096+0000] {processor.py:161} INFO - Started process (PID=6005) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:15:50.099+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:15:50.104+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:15:50.103+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:15:50.113+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:15:50.111+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:15:50.114+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:15:50.143+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.055 seconds
+[2025-06-09T18:16:20.485+0000] {processor.py:161} INFO - Started process (PID=6125) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:16:20.486+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:16:20.488+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:16:20.487+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:16:20.491+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:16:20.490+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:16:20.491+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:16:20.516+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.033 seconds
+[2025-06-09T18:16:50.551+0000] {processor.py:161} INFO - Started process (PID=6245) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:16:50.552+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:16:50.554+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:16:50.553+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:16:50.557+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:16:50.556+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:16:50.557+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:16:50.584+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.036 seconds
+[2025-06-09T18:17:21.339+0000] {processor.py:161} INFO - Started process (PID=6365) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:17:21.340+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:17:21.342+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:17:21.341+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:17:21.345+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:17:21.344+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:17:21.345+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:17:21.397+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.062 seconds
+[2025-06-09T18:17:51.883+0000] {processor.py:161} INFO - Started process (PID=6485) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:17:51.885+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:17:51.889+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:17:51.889+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:17:51.892+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:17:51.892+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:17:51.892+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:17:51.924+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.046 seconds
+[2025-06-09T18:18:22.745+0000] {processor.py:161} INFO - Started process (PID=6605) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:18:22.748+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:18:22.752+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:18:22.751+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:18:22.758+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:18:22.757+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:18:22.758+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:18:22.784+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.044 seconds
+[2025-06-09T18:18:53.626+0000] {processor.py:161} INFO - Started process (PID=6725) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:18:53.626+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:18:53.628+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:18:53.628+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:18:53.632+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:18:53.631+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:18:53.632+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:18:53.652+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.029 seconds
+[2025-06-09T18:19:24.236+0000] {processor.py:161} INFO - Started process (PID=6845) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:19:24.237+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:19:24.243+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:19:24.242+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:19:24.248+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:19:24.247+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:19:24.249+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:19:24.297+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.066 seconds
+[2025-06-09T18:19:55.018+0000] {processor.py:161} INFO - Started process (PID=6965) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:19:55.019+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:19:55.022+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:19:55.022+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:19:55.027+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:19:55.026+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:19:55.027+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:19:55.065+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.051 seconds
+[2025-06-09T18:20:25.823+0000] {processor.py:161} INFO - Started process (PID=7085) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:20:25.825+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:20:25.827+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:20:25.827+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:20:25.830+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:20:25.830+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:20:25.831+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:20:25.861+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.041 seconds
+[2025-06-09T18:20:56.656+0000] {processor.py:161} INFO - Started process (PID=7205) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:20:56.657+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:20:56.658+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:20:56.658+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:20:56.661+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:20:56.660+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:20:56.661+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:20:56.679+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.025 seconds
+[2025-06-09T18:21:27.407+0000] {processor.py:161} INFO - Started process (PID=7325) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:21:27.408+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:21:27.410+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:21:27.410+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:21:27.413+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:21:27.412+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:21:27.413+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:21:27.435+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.031 seconds
+[2025-06-09T18:21:58.315+0000] {processor.py:161} INFO - Started process (PID=7445) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:21:58.316+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:21:58.317+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:21:58.317+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:21:58.320+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:21:58.320+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:21:58.321+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:21:58.341+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.028 seconds
+[2025-06-09T18:22:29.033+0000] {processor.py:161} INFO - Started process (PID=7565) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:22:29.036+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:22:29.042+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:22:29.041+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:22:29.051+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:22:29.049+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:22:29.051+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:22:29.081+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.056 seconds
+[2025-06-09T18:22:59.739+0000] {processor.py:161} INFO - Started process (PID=7685) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:22:59.741+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:22:59.744+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:22:59.743+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:22:59.751+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:22:59.750+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:22:59.751+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:22:59.775+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.044 seconds
+[2025-06-09T18:23:30.476+0000] {processor.py:161} INFO - Started process (PID=7805) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:23:30.477+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:23:30.479+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:23:30.479+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:23:30.483+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:23:30.482+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:23:30.483+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:23:30.510+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.037 seconds
+[2025-06-09T18:24:01.354+0000] {processor.py:161} INFO - Started process (PID=7925) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:24:01.356+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:24:01.360+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:24:01.359+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:24:01.368+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:24:01.366+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:24:01.369+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:24:01.408+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.062 seconds
+[2025-06-09T18:24:32.097+0000] {processor.py:161} INFO - Started process (PID=8045) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:24:32.100+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:24:32.105+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:24:32.104+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:24:32.108+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:24:32.107+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:24:32.108+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:24:32.127+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.037 seconds
+[2025-06-09T18:25:02.178+0000] {processor.py:161} INFO - Started process (PID=8165) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:25:02.179+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:25:02.181+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:25:02.180+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:25:02.184+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:25:02.183+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:25:02.184+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:25:02.213+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.038 seconds
+[2025-06-09T18:25:32.550+0000] {processor.py:161} INFO - Started process (PID=8285) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:25:32.555+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:25:32.561+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:25:32.560+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:25:32.574+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:25:32.572+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:25:32.575+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:25:32.648+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.109 seconds
+[2025-06-09T18:26:02.784+0000] {processor.py:161} INFO - Started process (PID=8405) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:26:02.786+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:26:02.789+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:26:02.788+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:26:02.795+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:26:02.793+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:26:02.796+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:26:02.824+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.049 seconds
+[2025-06-09T18:26:33.415+0000] {processor.py:161} INFO - Started process (PID=8540) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:26:33.417+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:26:33.422+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:26:33.421+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:26:33.430+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:26:33.428+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:26:33.430+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:26:33.460+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.052 seconds
+[2025-06-09T18:27:03.658+0000] {processor.py:161} INFO - Started process (PID=8670) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:27:03.659+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:27:03.662+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:27:03.661+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:27:03.666+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:27:03.665+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:27:03.666+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:27:03.689+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.037 seconds
+[2025-06-09T18:27:34.112+0000] {processor.py:161} INFO - Started process (PID=8790) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:27:34.114+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:27:34.115+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:27:34.115+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:27:34.118+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:27:34.117+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:27:34.118+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:27:34.137+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.027 seconds
+[2025-06-09T18:28:05.059+0000] {processor.py:161} INFO - Started process (PID=8910) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:28:05.061+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:28:05.065+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:28:05.065+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:28:05.074+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:28:05.072+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:28:05.075+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:28:05.105+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.054 seconds
+[2025-06-09T18:28:35.220+0000] {processor.py:161} INFO - Started process (PID=9035) to work on /opt/airflow/dags/ed.py
+[2025-06-09T18:28:35.223+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/ed.py for tasks to queue
+[2025-06-09T18:28:35.230+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:28:35.229+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/ed.py
+[2025-06-09T18:28:35.234+0000] {logging_mixin.py:188} INFO - [2025-06-09T18:28:35.233+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/ed.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/ed.py", line 3, in <module>
+    "start_date": days_ago(1),
+NameError: name 'days_ago' is not defined
+[2025-06-09T18:28:35.234+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/ed.py
+[2025-06-09T18:28:35.274+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/ed.py took 0.057 seconds

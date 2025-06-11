@@ -123,6 +123,7 @@ services:
       - "8088:8088"
     volumes:
       - ./superset_home:/app/superset_home
+      - ./docker/requirements-local.txt:/app/requirements-local.txt
     networks:
       - retail-network
     command: >

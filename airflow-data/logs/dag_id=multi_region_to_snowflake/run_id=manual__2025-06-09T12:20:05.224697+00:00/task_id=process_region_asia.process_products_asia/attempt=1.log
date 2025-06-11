@@ -1,0 +1,33 @@
+[2025-06-09T12:21:01.332+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_to_snowflake.process_region_asia.process_products_asia manual__2025-06-09T12:20:05.224697+00:00 [queued]>
+[2025-06-09T12:21:01.346+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_to_snowflake.process_region_asia.process_products_asia manual__2025-06-09T12:20:05.224697+00:00 [queued]>
+[2025-06-09T12:21:01.347+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-09T12:21:01.389+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_asia.process_products_asia> on 2025-06-09 12:20:05.224697+00:00
+[2025-06-09T12:21:01.396+0000] {standard_task_runner.py:60} INFO - Started process 43139 to run task
+[2025-06-09T12:21:01.399+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_to_snowflake', 'process_region_asia.process_products_asia', 'manual__2025-06-09T12:20:05.224697+00:00', '--job-id', '822', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmpxt5nlr3e']
+[2025-06-09T12:21:01.401+0000] {standard_task_runner.py:88} INFO - Job 822: Subtask process_region_asia.process_products_asia
+[2025-06-09T12:21:01.478+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_to_snowflake.process_region_asia.process_products_asia manual__2025-06-09T12:20:05.224697+00:00 [running]> on host 7fa6630d536c
+[2025-06-09T12:21:01.627+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_to_snowflake' AIRFLOW_CTX_TASK_ID='process_region_asia.process_products_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T12:20:05.224697+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-09T12:20:05.224697+00:00'
+[2025-06-09T12:21:13.263+0000] {logging_mixin.py:188} INFO - Processing products for region asia
+[2025-06-09T12:21:25.133+0000] {logging_mixin.py:188} INFO - STAGING_ASIA
+[2025-06-09T12:21:33.730+0000] {logging_mixin.py:188} INFO - +----------+-----------+----------------+--------------------+-----------+---------+--------+---------+------------------+--------+------------------+---------+-------------------+-------+--------+
+|product_id|product_sku|    product_name| product_description|category_id|price_jpy|cost_jpy|weight_kg|         length_cm|width_cm|         height_cm|is_active|         created_at|_region| _source|
++----------+-----------+----------------+--------------------+-----------+---------+--------+---------+------------------+--------+------------------+---------+-------------------+-------+--------+
+|         1|JP-ITEM-001|   Iphone 15 Pro|Latest Apple smar...|          2|   149800|   95000|     0.19|14.669999999999998|    7.15|              0.78|     true|2024-01-15 08:30:45|   asia|postgres|
+|         2|JP-ITEM-002|  Macbook Air M2|Apple MacBook Air...|          3|   158000|   98000|     1.24|30.410000000000004|    21.5|1.1300000000000001|     true|2024-01-16 00:00:00|   asia|postgres|
+|         3|JP-ITEM-003|   Playstation 5|Sony PlayStation ...|          4|    59800|   42000|     4.50|              39.0|    26.0|              10.4|     true|2024-01-17 00:00:00|   asia|postgres|
+|         4|JP-ITEM-004|  Cotton T-shirt|Premium cotton t-...|          6|     3500|    1200|     0.18|              NULL|    NULL|              NULL|     true|               NULL|   asia|postgres|
+|         5|JP-ITEM-005|    Summer Dress|Elegant summer dr...|          7|     8900|    3500|     0.30|              NULL|    NULL|              NULL|     true|2024-01-19 00:00:00|   asia|postgres|
+|         6|JP-ITEM-006|    Leather Sofa|Premium leather 3...|          9|   198000|   95000|    85.00|             220.0|    90.0|              85.0|     true|2024-01-20 00:00:00|   asia|postgres|
+|         7|JP-ITEM-007|Manga Collection|Complete manga se...|         10|    12500|    6000|     2.50|              18.0|    12.0|              20.0|     true|2024-01-21 00:00:00|   asia|postgres|
+|         8|JP-ITEM-008|    Facial Serum|Premium anti-agin...|         11|     9800|    3000|     0.05|              12.0|     4.0|               4.0|     true|2024-01-22 00:00:00|   asia|postgres|
+|         9|JP-ITEM-009|   Mountain Bike|Professional moun...|         12|    89000|   45000|    12.50|             170.0|    65.0|             110.0|     true|2024-01-23 00:00:00|   asia|postgres|
+|        10|JP-ITEM-010|Gundam Model Kit|Detailed Gundam p...|         14|     4500|    2200|     0.35|              30.0|    25.0|              10.0|     true|               NULL|   asia|postgres|
++----------+-----------+----------------+--------------------+-----------+---------+--------+---------+------------------+--------+------------------+---------+-------------------+-------+--------+
+only showing top 10 rows
+[2025-06-09T12:21:33.731+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-09T12:21:47.234+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-09T12:21:47.885+0000] {logging_mixin.py:188} INFO - Successfully processed 34 records for products in asia
+[2025-06-09T12:21:49.289+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'asia', 'table': 'products', 'record_count': 34, 'status': 'success'}
+[2025-06-09T12:21:49.385+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_to_snowflake, task_id=process_region_asia.process_products_asia, execution_date=20250609T122005, start_date=20250609T122101, end_date=20250609T122149
+[2025-06-09T12:21:49.494+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-09T12:21:49.627+0000] {taskinstance.py:3280} INFO - 3 downstream tasks scheduled from follow-on schedule check

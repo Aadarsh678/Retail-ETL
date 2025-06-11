@@ -1,0 +1,145 @@
+[2025-06-11T10:48:00.842+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_to_snowflake.process_region_asia.process_customers_asia manual__2025-06-11T10:38:44.877649+00:00 [queued]>
+[2025-06-11T10:48:00.867+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_to_snowflake.process_region_asia.process_customers_asia manual__2025-06-11T10:38:44.877649+00:00 [queued]>
+[2025-06-11T10:48:00.868+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T10:48:00.901+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_asia.process_customers_asia> on 2025-06-11 10:38:44.877649+00:00
+[2025-06-11T10:48:00.913+0000] {standard_task_runner.py:60} INFO - Started process 36880 to run task
+[2025-06-11T10:48:00.914+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-11T10:48:00.921+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_to_snowflake', 'process_region_asia.process_customers_asia', 'manual__2025-06-11T10:38:44.877649+00:00', '--job-id', '1590', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmpel5v1zqe']
+[2025-06-11T10:48:00.923+0000] {standard_task_runner.py:88} INFO - Job 1590: Subtask process_region_asia.process_customers_asia
+[2025-06-11T10:48:01.396+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_to_snowflake.process_region_asia.process_customers_asia manual__2025-06-11T10:38:44.877649+00:00 [running]> on host 0290689661db
+[2025-06-11T10:48:01.577+0000] {clientserver.py:505} INFO - Error while sending or receiving.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 503, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+ConnectionResetError: [Errno 104] Connection reset by peer
+[2025-06-11T10:48:01.579+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-11T10:48:01.579+0000] {java_gateway.py:1052} INFO - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 503, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 506, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending
+[2025-06-11T10:48:01.587+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-11T10:48:01.602+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_to_snowflake' AIRFLOW_CTX_TASK_ID='process_region_asia.process_customers_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T10:38:44.877649+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T10:38:44.877649+00:00'
+[2025-06-11T10:48:01.622+0000] {logging_mixin.py:188} INFO - Processing customers for region asia
+[2025-06-11T10:48:11.370+0000] {logging_mixin.py:188} INFO - Error processing customers for asia: An error occurred while calling o41.load.
+: org.apache.spark.SparkClassNotFoundException: [DATA_SOURCE_NOT_FOUND] Failed to find the data source: snowflake. Please find packages at `https://spark.apache.org/third-party-projects.html`.
+	at org.apache.spark.sql.errors.QueryExecutionErrors$.dataSourceNotFoundError(QueryExecutionErrors.scala:725)
+	at org.apache.spark.sql.execution.datasources.DataSource$.lookupDataSource(DataSource.scala:647)
+	at org.apache.spark.sql.execution.datasources.DataSource$.lookupDataSourceV2(DataSource.scala:697)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:208)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:172)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.ClassNotFoundException: snowflake.DefaultSource
+	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:476)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:594)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	at org.apache.spark.sql.execution.datasources.DataSource$.$anonfun$lookupDataSource$5(DataSource.scala:633)
+	at scala.util.Try$.apply(Try.scala:213)
+	at org.apache.spark.sql.execution.datasources.DataSource$.$anonfun$lookupDataSource$4(DataSource.scala:633)
+	at scala.util.Failure.orElse(Try.scala:224)
+	at org.apache.spark.sql.execution.datasources.DataSource$.lookupDataSource(DataSource.scala:633)
+	... 15 more
+[2025-06-11T11:19:37.406+0000] {local_task_job_runner.py:121} ERROR - Received SIGTERM. Terminating subprocesses
+[2025-06-11T11:19:37.540+0000] {process_utils.py:131} INFO - Sending 15 to group 36880. PIDs of all processes in the group: [36880]
+[2025-06-11T11:19:37.547+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 36880
+[2025-06-11T11:19:37.572+0000] {taskinstance.py:2450} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-06-11T11:19:38.302+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/opt/airflow/dags/master_dag.py", line 219, in process_table
+    exchange_rates = get_latest_exchange_rates(spark, SF_OPTIONS_CURR)
+  File "/opt/airflow/dags/master_dag.py", line 155, in get_latest_exchange_rates
+    .load()
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/sql/readwriter.py", line 314, in load
+    return self._df(self._jreader.load())
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: An error occurred while calling o41.load.
+: org.apache.spark.SparkClassNotFoundException: [DATA_SOURCE_NOT_FOUND] Failed to find the data source: snowflake. Please find packages at `https://spark.apache.org/third-party-projects.html`.
+	at org.apache.spark.sql.errors.QueryExecutionErrors$.dataSourceNotFoundError(QueryExecutionErrors.scala:725)
+	at org.apache.spark.sql.execution.datasources.DataSource$.lookupDataSource(DataSource.scala:647)
+	at org.apache.spark.sql.execution.datasources.DataSource$.lookupDataSourceV2(DataSource.scala:697)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:208)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:172)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.ClassNotFoundException: snowflake.DefaultSource
+	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:476)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:594)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	at org.apache.spark.sql.execution.datasources.DataSource$.$anonfun$lookupDataSource$5(DataSource.scala:633)
+	at scala.util.Try$.apply(Try.scala:213)
+	at org.apache.spark.sql.execution.datasources.DataSource$.$anonfun$lookupDataSource$4(DataSource.scala:633)
+	at scala.util.Failure.orElse(Try.scala:224)
+	at org.apache.spark.sql.execution.datasources.DataSource$.lookupDataSource(DataSource.scala:633)
+	... 15 more
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/master_dag.py", line 287, in process_table
+    spark.stop()
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/sql/session.py", line 1796, in stop
+    self._sc.stop()
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/context.py", line 666, in stop
+    self._accumulatorServer.shutdown()
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/accumulators.py", line 316, in shutdown
+    SocketServer.TCPServer.shutdown(self)
+  File "/usr/local/lib/python3.10/socketserver.py", line 252, in shutdown
+    self.__is_shut_down.wait()
+  File "/usr/local/lib/python3.10/threading.py", line 607, in wait
+    signaled = self._cond.wait(timeout)
+  File "/usr/local/lib/python3.10/threading.py", line 320, in wait
+    waiter.acquire()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 2452, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+[2025-06-11T11:19:38.407+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=multi_region_to_snowflake, task_id=process_region_asia.process_customers_asia, execution_date=20250611T103844, start_date=20250611T104800, end_date=20250611T111938
+[2025-06-11T11:19:38.593+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 1590 for task process_region_asia.process_customers_asia (Task received SIGTERM signal; 36880)
+[2025-06-11T11:19:38.661+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=36880, status='terminated', exitcode=1, started='10:48:00') (36880) terminated with exit code 1
+[2025-06-11T11:19:38.666+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 143
+[2025-06-11T11:19:39.055+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-06-11T11:19:40.319+0000] {local_task_job_runner.py:121} ERROR - Received SIGTERM. Terminating subprocesses
+[2025-06-11T11:19:40.319+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 143

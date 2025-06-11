@@ -1,0 +1,33 @@
+[2025-06-09T11:32:05.200+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_to_snowflake.process_region_asia.process_product_reviews_asia scheduled__2025-06-08T00:00:00+00:00 [queued]>
+[2025-06-09T11:32:05.220+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_to_snowflake.process_region_asia.process_product_reviews_asia scheduled__2025-06-08T00:00:00+00:00 [queued]>
+[2025-06-09T11:32:05.221+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-09T11:32:05.248+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_asia.process_product_reviews_asia> on 2025-06-08 00:00:00+00:00
+[2025-06-09T11:32:05.258+0000] {standard_task_runner.py:60} INFO - Started process 23452 to run task
+[2025-06-09T11:32:05.263+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_to_snowflake', 'process_region_asia.process_product_reviews_asia', 'scheduled__2025-06-08T00:00:00+00:00', '--job-id', '773', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmpstk4ec75']
+[2025-06-09T11:32:05.266+0000] {standard_task_runner.py:88} INFO - Job 773: Subtask process_region_asia.process_product_reviews_asia
+[2025-06-09T11:32:05.392+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_to_snowflake.process_region_asia.process_product_reviews_asia scheduled__2025-06-08T00:00:00+00:00 [running]> on host 7fa6630d536c
+[2025-06-09T11:32:05.598+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_to_snowflake' AIRFLOW_CTX_TASK_ID='process_region_asia.process_product_reviews_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-08T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-08T00:00:00+00:00'
+[2025-06-09T11:32:19.640+0000] {logging_mixin.py:188} INFO - Processing product_reviews for region asia
+[2025-06-09T11:32:32.883+0000] {logging_mixin.py:188} INFO - STAGING_ASIA
+[2025-06-09T11:32:42.553+0000] {logging_mixin.py:188} INFO - +---------+----------+-----------+--------+------+------------------+--------------------+--------------------+-------------+-------------------+-------+--------+
+|review_id|product_id|customer_id|order_id|rating|      review_title|         review_text|is_verified_purchase|helpful_votes|         created_at|_region| _source|
++---------+----------+-----------+--------+------+------------------+--------------------+--------------------+-------------+-------------------+-------+--------+
+|        1|         1|          1|       1|     5|  EXCELLENT PHONE!|Amazing camera qu...|                true|           15|2025-06-08 19:23:07|   asia|postgres|
+|        2|         5|          2|       2|     4|   beautiful dress|Nice fabric and f...|                true|            8|2025-06-08 19:23:07|   asia|postgres|
+|        3|         6|          3|       3|     5|      Perfect Sofa|Comfortable and w...|                true|           22|2025-06-08 19:23:07|   asia|postgres|
+|        4|        14|          4|       4|     3|   AVERAGE EARBUDS|Sound quality is ...|                true|            5|2025-06-08 19:23:07|   asia|postgres|
+|        5|         7|         10|      10|     1|poor quality manga|Pages were damage...|                true|            2|2025-06-08 19:23:07|   asia|postgres|
+|        6|         1|          5|    NULL|     4|Good but expensive|Great phone but o...|               false|            3|2025-06-08 19:23:07|   asia|postgres|
+|        7|         9|          7|       7|     5|     AMAZING BIKE!|Perfect for mount...|                true|           18|2025-06-08 19:23:07|   asia|postgres|
+|        8|        10|          8|       8|     4|     fun model kit|Great detail but ...|                true|            7|2025-06-08 19:23:07|   asia|postgres|
+|        1|         1|          1|       1|     5|  EXCELLENT PHONE!|Amazing camera qu...|                true|           15|2025-06-08 19:23:07|   asia|postgres|
+|        2|         5|          2|       2|     4|   beautiful dress|Nice fabric and f...|                true|            8|2025-06-08 19:23:07|   asia|postgres|
++---------+----------+-----------+--------+------+------------------+--------------------+--------------------+-------------+-------------------+-------+--------+
+only showing top 10 rows
+[2025-06-09T11:32:42.554+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-09T11:32:58.092+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-09T11:33:00.624+0000] {logging_mixin.py:188} INFO - Successfully processed 16 records for product_reviews in asia
+[2025-06-09T11:33:02.867+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'asia', 'table': 'product_reviews', 'record_count': 16, 'status': 'success'}
+[2025-06-09T11:33:03.221+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_to_snowflake, task_id=process_region_asia.process_product_reviews_asia, execution_date=20250608T000000, start_date=20250609T113205, end_date=20250609T113303
+[2025-06-09T11:33:03.259+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-09T11:33:03.332+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

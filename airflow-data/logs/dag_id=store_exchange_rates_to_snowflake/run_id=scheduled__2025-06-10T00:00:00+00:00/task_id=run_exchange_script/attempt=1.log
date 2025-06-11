@@ -1,0 +1,34 @@
+[2025-06-11T02:57:04.468+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: store_exchange_rates_to_snowflake.run_exchange_script scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T02:57:04.503+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: store_exchange_rates_to_snowflake.run_exchange_script scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T02:57:04.504+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-11T02:57:04.531+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_exchange_script> on 2025-06-10 00:00:00+00:00
+[2025-06-11T02:57:04.541+0000] {standard_task_runner.py:60} INFO - Started process 65369 to run task
+[2025-06-11T02:57:04.544+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'store_exchange_rates_to_snowflake', 'run_exchange_script', 'scheduled__2025-06-10T00:00:00+00:00', '--job-id', '1353', '--raw', '--subdir', 'DAGS_FOLDER/asia/curr_exchange_to_snowflake.py', '--cfg-path', '/tmp/tmp8exltrt7']
+[2025-06-11T02:57:04.546+0000] {standard_task_runner.py:88} INFO - Job 1353: Subtask run_exchange_script
+[2025-06-11T02:57:04.629+0000] {task_command.py:423} INFO - Running <TaskInstance: store_exchange_rates_to_snowflake.run_exchange_script scheduled__2025-06-10T00:00:00+00:00 [running]> on host 5039a2bbff84
+[2025-06-11T02:57:04.738+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='store_exchange_rates_to_snowflake' AIRFLOW_CTX_TASK_ID='run_exchange_script' AIRFLOW_CTX_EXECUTION_DATE='2025-06-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-10T00:00:00+00:00'
+[2025-06-11T02:57:13.366+0000] {logging_mixin.py:188} INFO - Snowflake URL: rlfsvmi-spb81014
+Snowflake User: adarash
+Snowflake Password Set: True
+Exchange rates saved to Snowflake: {'EUR/USD': 1.14176, 'JPY/USD': 0.0068995}
+[2025-06-11T02:57:13.366+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-06-11T02:57:13.381+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=store_exchange_rates_to_snowflake, task_id=run_exchange_script, execution_date=20250610T000000, start_date=20250611T025704, end_date=20250611T025713
+[2025-06-11T02:57:13.435+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T02:57:13.458+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-06-11T14:38:56.814+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: store_exchange_rates_to_snowflake.run_exchange_script scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T14:38:56.862+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: store_exchange_rates_to_snowflake.run_exchange_script scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T14:38:56.863+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-11T14:38:56.948+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_exchange_script> on 2025-06-10 00:00:00+00:00
+[2025-06-11T14:38:56.963+0000] {standard_task_runner.py:60} INFO - Started process 1817 to run task
+[2025-06-11T14:38:56.979+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'store_exchange_rates_to_snowflake', 'run_exchange_script', 'scheduled__2025-06-10T00:00:00+00:00', '--job-id', '16', '--raw', '--subdir', 'DAGS_FOLDER/asia/curr_exchange_to_snowflake.py', '--cfg-path', '/tmp/tmptqd1r4sz']
+[2025-06-11T14:38:56.987+0000] {standard_task_runner.py:88} INFO - Job 16: Subtask run_exchange_script
+[2025-06-11T14:38:57.200+0000] {task_command.py:423} INFO - Running <TaskInstance: store_exchange_rates_to_snowflake.run_exchange_script scheduled__2025-06-10T00:00:00+00:00 [running]> on host 94d2ab00ac05
+[2025-06-11T14:38:57.502+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='store_exchange_rates_to_snowflake' AIRFLOW_CTX_TASK_ID='run_exchange_script' AIRFLOW_CTX_EXECUTION_DATE='2025-06-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-10T00:00:00+00:00'
+[2025-06-11T14:39:11.173+0000] {logging_mixin.py:188} INFO - Snowflake URL: rlfsvmi-spb81014
+Snowflake User: adarash
+Snowflake Password Set: True
+Exchange rates saved to Snowflake: {'EUR/USD': 1.1472, 'JPY/USD': 0.006901}
+[2025-06-11T14:39:11.174+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-06-11T14:39:11.317+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=store_exchange_rates_to_snowflake, task_id=run_exchange_script, execution_date=20250610T000000, start_date=20250611T143856, end_date=20250611T143911
+[2025-06-11T14:39:11.477+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T14:39:11.567+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

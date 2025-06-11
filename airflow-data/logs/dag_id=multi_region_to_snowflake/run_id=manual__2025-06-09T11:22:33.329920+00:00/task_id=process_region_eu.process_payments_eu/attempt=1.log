@@ -1,0 +1,33 @@
+[2025-06-09T11:38:05.242+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_to_snowflake.process_region_eu.process_payments_eu manual__2025-06-09T11:22:33.329920+00:00 [queued]>
+[2025-06-09T11:38:05.259+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_to_snowflake.process_region_eu.process_payments_eu manual__2025-06-09T11:22:33.329920+00:00 [queued]>
+[2025-06-09T11:38:05.260+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-09T11:38:05.281+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_eu.process_payments_eu> on 2025-06-09 11:22:33.329920+00:00
+[2025-06-09T11:38:05.295+0000] {standard_task_runner.py:60} INFO - Started process 30737 to run task
+[2025-06-09T11:38:05.298+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_to_snowflake', 'process_region_eu.process_payments_eu', 'manual__2025-06-09T11:22:33.329920+00:00', '--job-id', '805', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmp84y24c08']
+[2025-06-09T11:38:05.301+0000] {standard_task_runner.py:88} INFO - Job 805: Subtask process_region_eu.process_payments_eu
+[2025-06-09T11:38:05.415+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_to_snowflake.process_region_eu.process_payments_eu manual__2025-06-09T11:22:33.329920+00:00 [running]> on host 7fa6630d536c
+[2025-06-09T11:38:05.605+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_to_snowflake' AIRFLOW_CTX_TASK_ID='process_region_eu.process_payments_eu' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T11:22:33.329920+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-09T11:22:33.329920+00:00'
+[2025-06-09T11:38:21.533+0000] {logging_mixin.py:188} INFO - Processing payments for region eu
+[2025-06-09T11:38:31.175+0000] {logging_mixin.py:188} INFO - STAGING_EU
+[2025-06-09T11:38:43.472+0000] {logging_mixin.py:188} INFO - +----------+--------+--------------+--------------+------------------+--------------------+--------------+------------------+--------------+--------------------+-------+--------+
+|payment_id|order_id|payment_method|payment_status|payment_amount_eur|   payment_timestamp|transaction_id|  gateway_response|psd2_compliant|          created_at|_region| _source|
++----------+--------+--------------+--------------+------------------+--------------------+--------------+------------------+--------------+--------------------+-------+--------+
+|         1|       1|    sepa_debit|     completed|           1316.98|2025-06-08 19:22:...|  txn_sepa_001|Payment successful|          true|2025-06-08 19:22:...|     eu|postgres|
+|         2|       2|   credit_card|     completed|            120.07|2025-06-08 19:22:...|    txn_cc_002|Payment successful|          true|2025-06-08 19:22:...|     eu|postgres|
+|         3|       3|         ideal|       pending|           1583.99|2025-06-08 19:22:...| txn_ideal_003|Payment processing|          true|2025-06-08 19:22:...|     eu|postgres|
+|         4|       4|        sofort|     completed|            280.48|2025-06-08 19:22:...|txn_sofort_004|Payment successful|          true|2025-06-08 19:22:...|     eu|postgres|
+|         5|       5|   credit_card|        failed|            362.97|2025-06-08 19:22:...|    txn_cc_005|Insufficient funds|          true|2025-06-08 19:22:...|     eu|postgres|
+|         6|       6|    sepa_debit|     completed|             92.18|2025-06-08 19:22:...|  txn_sepa_006|Payment successful|          true|2025-06-08 19:22:...|     eu|postgres|
+|         7|       7|        paypal|     completed|            951.98|2025-06-08 19:22:...|    txn_pp_007|Payment successful|          true|2025-06-08 19:22:...|     eu|postgres|
+|         8|       8|   credit_card|     completed|            172.48|2025-06-08 19:22:...|    txn_cc_008|Payment successful|          true|2025-06-08 19:22:...|     eu|postgres|
+|         9|       9|    sepa_debit|     completed|           2141.98|2025-06-08 19:22:...|  txn_sepa_009|Payment successful|          true|2025-06-08 19:22:...|     eu|postgres|
+|        10|      10|         ideal|      refunded|             42.78|2025-06-08 19:22:...| txn_ideal_010|  Payment refunded|          true|2025-06-08 19:22:...|     eu|postgres|
++----------+--------+--------------+--------------+------------------+--------------------+--------------+------------------+--------------+--------------------+-------+--------+
+only showing top 10 rows
+[2025-06-09T11:38:43.478+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-09T11:39:08.229+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-09T11:39:09.597+0000] {logging_mixin.py:188} INFO - Successfully processed 20 records for payments in eu
+[2025-06-09T11:39:10.912+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'eu', 'table': 'payments', 'record_count': 20, 'status': 'success'}
+[2025-06-09T11:39:10.992+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_to_snowflake, task_id=process_region_eu.process_payments_eu, execution_date=20250609T112233, start_date=20250609T113805, end_date=20250609T113910
+[2025-06-09T11:39:11.042+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-09T11:39:11.157+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -4,23 +4,25 @@ import os
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import lit, current_timestamp
 from airflow.models import Variable
-from table_config import TABLE_CONFIG 
+from table_config import TABLE_CONFIG
 
 
 def extract_postgres_table(region, table, pg_user, pg_password, load_date):
-#     TABLE_CONFIG = {
-#     "{table}": {
-#         "regions": {
-#             "us": {"timestamp_column": "created_at"},
-#             "eu": {"timestamp_column": "created_at"},
-#             "asia": {"timestamp_column": "created"},
-#         }
-#     }
-# }
+    #     TABLE_CONFIG = {
+    #     "{table}": {
+    #         "regions": {
+    #             "us": {"timestamp_column": "created_at"},
+    #             "eu": {"timestamp_column": "created_at"},
+    #             "asia": {"timestamp_column": "created"},
+    #         }
+    #     }
+    # }
 
     print(f"Starting extraction for table: {table} in region: {region}")
     if table not in TABLE_CONFIG or region not in TABLE_CONFIG[table]["regions"]:
-        raise ValueError(f"Missing TABLE_CONFIG for table '{table}' and region '{region}'")
+        raise ValueError(
+            f"Missing TABLE_CONFIG for table '{table}' and region '{region}'"
+        )
 
     timestamp_col = TABLE_CONFIG[table]["regions"][region]["timestamp_column"]
     pg_url = f"jdbc:postgresql://retail-postgres:5432/retail_etl"
@@ -31,42 +33,47 @@ def extract_postgres_table(region, table, pg_user, pg_password, load_date):
         print(f"[INFO] Last extracted timestamp: {last_extracted_parquet_timestamp}")
     except KeyError:
         last_extracted_parquet_timestamp = "2000-01-01 00:00:00.000"
-        print(f"[INFO] No variable found. Using default: {last_extracted_parquet_timestamp}")
+        print(
+            f"[INFO] No variable found. Using default: {last_extracted_parquet_timestamp}"
+        )
 
-    spark = SparkSession.builder \
-        .appName(f"Extract_{region}_{table}") \
+    spark = (
+        SparkSession.builder.appName(f"Extract_{region}_{table}")
         .config(
             "spark.jars",
             "/opt/airflow/jars/postgresql-42.7.3.jar,"
             "/opt/airflow/jars/snowflake-jdbc-3.13.17.jar,"
-            "/opt/airflow/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar"
-        ) \
-        .config("spark.sql.shuffle.partitions", "10") \
+            "/opt/airflow/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar",
+        )
+        .config("spark.sql.shuffle.partitions", "10")
         .getOrCreate()
+    )
     # timestamp_col = TABLE_CONFIG[table]["regions"][region]["timestamp_column"]
     # query = f"(SELECT * FROM {region}.{table} WHERE {timestamp_col} > '{last_updated}') AS filtered_data"
 
-
     query = f"(SELECT * FROM {region}.{table} WHERE {timestamp_col} > '{last_extracted_parquet_timestamp}') AS filtered_data"
     print(query)
-    df = spark.read.format("jdbc") \
-        .option("url", pg_url) \
-        .option("dbtable", query) \
-        .option("user", pg_user) \
-        .option("password", pg_password) \
-        .option("driver", "org.postgresql.Driver") \
+    df = (
+        spark.read.format("jdbc")
+        .option("url", pg_url)
+        .option("dbtable", query)
+        .option("user", pg_user)
+        .option("password", pg_password)
+        .option("driver", "org.postgresql.Driver")
         .load()
+    )
 
     record_count = df.count()
     if record_count == 0:
         spark.stop()
         raise AirflowSkipException(f"No new data to extract from {region}.{table}")
 
-    df = df.withColumn("_region", lit(region)) \
-           .withColumn("_source", lit("postgres")) 
+    df = df.withColumn("_region", lit(region)).withColumn("_source", lit("postgres"))
     df.show(10)
 
-    output_path = f"/opt/airflow/data/raw/region={region}/table={table}/load_date={load_date}/"
+    output_path = (
+        f"/opt/airflow/data/raw/region={region}/table={table}/load_date={load_date}/"
+    )
     print(f"Writing data to {output_path}")
     df.write.mode("append").parquet(output_path)
 

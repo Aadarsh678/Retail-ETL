@@ -1,0 +1,36 @@
+[2025-06-11T09:09:54.222+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: load_to_star_schema_fact.star_merge_group.star_dim_product_performance scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T09:09:54.231+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: load_to_star_schema_fact.star_merge_group.star_dim_product_performance scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T09:09:54.232+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T09:09:54.245+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): star_merge_group.star_dim_product_performance> on 2025-06-10 00:00:00+00:00
+[2025-06-11T09:09:54.253+0000] {standard_task_runner.py:60} INFO - Started process 775 to run task
+[2025-06-11T09:09:54.256+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'load_to_star_schema_fact', 'star_merge_group.star_dim_product_performance', 'scheduled__2025-06-10T00:00:00+00:00', '--job-id', '1513', '--raw', '--subdir', 'DAGS_FOLDER/star/master_fact.py', '--cfg-path', '/tmp/tmp54hdk6pr']
+[2025-06-11T09:09:54.259+0000] {standard_task_runner.py:88} INFO - Job 1513: Subtask star_merge_group.star_dim_product_performance
+[2025-06-11T09:09:54.333+0000] {task_command.py:423} INFO - Running <TaskInstance: load_to_star_schema_fact.star_merge_group.star_dim_product_performance scheduled__2025-06-10T00:00:00+00:00 [running]> on host d1bcd5712a45
+[2025-06-11T09:09:54.638+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='load_to_star_schema_fact' AIRFLOW_CTX_TASK_ID='star_merge_group.star_dim_product_performance' AIRFLOW_CTX_EXECUTION_DATE='2025-06-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-10T00:00:00+00:00'
+[2025-06-11T09:09:54.641+0000] {connection.py:486} INFO - Snowflake Connector for Python Version: 3.15.0, Python Version: 3.10.13, Platform: Linux-6.11.0-26-generic-x86_64-with-glibc2.36
+[2025-06-11T09:09:54.642+0000] {connection.py:1391} INFO - Connecting to GLOBAL Snowflake domain
+[2025-06-11T09:10:03.453+0000] {logging_mixin.py:188} INFO - Successfully connected to Snowflake via snowflake.connector.
+[2025-06-11T09:10:03.453+0000] {logging_mixin.py:188} INFO - Running merge for product_performance...
+[2025-06-11T09:10:05.004+0000] {logging_mixin.py:188} INFO - Merge completed for product_performance
+[2025-06-11T09:10:06.335+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-06-11T09:10:06.348+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=load_to_star_schema_fact, task_id=star_merge_group.star_dim_product_performance, execution_date=20250610T000000, start_date=20250611T090954, end_date=20250611T091006
+[2025-06-11T09:10:06.395+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T09:10:06.413+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-06-11T14:38:50.174+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: load_to_star_schema_fact.star_merge_group.star_dim_product_performance scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T14:38:50.251+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: load_to_star_schema_fact.star_merge_group.star_dim_product_performance scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T14:38:50.252+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T14:38:50.293+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): star_merge_group.star_dim_product_performance> on 2025-06-10 00:00:00+00:00
+[2025-06-11T14:38:50.301+0000] {standard_task_runner.py:60} INFO - Started process 1760 to run task
+[2025-06-11T14:38:50.305+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'load_to_star_schema_fact', 'star_merge_group.star_dim_product_performance', 'scheduled__2025-06-10T00:00:00+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/star/master_fact.py', '--cfg-path', '/tmp/tmpr0xe1ner']
+[2025-06-11T14:38:50.308+0000] {standard_task_runner.py:88} INFO - Job 11: Subtask star_merge_group.star_dim_product_performance
+[2025-06-11T14:38:50.490+0000] {task_command.py:423} INFO - Running <TaskInstance: load_to_star_schema_fact.star_merge_group.star_dim_product_performance scheduled__2025-06-10T00:00:00+00:00 [running]> on host 94d2ab00ac05
+[2025-06-11T14:38:50.806+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='load_to_star_schema_fact' AIRFLOW_CTX_TASK_ID='star_merge_group.star_dim_product_performance' AIRFLOW_CTX_EXECUTION_DATE='2025-06-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-10T00:00:00+00:00'
+[2025-06-11T14:38:50.816+0000] {connection.py:486} INFO - Snowflake Connector for Python Version: 3.15.0, Python Version: 3.10.13, Platform: Linux-6.11.0-26-generic-x86_64-with-glibc2.36
+[2025-06-11T14:38:50.818+0000] {connection.py:1391} INFO - Connecting to GLOBAL Snowflake domain
+[2025-06-11T14:38:54.260+0000] {logging_mixin.py:188} INFO - Successfully connected to Snowflake via snowflake.connector.
+[2025-06-11T14:38:54.265+0000] {logging_mixin.py:188} INFO - Running merge for product_performance...
+[2025-06-11T14:38:56.675+0000] {logging_mixin.py:188} INFO - Merge completed for product_performance
+[2025-06-11T14:38:57.336+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-06-11T14:38:57.404+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=load_to_star_schema_fact, task_id=star_merge_group.star_dim_product_performance, execution_date=20250610T000000, start_date=20250611T143850, end_date=20250611T143857
+[2025-06-11T14:38:57.517+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T14:38:57.591+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

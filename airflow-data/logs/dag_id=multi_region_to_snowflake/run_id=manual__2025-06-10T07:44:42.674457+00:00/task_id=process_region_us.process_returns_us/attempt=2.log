@@ -1,0 +1,26 @@
+[2025-06-10T07:51:52.852+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_to_snowflake.process_region_us.process_returns_us manual__2025-06-10T07:44:42.674457+00:00 [queued]>
+[2025-06-10T07:51:52.869+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_to_snowflake.process_region_us.process_returns_us manual__2025-06-10T07:44:42.674457+00:00 [queued]>
+[2025-06-10T07:51:52.870+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 2
+[2025-06-10T07:51:52.890+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_us.process_returns_us> on 2025-06-10 07:44:42.674457+00:00
+[2025-06-10T07:51:52.902+0000] {standard_task_runner.py:60} INFO - Started process 10947 to run task
+[2025-06-10T07:51:52.906+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_to_snowflake', 'process_region_us.process_returns_us', 'manual__2025-06-10T07:44:42.674457+00:00', '--job-id', '1036', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmpmyswjrp1']
+[2025-06-10T07:51:52.910+0000] {standard_task_runner.py:88} INFO - Job 1036: Subtask process_region_us.process_returns_us
+[2025-06-10T07:51:53.010+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_to_snowflake.process_region_us.process_returns_us manual__2025-06-10T07:44:42.674457+00:00 [running]> on host b27730b0b8ce
+[2025-06-10T07:51:53.275+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_to_snowflake' AIRFLOW_CTX_TASK_ID='process_region_us.process_returns_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-10T07:44:42.674457+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-10T07:44:42.674457+00:00'
+[2025-06-10T07:52:08.529+0000] {logging_mixin.py:188} INFO - Processing returns for region us
+[2025-06-10T07:52:19.445+0000] {logging_mixin.py:188} INFO - STAGING_US
+[2025-06-10T07:52:30.130+0000] {logging_mixin.py:188} INFO - +---------+--------+-----------------+-------------+--------------------+-------------+-------------------+--------------------+-------+--------+
+|return_id|order_id|    return_reason|return_status|    return_timestamp|refund_amount|   refund_timestamp|          created_at|_region| _source|
++---------+--------+-----------------+-------------+--------------------+-------------+-------------------+--------------------+-------+--------+
+|        1|       5|     Changed mind|     approved|2025-06-08 19:23:...|       279.85|2024-01-25 13:30:00|2025-06-08 19:23:...|     us|postgres|
+|        2|      10|Product defective|   processing|2025-06-08 19:23:...|        49.36|               NULL|2025-06-08 19:23:...|     us|postgres|
+|        1|       5|     Changed mind|     approved|2025-06-08 19:23:...|       279.85|2024-01-25 13:30:00|2025-06-08 19:23:...|     us|postgres|
+|        2|      10|Product defective|   processing|2025-06-08 19:23:...|        49.36|               NULL|2025-06-08 19:23:...|     us|postgres|
++---------+--------+-----------------+-------------+--------------------+-------------+-------------------+--------------------+-------+--------+
+[2025-06-10T07:52:30.131+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-10T07:52:57.571+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-10T07:52:58.619+0000] {logging_mixin.py:188} INFO - Successfully processed 4 records for returns in us
+[2025-06-10T07:52:59.662+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'us', 'table': 'returns', 'record_count': 4, 'status': 'success'}
+[2025-06-10T07:52:59.704+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_to_snowflake, task_id=process_region_us.process_returns_us, execution_date=20250610T074442, start_date=20250610T075152, end_date=20250610T075259
+[2025-06-10T07:52:59.739+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-10T07:52:59.783+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

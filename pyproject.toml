@@ -1,0 +1,10 @@
+[tool.black]
+line-length = 88
+target-version = ['py38']  # or py39, py310, etc.
+exclude = '''
+/(
+    \.venv
+  | build
+  | dist
+)/
+'''

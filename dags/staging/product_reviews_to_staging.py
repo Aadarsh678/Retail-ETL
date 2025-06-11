@@ -15,6 +15,7 @@ from scripts.pyspark_jobs.product_review import transform_product_review_table
 
 TABLE_NAME = "product_reviews"
 
+
 @dag(
     dag_id="transform_product_review",
     schedule="0 1 * * *",  # Daily at 1 AM (after extraction)
@@ -23,32 +24,26 @@ TABLE_NAME = "product_reviews"
     dagrun_timeout=datetime.timedelta(minutes=60),
     tags=["spark", "transformation", "csv"],
     max_active_tasks=10,
-    max_active_runs=1
+    max_active_runs=1,
 )
 def transform_product_review_dag():
 
     @task
     def run_transformation_asia():
         transform_product_review_table(
-            region="asia",
-            table=TABLE_NAME,
-            load_date="2025-06-08"
+            region="asia", table=TABLE_NAME, load_date="2025-06-08"
         )
 
     @task
     def run_transformation_eu():
         transform_product_review_table(
-            region="eu",
-            table=TABLE_NAME,
-            load_date="2025-06-08"
+            region="eu", table=TABLE_NAME, load_date="2025-06-08"
         )
 
     @task
     def run_transformation_us():
         transform_product_review_table(
-            region="us",
-            table=TABLE_NAME,
-            load_date="2025-06-08"
+            region="us", table=TABLE_NAME, load_date="2025-06-08"
         )
 
     # Run transformations in parallel

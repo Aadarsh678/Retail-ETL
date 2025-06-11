@@ -1,0 +1,34 @@
+[2025-06-11T02:39:46.913+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_to_snowflake.process_region_us.process_product_variants_us scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T02:39:46.937+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_to_snowflake.process_region_us.process_product_variants_us scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T02:39:46.937+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T02:39:46.968+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_us.process_product_variants_us> on 2025-06-10 00:00:00+00:00
+[2025-06-11T02:39:46.981+0000] {standard_task_runner.py:60} INFO - Started process 38801 to run task
+[2025-06-11T02:39:46.987+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_to_snowflake', 'process_region_us.process_product_variants_us', 'scheduled__2025-06-10T00:00:00+00:00', '--job-id', '1231', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmpug51m299']
+[2025-06-11T02:39:46.990+0000] {standard_task_runner.py:88} INFO - Job 1231: Subtask process_region_us.process_product_variants_us
+[2025-06-11T02:39:47.109+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_to_snowflake.process_region_us.process_product_variants_us scheduled__2025-06-10T00:00:00+00:00 [running]> on host 5039a2bbff84
+[2025-06-11T02:39:47.300+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_to_snowflake' AIRFLOW_CTX_TASK_ID='process_region_us.process_product_variants_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-10T00:00:00+00:00'
+[2025-06-11T02:40:00.576+0000] {logging_mixin.py:188} INFO - Processing product_variants for region us
+[2025-06-11T02:40:13.600+0000] {logging_mixin.py:188} INFO - STAGING_US
+[2025-06-11T02:40:25.227+0000] {logging_mixin.py:188} INFO - +----------+----------+--------------------+--------------------+-------------+-------------+--------------+------------+---------+--------------------+-------+--------+
+|variant_id|product_id|         product_sku|        variant_name| variant_type|variant_value|price_diff_eur|is_active_us|is_active|          created_at|_region| _source|
++----------+----------+--------------------+--------------------+-------------+-------------+--------------+------------+---------+--------------------+-------+--------+
+|         1|         1|PRD-12001-BLACK-1...|iPhone 15 Pro Bla...|color_storage|  Black 128GB|          0.00|        true|     true|2025-06-08 19:23:...|     us|postgres|
+|         2|         1|PRD-12001-BLUE-256GB|iPhone 15 Pro Blu...|color_storage|   Blue 256GB|        200.00|        true|     true|2025-06-08 19:23:...|     us|postgres|
+|         3|         1|PRD-12001-WHITE-5...|iPhone 15 Pro Whi...|color_storage|  White 512GB|        400.00|        true|     true|2025-06-08 19:23:...|     us|postgres|
+|         4|         2|PRD-12002-SILVER-8GB|MacBook Air Silve...| color_memory|   Silver 8GB|          0.00|        true|     true|2025-06-08 19:23:...|     us|postgres|
+|         5|         2| PRD-12002-GOLD-16GB|MacBook Air Gold ...| color_memory|    Gold 16GB|        300.00|        true|     true|2025-06-08 19:23:...|     us|postgres|
+|         6|         3|  PRD-12003-STANDARD|PlayStation 5 Sta...|      edition|     Standard|          0.00|        true|     true|2025-06-08 19:23:...|     us|postgres|
+|         7|         3|   PRD-12003-DIGITAL|PlayStation 5 Dig...|      edition|      Digital|       -100.00|        true|     true|2025-06-08 19:23:...|     us|postgres|
+|         8|         4|     PRD-12004-RED-M|Cotton T-Shirt Re...|   color_size|        Red M|          0.00|        true|     true|2025-06-08 19:23:...|     us|postgres|
+|         9|         4|    PRD-12004-BLUE-L|Cotton T-Shirt Bl...|   color_size|       Blue L|          2.00|        true|     true|2025-06-08 19:23:...|     us|postgres|
+|        10|         4|  PRD-12004-BLACK-XL|Cotton T-Shirt Bl...|   color_size|     Black XL|          4.00|        true|     true|2025-06-08 19:23:...|     us|postgres|
++----------+----------+--------------------+--------------------+-------------+-------------+--------------+------------+---------+--------------------+-------+--------+
+only showing top 10 rows
+[2025-06-11T02:40:25.228+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-11T02:40:38.684+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-11T02:40:38.697+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-06-11T02:40:39.178+0000] {logging_mixin.py:188} INFO - Successfully processed 42 records for product_variants in us
+[2025-06-11T02:40:40.145+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'us', 'table': 'product_variants', 'record_count': 42, 'status': 'success'}
+[2025-06-11T02:40:40.204+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_to_snowflake, task_id=process_region_us.process_product_variants_us, execution_date=20250610T000000, start_date=20250611T023946, end_date=20250611T024040
+[2025-06-11T02:40:40.274+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T02:40:40.387+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check

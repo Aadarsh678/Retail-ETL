@@ -1,6 +1,15 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import (
-    col, trim, initcap, lower, when, to_timestamp, coalesce, lit, udf,regexp_replace
+    col,
+    trim,
+    initcap,
+    lower,
+    when,
+    to_timestamp,
+    coalesce,
+    lit,
+    udf,
+    regexp_replace,
 )
 from pyspark.sql.types import StringType
 import hashlib
@@ -10,8 +19,11 @@ from pyspark.sql import DataFrame
 def safe_to_timestamp_multi_formats(date_col):
     clean_col = trim(
         regexp_replace(
-            regexp_replace(date_col, "(?i)(st|nd|rd|th)", ""),  # Remove ordinal suffixes
-            " +", " "  # Normalize extra spaces
+            regexp_replace(
+                date_col, "(?i)(st|nd|rd|th)", ""
+            ),  # Remove ordinal suffixes
+            " +",
+            " ",  # Normalize extra spaces
         )
     )
 
@@ -22,14 +34,19 @@ def safe_to_timestamp_multi_formats(date_col):
     ts5 = to_timestamp(clean_col, "dd/MM/yyyy")
     ts6 = to_timestamp(clean_col, "yyyy/MM/dd")
     ts7 = to_timestamp(clean_col, "MMMM d yyyy")  # Handles "March 5 2024"
-    ts8 = to_timestamp(clean_col, "MMM d yyyy")    # Handles "Mar 5 2024"
+    ts8 = to_timestamp(clean_col, "MMM d yyyy")  # Handles "Mar 5 2024"
 
     return coalesce(ts1, ts2, ts3, ts4, ts5, ts6, ts7, ts8)
 
+
 def normalize_active(flag_col):
-    return when(lower(col(flag_col)).isin('y', 'yes'), True) \
-           .when(lower(col(flag_col)).isin('n', 'no'), False) \
-           .otherwise(None)
+    return (
+        when(lower(col(flag_col)).isin("y", "yes"), True)
+        .when(lower(col(flag_col)).isin("n", "no"), False)
+        .otherwise(None)
+    )
+
+
 # --- ASIA ---
 def transform_product_reviews_asia(df):
     return df.select(
@@ -44,8 +61,9 @@ def transform_product_reviews_asia(df):
         col("helpful_count").alias("helpful_votes"),
         safe_to_timestamp_multi_formats("created").alias("created_at"),
         col("_region"),
-        col("_source")
+        col("_source"),
     )
+
 
 # --- EU ---
 def transform_product_reviews_eu(df):
@@ -62,8 +80,9 @@ def transform_product_reviews_eu(df):
         col("moderation_status"),
         col("created_at"),
         col("_region"),
-        col("_source")
+        col("_source"),
     )
+
 
 # --- US ---
 def transform_product_reviews_us(df):
@@ -79,8 +98,10 @@ def transform_product_reviews_us(df):
         col("helpful_votes"),
         col("created_at"),
         col("_region"),
-        col("_source")
+        col("_source"),
     )
+
+
 # regions = ["asia", "eu", "us"]
 # load_date = "2025-06-06"
 # base_raw_path = "/opt/airflow/data/raw/"
@@ -100,6 +121,7 @@ def transform_product_reviews_us(df):
 #     df_transformed.show(truncate=False, vertical=True)
 
 # print("Product reviews normalization completed.")
+
 
 def transform_product_reviews(df: DataFrame, region: str) -> DataFrame:
     if region == "asia":

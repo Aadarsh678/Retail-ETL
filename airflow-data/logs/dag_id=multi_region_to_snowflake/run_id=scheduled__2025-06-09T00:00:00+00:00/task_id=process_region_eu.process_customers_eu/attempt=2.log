@@ -1,0 +1,33 @@
+[2025-06-10T06:58:48.606+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_to_snowflake.process_region_eu.process_customers_eu scheduled__2025-06-09T00:00:00+00:00 [queued]>
+[2025-06-10T06:58:48.623+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_to_snowflake.process_region_eu.process_customers_eu scheduled__2025-06-09T00:00:00+00:00 [queued]>
+[2025-06-10T06:58:48.624+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 2
+[2025-06-10T06:58:48.652+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_eu.process_customers_eu> on 2025-06-09 00:00:00+00:00
+[2025-06-10T06:58:48.661+0000] {standard_task_runner.py:60} INFO - Started process 191 to run task
+[2025-06-10T06:58:48.666+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_to_snowflake', 'process_region_eu.process_customers_eu', 'scheduled__2025-06-09T00:00:00+00:00', '--job-id', '944', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmp27ohca8q']
+[2025-06-10T06:58:48.669+0000] {standard_task_runner.py:88} INFO - Job 944: Subtask process_region_eu.process_customers_eu
+[2025-06-10T06:58:48.795+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_to_snowflake.process_region_eu.process_customers_eu scheduled__2025-06-09T00:00:00+00:00 [running]> on host 180d0d52c3ad
+[2025-06-10T06:58:49.054+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_to_snowflake' AIRFLOW_CTX_TASK_ID='process_region_eu.process_customers_eu' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-09T00:00:00+00:00'
+[2025-06-10T06:59:08.422+0000] {logging_mixin.py:188} INFO - Processing customers for region eu
+[2025-06-10T06:59:26.767+0000] {logging_mixin.py:188} INFO - STAGING_EU
+[2025-06-10T06:59:43.005+0000] {logging_mixin.py:188} INFO - +-----------+--------------------+----------+---------+-----------------+------------+-------------------+----------+---------+----------------+-------------------+--------------------+-------------------+-------------------+-------------------+-------+--------+
+|customer_id|               email|first_name|last_name|            phone|country_code|  registration_date|last_login|is_active|customer_segment|  gdpr_consent_date|data_retention_until|acquisition_channel|         created_at|         updated_at|_region| _source|
++-----------+--------------------+----------+---------+-----------------+------------+-------------------+----------+---------+----------------+-------------------+--------------------+-------------------+-------------------+-------------------+-------+--------+
+|          1|55f537baf75630a85...|      J***|     D***| +49-***-***-5678|          DE|2025-06-08 19:22:57|      NULL|     true|         premium|2024-01-15 09:30:00| 2027-01-15 00:00:00|            organic|2025-06-08 19:22:57|2025-06-08 19:22:57|     eu|postgres|
+|          2|8384b028d4f6ef2ac...|      M***|     G***| +34-***-***-4567|          ES|2025-06-08 19:22:57|      NULL|     true|        standard|2024-01-16 10:45:00| 2027-01-16 00:00:00|       social_media|2025-06-08 19:22:57|2025-06-08 19:22:57|     eu|postgres|
+|          3|d9ff2965224667fd5...|      P***|     M***| +33-***-***-8901|          FR|2025-06-08 19:22:57|      NULL|     true|      enterprise|2024-01-17 08:20:00| 2027-01-17 00:00:00|           referral|2025-06-08 19:22:57|2025-06-08 19:22:57|     eu|postgres|
+|          4|c797cfbb6e65ecf5d...|      A***|     R***| +39-***-***-4321|          IT|2025-06-08 19:22:57|      NULL|     true|        standard|2024-01-18 13:15:00| 2027-01-18 00:00:00|           paid_ads|2025-06-08 19:22:57|2025-06-08 19:22:57|     eu|postgres|
+|          5|3e8f559f81c2fe033...|      L***|     N***| +45-***-***-3456|          DK|2025-06-08 19:22:57|      NULL|     true|         premium|2024-01-19 15:30:00| 2027-01-19 00:00:00|            organic|2025-06-08 19:22:57|2025-06-08 19:22:57|     eu|postgres|
+|          6|                NULL|      S***|     D***| +33-***-***-7890|          FR|2025-06-08 19:22:57|      NULL|     true|        standard|2024-01-20 11:45:00| 2027-01-20 00:00:00|     email_campaign|2025-06-08 19:22:57|2025-06-08 19:22:57|     eu|postgres|
+|          7|                NULL|      H***|     M***| +49-***-***-6543|          DE|2025-06-08 19:22:57|      NULL|     true|        standard|2024-01-21 07:30:00| 2027-01-21 00:00:00|            organic|2025-06-08 19:22:57|2025-06-08 19:22:57|     eu|postgres|
+|          8|                NULL|      E***|     P***|+359-***-***-4567|          BG|2025-06-08 19:22:57|      NULL|     true|         premium|2024-01-22 14:20:00| 2027-01-22 00:00:00|           referral|2025-06-08 19:22:57|2025-06-08 19:22:57|     eu|postgres|
+|          9|                NULL|      M***|     B***| +39-***-***-3344|          IT|2025-06-08 19:22:57|      NULL|     true|        standard|2024-01-23 10:10:00| 2027-01-23 00:00:00|       social_media|2025-06-08 19:22:57|2025-06-08 19:22:57|     eu|postgres|
+|         10|                NULL|      I***|     L***| +46-***-***-6778|          SE|2025-06-08 19:22:57|      NULL|     true|      enterprise|2024-01-24 12:55:00| 2027-01-24 00:00:00|           paid_ads|2025-06-08 19:22:57|2025-06-08 19:22:57|     eu|postgres|
++-----------+--------------------+----------+---------+-----------------+------------+-------------------+----------+---------+----------------+-------------------+--------------------+-------------------+-------------------+-------------------+-------+--------+
+only showing top 10 rows
+[2025-06-10T06:59:43.015+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-10T07:00:15.327+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-10T07:00:15.862+0000] {logging_mixin.py:188} INFO - Successfully processed 50 records for customers in eu
+[2025-06-10T07:00:18.207+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'eu', 'table': 'customers', 'record_count': 50, 'status': 'success'}
+[2025-06-10T07:00:18.452+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_to_snowflake, task_id=process_region_eu.process_customers_eu, execution_date=20250609T000000, start_date=20250610T065848, end_date=20250610T070018
+[2025-06-10T07:00:18.565+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-10T07:00:18.767+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

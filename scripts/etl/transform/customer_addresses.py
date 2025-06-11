@@ -1,21 +1,32 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import (
-    col, trim, initcap, lower, when, to_timestamp, coalesce, lit, udf,regexp_replace
+    col,
+    trim,
+    initcap,
+    lower,
+    when,
+    to_timestamp,
+    coalesce,
+    lit,
+    udf,
+    regexp_replace,
 )
 from pyspark.sql.types import StringType
 from pyspark.sql import DataFrame
 
 from pyspark.sql.functions import split, regexp_extract, expr
 
-from pyspark.sql.functions import (
-    col, lit, when, coalesce, to_timestamp
-)
+from pyspark.sql.functions import col, lit, when, coalesce, to_timestamp
+
 
 def safe_to_timestamp_multi_formats(date_col):
     clean_col = trim(
         regexp_replace(
-            regexp_replace(date_col, "(?i)(st|nd|rd|th)", ""),  # Remove ordinal suffixes
-            " +", " "  # Normalize extra spaces
+            regexp_replace(
+                date_col, "(?i)(st|nd|rd|th)", ""
+            ),  # Remove ordinal suffixes
+            " +",
+            " ",  # Normalize extra spaces
         )
     )
 
@@ -26,16 +37,22 @@ def safe_to_timestamp_multi_formats(date_col):
     ts5 = to_timestamp(clean_col, "dd/MM/yyyy")
     ts6 = to_timestamp(clean_col, "yyyy/MM/dd")
     ts7 = to_timestamp(clean_col, "MMMM d yyyy")  # Handles "March 5 2024"
-    ts8 = to_timestamp(clean_col, "MMM d yyyy")    # Handles "Mar 5 2024"
+    ts8 = to_timestamp(clean_col, "MMM d yyyy")  # Handles "Mar 5 2024"
 
     return coalesce(ts1, ts2, ts3, ts4, ts5, ts6, ts7, ts8)
+
+
 def normalize_active(flag_col):
-    return when(lower(col(flag_col)).isin('y', 'yes'), True) \
-           .when(lower(col(flag_col)).isin('n', 'no'), False) \
-           .otherwise(None)
+    return (
+        when(lower(col(flag_col)).isin("y", "yes"), True)
+        .when(lower(col(flag_col)).isin("n", "no"), False)
+        .otherwise(None)
+    )
+
 
 def normalize_name(name_col):
     return initcap(trim(name_col))
+
 
 # ASIA Region
 def transform_customer_addresses_asia(df):
@@ -51,8 +68,9 @@ def transform_customer_addresses_asia(df):
         normalize_active("is_default").alias("is_default"),
         safe_to_timestamp_multi_formats(col("created")).alias("created_at"),
         col("_region"),
-        col("_source")
+        col("_source"),
     )
+
 
 # EU Region
 def transform_customer_addresses_eu(df):
@@ -64,12 +82,13 @@ def transform_customer_addresses_eu(df):
         col("city"),
         col("region"),
         col("postal_code"),
-        col("country_code").alias("country"),  
+        col("country_code").alias("country"),
         col("is_default").cast("boolean"),
         safe_to_timestamp_multi_formats(col("created_at")).alias("created_at"),
         col("_region"),
-        col("_source")
+        col("_source"),
     )
+
 
 # US Region
 def transform_customer_addresses_us(df):
@@ -85,8 +104,9 @@ def transform_customer_addresses_us(df):
         col("is_default").cast("boolean"),
         safe_to_timestamp_multi_formats(col("created_at")).alias("created_at"),
         col("_region"),
-        col("_source")
+        col("_source"),
     )
+
 
 # regions = ["asia", "eu", "us"]
 # load_date = "2025-06-06"

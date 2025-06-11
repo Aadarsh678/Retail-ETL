@@ -1,0 +1,15 @@
+[2025-06-09T18:29:15.314+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_ods_merge_v2.process_table__2 manual__2025-06-09T18:29:04.372847+00:00 [queued]>
+[2025-06-09T18:29:15.330+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_ods_merge_v2.process_table__2 manual__2025-06-09T18:29:04.372847+00:00 [queued]>
+[2025-06-09T18:29:15.330+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-09T18:29:15.378+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_table__2> on 2025-06-09 18:29:04.372847+00:00
+[2025-06-09T18:29:15.387+0000] {standard_task_runner.py:60} INFO - Started process 9200 to run task
+[2025-06-09T18:29:15.394+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_ods_merge_v2', 'process_table__2', 'manual__2025-06-09T18:29:04.372847+00:00', '--job-id', '873', '--raw', '--subdir', 'DAGS_FOLDER/master_ods_dag.py', '--cfg-path', '/tmp/tmpdly5ebib']
+[2025-06-09T18:29:15.396+0000] {standard_task_runner.py:88} INFO - Job 873: Subtask process_table__2
+[2025-06-09T18:29:15.528+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_ods_merge_v2.process_table__2 manual__2025-06-09T18:29:04.372847+00:00 [running]> on host 363551e04744
+[2025-06-09T18:29:15.913+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_ods_merge_v2' AIRFLOW_CTX_TASK_ID='process_table__2' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T18:29:04.372847+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-09T18:29:04.372847+00:00'
+[2025-06-09T18:29:15.917+0000] {logging_mixin.py:188} INFO - Processing table product for region eu in schema STAGING_EU
+[2025-06-09T18:29:15.918+0000] {logging_mixin.py:188} INFO - No merge function for table product, skipping MERGE
+[2025-06-09T18:29:15.919+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'eu', 'table': 'product', 'status': 'skipped'}
+[2025-06-09T18:29:16.041+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_ods_merge_v2, task_id=process_table__2, execution_date=20250609T182904, start_date=20250609T182915, end_date=20250609T182916
+[2025-06-09T18:29:16.087+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-09T18:29:16.134+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

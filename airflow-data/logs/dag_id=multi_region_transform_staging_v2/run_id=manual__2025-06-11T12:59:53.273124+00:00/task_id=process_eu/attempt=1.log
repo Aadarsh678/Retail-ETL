@@ -1,0 +1,38 @@
+[2025-06-11T13:00:02.499+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_eu manual__2025-06-11T12:59:53.273124+00:00 [queued]>
+[2025-06-11T13:00:02.512+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_eu manual__2025-06-11T12:59:53.273124+00:00 [queued]>
+[2025-06-11T13:00:02.513+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T13:00:02.533+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_eu> on 2025-06-11 12:59:53.273124+00:00
+[2025-06-11T13:00:02.541+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-11T13:00:02.541+0000] {standard_task_runner.py:60} INFO - Started process 6634 to run task
+[2025-06-11T13:00:02.546+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_eu', 'manual__2025-06-11T12:59:53.273124+00:00', '--job-id', '1795', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmpx7kany5_']
+[2025-06-11T13:00:02.547+0000] {standard_task_runner.py:88} INFO - Job 1795: Subtask process_eu
+[2025-06-11T13:00:02.636+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_eu manual__2025-06-11T12:59:53.273124+00:00 [running]> on host e31f19e226f4
+[2025-06-11T13:00:02.745+0000] {clientserver.py:505} INFO - Error while sending or receiving.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 503, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+ConnectionResetError: [Errno 104] Connection reset by peer
+[2025-06-11T13:00:02.746+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-11T13:00:02.747+0000] {java_gateway.py:1052} INFO - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 503, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/airflow/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 506, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending
+[2025-06-11T13:00:02.751+0000] {clientserver.py:543} INFO - Closing down clientserver connection
+[2025-06-11T13:00:02.807+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_eu' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T12:59:53.273124+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T12:59:53.273124+00:00'
+[2025-06-11T13:00:02.819+0000] {logging_mixin.py:188} INFO - Spark session started for eu: NormalizeMarketingCampaigns
+[2025-06-11T13:00:02.856+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector()
+[2025-06-11T13:02:44.284+0000] {local_task_job_runner.py:302} WARNING - State of this instance has been externally set to failed. Terminating instance.
+[2025-06-11T13:02:44.286+0000] {process_utils.py:131} INFO - Sending 15 to group 6634. PIDs of all processes in the group: [6634]
+[2025-06-11T13:02:44.286+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 6634
+[2025-06-11T13:02:44.287+0000] {taskinstance.py:2450} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-06-11T13:02:44.338+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=6634, status='terminated', exitcode=0, started='13:00:02') (6634) terminated with exit code 0

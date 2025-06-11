@@ -1,0 +1,44 @@
+[2025-06-11T06:04:57.216+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_ods_merge_v2.ods_merge_group.merge_customer_addresses scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T06:04:57.224+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_ods_merge_v2.ods_merge_group.merge_customer_addresses scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T06:04:57.224+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T06:04:57.239+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): ods_merge_group.merge_customer_addresses> on 2025-06-10 00:00:00+00:00
+[2025-06-11T06:04:57.247+0000] {standard_task_runner.py:60} INFO - Started process 2747 to run task
+[2025-06-11T06:04:57.249+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_ods_merge_v2', 'ods_merge_group.merge_customer_addresses', 'scheduled__2025-06-10T00:00:00+00:00', '--job-id', '1360', '--raw', '--subdir', 'DAGS_FOLDER/master_ods_dag.py', '--cfg-path', '/tmp/tmptufsw92p']
+[2025-06-11T06:04:57.252+0000] {standard_task_runner.py:88} INFO - Job 1360: Subtask ods_merge_group.merge_customer_addresses
+[2025-06-11T06:04:57.316+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_ods_merge_v2.ods_merge_group.merge_customer_addresses scheduled__2025-06-10T00:00:00+00:00 [running]> on host 590b48c4a67f
+[2025-06-11T06:04:57.433+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_ods_merge_v2' AIRFLOW_CTX_TASK_ID='ods_merge_group.merge_customer_addresses' AIRFLOW_CTX_EXECUTION_DATE='2025-06-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-10T00:00:00+00:00'
+[2025-06-11T06:04:57.435+0000] {connection.py:486} INFO - Snowflake Connector for Python Version: 3.15.0, Python Version: 3.10.13, Platform: Linux-6.11.0-26-generic-x86_64-with-glibc2.36
+[2025-06-11T06:04:57.435+0000] {connection.py:1391} INFO - Connecting to GLOBAL Snowflake domain
+[2025-06-11T06:05:05.737+0000] {logging_mixin.py:188} INFO - Successfully connected to Snowflake via snowflake.connector.
+[2025-06-11T06:05:05.738+0000] {logging_mixin.py:188} INFO - Running merge for customer_addresses...
+[2025-06-11T06:05:06.973+0000] {logging_mixin.py:188} INFO - Error running merge for customer_addresses: 001790 (42601): 01bcf3ad-0305-97a6-0008-654b0013218a: SQL compilation error:
+inconsistent data type for result columns for set operator input branches, expected TIMESTAMP_TZ(9), got TIMESTAMP_LTZ(9)
+[2025-06-11T06:05:07.582+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/master_ods_dag.py", line 171, in merge_table
+    run_merge_query(t)
+  File "/opt/airflow/dags/master_ods_dag.py", line 150, in run_merge_query
+    cursor.execute(merge_sql)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/cursor.py", line 1134, in execute
+    Error.errorhandler_wrapper(self.connection, self, error_class, errvalue)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/errors.py", line 279, in errorhandler_wrapper
+    handed_over = Error.hand_to_other_handler(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/errors.py", line 334, in hand_to_other_handler
+    cursor.errorhandler(connection, cursor, error_class, error_value)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/errors.py", line 210, in default_errorhandler
+    raise error_class(
+snowflake.connector.errors.ProgrammingError: 001790 (42601): 01bcf3ad-0305-97a6-0008-654b0013218a: SQL compilation error:
+inconsistent data type for result columns for set operator input branches, expected TIMESTAMP_TZ(9), got TIMESTAMP_LTZ(9)
+[2025-06-11T06:05:07.594+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=multi_region_ods_merge_v2, task_id=ods_merge_group.merge_customer_addresses, execution_date=20250610T000000, start_date=20250611T060457, end_date=20250611T060507
+[2025-06-11T06:05:07.612+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 1360 for task ods_merge_group.merge_customer_addresses (001790 (42601): 01bcf3ad-0305-97a6-0008-654b0013218a: SQL compilation error:
+inconsistent data type for result columns for set operator input branches, expected TIMESTAMP_TZ(9), got TIMESTAMP_LTZ(9); 2747)
+[2025-06-11T06:05:07.651+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-06-11T06:05:07.676+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

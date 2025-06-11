@@ -1,18 +1,31 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import (
-    col, trim, initcap, lower, when, to_timestamp, coalesce, lit, udf,regexp_replace
+    col,
+    trim,
+    initcap,
+    lower,
+    when,
+    to_timestamp,
+    coalesce,
+    lit,
+    udf,
+    regexp_replace,
 )
 from pyspark.sql.types import StringType
 from pyspark.sql import DataFrame
 
 from pyspark.sql.functions import split, regexp_extract, expr
 
+
 # Unified timestamp conversion for various formats
 def safe_to_timestamp_multi_formats(date_col):
     clean_col = trim(
         regexp_replace(
-            regexp_replace(date_col, "(?i)(st|nd|rd|th)", ""),  # Remove ordinal suffixes
-            " +", " "  # Normalize extra spaces
+            regexp_replace(
+                date_col, "(?i)(st|nd|rd|th)", ""
+            ),  # Remove ordinal suffixes
+            " +",
+            " ",  # Normalize extra spaces
         )
     )
 
@@ -23,9 +36,10 @@ def safe_to_timestamp_multi_formats(date_col):
     ts5 = to_timestamp(clean_col, "dd/MM/yyyy")
     ts6 = to_timestamp(clean_col, "yyyy/MM/dd")
     ts7 = to_timestamp(clean_col, "MMMM d yyyy")  # Handles "March 5 2024"
-    ts8 = to_timestamp(clean_col, "MMM d yyyy")    # Handles "Mar 5 2024"
+    ts8 = to_timestamp(clean_col, "MMM d yyyy")  # Handles "Mar 5 2024"
 
     return coalesce(ts1, ts2, ts3, ts4, ts5, ts6, ts7, ts8)
+
 
 # ASIA Inventory Transformation
 def transform_inventory_asia(df):
@@ -39,8 +53,9 @@ def transform_inventory_asia(df):
         safe_to_timestamp_multi_formats(col("last_restock")).alias("last_restocked_at"),
         safe_to_timestamp_multi_formats(col("updated")).alias("updated_at"),
         col("_region"),
-        col("_source")
+        col("_source"),
     )
+
 
 # EU Inventory Transformation
 def transform_inventory_eu(df):
@@ -51,11 +66,14 @@ def transform_inventory_eu(df):
         col("quantity_available"),
         col("quantity_reserved"),
         col("reorder_level"),
-        safe_to_timestamp_multi_formats(col("last_restocked_at")).alias("last_restocked_at"),
+        safe_to_timestamp_multi_formats(col("last_restocked_at")).alias(
+            "last_restocked_at"
+        ),
         safe_to_timestamp_multi_formats(col("updated_at")).alias("updated_at"),
         col("_region"),
-        col("_source")
+        col("_source"),
     )
+
 
 # US Inventory Transformation
 def transform_inventory_us(df):
@@ -66,11 +84,14 @@ def transform_inventory_us(df):
         col("quantity_available"),
         col("quantity_reserved"),
         col("reorder_level"),
-        safe_to_timestamp_multi_formats(col("last_restocked_at")).alias("last_restocked_at"),
+        safe_to_timestamp_multi_formats(col("last_restocked_at")).alias(
+            "last_restocked_at"
+        ),
         safe_to_timestamp_multi_formats(col("updated_at")).alias("updated_at"),
         col("_region"),
-        col("_source")
+        col("_source"),
     )
+
 
 # regions = ["asia", "eu", "us"]
 # load_date = "2025-06-06"
@@ -98,6 +119,7 @@ def transform_inventory_us(df):
 
 
 # print("Regional transformations with GDPR compliance completed.")
+
 
 def transform_inventory(df: DataFrame, region: str) -> DataFrame:
     if region == "asia":

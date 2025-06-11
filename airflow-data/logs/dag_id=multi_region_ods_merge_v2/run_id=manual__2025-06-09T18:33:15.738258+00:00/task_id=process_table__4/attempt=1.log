@@ -1,0 +1,118 @@
+[2025-06-09T18:34:25.880+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_ods_merge_v2.process_table__4 manual__2025-06-09T18:33:15.738258+00:00 [queued]>
+[2025-06-09T18:34:25.904+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_ods_merge_v2.process_table__4 manual__2025-06-09T18:33:15.738258+00:00 [queued]>
+[2025-06-09T18:34:25.904+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-09T18:34:25.931+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_table__4> on 2025-06-09 18:33:15.738258+00:00
+[2025-06-09T18:34:25.945+0000] {standard_task_runner.py:60} INFO - Started process 10418 to run task
+[2025-06-09T18:34:25.952+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_ods_merge_v2', 'process_table__4', 'manual__2025-06-09T18:33:15.738258+00:00', '--job-id', '886', '--raw', '--subdir', 'DAGS_FOLDER/master_ods_dag.py', '--cfg-path', '/tmp/tmp1tmbqg0x']
+[2025-06-09T18:34:25.956+0000] {standard_task_runner.py:88} INFO - Job 886: Subtask process_table__4
+[2025-06-09T18:34:26.065+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_ods_merge_v2.process_table__4 manual__2025-06-09T18:33:15.738258+00:00 [running]> on host 363551e04744
+[2025-06-09T18:34:26.330+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_ods_merge_v2' AIRFLOW_CTX_TASK_ID='process_table__4' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T18:33:15.738258+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-09T18:33:15.738258+00:00'
+[2025-06-09T18:34:26.333+0000] {logging_mixin.py:188} INFO - Processing table products for region us in schema STAGING_US
+[2025-06-09T18:34:26.333+0000] {logging_mixin.py:188} INFO - Running MERGE SQL:
+
+        MERGE INTO ods.products AS ods
+        USING (
+            SELECT
+                p.product_sku,
+                p.product_name,
+                p.product_description,
+                p.category_id,
+                p.price_usd,
+                p.cost_usd,
+                p.weight_kg, p.length_cm, p.width_cm, p.height_cm,
+                NULL AS vat_rate,
+                NULL AS energy_rating,
+                p.is_active,
+                p.created_at,
+                CURRENT_TIMESTAMP AS updated_at,
+                'US' AS source_region,
+                p._source AS source_system
+            FROM us.products p
+        ) src
+        ON ods.product_sku = src.product_sku
+        WHEN MATCHED THEN UPDATE SET
+            product_name = src.product_name,
+            product_description = src.product_description,
+            category_id = src.category_id,
+            price_usd = src.price_usd,
+            cost_usd = src.cost_usd,
+            weight_kg = src.weight_kg,
+            length_cm = src.length_cm,
+            width_cm = src.width_cm,
+            height_cm = src.height_cm,
+            vat_rate = src.vat_rate,
+            energy_rating = src.energy_rating,
+            is_active = src.is_active,
+            updated_at = src.updated_at,
+            source_region = src.source_region,
+            source_system = src.source_system
+        WHEN NOT MATCHED THEN INSERT (
+            product_sku, product_name, product_description, category_id,
+            price_usd, cost_usd, weight_kg, length_cm, width_cm, height_cm,
+            vat_rate, energy_rating, is_active, created_at, updated_at,
+            source_region, source_system
+        ) VALUES (
+            src.product_sku, src.product_name, src.product_description, src.category_id,
+            src.price_usd, src.cost_usd, src.weight_kg, src.length_cm, src.width_cm, src.height_cm,
+            src.vat_rate, src.energy_rating, src.is_active, src.created_at, src.updated_at,
+            src.source_region, src.source_system
+        );
+        
+[2025-06-09T18:34:26.367+0000] {base.py:83} INFO - Using connection ID 'snowflake_ods' for task execution.
+[2025-06-09T18:34:26.369+0000] {connection.py:486} INFO - Snowflake Connector for Python Version: 3.15.0, Python Version: 3.10.13, Platform: Linux-6.11.0-26-generic-x86_64-with-glibc2.36
+[2025-06-09T18:34:26.371+0000] {connection.py:1391} INFO - Connecting to GLOBAL Snowflake domain
+[2025-06-09T18:34:29.484+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/master_ods_dag.py", line 126, in process_table
+    hook.run(merge_sql)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/providers/snowflake/hooks/snowflake.py", line 382, in run
+    with closing(self.get_conn()) as conn:
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/providers/snowflake/hooks/snowflake.py", line 276, in get_conn
+    conn = connector.connect(**conn_config)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/__init__.py", line 54, in Connect
+    return SnowflakeConnection(**kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/connection.py", line 548, in __init__
+    self.connect(**kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/connection.py", line 901, in connect
+    self.__open_connection()
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/connection.py", line 1293, in __open_connection
+    self.authenticate_with_retry(self.auth_class)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/connection.py", line 1615, in authenticate_with_retry
+    self._authenticate(auth_instance)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/connection.py", line 1647, in _authenticate
+    auth.authenticate(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/auth/_auth.py", line 226, in authenticate
+    ret = self._rest._post_request(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/network.py", line 759, in _post_request
+    ret = self.fetch(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/network.py", line 874, in fetch
+    ret = self._request_exec_wrapper(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/network.py", line 1002, in _request_exec_wrapper
+    raise e
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/network.py", line 924, in _request_exec_wrapper
+    return_object = self._request_exec(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/network.py", line 1201, in _request_exec
+    raise err
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/network.py", line 1150, in _request_exec
+    raise_failed_request_error(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/network.py", line 233, in raise_failed_request_error
+    Error.errorhandler_wrapper(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/errors.py", line 279, in errorhandler_wrapper
+    handed_over = Error.hand_to_other_handler(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/errors.py", line 337, in hand_to_other_handler
+    connection.errorhandler(connection, cursor, error_class, error_value)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/errors.py", line 210, in default_errorhandler
+    raise error_class(
+snowflake.connector.errors.InterfaceError: 250003 (08001): None: 404 Not Found: post https://spb81014.snowflakecomputing.com:443/session/v1/login-request?request_id=4bc9d777-95ca-423f-972e-e3ee3f768e32&databaseName=retail_dwh&schemaName=ods&warehouse=COMPUTE_WH&roleName=ACCOUNTADMIN&request_guid=4fe9e32e-0c09-492c-95e5-949d4bfb7c83
+[2025-06-09T18:34:29.516+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=multi_region_ods_merge_v2, task_id=process_table__4, execution_date=20250609T183315, start_date=20250609T183425, end_date=20250609T183429
+[2025-06-09T18:34:29.539+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 886 for task process_table__4 (250003 (08001): None: 404 Not Found: post https://spb81014.snowflakecomputing.com:443/session/v1/login-request?request_id=4bc9d777-95ca-423f-972e-e3ee3f768e32&databaseName=retail_dwh&schemaName=ods&warehouse=COMPUTE_WH&roleName=ACCOUNTADMIN&request_guid=4fe9e32e-0c09-492c-95e5-949d4bfb7c83; 10418)
+[2025-06-09T18:34:29.575+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-06-09T18:34:29.606+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

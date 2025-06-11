@@ -1,0 +1,35 @@
+payment_method,payment_category,is_digital,processing_fee_percentage,psd2_required
+PayPal,Digital Wallet,TRUE,3.4,FALSE
+Apple Pay,Digital Wallet,TRUE,2.9,FALSE
+Google Pay,Digital Wallet,TRUE,2.9,FALSE
+Samsung Pay,Digital Wallet,TRUE,2.9,FALSE
+Amazon Pay,Digital Wallet,TRUE,3.9,FALSE
+Alipay,Digital Wallet,TRUE,2.5,FALSE
+WeChat Pay,Digital Wallet,TRUE,2.5,FALSE
+Payme,Digital Wallet,TRUE,3.0,FALSE
+Online Banking,Bank Payment,TRUE,0.5,TRUE
+iDEAL,Bank Payment,TRUE,0.29,TRUE
+Sofort,Bank Payment,TRUE,0.9,TRUE
+Giropay,Bank Payment,TRUE,1.2,TRUE
+Bancontact,Bank Payment,TRUE,0.31,TRUE
+EPS,Bank Payment,TRUE,0.35,TRUE
+Klarna,Buy Now Pay Later,TRUE,3.29,TRUE
+Afterpay,Buy Now Pay Later,TRUE,4.0,FALSE
+Clearpay,Buy Now Pay Later,TRUE,4.0,TRUE
+Sezzle,Buy Now Pay Later,TRUE,6.0,FALSE
+Affirm,Buy Now Pay Later,TRUE,2.9,FALSE
+Zip,Buy Now Pay Later,TRUE,4.0,FALSE
+PayPal Pay in 4,Buy Now Pay Later,TRUE,3.49,FALSE
+Loyalty Points,Rewards Payment,FALSE,0.0,FALSE
+Bitcoin,Digital Currency,TRUE,1.0,FALSE
+Ethereum,Digital Currency,TRUE,1.5,FALSE
+Litecoin,Digital Currency,TRUE,1.0,FALSE
+Cryptocurrency,Digital Currency,TRUE,1.0,FALSE
+M-Pesa,Mobile Payment,TRUE,1.5,FALSE
+GrabPay,Mobile Payment,TRUE,2.0,FALSE
+LINE Pay,Mobile Payment,TRUE,2.5,FALSE
+Paytm,Mobile Payment,TRUE,2.0,FALSE
+PhonePe,Mobile Payment,TRUE,1.8,FALSE
+Razorpay,Mobile Payment,TRUE,2.0,FALSE
+Unknown,Unknown,FALSE,0.0,FALSE
+Other,Other,FALSE,2.5,FALSE

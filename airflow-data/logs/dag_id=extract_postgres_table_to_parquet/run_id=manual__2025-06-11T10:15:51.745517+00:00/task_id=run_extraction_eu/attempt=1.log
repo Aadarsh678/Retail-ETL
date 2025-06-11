@@ -1,0 +1,96 @@
+[2025-06-11T10:25:14.081+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction_eu manual__2025-06-11T10:15:51.745517+00:00 [queued]>
+[2025-06-11T10:25:14.094+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction_eu manual__2025-06-11T10:15:51.745517+00:00 [queued]>
+[2025-06-11T10:25:14.094+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-11T10:25:14.113+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_extraction_eu> on 2025-06-11 10:15:51.745517+00:00
+[2025-06-11T10:25:14.122+0000] {standard_task_runner.py:60} INFO - Started process 7703 to run task
+[2025-06-11T10:25:14.125+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'extract_postgres_table_to_parquet', 'run_extraction_eu', 'manual__2025-06-11T10:15:51.745517+00:00', '--job-id', '1528', '--raw', '--subdir', 'DAGS_FOLDER/asia/landing.py', '--cfg-path', '/tmp/tmp2qii3_f8']
+[2025-06-11T10:25:14.128+0000] {standard_task_runner.py:88} INFO - Job 1528: Subtask run_extraction_eu
+[2025-06-11T10:25:14.225+0000] {task_command.py:423} INFO - Running <TaskInstance: extract_postgres_table_to_parquet.run_extraction_eu manual__2025-06-11T10:15:51.745517+00:00 [running]> on host 0290689661db
+[2025-06-11T10:25:14.380+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='extract_postgres_table_to_parquet' AIRFLOW_CTX_TASK_ID='run_extraction_eu' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T10:15:51.745517+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T10:15:51.745517+00:00'
+[2025-06-11T10:25:14.382+0000] {logging_mixin.py:188} INFO - Starting extraction for table: categories in region: eu
+[2025-06-11T10:25:14.382+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:25:39.732+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2000-01-01 00:00:00.000
+[2025-06-11T10:25:46.188+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-06-11T10:25:46.200+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable last_extracted_parquet_timestamp_eu_categories to 2025-06-11 02:14:31
+[2025-06-11T10:25:46.301+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=eu/table=categories/load_date=2025-06-11/
+[2025-06-11T10:25:54.292+0000] {logging_mixin.py:188} INFO - +-----------+---------------+--------------------+------------------+--------------------+---------+--------------+--------------------+--------------------+-------+--------+
+|category_id|  category_name| category_name_local|parent_category_id|       category_path|is_active|gdpr_sensitive|          created_at|          updated_at|_region| _source|
++-----------+---------------+--------------------+------------------+--------------------+---------+--------------+--------------------+--------------------+-------+--------+
+|          1|    Electronics|          Elektronik|              NULL|        /Electronics|        1|         false|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          2|    SMARTPHONES|         SMARTPHONES|                 1|/Electronics/Smar...|        1|         false|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          3|        laptops|             laptops|                 1|/Electronics/Laptops|        1|         false|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          4|         Gaming|              Spiele|                 1| /Electronics/Gaming|        1|         false|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          5|       CLOTHING|            KLEIDUNG|              NULL|           /Clothing|        1|         false|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          6|      mens wear|    herrenbekleidung|                 5|      /Clothing/Mens|        1|         false|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          7|    WOMENS WEAR|     DAMENBEKLEIDUNG|                 5|    /Clothing/Womens|        1|         false|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          8|  Home & Garden|       Haus & Garten|              NULL|        /Home-Garden|        1|         false|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          9|      furniture|               möbel|                 8|/Home-Garden/Furn...|        1|         false|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         10|          BOOKS|              BÜCHER|              NULL|              /Books|        1|          true|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         11|health & beauty|gesundheit & schö...|              NULL|      /Health-Beauty|        1|          true|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         12|         Sports|               Sport|              NULL|             /Sports|        1|         false|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         13|     automotive|           automobil|              NULL|         /Automotive|        0|         false|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         14|           TOYS|           SPIELZEUG|              NULL|               /Toys|        1|         false|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         15|        jewelry|             schmuck|              NULL|            /Jewelry|        1|         false|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
++-----------+---------------+--------------------+------------------+--------------------+---------+--------------+--------------------+--------------------+-------+--------+
+[2025-06-11T10:25:55.225+0000] {logging_mixin.py:188} INFO - Finished extraction for categories
+[2025-06-11T10:25:55.226+0000] {logging_mixin.py:188} INFO - Starting extraction for table: products in region: eu
+[2025-06-11T10:25:55.226+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:25:58.791+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2000-01-01 00:00:00.000
+[2025-06-11T10:26:01.106+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable last_extracted_parquet_timestamp_eu_products to 2025-06-11 02:14:31
+[2025-06-11T10:26:01.236+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=eu/table=products/load_date=2025-06-11/
+[2025-06-11T10:26:03.521+0000] {logging_mixin.py:188} INFO - +----------+--------------------+--------------------+--------------------+-----------+--------------+--------+--------------+---------+---------+--------+---------+-------------+---------+--------------------+--------------------+-------+--------+
+|product_id|         product_sku|        product_name| product_description|category_id|base_price_eur|vat_rate|cost_price_eur|weight_kg|length_cm|width_cm|height_cm|energy_rating|is_active|          created_at|          updated_at|_region| _source|
++----------+--------------------+--------------------+--------------------+-----------+--------------+--------+--------------+---------+---------+--------+---------+-------------+---------+--------------------+--------------------+-------+--------+
+|         1|     EU-SKU-PHONE001|       iPhone 15 Pro|Latest Apple smar...|          2|       1199.99|   19.00|        800.00|    0.221|    15.90|    7.60|     0.83|         NULL|        1|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         2|    EU-SKU-LAPTOP001|      MACBOOK AIR M2|Apple MacBook Air...|          3|       1299.99|   19.00|        900.00|    1.240|    30.41|   21.24|     1.13|          A++|        1|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         3|      EU-SKU-GAME001|       playstation 5|Sony PlayStation ...|          4|        499.99|   19.00|        350.00|    4.500|    39.00|   26.00|    10.40|            B|        1|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         4|     EU-SKU-SHIRT001|      Cotton T-Shirt|Premium cotton t-...|          6|         29.99|   19.00|         12.00|    0.200|    30.00|   25.00|     2.00|         NULL|        1|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         5|     EU-SKU-DRESS001|        SUMMER DRESS|Elegant summer dr...|          7|         89.99|   19.00|         35.00|    0.300|    40.00|   30.00|     3.00|         NULL|        1|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         6|      EU-SKU-SOFA001|        leather sofa|Premium leather 3...|          9|       1599.99|   19.00|        800.00|   85.000|   220.00|   90.00|    85.00|         NULL|        1|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         7|      EU-SKU-BOOK001|  DATA PRIVACY GUIDE|Complete guide to...|         10|         39.99|    7.00|         15.00|    0.500|    24.00|   17.00|     2.50|         NULL|        1|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         8|     EU-SKU-CREAM001|    anti aging cream|Premium anti-agin...|         11|         79.99|   19.00|         25.00|    0.050|     8.00|    8.00|     6.00|         NULL|        1|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         9|      EU-SKU-BIKE001|       MOUNTAIN BIKE|Professional moun...|         12|        899.99|   19.00|        450.00|   15.500|   180.00|   65.00|   110.00|         NULL|        1|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|        10|       EU-SKU-TOY001|     lego castle set|Medieval castle L...|         14|        149.99|   19.00|         75.00|    2.100|    35.00|   25.00|    15.00|         NULL|        1|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|        11|     EU-SKU-WATCH001|         SMART WATCH|Fitness tracking ...|         15|        299.99|   19.00|        120.00|    0.045|     4.50|    4.00|     1.20|         NULL|        1|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|        12|    EU-SKU-FRIDGE001|energy efficient ...|A+++ energy rated...|          8|        799.99|   19.00|        400.00|   65.000|   180.00|   60.00|    85.00|         A+++|        1|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|        13|     EU-SKU-PHONE002|  SAMSUNG GALAXY S24|Latest Samsung fl...|          2|        999.99|   19.00|        650.00|    0.196|    15.80|    7.10|     0.79|         NULL|        1|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|        14|EU-SKU-HEADPHONES001| wireless headphones|Noise-cancelling ...|          1|        249.99|   19.00|        100.00|    0.250|    20.00|   18.00|     8.00|         NULL|        1|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|        15|    EU-SKU-TABLET001|            IPAD PRO|Apple iPad Pro 12...|          1|       1099.99|   19.00|        700.00|    0.682|    28.00|   21.50|     0.64|         NULL|        1|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
++----------+--------------------+--------------------+--------------------+-----------+--------------+--------+--------------+---------+---------+--------+---------+-------------+---------+--------------------+--------------------+-------+--------+
+[2025-06-11T10:26:03.943+0000] {logging_mixin.py:188} INFO - Finished extraction for products
+[2025-06-11T10:26:03.944+0000] {logging_mixin.py:188} INFO - Starting extraction for table: product_variants in region: eu
+[2025-06-11T10:26:03.944+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:26:08.229+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2000-01-01 00:00:00.000
+[2025-06-11T10:26:10.150+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable last_extracted_parquet_timestamp_eu_product_variants to 2025-06-11 02:14:31
+[2025-06-11T10:26:10.224+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=eu/table=product_variants/load_date=2025-06-11/
+[2025-06-11T10:26:11.999+0000] {logging_mixin.py:188} INFO - +----------+----------+--------------------+--------------------+-------------+-------------+--------------------+---------+--------------------+-------+--------+
+|variant_id|product_id|                 sku|        variant_name| variant_type|variant_value|price_adjustment_eur|is_active|          created_at|_region| _source|
++----------+----------+--------------------+--------------------+-------------+-------------+--------------------+---------+--------------------+-------+--------+
+|         1|         1|EU-SKU-PHONE001-B...|iPhone 15 Pro Bla...|color_storage|  Black 128GB|                0.00|        1|2025-06-11 02:14:...|     eu|postgres|
+|         2|         1|EU-SKU-PHONE001-B...|iPhone 15 Pro Blu...|color_storage|   Blue 256GB|              200.00|        1|2025-06-11 02:14:...|     eu|postgres|
+|         3|         1|EU-SKU-PHONE001-W...|iPhone 15 Pro Whi...|color_storage|  White 512GB|              400.00|        1|2025-06-11 02:14:...|     eu|postgres|
+|         4|         2|EU-SKU-LAPTOP001-...|MacBook Air Silve...| color_memory|   Silver 8GB|                0.00|        1|2025-06-11 02:14:...|     eu|postgres|
+|         5|         2|EU-SKU-LAPTOP001-...|MacBook Air Gold ...| color_memory|    Gold 16GB|              300.00|        1|2025-06-11 02:14:...|     eu|postgres|
+|         6|         3|EU-SKU-GAME001-ST...|PlayStation 5 Sta...|      edition|     Standard|                0.00|        1|2025-06-11 02:14:...|     eu|postgres|
+|         7|         3|EU-SKU-GAME001-DI...|PlayStation 5 Dig...|      edition|      Digital|             -100.00|        1|2025-06-11 02:14:...|     eu|postgres|
+|         8|         4|EU-SKU-SHIRT001-R...|Cotton T-Shirt Re...|   color_size|        Red M|                0.00|        1|2025-06-11 02:14:...|     eu|postgres|
+|         9|         4|EU-SKU-SHIRT001-B...|Cotton T-Shirt Bl...|   color_size|       Blue L|                5.00|        1|2025-06-11 02:14:...|     eu|postgres|
+|        10|         4|EU-SKU-SHIRT001-B...|Cotton T-Shirt Bl...|   color_size|     Black XL|               10.00|        1|2025-06-11 02:14:...|     eu|postgres|
+|        11|         5|EU-SKU-DRESS001-R...|Summer Dress Red ...|   color_size|        Red S|                0.00|        1|2025-06-11 02:14:...|     eu|postgres|
+|        12|         5|EU-SKU-DRESS001-B...|Summer Dress Blue...|   color_size|       Blue M|                0.00|        1|2025-06-11 02:14:...|     eu|postgres|
+|        13|         5|EU-SKU-DRESS001-B...|Summer Dress Blac...|   color_size|      Black L|               15.00|        1|2025-06-11 02:14:...|     eu|postgres|
+|        14|         6|EU-SKU-SOFA001-BROWN|  Leather Sofa Brown|        color|        Brown|                0.00|        1|2025-06-11 02:14:...|     eu|postgres|
+|        15|         6|EU-SKU-SOFA001-BLACK|  Leather Sofa Black|        color|        Black|              200.00|        1|2025-06-11 02:14:...|     eu|postgres|
+|        16|         7|   EU-SKU-BOOK001-EN|Data Privacy Guid...|     language|      English|                0.00|        1|2025-06-11 02:14:...|     eu|postgres|
+|        17|         7|   EU-SKU-BOOK001-DE|Data Privacy Guid...|     language|       German|                0.00|        1|2025-06-11 02:14:...|     eu|postgres|
+|        18|         8|EU-SKU-CREAM001-50ML|Anti Aging Cream ...|         size|         50ml|                0.00|        1|2025-06-11 02:14:...|     eu|postgres|
+|        19|         8|EU-SKU-CREAM001-1...|Anti Aging Cream ...|         size|        100ml|               30.00|        1|2025-06-11 02:14:...|     eu|postgres|
+|        20|         9|EU-SKU-BIKE001-RED-M|Mountain Bike Red...|   color_size|        Red M|                0.00|        1|2025-06-11 02:14:...|     eu|postgres|
++----------+----------+--------------------+--------------------+-------------+-------------+--------------------+---------+--------------------+-------+--------+
+only showing top 20 rows
+[2025-06-11T10:26:12.340+0000] {logging_mixin.py:188} INFO - Finished extraction for product_variants
+[2025-06-11T10:26:12.341+0000] {logging_mixin.py:188} INFO - Starting extraction for table: inventory in region: eu
+[2025-06-11T10:26:12.342+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:26:16.606+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2000-01-01 00:00:00.000
+[2025-06-11T10:26:18.912+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable last_extracted_parquet_timestamp_eu_inventory to 2025-06-11 02:14:31
+[2025-06-11T10:26:18.959+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=eu/table=inventory/load_date=2025-06-11/

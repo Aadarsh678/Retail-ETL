@@ -28,16 +28,16 @@
 #         input_path = f"/opt/airflow/data/raw/region={region}/table={TABLE_NAME}/load_date={load_date}/"
 
 #         output_path = f"/opt/airflow/data/staging/{TABLE_NAME}/region={region}/load_date={load_date}/"
-        
+
 #         df_raw = spark.read.parquet(input_path)
 #         df_transformed = transform_products(df_raw, region)
-        
+
 #         df_transformed.coalesce(1).write \
 #             .option("header", True) \
 #             .option("delimiter", ",") \
 #             .mode("overwrite") \
 #             .csv(output_path)
-        
+
 #         spark.stop()
 
 #     load_date = "2025-06-06"
@@ -78,16 +78,16 @@
 #         input_path = f"/opt/airflow/data/raw/region={region}/table={TABLE_NAME}/load_date={load_date}/"
 
 #         output_path = f"/opt/airflow/data/staging/{TABLE_NAME}/region={region}/load_date={load_date}/"
-        
+
 #         df_raw = spark.read.parquet(input_path)
 #         df_transformed = transform_customer_addressess(df_raw, region)
-        
+
 #         df_transformed.coalesce(1).write \
 #             .option("header", True) \
 #             .option("delimiter", ",") \
 #             .mode("overwrite") \
 #             .csv(output_path)
-        
+
 #         spark.stop()
 
 #     load_date = "2025-06-06"
@@ -116,6 +116,7 @@ from scripts.pyspark_jobs.products import transform_products_table
 
 TABLE_NAME = "products"
 
+
 @dag(
     dag_id="transform_products",
     schedule="0 1 * * *",  # Daily at 1 AM (after extraction)
@@ -124,33 +125,23 @@ TABLE_NAME = "products"
     dagrun_timeout=datetime.timedelta(minutes=60),
     tags=["spark", "transformation", "csv"],
     max_active_tasks=10,
-    max_active_runs=1
+    max_active_runs=1,
 )
 def transform_products_dag():
 
     @task
     def run_transformation_asia():
         transform_products_table(
-            region="asia",
-            table=TABLE_NAME,
-            load_date="2025-06-08"
+            region="asia", table=TABLE_NAME, load_date="2025-06-08"
         )
 
     @task
     def run_transformation_eu():
-        transform_products_table(
-            region="eu",
-            table=TABLE_NAME,
-            load_date="2025-06-08"
-        )
+        transform_products_table(region="eu", table=TABLE_NAME, load_date="2025-06-08")
 
     @task
     def run_transformation_us():
-        transform_products_table(
-            region="us",
-            table=TABLE_NAME,
-            load_date="2025-06-08"
-        )
+        transform_products_table(region="us", table=TABLE_NAME, load_date="2025-06-08")
 
     # Run transformations in parallel
     run_transformation_asia()

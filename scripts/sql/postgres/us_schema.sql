@@ -218,6 +218,20 @@ CREATE TABLE IF NOT EXISTS us.shipments (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- US specific: USD budgets with currency conversion tracking
+CREATE TABLE marketing_campaigns (
+    campaign_id SERIAL PRIMARY KEY,
+    campaign_name VARCHAR(255) NOT NULL, -- "Black Friday 2024", "Summer Sale"
+    campaign_type VARCHAR(50), -- "email", "social", "ppc", "display"
+    channel VARCHAR(100), -- "google_ads", "facebook", "instagram"
+    start_date DATE, -- Campaign start
+    end_date DATE, -- Campaign end
+    budget_usd DECIMAL(12,2), -- Campaign budget in USD
+    target_audience TEXT, -- Audience description
+    campaign_status VARCHAR(20), -- "active", "paused", "completed"
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Returns and Refunds - Return merchandise authorization
 -- US specific: USD refunds, liberal return policy
 CREATE TABLE IF NOT EXISTS us.returns (

@@ -1,0 +1,34 @@
+[2025-06-11T02:44:24.338+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_to_snowflake.process_region_eu.process_cart_items_eu scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T02:44:24.362+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_to_snowflake.process_region_eu.process_cart_items_eu scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T02:44:24.363+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-11T02:44:24.393+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_eu.process_cart_items_eu> on 2025-06-10 00:00:00+00:00
+[2025-06-11T02:44:24.407+0000] {standard_task_runner.py:60} INFO - Started process 47249 to run task
+[2025-06-11T02:44:24.412+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_to_snowflake', 'process_region_eu.process_cart_items_eu', 'scheduled__2025-06-10T00:00:00+00:00', '--job-id', '1266', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmp1wkz8r7b']
+[2025-06-11T02:44:24.415+0000] {standard_task_runner.py:88} INFO - Job 1266: Subtask process_region_eu.process_cart_items_eu
+[2025-06-11T02:44:24.541+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_to_snowflake.process_region_eu.process_cart_items_eu scheduled__2025-06-10T00:00:00+00:00 [running]> on host 5039a2bbff84
+[2025-06-11T02:44:24.775+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_to_snowflake' AIRFLOW_CTX_TASK_ID='process_region_eu.process_cart_items_eu' AIRFLOW_CTX_EXECUTION_DATE='2025-06-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-10T00:00:00+00:00'
+[2025-06-11T02:44:38.725+0000] {logging_mixin.py:188} INFO - Processing cart_items for region eu
+[2025-06-11T02:44:51.879+0000] {logging_mixin.py:188} INFO - STAGING_EU
+[2025-06-11T02:45:04.182+0000] {logging_mixin.py:188} INFO - +------------+-------+----------+--------+--------------+-------------------+-------------------+-------+--------+
+|cart_item_id|cart_id|variant_id|quantity|unit_price_eur|           added_at|         updated_at|_region| _source|
++------------+-------+----------+--------+--------------+-------------------+-------------------+-------+--------+
+|           1|      1|         2|       1|       1399.99|2025-06-08 19:22:57|2025-06-08 19:22:57|     eu|postgres|
+|           2|      1|         8|       2|         29.99|2025-06-08 19:22:57|2025-06-08 19:22:57|     eu|postgres|
+|           3|      2|        15|       1|       1799.99|2025-06-08 19:22:57|2025-06-08 19:22:57|     eu|postgres|
+|           4|      3|        19|       1|        109.99|2025-06-08 19:22:57|2025-06-08 19:22:57|     eu|postgres|
+|           5|      4|         6|       1|        399.99|2025-06-08 19:22:57|2025-06-08 19:22:57|     eu|postgres|
+|           6|      5|        12|       1|        999.99|2025-06-08 19:22:57|2025-06-08 19:22:57|     eu|postgres|
+|           1|      1|         2|       1|       1399.99|2025-06-08 19:22:57|2025-06-08 19:22:57|     eu|postgres|
+|           2|      1|         8|       2|         29.99|2025-06-08 19:22:57|2025-06-08 19:22:57|     eu|postgres|
+|           3|      2|        15|       1|       1799.99|2025-06-08 19:22:57|2025-06-08 19:22:57|     eu|postgres|
+|           4|      3|        19|       1|        109.99|2025-06-08 19:22:57|2025-06-08 19:22:57|     eu|postgres|
++------------+-------+----------+--------+--------------+-------------------+-------------------+-------+--------+
+only showing top 10 rows
+[2025-06-11T02:45:04.183+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-11T02:45:17.774+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-11T02:45:17.790+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-06-11T02:45:19.093+0000] {logging_mixin.py:188} INFO - Successfully processed 12 records for cart_items in eu
+[2025-06-11T02:45:20.732+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'eu', 'table': 'cart_items', 'record_count': 12, 'status': 'success'}
+[2025-06-11T02:45:20.868+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_to_snowflake, task_id=process_region_eu.process_cart_items_eu, execution_date=20250610T000000, start_date=20250611T024424, end_date=20250611T024520
+[2025-06-11T02:45:20.989+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T02:45:21.109+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

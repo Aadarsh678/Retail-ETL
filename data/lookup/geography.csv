@@ -1,0 +1,28 @@
+country_code,country_name,region,continent,currency_code,timezone,gdpr_applicable
+US,United States,US,North America,USD,America/New_York,FALSE
+CA,Canada,US,North America,CAD,America/Toronto,FALSE
+MX,Mexico,US,North America,MXN,America/Mexico_City,FALSE
+GB,United Kingdom,EU,Europe,GBP,Europe/London,TRUE
+DE,Germany,EU,Europe,EUR,Europe/Berlin,TRUE
+FR,France,EU,Europe,EUR,Europe/Paris,TRUE
+IT,Italy,EU,Europe,EUR,Europe/Rome,TRUE
+ES,Spain,EU,Europe,EUR,Europe/Madrid,TRUE
+NL,Netherlands,EU,Europe,EUR,Europe/Amsterdam,TRUE
+SE,Sweden,EU,Europe,SEK,Europe/Stockholm,TRUE
+PL,Poland,EU,Europe,PLN,Europe/Warsaw,TRUE
+IE,Ireland,EU,Europe,EUR,Europe/Dublin,TRUE
+BE,Belgium,EU,Europe,EUR,Europe/Brussels,TRUE
+CH,Switzerland,EU,Europe,CHF,Europe/Zurich,TRUE
+AT,Austria,EU,Europe,EUR,Europe/Vienna,TRUE
+CN,China,ASIA,Asia,CNY,Asia/Shanghai,FALSE
+JP,Japan,ASIA,Asia,JPY,Asia/Tokyo,FALSE
+KR,South Korea,ASIA,Asia,KRW,Asia/Seoul,FALSE
+SG,Singapore,ASIA,Asia,SGD,Asia/Singapore,FALSE
+IN,India,ASIA,Asia,INR,Asia/Kolkata,FALSE
+ID,Indonesia,ASIA,Asia,IDR,Asia/Jakarta,FALSE
+MY,Malaysia,ASIA,Asia,MYR,Asia/Kuala_Lumpur,FALSE
+TH,Thailand,ASIA,Asia,THB,Asia/Bangkok,FALSE
+PH,Philippines,ASIA,Asia,PHP,Asia/Manila,FALSE
+VN,Vietnam,ASIA,Asia,VND,Asia/Ho_Chi_Minh,FALSE
+AU,Australia,ASIA,Oceania,AUD,Australia/Sydney,FALSE
+NZ,New Zealand,ASIA,Oceania,NZD,Pacific/Auckland,FALSE

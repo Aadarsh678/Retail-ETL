@@ -1,0 +1,44 @@
+[2025-06-10T20:38:04.714+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: load_to_star_schema.star_merge_group.star_dim_customers manual__2025-06-10T20:36:51.030698+00:00 [queued]>
+[2025-06-10T20:38:04.725+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: load_to_star_schema.star_merge_group.star_dim_customers manual__2025-06-10T20:36:51.030698+00:00 [queued]>
+[2025-06-10T20:38:04.726+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-10T20:38:04.744+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): star_merge_group.star_dim_customers> on 2025-06-10 20:36:51.030698+00:00
+[2025-06-10T20:38:04.757+0000] {standard_task_runner.py:60} INFO - Started process 39345 to run task
+[2025-06-10T20:38:04.760+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'load_to_star_schema', 'star_merge_group.star_dim_customers', 'manual__2025-06-10T20:36:51.030698+00:00', '--job-id', '1146', '--raw', '--subdir', 'DAGS_FOLDER/star/master_dim.py', '--cfg-path', '/tmp/tmpeonao79e']
+[2025-06-10T20:38:04.762+0000] {standard_task_runner.py:88} INFO - Job 1146: Subtask star_merge_group.star_dim_customers
+[2025-06-10T20:38:04.857+0000] {task_command.py:423} INFO - Running <TaskInstance: load_to_star_schema.star_merge_group.star_dim_customers manual__2025-06-10T20:36:51.030698+00:00 [running]> on host 9820768629fb
+[2025-06-10T20:38:04.992+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='load_to_star_schema' AIRFLOW_CTX_TASK_ID='star_merge_group.star_dim_customers' AIRFLOW_CTX_EXECUTION_DATE='2025-06-10T20:36:51.030698+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-10T20:36:51.030698+00:00'
+[2025-06-10T20:38:04.993+0000] {connection.py:486} INFO - Snowflake Connector for Python Version: 3.15.0, Python Version: 3.10.13, Platform: Linux-6.11.0-26-generic-x86_64-with-glibc2.36
+[2025-06-10T20:38:04.994+0000] {connection.py:1391} INFO - Connecting to GLOBAL Snowflake domain
+[2025-06-10T20:38:06.667+0000] {logging_mixin.py:188} INFO - Successfully connected to Snowflake via snowflake.connector.
+[2025-06-10T20:38:06.668+0000] {logging_mixin.py:188} INFO - Running merge for customers...
+[2025-06-10T20:38:07.097+0000] {logging_mixin.py:188} INFO - Error running merge for customers: 002003 (42S02): 01bcf176-0305-9462-0008-654b0012611a: SQL compilation error:
+Object 'DIM_GEOGRAPHY' does not exist or not authorized.
+[2025-06-10T20:38:07.681+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/star/master_dim.py", line 92, in merge_table
+    run_merge_query(t)
+  File "/opt/airflow/dags/star/master_dim.py", line 77, in run_merge_query
+    cursor.execute(merge_sql)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/cursor.py", line 1134, in execute
+    Error.errorhandler_wrapper(self.connection, self, error_class, errvalue)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/errors.py", line 279, in errorhandler_wrapper
+    handed_over = Error.hand_to_other_handler(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/errors.py", line 334, in hand_to_other_handler
+    cursor.errorhandler(connection, cursor, error_class, error_value)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/errors.py", line 210, in default_errorhandler
+    raise error_class(
+snowflake.connector.errors.ProgrammingError: 002003 (42S02): 01bcf176-0305-9462-0008-654b0012611a: SQL compilation error:
+Object 'DIM_GEOGRAPHY' does not exist or not authorized.
+[2025-06-10T20:38:07.697+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=load_to_star_schema, task_id=star_merge_group.star_dim_customers, execution_date=20250610T203651, start_date=20250610T203804, end_date=20250610T203807
+[2025-06-10T20:38:07.719+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 1146 for task star_merge_group.star_dim_customers (002003 (42S02): 01bcf176-0305-9462-0008-654b0012611a: SQL compilation error:
+Object 'DIM_GEOGRAPHY' does not exist or not authorized.; 39345)
+[2025-06-10T20:38:07.742+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-06-10T20:38:07.769+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

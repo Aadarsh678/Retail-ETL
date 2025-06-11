@@ -1,7 +1,17 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import (
-    col, trim, initcap, lower, upper, when,regexp_replace, to_date, to_timestamp,
-    regexp_extract, lit, coalesce
+    col,
+    trim,
+    initcap,
+    lower,
+    upper,
+    when,
+    regexp_replace,
+    to_date,
+    to_timestamp,
+    regexp_extract,
+    lit,
+    coalesce,
 )
 from pyspark.sql.functions import udf
 from pyspark.sql.types import StringType
@@ -19,24 +29,33 @@ spark.conf.set("spark.sql.legacy.timeParserPolicy", "LEGACY")
 region = "asia"
 table = "customers1"
 load_date = "2025-06-05"
-input_path = f"/opt/airflow/data/raw/region={region}/table={table}/load_date={load_date}/"
+input_path = (
+    f"/opt/airflow/data/raw/region={region}/table={table}/load_date={load_date}/"
+)
 
 df = spark.read.parquet(input_path)
 df.show()
 
+
 # Normalize sex values to standard categories or NULL
 def normalize_sex(sex_col):
-    return when(lower(sex_col).isin('m', 'male'), 'Male') \
-           .when(lower(sex_col).isin('f', 'female'), 'Female') \
-           .when(lower(sex_col).isin('other', 'o'), 'Other') \
-           .otherwise(None)
+    return (
+        when(lower(sex_col).isin("m", "male"), "Male")
+        .when(lower(sex_col).isin("f", "female"), "Female")
+        .when(lower(sex_col).isin("other", "o"), "Other")
+        .otherwise(None)
+    )
+
 
 # Try parsing date in multiple formats
 def safe_to_timestamp_multi_formats(date_col):
     clean_col = trim(
         regexp_replace(
-            regexp_replace(date_col, "(?i)(st|nd|rd|th)", ""),  # Remove ordinal suffixes
-            " +", " "  # Normalize extra spaces
+            regexp_replace(
+                date_col, "(?i)(st|nd|rd|th)", ""
+            ),  # Remove ordinal suffixes
+            " +",
+            " ",  # Normalize extra spaces
         )
     )
 
@@ -47,12 +66,14 @@ def safe_to_timestamp_multi_formats(date_col):
     ts5 = to_timestamp(clean_col, "dd/MM/yyyy")
     ts6 = to_timestamp(clean_col, "yyyy/MM/dd")
     ts7 = to_timestamp(clean_col, "MMMM d yyyy")  # Handles "March 5 2024"
-    ts8 = to_timestamp(clean_col, "MMM d yyyy")    # Handles "Mar 5 2024"
+    ts8 = to_timestamp(clean_col, "MMM d yyyy")  # Handles "Mar 5 2024"
 
     return coalesce(ts1, ts2, ts3, ts4, ts5, ts6, ts7, ts8)
 
+
 # Email validation regex
-email_regex = r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
+email_regex = r"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+
 
 def validate_email(email_col):
     return when(email_col.rlike(email_regex), True).otherwise(False)
@@ -62,10 +83,12 @@ def validate_email(email_col):
 def normalize_name(name_col):
     return initcap(trim(name_col))  # e.g., "  jOHN   " → "John"
 
+
 df_normalized = df.select(
     col("cust_id").alias("customer_id"),
     when(validate_email(trim(lower(col("email")))), trim(lower(col("email"))))
-        .otherwise(None).alias("email"),
+    .otherwise(None)
+    .alias("email"),
     normalize_name(col("fname")).alias("first_name"),
     normalize_name(col("lname")).alias("last_name"),
     validate_any_phone_udf(col("phone")).alias("phone"),
@@ -77,7 +100,7 @@ df_normalized = df.select(
     col("source"),
     safe_to_timestamp_multi_formats(col("created")).alias("created_at"),
     col("_region"),
-    col("_source")
+    col("_source"),
 )
 # .withColumn(
 #     "email_valid", validate_email(col("email"))
@@ -87,4 +110,4 @@ df_normalized = df.select(
 #     col("email_valid")
 # )
 
-df_normalized.show(truncate=False,vertical=True)
+df_normalized.show(truncate=False, vertical=True)

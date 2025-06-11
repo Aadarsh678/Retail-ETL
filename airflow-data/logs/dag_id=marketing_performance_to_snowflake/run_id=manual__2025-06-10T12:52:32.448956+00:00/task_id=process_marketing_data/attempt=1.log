@@ -1,0 +1,27 @@
+[2025-06-10T12:52:33.775+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: marketing_performance_to_snowflake.process_marketing_data manual__2025-06-10T12:52:32.448956+00:00 [queued]>
+[2025-06-10T12:52:33.784+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: marketing_performance_to_snowflake.process_marketing_data manual__2025-06-10T12:52:32.448956+00:00 [queued]>
+[2025-06-10T12:52:33.784+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-10T12:52:33.797+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_marketing_data> on 2025-06-10 12:52:32.448956+00:00
+[2025-06-10T12:52:33.802+0000] {standard_task_runner.py:60} INFO - Started process 4845 to run task
+[2025-06-10T12:52:33.805+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'marketing_performance_to_snowflake', 'process_marketing_data', 'manual__2025-06-10T12:52:32.448956+00:00', '--job-id', '1094', '--raw', '--subdir', 'DAGS_FOLDER/csv_to_snowflake_dag.py', '--cfg-path', '/tmp/tmpouwi9rft']
+[2025-06-10T12:52:33.806+0000] {standard_task_runner.py:88} INFO - Job 1094: Subtask process_marketing_data
+[2025-06-10T12:52:33.866+0000] {task_command.py:423} INFO - Running <TaskInstance: marketing_performance_to_snowflake.process_marketing_data manual__2025-06-10T12:52:32.448956+00:00 [running]> on host 2a1e0c00bfff
+[2025-06-10T12:52:33.961+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='marketing_performance_to_snowflake' AIRFLOW_CTX_TASK_ID='process_marketing_data' AIRFLOW_CTX_EXECUTION_DATE='2025-06-10T12:52:32.448956+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-10T12:52:32.448956+00:00'
+[2025-06-10T12:52:33.962+0000] {logging_mixin.py:188} INFO - Starting marketing performance data processing for date: 2025-06-08
+[2025-06-10T12:52:37.437+0000] {logging_mixin.py:188} INFO - Processing csv for region 2025-06-08
+[2025-06-10T12:52:43.168+0000] {logging_mixin.py:188} INFO - [INFO] Found 4 records in CSV file
+[2025-06-10T12:52:43.190+0000] {logging_mixin.py:188} INFO - Sample data:
+[2025-06-10T12:52:43.462+0000] {logging_mixin.py:188} INFO - +-----------+------------------+------------+---------------+-------------+-----------+------+---------+-----------+--------------------+-------------+---------------------+----------+-----------+----------+
+|campaign_id|ad_platform       |ad_id       |ad_group_id    |record_date  |impressions|clicks|spend_usd|conversions|conversion_value_usd|source_region|source_system        |created_at|updated_at |_load_date|
++-----------+------------------+------------+---------------+-------------+-----------+------+---------+-----------+--------------------+-------------+---------------------+----------+-----------+----------+
+|10         | 'Google Ads'     | 'GA_AD_001'| 'GA_ADGRP_001'| '2024-06-01'|5000.0     |100.0 |50.0     |5.0        |250.0               | 'EU'        | 'google_ads_api'    |2025-06-08|NULL       |2025-06-08|
+|10         | 'Facebook Ads'   | 'FB_AD_002'| 'FB_ADGRP_002'| '2024-06-01'|8000.0     |120.0 |60.0     |7.0        |350.0               | 'EU'        | 'facebook_ads_api'  |2025-06-08|NULL       |2025-06-08|
+|11         | 'Google Ads'     | 'GA_AD_003'| 'GA_ADGRP_003'| '2024-06-05'|3000.0     |80.0  |40.0     |3.0        |150.0               | 'US'        | 'google_ads_api'    |2025-06-08|NULL       |2025-06-08|
+|11         | 'Email Marketing'| 'EMAIL_001'| NULL          | '2024-06-05'|10000.0    |150.0 |0.0      |10.0       |500.0               | 'US'        | 'email_platform_api'|2025-06-08|NULL       |2025-06-08|
++-----------+------------------+------------+---------------+-------------+-----------+------+---------+-----------+--------------------+-------------+---------------------+----------+-----------+----------+
+[2025-06-10T12:52:43.792+0000] {logging_mixin.py:188} INFO - Finished loading for date 2025-06-08
+[2025-06-10T12:52:43.792+0000] {logging_mixin.py:188} INFO - Successfully completed processing for date: 2025-06-08
+[2025-06-10T12:52:43.792+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-06-10T12:52:43.804+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=marketing_performance_to_snowflake, task_id=process_marketing_data, execution_date=20250610T125232, start_date=20250610T125233, end_date=20250610T125243
+[2025-06-10T12:52:43.827+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-10T12:52:43.849+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

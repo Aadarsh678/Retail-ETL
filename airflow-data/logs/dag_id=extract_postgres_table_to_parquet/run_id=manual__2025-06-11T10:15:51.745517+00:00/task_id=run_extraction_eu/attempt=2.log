@@ -1,0 +1,303 @@
+[2025-06-11T10:32:10.654+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction_eu manual__2025-06-11T10:15:51.745517+00:00 [queued]>
+[2025-06-11T10:32:10.697+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction_eu manual__2025-06-11T10:15:51.745517+00:00 [queued]>
+[2025-06-11T10:32:10.701+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 1
+[2025-06-11T10:32:10.758+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_extraction_eu> on 2025-06-11 10:15:51.745517+00:00
+[2025-06-11T10:32:10.793+0000] {standard_task_runner.py:60} INFO - Started process 233 to run task
+[2025-06-11T10:32:10.813+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'extract_postgres_table_to_parquet', 'run_extraction_eu', 'manual__2025-06-11T10:15:51.745517+00:00', '--job-id', '1566', '--raw', '--subdir', 'DAGS_FOLDER/asia/landing.py', '--cfg-path', '/tmp/tmpfv7ivwj1']
+[2025-06-11T10:32:10.850+0000] {standard_task_runner.py:88} INFO - Job 1566: Subtask run_extraction_eu
+[2025-06-11T10:32:11.170+0000] {task_command.py:423} INFO - Running <TaskInstance: extract_postgres_table_to_parquet.run_extraction_eu manual__2025-06-11T10:15:51.745517+00:00 [running]> on host 0290689661db
+[2025-06-11T10:32:11.674+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='extract_postgres_table_to_parquet' AIRFLOW_CTX_TASK_ID='run_extraction_eu' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T10:15:51.745517+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T10:15:51.745517+00:00'
+[2025-06-11T10:32:11.685+0000] {logging_mixin.py:188} INFO - Starting extraction for table: categories in region: eu
+[2025-06-11T10:32:11.687+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:32:54.868+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2025-06-11 02:14:31
+[2025-06-11T10:32:58.398+0000] {logging_mixin.py:188} INFO - [INFO] No new records found in eu.categories
+[2025-06-11T10:32:59.382+0000] {logging_mixin.py:188} INFO - Starting extraction for table: products in region: eu
+[2025-06-11T10:32:59.382+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:33:03.629+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2025-06-11 02:14:31
+[2025-06-11T10:33:04.596+0000] {logging_mixin.py:188} INFO - [INFO] No new records found in eu.products
+[2025-06-11T10:33:05.629+0000] {logging_mixin.py:188} INFO - Starting extraction for table: product_variants in region: eu
+[2025-06-11T10:33:05.629+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:33:09.101+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2025-06-11 02:14:31
+[2025-06-11T10:33:10.207+0000] {logging_mixin.py:188} INFO - [INFO] No new records found in eu.product_variants
+[2025-06-11T10:33:11.205+0000] {logging_mixin.py:188} INFO - Starting extraction for table: inventory in region: eu
+[2025-06-11T10:33:11.205+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:33:14.357+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2025-06-11 02:14:31
+[2025-06-11T10:33:15.321+0000] {logging_mixin.py:188} INFO - [INFO] No new records found in eu.inventory
+[2025-06-11T10:33:16.319+0000] {logging_mixin.py:188} INFO - Starting extraction for table: customers in region: eu
+[2025-06-11T10:33:16.320+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:33:19.110+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2000-01-01 00:00:00.000
+[2025-06-11T10:33:22.275+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-06-11T10:33:22.293+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable last_extracted_parquet_timestamp_eu_customers to 2025-06-11 02:14:31
+[2025-06-11T10:33:22.395+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=eu/table=customers/load_date=2025-06-11/
+[2025-06-11T10:33:29.780+0000] {logging_mixin.py:188} INFO - +-----------+--------------------+-----------------+----------------+---------------+------------+--------------------+-------------+-----------+-------------+-------------------+--------------------+-------------------+--------------------+--------------------+-------+--------+
+|customer_id|          email_hash|first_name_masked|last_name_masked|   phone_masked|country_code|   registration_date|last_login_at|status_code|customer_tier|  gdpr_consent_date|data_retention_until|acquisition_channel|          created_at|          updated_at|_region| _source|
++-----------+--------------------+-----------------+----------------+---------------+------------+--------------------+-------------+-----------+-------------+-------------------+--------------------+-------------------+--------------------+--------------------+-------+--------+
+|          1|  john.doe@email.com|             JOHN|             DOE|+49-30-12345678|          DE|2025-06-11 02:14:...|         NULL|          1|      premium|2024-01-15 09:30:00|          2027-01-15|            organic|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          2|maria.garcia@gmai...|            maria|          garcia| +34-91-1234567|          ES|2025-06-11 02:14:...|         NULL|          1|     standard|2024-01-16 10:45:00|          2027-01-16|       social_media|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          3|PIERRE.MARTIN@YAH...|           Pierre|          MARTIN| +33-1-45678901|          FR|2025-06-11 02:14:...|         NULL|          1|   enterprise|2024-01-17 08:20:00|          2027-01-17|           referral|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          4|anna.rossi@hotmai...|             Anna|           rossi|+39-06-87654321|          IT|2025-06-11 02:14:...|         NULL|          1|     standard|2024-01-18 13:15:00|          2027-01-18|           paid_ads|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          5|LARS.NIELSEN@OUTL...|             lars|         NIELSEN|  +45-33-123456|          DK|2025-06-11 02:14:...|         NULL|          1|      premium|2024-01-19 15:30:00|          2027-01-19|            organic|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          6|   invalid.email.com|           Sophie|          Dubois| +33-2-34567890|          FR|2025-06-11 02:14:...|         NULL|          1|     standard|2024-01-20 11:45:00|          2027-01-20|     email_campaign|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          7|  @missing-local.com|             HANS|         mueller| +49-89-9876543|          DE|2025-06-11 02:14:...|         NULL|          1|     standard|2024-01-21 07:30:00|          2027-01-21|            organic|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          8|no-at-symbol.gmai...|            elena|           POPOV| +359-2-1234567|          BG|2025-06-11 02:14:...|         NULL|          1|      premium|2024-01-22 14:20:00|          2027-01-22|           referral|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          9|   double@@email.com|            Marco|         bianchi|+39-02-11223344|          IT|2025-06-11 02:14:...|         NULL|          1|     standard|2024-01-23 10:10:00|          2027-01-23|       social_media|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         10| spaces in@email.com|           INGRID|         LARSSON|  +46-8-5566778|          SE|2025-06-11 02:14:...|         NULL|          1|   enterprise|2024-01-24 12:55:00|          2027-01-24|           paid_ads|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         11|carlos.lopez@emai...|           carlos|           lopez|        123-456|          ES|2025-06-11 02:14:...|         NULL|          1|     standard|2024-01-25 09:40:00|          2027-01-25|            organic|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         12|EMMA.JOHNSON@GMAI...|             Emma|         JOHNSON|    not-a-phone|          GB|2025-06-11 02:14:...|         NULL|          1|      premium|2024-01-26 13:25:00|          2027-01-26|     email_campaign|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         13|luca.ferrari@yaho...|             Luca|         ferrari|+39-abc-defghij|          IT|2025-06-11 02:14:...|         NULL|          1|     standard|2024-01-27 08:15:00|          2027-01-27|           referral|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         14|MARIE.BERNARD@HOT...|            marie|         BERNARD|++33-1-23456789|          FR|2025-06-11 02:14:...|         NULL|          1|   enterprise|2024-01-28 15:45:00|          2027-01-28|       social_media|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         15|jan.kowalski@gmai...|              Jan|        kowalski|         48-22-|          PL|2025-06-11 02:14:...|         NULL|          1|     standard|2024-01-29 11:30:00|          2027-01-29|           paid_ads|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         16|            invalid@|            PETRA|           novak|  invalid-phone|          CZ|2025-06-11 02:14:...|         NULL|          1|     standard|2024-01-30 10:20:00|          2027-01-30|            organic|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         17|         .com@domain|          antonio|           SILVA|        351-21-|          PT|2025-06-11 02:14:...|         NULL|          1|      premium|2024-01-31 14:35:00|          2027-01-31|     email_campaign|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         18|           user@.com|         Katarina|       jovanovic|    +381-11-abc|          RS|2025-06-11 02:14:...|         NULL|          1|     standard|2024-02-01 07:50:00|          2027-02-01|           referral|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         19|multiple@at@signs...|            NIKOS|    papadopoulos|        30-210-|          GR|2025-06-11 02:14:...|         NULL|          1|   enterprise|2024-02-02 12:40:00|          2027-02-02|       social_media|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|         20|        user@domain.|             olga|          PETROV|       phone123|          BG|2025-06-11 02:14:...|         NULL|          1|     standard|2024-02-03 09:15:00|          2027-02-03|           paid_ads|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
++-----------+--------------------+-----------------+----------------+---------------+------------+--------------------+-------------+-----------+-------------+-------------------+--------------------+-------------------+--------------------+--------------------+-------+--------+
+only showing top 20 rows
+[2025-06-11T10:33:30.225+0000] {logging_mixin.py:188} INFO - Finished extraction for customers
+[2025-06-11T10:33:30.227+0000] {logging_mixin.py:188} INFO - Starting extraction for table: customer_addresses in region: eu
+[2025-06-11T10:33:30.229+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:33:34.008+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2000-01-01 00:00:00.000
+[2025-06-11T10:33:37.121+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable last_extracted_parquet_timestamp_eu_customer_addresses to 2025-06-11 02:14:31
+[2025-06-11T10:33:37.186+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=eu/table=customer_addresses/load_date=2025-06-11/
+[2025-06-11T10:33:39.754+0000] {logging_mixin.py:188} INFO - +----------+-----------+------------+--------------------+----------+--------------------+-----------+------------+----------+--------------------+-------+--------+
+|address_id|customer_id|address_type|      street_address|      city|              region|postal_code|country_code|is_default|          created_at|_region| _source|
++----------+-----------+------------+--------------------+----------+--------------------+-----------+------------+----------+--------------------+-------+--------+
+|         1|          1|     billing|  Unter den Linden 1|    Berlin|              Berlin|      10117|          DE|      true|2025-06-11 02:14:...|     eu|postgres|
+|         2|          1|    shipping|    Alexanderplatz 5|    Berlin|              Berlin|      10178|          DE|     false|2025-06-11 02:14:...|     eu|postgres|
+|         3|          2|     billing|   Calle Gran Vía 28|    Madrid|              Madrid|      28013|          ES|      true|2025-06-11 02:14:...|     eu|postgres|
+|         4|          3|     billing|Avenue des Champs...|     Paris|       Île-de-France|      75008|          FR|      true|2025-06-11 02:14:...|     eu|postgres|
+|         5|          3|    shipping|    Rue de Rivoli 50|     Paris|       Île-de-France|      75001|          FR|     false|2025-06-11 02:14:...|     eu|postgres|
+|         6|          4|     billing|   Via del Corso 123|      Rome|               Lazio|      00186|          IT|      true|2025-06-11 02:14:...|     eu|postgres|
+|         7|          5|     billing|          Strøget 15|Copenhagen|      Capital Region|       1160|          DK|      true|2025-06-11 02:14:...|     eu|postgres|
+|         8|          6|     billing|Boulevard Saint-G...|     Paris|       Île-de-France|      75006|          FR|      true|2025-06-11 02:14:...|     eu|postgres|
+|         9|          7|     billing|       Marienplatz 8|    Munich|             Bavaria|      80331|          DE|      true|2025-06-11 02:14:...|     eu|postgres|
+|        10|          8|     billing|Vitosha Boulevard 89|     Sofia|          Sofia City|       1000|          BG|      true|2025-06-11 02:14:...|     eu|postgres|
+|        11|          9|     billing|Corso Buenos Aire...|     Milan|            Lombardy|      20124|          IT|      true|2025-06-11 02:14:...|     eu|postgres|
+|        12|         10|     billing|   Drottninggatan 32| Stockholm|    Stockholm County|      11151|          SE|      true|2025-06-11 02:14:...|     eu|postgres|
+|        13|         11|     billing| Calle de Alcalá 156|    Madrid|              Madrid|      28009|          ES|      true|2025-06-11 02:14:...|     eu|postgres|
+|        14|         12|     billing|   Oxford Street 200|    London|      Greater London|    W1C 1JH|          GB|      true|2025-06-11 02:14:...|     eu|postgres|
+|        15|         13|     billing|    Via Nazionale 78|      Rome|               Lazio|      00184|          IT|      true|2025-06-11 02:14:...|     eu|postgres|
+|        16|         14|     billing|   Rue de la Paix 25|     Paris|       Île-de-France|      75002|          FR|      true|2025-06-11 02:14:...|     eu|postgres|
+|        17|         15|     billing|       Nowy Świat 45|    Warsaw|Masovian Voivodeship|     00-042|          PL|      true|2025-06-11 02:14:...|     eu|postgres|
+|        18|         16|     billing| Wenceslas Square 12|    Prague|              Prague|      11000|          CZ|      true|2025-06-11 02:14:...|     eu|postgres|
+|        19|         17|     billing|     Rua Augusta 234|    Lisbon|              Lisbon|   1100-053|          PT|      true|2025-06-11 02:14:...|     eu|postgres|
+|        20|         18|     billing|   Knez Mihailova 67|  Belgrade|            Belgrade|      11000|          RS|      true|2025-06-11 02:14:...|     eu|postgres|
++----------+-----------+------------+--------------------+----------+--------------------+-----------+------------+----------+--------------------+-------+--------+
+only showing top 20 rows
+[2025-06-11T10:33:40.385+0000] {logging_mixin.py:188} INFO - Finished extraction for customer_addresses
+[2025-06-11T10:33:40.386+0000] {logging_mixin.py:188} INFO - Starting extraction for table: marketing_campaigns in region: eu
+[2025-06-11T10:33:40.388+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:33:44.494+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2000-01-01 00:00:00.000
+[2025-06-11T10:33:46.397+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable last_extracted_parquet_timestamp_eu_marketing_campaigns to 2025-06-11 02:14:31
+[2025-06-11T10:33:46.561+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=eu/table=marketing_campaigns/load_date=2025-06-11/
+[2025-06-11T10:33:48.555+0000] {logging_mixin.py:188} INFO - +-----------+--------------------+--------------+-----------------+----------+----------+----------+--------------------+---------------+--------------+--------------------+-------+--------+
+|campaign_id|       campaign_name| campaign_type|          channel|start_date|  end_date|budget_eur|     target_audience|campaign_status|gdpr_compliant|          created_at|_region| _source|
++-----------+--------------------+--------------+-----------------+----------+----------+----------+--------------------+---------------+--------------+--------------------+-------+--------+
+|          1|SPRING ELECTRONIC...|      seasonal|            email|2024-03-01|2024-03-31|  15000.00|Electronics enthu...|         active|          true|2025-06-11 02:14:...|     eu|postgres|
+|          2|summer fashion co...|product_launch|     social_media|2024-06-01|2024-08-31|  25000.00|Fashion-conscious...|         active|          true|2025-06-11 02:14:...|     eu|postgres|
+|          3|Back to School Ca...|      seasonal|      paid_search|2024-08-15|2024-09-15|  12000.00|Students and parents|      completed|          true|2025-06-11 02:14:...|     eu|postgres|
+|          4|BLACK FRIDAY MEGA...|   promotional|    multi_channel|2024-11-25|2024-11-29|  50000.00|All customer segm...|      completed|          true|2025-06-11 02:14:...|     eu|postgres|
+|          5|  holiday gift guide|      seasonal|content_marketing|2024-12-01|2024-12-24|   8000.00|         Gift buyers|      completed|          true|2025-06-11 02:14:...|     eu|postgres|
+|          6|New Year Fitness ...|     lifestyle|       influencer|2024-01-01|2024-01-31|  18000.00|Health and fitnes...|      completed|          true|2025-06-11 02:14:...|     eu|postgres|
+|          7|VALENTINE JEWELRY...|      seasonal|      display_ads|2024-02-01|2024-02-14|  10000.00|Couples and gift ...|      completed|          true|2025-06-11 02:14:...|     eu|postgres|
+|          8|eco friendly prod...|sustainability|            email|2024-04-22|2024-05-22|   7500.00|Environmentally c...|         active|          true|2025-06-11 02:14:...|     eu|postgres|
+|          9|Gaming Console La...|product_launch| gaming_platforms|2024-03-15|2024-04-15|  30000.00|   Gamers aged 16-40|      completed|          true|2025-06-11 02:14:...|     eu|postgres|
+|         10|  MOTHER DAY SPECIAL|      seasonal|     social_media|2024-05-01|2024-05-12|   6000.00|Children buying f...|      completed|          true|2025-06-11 02:14:...|     eu|postgres|
++-----------+--------------------+--------------+-----------------+----------+----------+----------+--------------------+---------------+--------------+--------------------+-------+--------+
+[2025-06-11T10:33:49.476+0000] {logging_mixin.py:188} INFO - Finished extraction for marketing_campaigns
+[2025-06-11T10:33:49.476+0000] {logging_mixin.py:188} INFO - Starting extraction for table: discounts in region: eu
+[2025-06-11T10:33:49.477+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:33:53.314+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2000-01-01 00:00:00.000
+[2025-06-11T10:33:55.846+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable last_extracted_parquet_timestamp_eu_discounts to 2025-06-11 02:14:31
+[2025-06-11T10:33:56.060+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=eu/table=discounts/load_date=2025-06-11/
+[2025-06-11T10:33:57.350+0000] {logging_mixin.py:188} INFO - +-----------+-------------+--------------------+-------------+--------------+------------------------+---------------------------+-----------+-----------+-------------------+-------------------+---------+--------------------+-------+--------+
+|discount_id|discount_code|       discount_name|discount_type|discount_value|minimum_order_amount_eur|maximum_discount_amount_eur|usage_limit|usage_count|         start_date|           end_date|is_active|          created_at|_region| _source|
++-----------+-------------+--------------------+-------------+--------------+------------------------+---------------------------+-----------+-----------+-------------------+-------------------+---------+--------------------+-------+--------+
+|          1|    WELCOME10|New Customer Welcome|   percentage|         10.00|                   50.00|                     100.00|       1000|        234|2023-12-31 23:00:00|2024-12-31 22:59:59|        1|2025-06-11 02:14:...|     eu|postgres|
+|          2|     SPRING20| Spring Sale 20% Off|   percentage|         20.00|                  100.00|                     200.00|        500|        156|2024-02-29 23:00:00|2024-03-31 22:59:59|        0|2025-06-11 02:14:...|     eu|postgres|
+|          3|     FREESHIP|       Free Shipping|     shipping|          0.00|                   75.00|                      15.00|       2000|        567|2023-12-31 23:00:00|2024-12-31 22:59:59|        1|2025-06-11 02:14:...|     eu|postgres|
+|          4|    SAVE50EUR|        Save 50 Euro|        fixed|         50.00|                  200.00|                      50.00|        300|         89|2024-01-31 23:00:00|2024-02-29 22:59:59|        0|2025-06-11 02:14:...|     eu|postgres|
+|          5|BLACKFRIDAY30|Black Friday 30% Off|   percentage|         30.00|                  150.00|                     300.00|       1000|        678|2024-11-24 23:00:00|2024-11-29 22:59:59|        0|2025-06-11 02:14:...|     eu|postgres|
+|          6|    STUDENT15|    Student Discount|   percentage|         15.00|                   30.00|                     150.00|          0|        123|2023-12-31 23:00:00|2024-12-31 22:59:59|        1|2025-06-11 02:14:...|     eu|postgres|
+|          7|    LOYALTY25|Loyalty Member 25...|   percentage|         25.00|                  100.00|                     250.00|        500|        234|2023-12-31 23:00:00|2024-12-31 22:59:59|        1|2025-06-11 02:14:...|     eu|postgres|
+|          8|     SUMMER15|      Summer Special|   percentage|         15.00|                   80.00|                     120.00|        750|        345|2024-05-31 23:00:00|2024-08-31 22:59:59|        1|2025-06-11 02:14:...|     eu|postgres|
+|          9|     FIRST100| First 100 Customers|        fixed|         25.00|                  100.00|                      25.00|        100|        100|2023-12-31 23:00:00|2024-01-31 22:59:59|        0|2025-06-11 02:14:...|     eu|postgres|
+|         10|    WEEKEND10|     Weekend Special|   percentage|         10.00|                   60.00|                      80.00|          0|        456|2023-12-31 23:00:00|2024-12-31 22:59:59|        1|2025-06-11 02:14:...|     eu|postgres|
++-----------+-------------+--------------------+-------------+--------------+------------------------+---------------------------+-----------+-----------+-------------------+-------------------+---------+--------------------+-------+--------+
+[2025-06-11T10:33:57.719+0000] {logging_mixin.py:188} INFO - Finished extraction for discounts
+[2025-06-11T10:33:57.719+0000] {logging_mixin.py:188} INFO - Starting extraction for table: shopping_carts in region: eu
+[2025-06-11T10:33:57.720+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:34:00.484+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2000-01-01 00:00:00.000
+[2025-06-11T10:34:02.459+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable last_extracted_parquet_timestamp_eu_shopping_carts to 2025-06-11 02:14:31
+[2025-06-11T10:34:02.500+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=eu/table=shopping_carts/load_date=2025-06-11/
+[2025-06-11T10:34:04.145+0000] {logging_mixin.py:188} INFO - +-------+-----------+-----------------+--------------------+--------------------+-------------------+------------+-------+--------+
+|cart_id|customer_id|       session_id|          created_at|          updated_at|       abandoned_at|is_abandoned|_region| _source|
++-------+-----------+-----------------+--------------------+--------------------+-------------------+------------+-------+--------+
+|      1|          1|sess_abc123def456|2025-06-11 02:14:...|2025-06-11 02:14:...|               NULL|           0|     eu|postgres|
+|      2|          2|sess_ghi789jkl012|2025-06-11 02:14:...|2025-06-11 02:14:...|2024-02-01 14:30:00|           1|     eu|postgres|
+|      3|          3|sess_mno345pqr678|2025-06-11 02:14:...|2025-06-11 02:14:...|               NULL|           0|     eu|postgres|
+|      4|          4|sess_stu901vwx234|2025-06-11 02:14:...|2025-06-11 02:14:...|2024-02-02 09:45:00|           1|     eu|postgres|
+|      5|          5|sess_yza567bcd890|2025-06-11 02:14:...|2025-06-11 02:14:...|               NULL|           0|     eu|postgres|
++-------+-----------+-----------------+--------------------+--------------------+-------------------+------------+-------+--------+
+[2025-06-11T10:34:04.433+0000] {logging_mixin.py:188} INFO - Finished extraction for shopping_carts
+[2025-06-11T10:34:04.434+0000] {logging_mixin.py:188} INFO - Starting extraction for table: cart_items in region: eu
+[2025-06-11T10:34:04.434+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:34:08.386+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2000-01-01 00:00:00.000
+[2025-06-11T10:34:10.765+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable last_extracted_parquet_timestamp_eu_cart_items to 2025-06-11 02:14:31
+[2025-06-11T10:34:10.970+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=eu/table=cart_items/load_date=2025-06-11/
+[2025-06-11T10:34:12.116+0000] {logging_mixin.py:188} INFO - +------------+-------+----------+--------+--------------+--------------------+--------------------+-------+--------+
+|cart_item_id|cart_id|variant_id|quantity|unit_price_eur|            added_at|          updated_at|_region| _source|
++------------+-------+----------+--------+--------------+--------------------+--------------------+-------+--------+
+|           1|      1|         2|       1|       1399.99|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|           2|      1|         8|       2|         29.99|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|           3|      2|        15|       1|       1799.99|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|           4|      3|        19|       1|        109.99|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|           5|      4|         6|       1|        399.99|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|           6|      5|        12|       1|        999.99|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
++------------+-------+----------+--------+--------------+--------------------+--------------------+-------+--------+
+[2025-06-11T10:34:12.732+0000] {logging_mixin.py:188} INFO - Finished extraction for cart_items
+[2025-06-11T10:34:12.771+0000] {logging_mixin.py:188} INFO - Starting extraction for table: orders in region: eu
+[2025-06-11T10:34:12.771+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:34:16.046+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2000-01-01 00:00:00.000
+[2025-06-11T10:34:17.891+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable last_extracted_parquet_timestamp_eu_orders to 2025-06-11 02:14:31
+[2025-06-11T10:34:18.017+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=eu/table=orders/load_date=2025-06-11/
+[2025-06-11T10:34:19.182+0000] {logging_mixin.py:188} INFO - +--------+---------------+-----------+------------+--------------------+------------+--------------+------------+------------+---------+------------------+-------------------+-----------+-----------+----------------+--------------------+--------------------+-------+--------+
+|order_id|order_reference|customer_id|order_status|     order_timestamp|subtotal_eur|vat_amount_eur|shipping_eur|discount_eur|total_eur|billing_address_id|shipping_address_id|campaign_id|discount_id|invoice_required|          created_at|          updated_at|_region| _source|
++--------+---------------+-----------+------------+--------------------+------------+--------------+------------+------------+---------+------------------+-------------------+-----------+-----------+----------------+--------------------+--------------------+-------+--------+
+|       1| EU-2024-001001|          1|   delivered|2025-06-11 02:14:...|     1199.99|        227.99|        9.99|      119.99|  1316.98|                 1|                  2|          1|          1|            true|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|       2| EU-2024-001002|          2|     shipped|2025-06-11 02:14:...|       89.99|         17.09|       12.99|        0.00|   120.07|                 3|                  3|          2|       NULL|            true|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|       3| EU-2024-001003|          3|  processing|2025-06-11 02:14:...|     1599.99|        303.99|        0.00|      319.99|  1583.99|                 4|                  5|          3|          3|            true|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|       4| EU-2024-001004|          4|   delivered|2025-06-11 02:14:...|      249.99|         47.49|        7.99|       24.99|   280.48|                 6|                  6|          4|          4|            true|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|       5| EU-2024-001005|          5|   cancelled|2025-06-11 02:14:...|      299.99|         56.99|        5.99|        0.00|   362.97|                 7|                  7|          5|       NULL|           false|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|       6| EU-2024-001006|          6|   delivered|2025-06-11 02:14:...|       79.99|         15.19|        4.99|        7.99|    92.18|                 8|                  8|          6|          6|            true|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|       7| EU-2024-001007|          7|     shipped|2025-06-11 02:14:...|      899.99|        170.99|       15.99|      134.99|   951.98|                 9|                  9|          7|          7|            true|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|       8| EU-2024-001008|          8|  processing|2025-06-11 02:14:...|      149.99|         28.49|        8.99|       14.99|   172.48|                10|                 10|          8|          8|            true|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|       9| EU-2024-001009|          9|   delivered|2025-06-11 02:14:...|     1799.99|        341.99|        0.00|        0.00|  2141.98|                11|                 11|          9|       NULL|            true|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|      10| EU-2024-001010|         10|    returned|2025-06-11 02:14:...|       39.99|          2.79|        3.99|        3.99|    42.78|                12|                 12|         10|          9|            true|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
++--------+---------------+-----------+------------+--------------------+------------+--------------+------------+------------+---------+------------------+-------------------+-----------+-----------+----------------+--------------------+--------------------+-------+--------+
+[2025-06-11T10:34:20.196+0000] {logging_mixin.py:188} INFO - Finished extraction for orders
+[2025-06-11T10:34:20.197+0000] {logging_mixin.py:188} INFO - Starting extraction for table: order_items in region: eu
+[2025-06-11T10:34:20.198+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:34:23.647+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2000-01-01 00:00:00.000
+[2025-06-11T10:34:24.983+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable last_extracted_parquet_timestamp_eu_order_items to 2025-06-11 02:14:31
+[2025-06-11T10:34:25.026+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=eu/table=order_items/load_date=2025-06-11/
+[2025-06-11T10:34:25.833+0000] {logging_mixin.py:188} INFO - +-------------+--------+----------+--------+--------------+--------+---------------+--------------------+-------+--------+
+|order_item_id|order_id|variant_id|quantity|unit_price_eur|vat_rate|total_price_eur|          created_at|_region| _source|
++-------------+--------+----------+--------+--------------+--------+---------------+--------------------+-------+--------+
+|            1|       1|         1|       1|       1199.99|   19.00|        1427.98|2025-06-11 02:14:...|     eu|postgres|
+|            2|       2|        11|       1|         89.99|   19.00|         107.08|2025-06-11 02:14:...|     eu|postgres|
+|            3|       3|        14|       1|       1599.99|   19.00|        1903.98|2025-06-11 02:14:...|     eu|postgres|
+|            4|       4|        14|       1|        249.99|   19.00|         297.48|2025-06-11 02:14:...|     eu|postgres|
+|            5|       5|        11|       1|        299.99|   19.00|         356.98|2025-06-11 02:14:...|     eu|postgres|
+|            6|       6|        18|       1|         79.99|   19.00|          95.18|2025-06-11 02:14:...|     eu|postgres|
+|            7|       7|        20|       1|        899.99|   19.00|        1070.98|2025-06-11 02:14:...|     eu|postgres|
+|            8|       8|        10|       1|        149.99|   19.00|         178.48|2025-06-11 02:14:...|     eu|postgres|
+|            9|       9|        14|       1|       1599.99|   19.00|        1903.98|2025-06-11 02:14:...|     eu|postgres|
+|           10|       9|         1|       1|        199.99|   19.00|         237.98|2025-06-11 02:14:...|     eu|postgres|
+|           11|      10|        16|       1|         39.99|    7.00|          42.78|2025-06-11 02:14:...|     eu|postgres|
++-------------+--------+----------+--------+--------------+--------+---------------+--------------------+-------+--------+
+[2025-06-11T10:34:26.519+0000] {logging_mixin.py:188} INFO - Finished extraction for order_items
+[2025-06-11T10:34:26.520+0000] {logging_mixin.py:188} INFO - Starting extraction for table: shipments in region: eu
+[2025-06-11T10:34:26.520+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:34:29.494+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2000-01-01 00:00:00.000
+[2025-06-11T10:34:31.233+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable last_extracted_parquet_timestamp_eu_shipments to 2025-06-11 02:14:31
+[2025-06-11T10:34:31.265+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=eu/table=shipments/load_date=2025-06-11/
+[2025-06-11T10:34:32.048+0000] {logging_mixin.py:188} INFO - +-----------+--------+----------------+-------+---------------+-------------------+-----------------------+-------------------------+---------------+--------------------+--------------------+-------+--------+
+|shipment_id|order_id| tracking_number|carrier|shipping_method|  shipped_timestamp|estimated_delivery_date|actual_delivery_timestamp|shipment_status|          created_at|          updated_at|_region| _source|
++-----------+--------+----------------+-------+---------------+-------------------+-----------------------+-------------------------+---------------+--------------------+--------------------+-------+--------+
+|          1|       1|   DHL1234567890|    DHL|       Standard|2024-01-16 13:30:00|             2024-01-18|      2024-01-18 15:45:00|      delivered|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          2|       2|   DPD9876543210|    DPD|        Express|2024-01-17 09:15:00|             2024-01-19|                     NULL|     in_transit|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          3|       3|HERMES5555666677| Hermes|       Standard|               NULL|                   NULL|                     NULL|        pending|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          4|       4|POSTNL1111222233| PostNL|        Express|2024-01-18 08:45:00|             2024-01-20|      2024-01-19 13:20:00|      delivered|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          5|       6|   DHL2222333344|    DHL|       Same Day|2024-01-19 10:30:00|             2024-01-19|      2024-01-19 17:15:00|      delivered|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          6|       7|   DPD7777888899|    DPD|       Standard|2024-01-20 12:20:00|             2024-01-22|                     NULL|     in_transit|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          7|       8|HERMES4444555566| Hermes|        Express|2024-01-21 14:45:00|             2024-01-23|                     NULL|     in_transit|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
+|          8|       9|   DHL6666777788|    DHL|       Standard|2024-01-22 07:30:00|             2024-01-24|      2024-01-24 11:10:00|      delivered|2025-06-11 02:14:...|2025-06-11 02:14:...|     eu|postgres|
++-----------+--------+----------------+-------+---------------+-------------------+-----------------------+-------------------------+---------------+--------------------+--------------------+-------+--------+
+[2025-06-11T10:34:32.491+0000] {logging_mixin.py:188} INFO - Finished extraction for shipments
+[2025-06-11T10:34:32.493+0000] {logging_mixin.py:188} INFO - Starting extraction for table: returns in region: eu
+[2025-06-11T10:34:32.493+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:34:34.930+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2000-01-01 00:00:00.000
+[2025-06-11T10:34:35.527+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable last_extracted_parquet_timestamp_eu_returns to 2025-06-11 02:14:31
+[2025-06-11T10:34:35.550+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=eu/table=returns/load_date=2025-06-11/
+[2025-06-11T10:34:36.075+0000] {logging_mixin.py:188} INFO - +---------+--------+-----------------+-------------+--------------------+-----------------+-------------------+-----------------------+--------------------+-------+--------+
+|return_id|order_id|    return_reason|return_status|    return_timestamp|refund_amount_eur|   refund_timestamp|cooling_off_period_days|          created_at|_region| _source|
++---------+--------+-----------------+-------------+--------------------+-----------------+-------------------+-----------------------+--------------------+-------+--------+
+|        1|       5|     Changed mind|     approved|2025-06-11 02:14:...|           362.97|2024-01-25 13:30:00|                     14|2025-06-11 02:14:...|     eu|postgres|
+|        2|      10|Product defective|   processing|2025-06-11 02:14:...|            42.78|               NULL|                     14|2025-06-11 02:14:...|     eu|postgres|
++---------+--------+-----------------+-------------+--------------------+-----------------+-------------------+-----------------------+--------------------+-------+--------+
+[2025-06-11T10:34:36.313+0000] {logging_mixin.py:188} INFO - Finished extraction for returns
+[2025-06-11T10:34:36.314+0000] {logging_mixin.py:188} INFO - Starting extraction for table: product_reviews in region: eu
+[2025-06-11T10:34:36.314+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:34:38.676+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2000-01-01 00:00:00.000
+[2025-06-11T10:34:39.407+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable last_extracted_parquet_timestamp_eu_product_reviews to 2025-06-11 02:14:31
+[2025-06-11T10:34:39.430+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=eu/table=product_reviews/load_date=2025-06-11/
+[2025-06-11T10:34:39.987+0000] {logging_mixin.py:188} INFO - +---------+----------+-----------+--------+------+------------------+--------------------+--------------------+-------------+-----------------+--------------------+-------+--------+
+|review_id|product_id|customer_id|order_id|rating|      review_title|         review_text|is_verified_purchase|helpful_votes|moderation_status|          created_at|_region| _source|
++---------+----------+-----------+--------+------+------------------+--------------------+--------------------+-------------+-----------------+--------------------+-------+--------+
+|        1|         1|          1|       1|     5|  EXCELLENT PHONE!|Amazing camera qu...|                true|           15|         approved|2025-06-11 02:14:...|     eu|postgres|
+|        2|         5|          2|       2|     4|   beautiful dress|Nice fabric and f...|                true|            8|         approved|2025-06-11 02:14:...|     eu|postgres|
+|        3|         6|          3|       3|     5|      Perfect Sofa|Comfortable and w...|                true|           22|         approved|2025-06-11 02:14:...|     eu|postgres|
+|        4|        14|          4|       4|     3|AVERAGE HEADPHONES|Sound quality is ...|                true|            5|         approved|2025-06-11 02:14:...|     eu|postgres|
+|        5|         7|         10|      10|     1| poor quality book|Pages were damage...|                true|            2|         approved|2025-06-11 02:14:...|     eu|postgres|
+|        6|         1|          5|    NULL|     4|Good but expensive|Great phone but o...|               false|            3|          pending|2025-06-11 02:14:...|     eu|postgres|
+|        7|         9|          7|       7|     5|     AMAZING BIKE!|Perfect for mount...|                true|           18|         approved|2025-06-11 02:14:...|     eu|postgres|
+|        8|        10|          8|       8|     4|      fun lego set|Kids love it but ...|                true|            7|         approved|2025-06-11 02:14:...|     eu|postgres|
++---------+----------+-----------+--------+------+------------------+--------------------+--------------------+-------------+-----------------+--------------------+-------+--------+
+[2025-06-11T10:34:40.156+0000] {logging_mixin.py:188} INFO - Finished extraction for product_reviews
+[2025-06-11T10:34:40.160+0000] {logging_mixin.py:188} INFO - Starting extraction for table: payments in region: eu
+[2025-06-11T10:34:40.161+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:34:41.954+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2000-01-01 00:00:00.000
+[2025-06-11T10:34:42.891+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable last_extracted_parquet_timestamp_eu_payments to 2025-06-11 02:14:31
+[2025-06-11T10:34:42.923+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=eu/table=payments/load_date=2025-06-11/
+[2025-06-11T10:34:43.809+0000] {logging_mixin.py:188} INFO - +----------+--------+--------------+--------------+------------------+--------------------+--------------+------------------+--------------+--------------------+-------+--------+
+|payment_id|order_id|payment_method|payment_status|payment_amount_eur|   payment_timestamp|transaction_id|  gateway_response|psd2_compliant|          created_at|_region| _source|
++----------+--------+--------------+--------------+------------------+--------------------+--------------+------------------+--------------+--------------------+-------+--------+
+|         1|       1|    sepa_debit|     completed|           1316.98|2025-06-11 02:14:...|  txn_sepa_001|Payment successful|          true|2025-06-11 02:14:...|     eu|postgres|
+|         2|       2|   credit_card|     completed|            120.07|2025-06-11 02:14:...|    txn_cc_002|Payment successful|          true|2025-06-11 02:14:...|     eu|postgres|
+|         3|       3|         ideal|       pending|           1583.99|2025-06-11 02:14:...| txn_ideal_003|Payment processing|          true|2025-06-11 02:14:...|     eu|postgres|
+|         4|       4|        sofort|     completed|            280.48|2025-06-11 02:14:...|txn_sofort_004|Payment successful|          true|2025-06-11 02:14:...|     eu|postgres|
+|         5|       5|   credit_card|        failed|            362.97|2025-06-11 02:14:...|    txn_cc_005|Insufficient funds|          true|2025-06-11 02:14:...|     eu|postgres|
+|         6|       6|    sepa_debit|     completed|             92.18|2025-06-11 02:14:...|  txn_sepa_006|Payment successful|          true|2025-06-11 02:14:...|     eu|postgres|
+|         7|       7|        paypal|     completed|            951.98|2025-06-11 02:14:...|    txn_pp_007|Payment successful|          true|2025-06-11 02:14:...|     eu|postgres|
+|         8|       8|   credit_card|     completed|            172.48|2025-06-11 02:14:...|    txn_cc_008|Payment successful|          true|2025-06-11 02:14:...|     eu|postgres|
+|         9|       9|    sepa_debit|     completed|           2141.98|2025-06-11 02:14:...|  txn_sepa_009|Payment successful|          true|2025-06-11 02:14:...|     eu|postgres|
+|        10|      10|         ideal|      refunded|             42.78|2025-06-11 02:14:...| txn_ideal_010|  Payment refunded|          true|2025-06-11 02:14:...|     eu|postgres|
++----------+--------+--------------+--------------+------------------+--------------------+--------------+------------------+--------------+--------------------+-------+--------+
+[2025-06-11T10:34:44.593+0000] {logging_mixin.py:188} INFO - Finished extraction for payments
+[2025-06-11T10:34:44.594+0000] {logging_mixin.py:188} INFO - Starting extraction for table: wishlists in region: eu
+[2025-06-11T10:34:44.594+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:34:46.176+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2000-01-01 00:00:00.000
+[2025-06-11T10:34:46.924+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable last_extracted_parquet_timestamp_eu_wishlists to 2025-06-11 02:14:31
+[2025-06-11T10:34:46.941+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=eu/table=wishlists/load_date=2025-06-11/
+[2025-06-11T10:34:47.502+0000] {logging_mixin.py:188} INFO - +-----------+-----------+----------+--------------------+-------+--------+
+|wishlist_id|customer_id|product_id|            added_at|_region| _source|
++-----------+-----------+----------+--------------------+-------+--------+
+|          1|          1|         2|2025-06-11 02:14:...|     eu|postgres|
+|          2|          1|         9|2025-06-11 02:14:...|     eu|postgres|
+|          3|          1|        11|2025-06-11 02:14:...|     eu|postgres|
+|          4|          2|         1|2025-06-11 02:14:...|     eu|postgres|
+|          5|          2|         6|2025-06-11 02:14:...|     eu|postgres|
+|          6|          2|         8|2025-06-11 02:14:...|     eu|postgres|
+|          7|          3|         4|2025-06-11 02:14:...|     eu|postgres|
+|          8|          3|         7|2025-06-11 02:14:...|     eu|postgres|
+|          9|          3|        12|2025-06-11 02:14:...|     eu|postgres|
+|         10|          4|         3|2025-06-11 02:14:...|     eu|postgres|
+|         11|          4|         5|2025-06-11 02:14:...|     eu|postgres|
+|         12|          4|        10|2025-06-11 02:14:...|     eu|postgres|
+|         13|          5|         2|2025-06-11 02:14:...|     eu|postgres|
+|         14|          5|         6|2025-06-11 02:14:...|     eu|postgres|
+|         15|          5|        13|2025-06-11 02:14:...|     eu|postgres|
+|         16|          6|         1|2025-06-11 02:14:...|     eu|postgres|
+|         17|          6|         9|2025-06-11 02:14:...|     eu|postgres|
+|         18|          6|        14|2025-06-11 02:14:...|     eu|postgres|
+|         19|          7|         8|2025-06-11 02:14:...|     eu|postgres|
+|         20|          7|        11|2025-06-11 02:14:...|     eu|postgres|
++-----------+-----------+----------+--------------------+-------+--------+
+only showing top 20 rows
+[2025-06-11T10:34:47.727+0000] {logging_mixin.py:188} INFO - Finished extraction for wishlists
+[2025-06-11T10:34:47.732+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-06-11T10:34:47.858+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=extract_postgres_table_to_parquet, task_id=run_extraction_eu, execution_date=20250611T101551, start_date=20250611T103210, end_date=20250611T103447
+[2025-06-11T10:34:47.986+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-11T10:34:48.150+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

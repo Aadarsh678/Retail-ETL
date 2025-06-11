@@ -8,10 +8,10 @@
 SET search_path TO us;
 
 -- Product Categories
-CREATE TABLE IF NOT EXISTS us.categories (
-    category_id SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS staging_us.categories (
+    category_id INTEGER AUTOINCREMENT PRIMARY KEY,
     category_name VARCHAR(100) NOT NULL,
-    parent_category_id INTEGER REFERENCES us.categories(category_id),
+    parent_category_id INTEGER REFERENCES staging_us.categories(category_id),
     category_path TEXT,
     is_active BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -21,12 +21,12 @@ CREATE TABLE IF NOT EXISTS us.categories (
 );
 
 -- Products - USD pricing, imperial measurements
-CREATE TABLE IF NOT EXISTS us.products (
-    product_id SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS staging_us.products (
+    product_id INTEGER AUTOINCREMENT PRIMARY KEY,
     product_sku VARCHAR(20) NOT NULL UNIQUE, -- "PRD-12345"
     product_name VARCHAR(255) NOT NULL,
     product_description TEXT,
-    category_id INTEGER REFERENCES us.categories(category_id),
+    category_id INTEGER REFERENCES staging_us.categories(category_id),
     price_usd DECIMAL(10,2) NOT NULL,
     cost_usd DECIMAL(10,2),
     weight_kg DECIMAL(8,3), -- Imperial: pounds
@@ -41,9 +41,9 @@ CREATE TABLE IF NOT EXISTS us.products (
 );
 
 -- Product Variants
-CREATE TABLE IF NOT EXISTS us.product_variants (
-    variant_id SERIAL PRIMARY KEY,
-    product_id INTEGER REFERENCES us.products(product_id),
+CREATE TABLE IF NOT EXISTS staging_us.product_variants (
+    variant_id INTEGER AUTOINCREMENT PRIMARY KEY,
+    product_id INTEGER REFERENCES staging_us.products(product_id),
     product_sku VARCHAR(100) UNIQUE NOT NULL,
     variant_name VARCHAR(100),
     variant_type VARCHAR(50),
@@ -57,9 +57,9 @@ CREATE TABLE IF NOT EXISTS us.product_variants (
 );
 
 -- Inventory Management
-CREATE TABLE IF NOT EXISTS us.inventory (
-    inventory_id SERIAL PRIMARY KEY,
-    variant_id INTEGER REFERENCES us.product_variants(variant_id),
+CREATE TABLE IF NOT EXISTS staging_us.inventory (
+    inventory_id INTEGER AUTOINCREMENT PRIMARY KEY,
+    variant_id INTEGER REFERENCES staging_us.product_variants(variant_id),
     warehouse_location VARCHAR(100), -- "US-WEST-01", "US-EAST-02"
     quantity_available INTEGER NOT NULL DEFAULT 0,
     quantity_reserved INTEGER NOT NULL DEFAULT 0,
@@ -71,8 +71,8 @@ CREATE TABLE IF NOT EXISTS us.inventory (
 );
 
 -- Customer Database - Full data collection
-CREATE TABLE IF NOT EXISTS us.customers (
-    customer_id SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS staging_us.customers (
+    customer_id INTEGER AUTOINCREMENT PRIMARY KEY,
     email VARCHAR(255) UNIQUE NOT NULL,
     first_name VARCHAR(100),
     last_name VARCHAR(100),
@@ -91,9 +91,9 @@ CREATE TABLE IF NOT EXISTS us.customers (
 );
 
 -- Customer Addresses
-CREATE TABLE IF NOT EXISTS us.customer_addresses (
-    address_id SERIAL PRIMARY KEY,
-    customer_id INTEGER REFERENCES us.customers(customer_id),
+CREATE TABLE IF NOT EXISTS staging_us.customer_addresses (
+    address_id INTEGER AUTOINCREMENT PRIMARY KEY,
+    customer_id INTEGER REFERENCES staging_us.customers(customer_id),
     address_type VARCHAR(20),
     street_address TEXT NOT NULL,
     city VARCHAR(100) NOT NULL,
@@ -107,25 +107,25 @@ CREATE TABLE IF NOT EXISTS us.customer_addresses (
 );
 
 -- Marketing Campaigns
--- CREATE TABLE IF NOT EXISTS us.marketing_campaigns (
---     campaign_id SERIAL PRIMARY KEY,
---     campaign_name VARCHAR(255) NOT NULL,
---     campaign_type VARCHAR(50),
---     channel VARCHAR(100),
---     start_date DATE,
---     end_date DATE,
---     budget_usd DECIMAL(12,2),
---     target_audience TEXT,
---     campaign_status VARCHAR(20),
---     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---     _region VARCHAR(10) DEFAULT 'US' NOT NULL,
---     _source VARCHAR(50) DEFAULT 'us_standard_system' NOT NULL
--- );
+CREATE TABLE IF NOT EXISTS staging_us.marketing_campaigns (
+    campaign_id INTEGER AUTOINCREMENT PRIMARY KEY,
+    campaign_name VARCHAR(255) NOT NULL,
+    campaign_type VARCHAR(50),
+    channel VARCHAR(100),
+    start_date DATE,
+    end_date DATE,
+    budget_usd DECIMAL(12,2),
+    target_audience TEXT,
+    campaign_status VARCHAR(20),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    _region VARCHAR(10) DEFAULT 'US' NOT NULL,
+    _source VARCHAR(50) DEFAULT 'postgres' NOT NULL
+);
 
 -- Discount System
-CREATE TABLE IF NOT EXISTS us.discounts (
-    discount_id SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS staging_us.discounts (
+    discount_id INTEGER AUTOINCREMENT PRIMARY KEY,
     discount_code VARCHAR(50) UNIQUE,
     discount_name VARCHAR(255),
     discount_type VARCHAR(20),
@@ -143,9 +143,9 @@ CREATE TABLE IF NOT EXISTS us.discounts (
 );
 
 -- Shopping Cart
-CREATE TABLE IF NOT EXISTS us.shopping_carts (
-    cart_id SERIAL PRIMARY KEY,
-    customer_id INTEGER REFERENCES us.customers(customer_id),
+CREATE TABLE IF NOT EXISTS staging_us.shopping_carts (
+    cart_id INTEGER AUTOINCREMENT PRIMARY KEY,
+    customer_id INTEGER REFERENCES staging_us.customers(customer_id),
     session_id VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -156,10 +156,10 @@ CREATE TABLE IF NOT EXISTS us.shopping_carts (
 );
 
 -- Cart Items
-CREATE TABLE IF NOT EXISTS us.cart_items (
-    cart_item_id SERIAL PRIMARY KEY,
-    cart_id INTEGER REFERENCES us.shopping_carts(cart_id),
-    variant_id INTEGER REFERENCES us.product_variants(variant_id),
+CREATE TABLE IF NOT EXISTS staging_us.cart_items (
+    cart_item_id INTEGER AUTOINCREMENT PRIMARY KEY,
+    cart_id INTEGER REFERENCES staging_us.shopping_carts(cart_id),
+    variant_id INTEGER REFERENCES staging_us.product_variants(variant_id),
     quantity INTEGER NOT NULL,
     unit_price_usd DECIMAL(10,2) NOT NULL,
     added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -169,10 +169,10 @@ CREATE TABLE IF NOT EXISTS us.cart_items (
 );
 
 -- Orders
-CREATE TABLE IF NOT EXISTS us.orders (
-    order_id SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS staging_us.orders (
+    order_id INTEGER AUTOINCREMENT PRIMARY KEY,
     order_reference VARCHAR(50) UNIQUE NOT NULL, -- "US-ORD-123456"
-    customer_id INTEGER REFERENCES us.customers(customer_id),
+    customer_id INTEGER REFERENCES staging_us.customers(customer_id),
     order_status VARCHAR(20),
     order_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     subtotal_usd DECIMAL(12,2) NOT NULL,
@@ -180,10 +180,10 @@ CREATE TABLE IF NOT EXISTS us.orders (
     shipping_amount_usd DECIMAL(10,2) DEFAULT 0,
     discount_amount_usd DECIMAL(10,2) DEFAULT 0,
     total_amount_usd DECIMAL(12,2) NOT NULL,
-    billing_address_id INTEGER REFERENCES us.customer_addresses(address_id),
-    shipping_address_id INTEGER REFERENCES us.customer_addresses(address_id),
-    campaign_id INTEGER REFERENCES us.marketing_campaigns(campaign_id),
-    discount_id INTEGER REFERENCES us.discounts(discount_id),
+    billing_address_id INTEGER REFERENCES staging_us.customer_addresses(address_id),
+    shipping_address_id INTEGER REFERENCES staging_us.customer_addresses(address_id),
+    campaign_id INTEGER REFERENCES staging_us.marketing_campaigns(campaign_id),
+    discount_id INTEGER REFERENCES staging_us.discounts(discount_id),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     _region VARCHAR(10) DEFAULT 'US' NOT NULL,
@@ -191,10 +191,10 @@ CREATE TABLE IF NOT EXISTS us.orders (
 );
 
 -- Order Items
-CREATE TABLE IF NOT EXISTS us.order_items (
-    order_item_id SERIAL PRIMARY KEY,
-    order_id INTEGER REFERENCES us.orders(order_id),
-    variant_id INTEGER REFERENCES us.product_variants(variant_id),
+CREATE TABLE IF NOT EXISTS staging_us.order_items (
+    order_item_id INTEGER AUTOINCREMENT PRIMARY KEY,
+    order_id INTEGER REFERENCES staging_us.orders(order_id),
+    variant_id INTEGER REFERENCES staging_us.product_variants(variant_id),
     quantity INTEGER NOT NULL,
     unit_price_usd DECIMAL(10,2) NOT NULL,
     total_price_usd DECIMAL(10,2) NOT NULL,
@@ -204,9 +204,9 @@ CREATE TABLE IF NOT EXISTS us.order_items (
 );
 
 -- Payment Processing
-CREATE TABLE IF NOT EXISTS us.payments (
-    payment_id SERIAL PRIMARY KEY,
-    order_id INTEGER REFERENCES us.orders(order_id),
+CREATE TABLE IF NOT EXISTS staging_us.payments (
+    payment_id INTEGER AUTOINCREMENT PRIMARY KEY,
+    order_id INTEGER REFERENCES staging_us.orders(order_id),
     payment_method VARCHAR(50), -- "credit_card", "paypal", "apple_pay"
     payment_status VARCHAR(20),
     payment_amount_usd DECIMAL(12,2) NOT NULL,
@@ -219,9 +219,9 @@ CREATE TABLE IF NOT EXISTS us.payments (
 );
 
 -- Shipping Management
-CREATE TABLE IF NOT EXISTS us.shipments (
-    shipment_id SERIAL PRIMARY KEY,
-    order_id INTEGER REFERENCES us.orders(order_id),
+CREATE TABLE IF NOT EXISTS staging_us.shipments (
+    shipment_id INTEGER AUTOINCREMENT PRIMARY KEY,
+    order_id INTEGER REFERENCES staging_us.orders(order_id),
     tracking_number VARCHAR(100),
     carrier VARCHAR(100), -- "UPS", "FedEx", "USPS"
     shipping_method VARCHAR(100),
@@ -236,9 +236,9 @@ CREATE TABLE IF NOT EXISTS us.shipments (
 );
 
 -- Returns and Refunds
-CREATE TABLE IF NOT EXISTS us.returns (
-    return_id SERIAL PRIMARY KEY,
-    order_id INTEGER REFERENCES us.orders(order_id),
+CREATE TABLE IF NOT EXISTS staging_us.returns (
+    return_id INTEGER AUTOINCREMENT PRIMARY KEY,
+    order_id INTEGER REFERENCES staging_us.orders(order_id),
     return_reason VARCHAR(255),
     return_status VARCHAR(20),
     return_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -250,12 +250,12 @@ CREATE TABLE IF NOT EXISTS us.returns (
 );
 
 -- Product Reviews
-CREATE TABLE IF NOT EXISTS us.product_reviews (
-    review_id SERIAL PRIMARY KEY,
-    product_id INTEGER REFERENCES us.products(product_id),
-    customer_id INTEGER REFERENCES us.customers(customer_id),
-    order_id INTEGER REFERENCES us.orders(order_id),
-    rating INTEGER CHECK (rating >= 1 AND rating <= 5),
+CREATE TABLE IF NOT EXISTS staging_us.product_reviews (
+    review_id INTEGER AUTOINCREMENT PRIMARY KEY,
+    product_id INTEGER REFERENCES staging_us.products(product_id),
+    customer_id INTEGER REFERENCES staging_us.customers(customer_id),
+    order_id INTEGER REFERENCES staging_us.orders(order_id),
+    rating INTEGER ,
     review_title VARCHAR(255),
     review_text TEXT,
     is_verified_purchase BOOLEAN DEFAULT FALSE,
@@ -266,30 +266,30 @@ CREATE TABLE IF NOT EXISTS us.product_reviews (
 );
 
 -- Wishlist
-CREATE TABLE IF NOT EXISTS us.wishlists (
-    wishlist_id SERIAL PRIMARY KEY,
-    customer_id INTEGER REFERENCES us.customers(customer_id),
-    product_id INTEGER REFERENCES us.products(product_id),
+CREATE TABLE IF NOT EXISTS staging_us.wishlists (
+    wishlist_id INTEGER AUTOINCREMENT PRIMARY KEY,
+    customer_id INTEGER REFERENCES staging_us.customers(customer_id),
+    product_id INTEGER REFERENCES staging_us.products(product_id),
     added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     _region VARCHAR(10) DEFAULT 'US' NOT NULL,
     _source VARCHAR(50) DEFAULT 'us_standard_system' NOT NULL
 );
 
 -- Performance Indexes
-CREATE INDEX IF NOT EXISTS idx_us_products_category ON us.products(category_id);
-CREATE INDEX IF NOT EXISTS idx_us_variants_product ON us.product_variants(product_id);
-CREATE INDEX IF NOT EXISTS idx_us_inventory_variant ON us.inventory(variant_id);
-CREATE INDEX IF NOT EXISTS idx_us_orders_customer ON us.orders(customer_id);
-CREATE INDEX IF NOT EXISTS idx_us_orders_date ON us.orders(order_date);
-CREATE INDEX IF NOT EXISTS idx_us_order_items_order ON us.order_items(order_id);
+CREATE INDEX IF NOT EXISTS idx_us_products_category ON staging_us.products(category_id);
+CREATE INDEX IF NOT EXISTS idx_us_variants_product ON staging_us.product_variants(product_id);
+CREATE INDEX IF NOT EXISTS idx_us_inventory_variant ON staging_us.inventory(variant_id);
+CREATE INDEX IF NOT EXISTS idx_us_orders_customer ON staging_us.orders(customer_id);
+CREATE INDEX IF NOT EXISTS idx_us_orders_date ON staging_us.orders(order_date);
+CREATE INDEX IF NOT EXISTS idx_us_order_items_order ON staging_us.order_items(order_id);
 
 -- Performance Indexes
-CREATE INDEX IF NOT EXISTS idx_us_products_category ON us.products(category_id);
-CREATE INDEX IF NOT EXISTS idx_us_variants_product ON us.product_variants(product_id);
-CREATE INDEX IF NOT EXISTS idx_us_inventory_variant ON us.inventory(variant_id);
-CREATE INDEX IF NOT EXISTS idx_us_orders_customer ON us.orders(customer_id);
-CREATE INDEX IF NOT EXISTS idx_us_orders_date ON us.orders(order_date);
-CREATE INDEX IF NOT EXISTS idx_us_order_items_order ON us.order_items(order_id);
+CREATE INDEX IF NOT EXISTS idx_us_products_category ON staging_us.products(category_id);
+CREATE INDEX IF NOT EXISTS idx_us_variants_product ON staging_us.product_variants(product_id);
+CREATE INDEX IF NOT EXISTS idx_us_inventory_variant ON staging_us.inventory(variant_id);
+CREATE INDEX IF NOT EXISTS idx_us_orders_customer ON staging_us.orders(customer_id);
+CREATE INDEX IF NOT EXISTS idx_us_orders_date ON staging_us.orders(order_date);
+CREATE INDEX IF NOT EXISTS idx_us_order_items_order ON staging_us.order_items(order_id);
 
-CREATE INDEX IF NOT EXISTS idx_us_customers_region_source ON us.customers(_region, _source);
-CREATE INDEX IF NOT EXISTS idx_us_orders_region_source ON us.orders(_region, _source);
+CREATE INDEX IF NOT EXISTS idx_us_customers_region_source ON staging_us.customers(_region, _source);
+CREATE INDEX IF NOT EXISTS idx_us_orders_region_source ON staging_us.orders(_region, _source);

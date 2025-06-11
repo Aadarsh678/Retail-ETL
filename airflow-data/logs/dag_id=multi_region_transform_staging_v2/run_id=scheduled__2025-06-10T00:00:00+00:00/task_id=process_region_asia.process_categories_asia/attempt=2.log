@@ -1,0 +1,12 @@
+[2025-06-11T14:51:18.089+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_asia.process_categories_asia scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T14:51:18.115+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_transform_staging_v2.process_region_asia.process_categories_asia scheduled__2025-06-10T00:00:00+00:00 [queued]>
+[2025-06-11T14:51:18.117+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 2
+[2025-06-11T14:51:18.168+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_asia.process_categories_asia> on 2025-06-10 00:00:00+00:00
+[2025-06-11T14:51:18.194+0000] {standard_task_runner.py:60} INFO - Started process 304 to run task
+[2025-06-11T14:51:18.205+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_transform_staging_v2', 'process_region_asia.process_categories_asia', 'scheduled__2025-06-10T00:00:00+00:00', '--job-id', '43', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmppoa9414i']
+[2025-06-11T14:51:18.215+0000] {standard_task_runner.py:88} INFO - Job 43: Subtask process_region_asia.process_categories_asia
+[2025-06-11T14:51:18.596+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_transform_staging_v2.process_region_asia.process_categories_asia scheduled__2025-06-10T00:00:00+00:00 [running]> on host 94d2ab00ac05
+[2025-06-11T14:51:19.160+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_transform_staging_v2' AIRFLOW_CTX_TASK_ID='process_region_asia.process_categories_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-10T00:00:00+00:00'
+[2025-06-11T14:52:00.153+0000] {logging_mixin.py:188} INFO - Debugggg::::Vector(spark://94d2ab00ac05:45847/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar, spark://94d2ab00ac05:45847/jars/snowflake-jdbc-3.13.17.jar)
+[2025-06-11T14:52:00.181+0000] {logging_mixin.py:188} INFO - Processing categories for region asia
+[2025-06-11T14:52:00.712+0000] {logging_mixin.py:188} INFO - /opt/airflow/data/raw/region=asia/table=categories/load_date=2025-06-11

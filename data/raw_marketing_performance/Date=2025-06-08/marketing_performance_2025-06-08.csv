@@ -1,0 +1,5 @@
+campaign_id,ad_platform,ad_id,ad_group_id,record_date,impressions,clicks,spend_usd,conversions,conversion_value_usd,source_region,source_system,created_at,updated_at
+10, 'Google Ads', 'GA_AD_001', 'GA_ADGRP_001', 2024-06-01, 5000, 100, 50.00, 5, 250.00, 'EU', 'google_ads_api',2025-06-08,2025-06-08
+11, 'Facebook Ads', 'FB_AD_002', 'FB_ADGRP_002', 2024-06-01, 8000, 120, 60.00, 7, 350.00, 'EU', 'facebook_ads_api',2025-06-08,2025-06-08
+11, 'Google Ads', 'GA_AD_003', 'GA_ADGRP_003', 2024-06-05, 3000, 80, 40.00, 3, 150.00, 'US', 'google_ads_api',2025-06-08,2025-06-08
+12, 'Email Marketing', 'EMAIL_001', NULL, 2024-06-05, 10000, 150, 0.00, 10, 600.00, 'US', 'email_platform_api',2025-06-08,2025-06-09

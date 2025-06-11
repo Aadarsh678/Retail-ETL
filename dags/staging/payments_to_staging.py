@@ -28,16 +28,16 @@
 #         input_path = f"/opt/airflow/data/raw/region={region}/table={TABLE_NAME}/load_date={load_date}/"
 
 #         output_path = f"/opt/airflow/data/staging/{TABLE_NAME}/region={region}/load_date={load_date}/"
-        
+
 #         df_raw = spark.read.parquet(input_path)
 #         df_transformed = transform_payments(df_raw, region)
-        
+
 #         df_transformed.coalesce(1).write \
 #             .option("header", True) \
 #             .option("delimiter", ",") \
 #             .mode("overwrite") \
 #             .csv(output_path)
-        
+
 #         spark.stop()
 
 #     load_date = "2025-06-06"
@@ -66,6 +66,7 @@ from scripts.pyspark_jobs.payments import transform_payments_table
 
 TABLE_NAME = "payments"
 
+
 @dag(
     dag_id="transform_payments",
     schedule="0 1 * * *",  # Daily at 1 AM (after extraction)
@@ -74,33 +75,23 @@ TABLE_NAME = "payments"
     dagrun_timeout=datetime.timedelta(minutes=60),
     tags=["spark", "transformation", "csv"],
     max_active_tasks=10,
-    max_active_runs=1
+    max_active_runs=1,
 )
 def transform_payments_dag():
 
     @task
     def run_transformation_asia():
         transform_payments_table(
-            region="asia",
-            table=TABLE_NAME,
-            load_date="2025-06-08"
+            region="asia", table=TABLE_NAME, load_date="2025-06-08"
         )
 
     @task
     def run_transformation_eu():
-        transform_payments_table(
-            region="eu",
-            table=TABLE_NAME,
-            load_date="2025-06-08"
-        )
+        transform_payments_table(region="eu", table=TABLE_NAME, load_date="2025-06-08")
 
     @task
     def run_transformation_us():
-        transform_payments_table(
-            region="us",
-            table=TABLE_NAME,
-            load_date="2025-06-08"
-        )
+        transform_payments_table(region="us", table=TABLE_NAME, load_date="2025-06-08")
 
     # Run transformations in parallel
     run_transformation_asia()

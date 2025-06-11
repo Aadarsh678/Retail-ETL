@@ -11,9 +11,9 @@ from pyspark.sql.functions import col
 load_dotenv()
 
 
-
 REGION = "asia"
 TABLE = "customers"
+
 
 @dag(
     dag_id="load_parquet_to_snowflake_staging",
@@ -28,7 +28,7 @@ def load_to_snowflake():
 
         # Get latest load_date folder
         folders = os.listdir(base_path)
-        date_folders = [d.split('=')[-1] for d in folders if d.startswith("load_date=")]
+        date_folders = [d.split("=")[-1] for d in folders if d.startswith("load_date=")]
         if not date_folders:
             raise FileNotFoundError("No load_date folders found.")
         latest_date = max(date_folders)
@@ -44,12 +44,16 @@ def load_to_snowflake():
             print(f"[INFO] Variable not found, defaulting to {last_loaded_timestamp}")
 
         # Initialize Spark session
-        spark = SparkSession.builder \
-            .appName(f"Load_{REGION}_{TABLE}_to_Snowflake") \
-            .config("spark.jars", "/opt/airflow/jars/snowflake-jdbc-3.13.17.jar,/opt/airflow/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar") \
-            .config("spark.driver.extraClassPath", "/opt/airflow/jars/*") \
-            .config("spark.executor.extraClassPath", "/opt/airflow/jars/*") \
+        spark = (
+            SparkSession.builder.appName(f"Load_{REGION}_{TABLE}_to_Snowflake")
+            .config(
+                "spark.jars",
+                "/opt/airflow/jars/snowflake-jdbc-3.13.17.jar,/opt/airflow/jars/spark-snowflake_2.12-2.16.0-spark_3.2.jar",
+            )
+            .config("spark.driver.extraClassPath", "/opt/airflow/jars/*")
+            .config("spark.executor.extraClassPath", "/opt/airflow/jars/*")
             .getOrCreate()
+        )
 
         print(f"[INFO] Reading Parquet from: {parquet_path}")
         df = spark.read.parquet(parquet_path)
@@ -60,7 +64,9 @@ def load_to_snowflake():
 
         if max_parquet_ts_str <= last_loaded_timestamp:
             spark.stop()
-            raise AirflowSkipException(f"No new data to load. Last loaded: {last_loaded_timestamp}, max found: {max_parquet_ts}")
+            raise AirflowSkipException(
+                f"No new data to load. Last loaded: {last_loaded_timestamp}, max found: {max_parquet_ts}"
+            )
 
         # Filter new records
         df = df.filter(col("created") > last_loaded_timestamp)
@@ -82,12 +88,9 @@ def load_to_snowflake():
         }
 
         print(f"[INFO] Writing to Snowflake table: staging.{TABLE}")
-        df.write \
-            .format("snowflake") \
-            .options(**snowflake_options) \
-            .option("dbtable", TABLE) \
-            .mode("overwrite") \
-            .save()
+        df.write.format("snowflake").options(**snowflake_options).option(
+            "dbtable", TABLE
+        ).mode("overwrite").save()
 
         # Update last_loaded timestamp
         Variable.set(var_key, max_parquet_ts)
@@ -96,6 +99,7 @@ def load_to_snowflake():
         spark.stop()
 
     load_latest_data()
+
 
 dag = load_to_snowflake()
 

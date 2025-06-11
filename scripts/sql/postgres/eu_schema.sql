@@ -229,6 +229,21 @@ CREATE TABLE IF NOT EXISTS eu.shipments (
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Marketing Campaigns - GDPR compliant multi-currency marketing
+CREATE TABLE IF NOT EXISTS eu.marketing_campaigns (
+    campaign_id SERIAL PRIMARY KEY,
+    campaign_name VARCHAR(255) NOT NULL,
+    campaign_type VARCHAR(50),
+    channel VARCHAR(100),
+    start_date DATE,
+    end_date DATE,
+    budget_eur DECIMAL(12,2), -- Budget in EUR
+    target_audience TEXT,
+    campaign_status VARCHAR(20),
+    gdpr_compliant BOOLEAN DEFAULT TRUE, -- Must be GDPR compliant
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Returns and Refunds - EU consumer protection laws
 -- EU specific: 14-day cooling off period, consumer rights
 CREATE TABLE IF NOT EXISTS eu.returns (

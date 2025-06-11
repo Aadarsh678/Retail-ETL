@@ -5,6 +5,7 @@ import snowflake.connector
 # Load environment variables from .env
 load_dotenv()
 
+
 def get_snowflake_connection():
     """Returns a Snowflake connection object using environment variables"""
     conn = snowflake.connector.connect(
@@ -14,6 +15,6 @@ def get_snowflake_connection():
         warehouse=os.getenv("SNOWFLAKE_WAREHOUSE"),
         database=os.getenv("SNOWFLAKE_DATABASE"),
         schema=os.getenv("SNOWFLAKE_SCHEMA"),
-        role=os.getenv("SNOWFLAKE_ROLE")
+        role=os.getenv("SNOWFLAKE_ROLE"),
     )
     return conn

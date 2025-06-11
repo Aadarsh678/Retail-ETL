@@ -1,0 +1,93 @@
+[2025-06-11T10:25:14.081+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction_asia manual__2025-06-11T10:15:51.745517+00:00 [queued]>
+[2025-06-11T10:25:14.097+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction_asia manual__2025-06-11T10:15:51.745517+00:00 [queued]>
+[2025-06-11T10:25:14.097+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-11T10:25:14.117+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_extraction_asia> on 2025-06-11 10:15:51.745517+00:00
+[2025-06-11T10:25:14.126+0000] {standard_task_runner.py:60} INFO - Started process 7705 to run task
+[2025-06-11T10:25:14.131+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'extract_postgres_table_to_parquet', 'run_extraction_asia', 'manual__2025-06-11T10:15:51.745517+00:00', '--job-id', '1529', '--raw', '--subdir', 'DAGS_FOLDER/asia/landing.py', '--cfg-path', '/tmp/tmpd5mfjpf_']
+[2025-06-11T10:25:14.133+0000] {standard_task_runner.py:88} INFO - Job 1529: Subtask run_extraction_asia
+[2025-06-11T10:25:14.221+0000] {task_command.py:423} INFO - Running <TaskInstance: extract_postgres_table_to_parquet.run_extraction_asia manual__2025-06-11T10:15:51.745517+00:00 [running]> on host 0290689661db
+[2025-06-11T10:25:14.383+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='extract_postgres_table_to_parquet' AIRFLOW_CTX_TASK_ID='run_extraction_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T10:15:51.745517+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T10:15:51.745517+00:00'
+[2025-06-11T10:25:14.385+0000] {logging_mixin.py:188} INFO - Starting extraction for table: categories in region: asia
+[2025-06-11T10:25:14.385+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:25:39.712+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2000-01-01 00:00:00.000
+[2025-06-11T10:25:46.176+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-06-11T10:25:46.193+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable last_extracted_parquet_timestamp_asia_categories to 2025-06-11 02:14:04
+[2025-06-11T10:25:46.390+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=asia/table=categories/load_date=2025-06-11/
+[2025-06-11T10:25:54.267+0000] {logging_mixin.py:188} INFO - +------+--------------------+---------+--------------------+-----------+-------------------+--------------------+-------+--------+
+|cat_id|                name|parent_id|                path|active_flag|        create_time|         modify_time|_region| _source|
++------+--------------------+---------+--------------------+-----------+-------------------+--------------------+-------+--------+
+|     1|         Electronics|     NULL|        /Electronics|          Y|2024-01-01 09:00:00|2025-06-11 02:14:...|   asia|postgres|
+|     2|         SMARTPHONES|        1|/Electronics/Smar...|          Y|2024/01/02 10:30:45|2025-06-11 02:14:...|   asia|postgres|
+|     3|             laptops|        1|/Electronics/Laptops|          Y|01-03-2024 14:25:30|2025-06-11 02:14:...|   asia|postgres|
+|     4|      Gaming Devices|        1| /Electronics/Gaming|          Y|2024.01.04 16:15:00|2025-06-11 02:14:...|   asia|postgres|
+|     5|            CLOTHING|     NULL|           /Clothing|          Y|05/01/2024 08:45:20|2025-06-11 02:14:...|   asia|postgres|
+|     6|        mens fashion|        5|      /Clothing/Mens|          Y|         2024-01-06|2025-06-11 02:14:...|   asia|postgres|
+|     7|      WOMENS FASHION|        5|    /Clothing/Womens|          Y|         07/01/2024|2025-06-11 02:14:...|   asia|postgres|
+|     8|       Home & Living|     NULL|        /Home-Living|          Y|2024-01-08 11:20:15|2025-06-11 02:14:...|   asia|postgres|
+|     9|           furniture|        8|/Home-Living/Furn...|          Y|         09-01-2024|2025-06-11 02:14:...|   asia|postgres|
+|    10|               BOOKS|     NULL|              /Books|          Y|         2024/01/10|2025-06-11 02:14:...|   asia|postgres|
+|    11|  beauty & cosmetics|     NULL|   /Beauty-Cosmetics|          Y|         11.01.2024|2025-06-11 02:14:...|   asia|postgres|
+|    12|    Sports Equipment|     NULL|             /Sports|          Y|2024-01-12 13:40:25|2025-06-11 02:14:...|   asia|postgres|
+|    13|          automotive|     NULL|         /Automotive|          N|13/01/2024 09:15:30|2025-06-11 02:14:...|   asia|postgres|
+|    14|      TOYS & HOBBIES|     NULL|       /Toys-Hobbies|          Y|         2024.01.14|2025-06-11 02:14:...|   asia|postgres|
+|    15|jewelry & accesso...|     NULL|/Jewelry-Accessories|          Y|15-01-2024 10:50:40|2025-06-11 02:14:...|   asia|postgres|
++------+--------------------+---------+--------------------+-----------+-------------------+--------------------+-------+--------+
+[2025-06-11T10:25:54.996+0000] {logging_mixin.py:188} INFO - Finished extraction for categories
+[2025-06-11T10:25:54.997+0000] {logging_mixin.py:188} INFO - Starting extraction for table: products in region: asia
+[2025-06-11T10:25:54.997+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:25:58.728+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2000-01-01 00:00:00.000
+[2025-06-11T10:26:00.850+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable last_extracted_parquet_timestamp_asia_products to 2024-01-31 00:00:00
+[2025-06-11T10:26:01.057+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=asia/table=products/load_date=2025-06-11/
+[2025-06-11T10:26:03.141+0000] {logging_mixin.py:188} INFO - +----------+-----------+--------------------+--------------------+------+---------+--------+--------+--------------------+-------------+-------------------+-------+--------+
+|product_id|  item_code|                name|         description|cat_id|price_jpy|cost_jpy|weight_g|           size_info|active_status|        create_date|_region| _source|
++----------+-----------+--------------------+--------------------+------+---------+--------+--------+--------------------+-------------+-------------------+-------+--------+
+|         1|JP-ITEM-001|       iPhone 15 Pro|Latest Apple smar...|     2|   149800|   95000|   187.5|146.7mm x 71.5mm ...|       ACTIVE|2024-01-15 08:30:45|   asia|postgres|
+|         2|JP-ITEM-002|      MACBOOK AIR M2|Apple MacBook Air...|     3|   158000|   98000|  1240.0|304.1mm x 215mm x...|       ACTIVE|2024/01/16 10:15:20|   asia|postgres|
+|         3|JP-ITEM-003|       playstation 5|Sony PlayStation ...|     4|    59800|   42000|  4500.0|390mm x 260mm x 1...|       ACTIVE|17-01-2024 13:45:30|   asia|postgres|
+|         5|JP-ITEM-005|        SUMMER DRESS|Elegant summer dr...|     7|     8900|    3500|   300.0|       Various sizes|       ACTIVE|19/01/2024 09:40:25|   asia|postgres|
+|         6|JP-ITEM-006|        leather sofa|Premium leather 3...|     9|   198000|   95000| 85000.0|2200mm x 900mm x ...|       ACTIVE|         2024-01-20|   asia|postgres|
+|         7|JP-ITEM-007|    MANGA COLLECTION|Complete manga se...|    10|    12500|    6000|  2500.0|180mm x 120mm x 2...|       ACTIVE|         21/01/2024|   asia|postgres|
+|         8|JP-ITEM-008|        facial serum|Premium anti-agin...|    11|     9800|    3000|    50.0| 120mm x 40mm x 40mm|       ACTIVE|2024/01/22 11:30:15|   asia|postgres|
+|         9|JP-ITEM-009|       MOUNTAIN BIKE|Professional moun...|    12|    89000|   45000| 12500.0|1700mm x 650mm x ...|       ACTIVE|23-01-2024 14:25:30|   asia|postgres|
+|        11|JP-ITEM-011|      PEARL NECKLACE|Cultured pearl ne...|    15|    25000|   12000|    45.0|        450mm length|       ACTIVE|25/01/2024 10:15:40|   asia|postgres|
+|        12|JP-ITEM-012|         rice cooker|Advanced fuzzy lo...|     8|    18500|    9000|  3500.0|250mm x 300mm x 2...|       ACTIVE|2024-01-26 12:40:15|   asia|postgres|
+|        13|JP-ITEM-013|       ANDROID PHONE|Latest Android sm...|     2|    98000|   60000|   195.0|158mm x 73mm x 8.2mm|       ACTIVE|27/01/2024 15:20:30|   asia|postgres|
+|        14|JP-ITEM-014|    wireless earbuds|Noise-cancelling ...|     1|    19800|    8500|    58.0|  60mm x 50mm x 25mm|       ACTIVE|2024/01/28 09:45:10|   asia|postgres|
+|        15|JP-ITEM-015|       TABLET DEVICE|High-performance ...|     1|    65000|   38000|   460.0|250mm x 175mm x 6...|       ACTIVE|29-01-2024 11:30:25|   asia|postgres|
+|        17|JP-ITEM-017|limited edition w...|Special edition l...|    15|   350000|  180000|   120.0|42mm diameter x 1...| OUT_OF_STOCK|         31/01/2024|   asia|postgres|
++----------+-----------+--------------------+--------------------+------+---------+--------+--------+--------------------+-------------+-------------------+-------+--------+
+[2025-06-11T10:26:03.760+0000] {logging_mixin.py:188} INFO - Finished extraction for products
+[2025-06-11T10:26:03.761+0000] {logging_mixin.py:188} INFO - Starting extraction for table: product_variants in region: asia
+[2025-06-11T10:26:03.762+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:26:08.229+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2000-01-01 00:00:00.000
+[2025-06-11T10:26:10.393+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable last_extracted_parquet_timestamp_asia_product_variants to 2024-11-02 00:00:00
+[2025-06-11T10:26:10.515+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=asia/table=product_variants/load_date=2025-06-11/
+[2025-06-11T10:26:12.260+0000] {logging_mixin.py:188} INFO - +----------+----------+--------------------+--------------------+-------------+-------------+--------------+------+-------------------+-------+--------+
+|variant_id|product_id|                 sku|        variant_name| variant_type|variant_value|price_diff_jpy|status|            created|_region| _source|
++----------+----------+--------------------+--------------------+-------------+-------------+--------------+------+-------------------+-------+--------+
+|         1|         1|JP-ITEM-001-BLACK...|iPhone 15 Pro Bla...|color_storage|  Black 128GB|             0|ACTIVE|2024-02-01 08:30:00|   asia|postgres|
+|         2|         1|JP-ITEM-001-BLUE-...|iPhone 15 Pro Blu...|color_storage|   Blue 256GB|         20000|ACTIVE|2024/02/01 09:45:15|   asia|postgres|
+|         3|         1|JP-ITEM-001-WHITE...|iPhone 15 Pro Whi...|color_storage|  White 512GB|         40000|ACTIVE|01-02-2024 11:20:30|   asia|postgres|
+|         5|         2|JP-ITEM-002-GOLD-...|MacBook Air Gold ...| color_memory|    Gold 16GB|         30000|ACTIVE|03/02/2024 15:40:10|   asia|postgres|
+|         6|         3|JP-ITEM-003-STANDARD|PlayStation 5 Sta...|      edition|     Standard|             0|ACTIVE|         2024-02-04|   asia|postgres|
+|         7|         3| JP-ITEM-003-DIGITAL|PlayStation 5 Dig...|      edition|      Digital|        -10000|ACTIVE|         05/02/2024|   asia|postgres|
+|         8|         4|   JP-ITEM-004-RED-M|Cotton T-Shirt Re...|   color_size|        Red M|             0|ACTIVE|2024/02/06 10:25:30|   asia|postgres|
+|         9|         4|  JP-ITEM-004-BLUE-L|Cotton T-Shirt Bl...|   color_size|       Blue L|           500|ACTIVE|07-02-2024 12:50:15|   asia|postgres|
+|        11|         5|JP-ITEM-005-FLORAL-S|Summer Dress Flor...| pattern_size|     Floral S|             0|ACTIVE|09/02/2024 09:15:40|   asia|postgres|
+|        12|         5| JP-ITEM-005-SOLID-M|Summer Dress Soli...| pattern_size|      Solid M|             0|ACTIVE|2024-02-10 11:30:25|   asia|postgres|
+|        13|         5|JP-ITEM-005-STRIPE-L|Summer Dress Stri...| pattern_size|     Stripe L|          1500|ACTIVE|11/02/2024 13:45:10|   asia|postgres|
+|        14|         6|   JP-ITEM-006-BROWN|  Leather Sofa Brown|        color|        Brown|             0|ACTIVE|2024/02/12 15:20:35|   asia|postgres|
+|        15|         6|   JP-ITEM-006-BLACK|  Leather Sofa Black|        color|        Black|         15000|ACTIVE|13-02-2024 08:40:50|   asia|postgres|
+|        17|         7|  JP-ITEM-007-DELUXE|Manga Collection ...|      edition|       Deluxe|          5000|ACTIVE|15/02/2024 12:30:45|   asia|postgres|
+|        18|         8|    JP-ITEM-008-30ML|   Facial Serum 30ml|         size|         30ml|             0|ACTIVE|2024-02-16 14:55:20|   asia|postgres|
+|        19|         8|    JP-ITEM-008-50ML|   Facial Serum 50ml|         size|         50ml|          3000|ACTIVE|17/02/2024 16:40:15|   asia|postgres|
+|        20|         9|   JP-ITEM-009-RED-M|Mountain Bike Red...|   color_size|        Red M|             0|ACTIVE|2024/02/18 09:25:30|   asia|postgres|
+|        21|         9|  JP-ITEM-009-BLUE-L|Mountain Bike Blu...|   color_size|       Blue L|          5000|ACTIVE|19-02-2024 11:50:45|   asia|postgres|
+|        23|        10| JP-ITEM-010-PREMIUM|Gundam Model Kit ...|      edition|      Premium|          2500|ACTIVE|21/02/2024 15:20:35|   asia|postgres|
++----------+----------+--------------------+--------------------+-------------+-------------+--------------+------+-------------------+-------+--------+
+[2025-06-11T10:26:12.407+0000] {logging_mixin.py:188} INFO - Finished extraction for product_variants
+[2025-06-11T10:26:12.407+0000] {logging_mixin.py:188} INFO - Starting extraction for table: inventory in region: asia
+[2025-06-11T10:26:12.408+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T10:26:16.610+0000] {logging_mixin.py:188} INFO - [INFO] Last loaded timestamp: 2000-01-01 00:00:00.000
+[2025-06-11T10:26:18.606+0000] {logging_mixin.py:188} INFO - [INFO] Updated Airflow Variable last_extracted_parquet_timestamp_asia_inventory to 2024-12-03 00:00:00
+[2025-06-11T10:26:18.695+0000] {logging_mixin.py:188} INFO - Writing data to /opt/airflow/data/raw/region=asia/table=inventory/load_date=2025-06-11/

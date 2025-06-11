@@ -1,0 +1,33 @@
+[2025-06-09T11:35:00.935+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_to_snowflake.process_region_asia.process_inventory_asia manual__2025-06-09T11:22:33.329920+00:00 [queued]>
+[2025-06-09T11:35:00.953+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_to_snowflake.process_region_asia.process_inventory_asia manual__2025-06-09T11:22:33.329920+00:00 [queued]>
+[2025-06-09T11:35:00.953+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-09T11:35:00.975+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_region_asia.process_inventory_asia> on 2025-06-09 11:22:33.329920+00:00
+[2025-06-09T11:35:00.985+0000] {standard_task_runner.py:60} INFO - Started process 27821 to run task
+[2025-06-09T11:35:00.990+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_to_snowflake', 'process_region_asia.process_inventory_asia', 'manual__2025-06-09T11:22:33.329920+00:00', '--job-id', '793', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmpt88vnnh4']
+[2025-06-09T11:35:00.993+0000] {standard_task_runner.py:88} INFO - Job 793: Subtask process_region_asia.process_inventory_asia
+[2025-06-09T11:35:01.104+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_to_snowflake.process_region_asia.process_inventory_asia manual__2025-06-09T11:22:33.329920+00:00 [running]> on host 7fa6630d536c
+[2025-06-09T11:35:01.373+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_to_snowflake' AIRFLOW_CTX_TASK_ID='process_region_asia.process_inventory_asia' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T11:22:33.329920+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-09T11:22:33.329920+00:00'
+[2025-06-09T11:35:16.708+0000] {logging_mixin.py:188} INFO - Processing inventory for region asia
+[2025-06-09T11:35:28.206+0000] {logging_mixin.py:188} INFO - STAGING_ASIA
+[2025-06-09T11:35:38.497+0000] {logging_mixin.py:188} INFO - +------------+----------+------------------+------------------+-----------------+-------------+-------------------+-------------------+-------+--------+
+|inventory_id|variant_id|warehouse_location|quantity_available|quantity_reserved|reorder_level|  last_restocked_at|         updated_at|_region| _source|
++------------+----------+------------------+------------------+-----------------+-------------+-------------------+-------------------+-------+--------+
+|           1|         1|          TOKYO-01|               120|               25|           40|2024-02-22 08:30:15|2024-02-22 08:30:15|   asia|postgres|
+|           2|         2|          TOKYO-01|                80|               15|           30|2024-02-23 00:00:00|2024-02-23 00:00:00|   asia|postgres|
+|           3|         3|          OSAKA-02|                60|               10|           20|2024-02-24 00:00:00|2024-02-24 00:00:00|   asia|postgres|
+|           4|         4|         NAGOYA-03|               180|               30|           50|               NULL|               NULL|   asia|postgres|
+|           5|         5|         NAGOYA-03|               140|               25|           45|2024-02-26 00:00:00|2024-02-26 00:00:00|   asia|postgres|
+|           6|         6|          TOKYO-01|                90|               18|           35|2024-02-27 11:45:40|2024-02-27 11:45:40|   asia|postgres|
+|           7|         7|        FUKUOKA-04|                70|               12|           25|2024-02-28 00:00:00|2024-02-28 00:00:00|   asia|postgres|
+|           8|         8|          OSAKA-02|               250|               45|           75|2024-02-29 00:00:00|2024-02-29 00:00:00|   asia|postgres|
+|           9|         9|          TOKYO-01|               170|               30|           50|               NULL|               NULL|   asia|postgres|
+|          10|        10|         NAGOYA-03|               210|               40|           65|2024-02-03 00:00:00|2024-02-03 00:00:00|   asia|postgres|
++------------+----------+------------------+------------------+-----------------+-------------+-------------------+-------------------+-------+--------+
+only showing top 10 rows
+[2025-06-09T11:35:38.498+0000] {logging_mixin.py:188} INFO - Inserting into snowflake
+[2025-06-09T11:35:53.872+0000] {logging_mixin.py:188} INFO - successfully inserted in snowflake
+[2025-06-09T11:35:55.987+0000] {logging_mixin.py:188} INFO - Successfully processed 44 records for inventory in asia
+[2025-06-09T11:35:57.909+0000] {python.py:201} INFO - Done. Returned value was: {'region': 'asia', 'table': 'inventory', 'record_count': 44, 'status': 'success'}
+[2025-06-09T11:35:57.996+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=multi_region_to_snowflake, task_id=process_region_asia.process_inventory_asia, execution_date=20250609T112233, start_date=20250609T113500, end_date=20250609T113557
+[2025-06-09T11:35:58.074+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-09T11:35:58.162+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

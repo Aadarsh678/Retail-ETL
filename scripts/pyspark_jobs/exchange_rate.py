@@ -25,6 +25,7 @@ print("Snowflake URL:", SNOWFLAKE_CONFIG["account"])
 print("Snowflake User:", SNOWFLAKE_CONFIG["user"])
 print("Snowflake Password Set:", SNOWFLAKE_CONFIG["password"] is not None)
 
+
 def get_price(symbol):
     url = f"https://api.twelvedata.com/price?symbol={symbol}&apikey={API_KEY}"
     response = requests.get(url)
@@ -34,14 +35,16 @@ def get_price(symbol):
     else:
         raise Exception(f"Failed to fetch price for {symbol}: {data}")
 
+
 if __name__ == "__main__":
     rates = {symbol: get_price(symbol) for symbol in SYMBOLS}
-    
+
     conn = snowflake.connector.connect(**SNOWFLAKE_CONFIG)
     cs = conn.cursor()
-    
+
     try:
-        cs.execute(f"""
+        cs.execute(
+            f"""
             CREATE TABLE IF NOT EXISTS {SNOWFLAKE_CONFIG["schema"]}.exchange_rates (
                 id INTEGER AUTOINCREMENT PRIMARY KEY,
                 symbol STRING,
@@ -49,17 +52,23 @@ if __name__ == "__main__":
                 fetched_at TIMESTAMP,
                 CONSTRAINT unique_symbol_timestamp UNIQUE (symbol, fetched_at)
             )
-        """)
+        """
+        )
 
         for symbol, price in rates.items():
             try:
-                cs.execute(f"""
+                cs.execute(
+                    f"""
                     INSERT INTO {SNOWFLAKE_CONFIG["schema"]}.exchange_rates (symbol, price, fetched_at)
                     VALUES (%s, %s, %s)
-                """, (symbol, price, datetime.utcnow()))
+                """,
+                    (symbol, price, datetime.utcnow()),
+                )
             except ProgrammingError as e:
                 if "unique_symbol_timestamp" in str(e):
-                    print(f"Duplicate entry for {symbol} at current time, skipping insert.")
+                    print(
+                        f"Duplicate entry for {symbol} at current time, skipping insert."
+                    )
                 else:
                     raise
         conn.commit()

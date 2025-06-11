@@ -1,0 +1,1 @@
+[2025-06-11T11:45:34.218+0000] {scheduler_job_runner.py:781} ERROR - Executor reports task instance <TaskInstance: master_etl_dag_v3.fetch_postgres_data_to_parquet manual__2025-06-11T11:41:31.408564+00:00 [queued]> finished (failed) although the task says it's queued. (Info: None) Was the task killed externally?

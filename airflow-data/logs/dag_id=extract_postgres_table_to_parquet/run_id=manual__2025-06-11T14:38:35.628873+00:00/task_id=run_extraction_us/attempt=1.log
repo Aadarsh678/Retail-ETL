@@ -1,0 +1,52 @@
+[2025-06-11T15:10:45.997+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction_us manual__2025-06-11T14:38:35.628873+00:00 [queued]>
+[2025-06-11T15:10:46.018+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: extract_postgres_table_to_parquet.run_extraction_us manual__2025-06-11T14:38:35.628873+00:00 [queued]>
+[2025-06-11T15:10:46.019+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-06-11T15:10:46.050+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): run_extraction_us> on 2025-06-11 14:38:35.628873+00:00
+[2025-06-11T15:10:46.064+0000] {standard_task_runner.py:60} INFO - Started process 9304 to run task
+[2025-06-11T15:10:46.072+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'extract_postgres_table_to_parquet', 'run_extraction_us', 'manual__2025-06-11T14:38:35.628873+00:00', '--job-id', '92', '--raw', '--subdir', 'DAGS_FOLDER/asia/landing.py', '--cfg-path', '/tmp/tmp0f403k6n']
+[2025-06-11T15:10:46.077+0000] {standard_task_runner.py:88} INFO - Job 92: Subtask run_extraction_us
+[2025-06-11T15:10:46.205+0000] {task_command.py:423} INFO - Running <TaskInstance: extract_postgres_table_to_parquet.run_extraction_us manual__2025-06-11T14:38:35.628873+00:00 [running]> on host 94d2ab00ac05
+[2025-06-11T15:10:46.432+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='extract_postgres_table_to_parquet' AIRFLOW_CTX_TASK_ID='run_extraction_us' AIRFLOW_CTX_EXECUTION_DATE='2025-06-11T14:38:35.628873+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-11T14:38:35.628873+00:00'
+[2025-06-11T15:10:46.433+0000] {logging_mixin.py:188} INFO - Starting extraction for table: categories in region: us
+[2025-06-11T15:10:46.433+0000] {logging_mixin.py:188} INFO - load_date:::::2025-06-11
+[2025-06-11T15:10:46.630+0000] {local_task_job_runner.py:121} ERROR - Received SIGTERM. Terminating subprocesses
+[2025-06-11T15:10:46.657+0000] {process_utils.py:131} INFO - Sending 15 to group 9304. PIDs of all processes in the group: [9307, 9313, 9315, 9304]
+[2025-06-11T15:10:46.659+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 9304
+[2025-06-11T15:10:46.663+0000] {taskinstance.py:2450} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-06-11T15:10:46.667+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=9313, status='terminated', started='15:10:46') (9313) terminated with exit code None
+[2025-06-11T15:10:46.732+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/asia/landing.py", line 72, in run_extraction_us
+    extract_postgres_table(
+  File "/opt/airflow/dags/asia/../../scripts/pyspark_jobs/extract_to_parquet.py", line 190, in extract_postgres_table
+    .getOrCreate()
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/sql/session.py", line 497, in getOrCreate
+    sc = SparkContext.getOrCreate(sparkConf)
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/context.py", line 515, in getOrCreate
+    SparkContext(conf=conf or SparkConf())
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/context.py", line 201, in __init__
+    SparkContext._ensure_initialized(self, gateway=gateway, conf=conf)
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/context.py", line 436, in _ensure_initialized
+    SparkContext._gateway = gateway or launch_gateway(conf)
+  File "/home/airflow/.local/lib/python3.10/site-packages/pyspark/java_gateway.py", line 104, in launch_gateway
+    time.sleep(0.1)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 2452, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+[2025-06-11T15:10:46.742+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=extract_postgres_table_to_parquet, task_id=run_extraction_us, execution_date=20250611T143835, start_date=20250611T151045, end_date=20250611T151046
+[2025-06-11T15:10:46.782+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 92 for task run_extraction_us (Task received SIGTERM signal; 9304)
+[2025-06-11T15:10:46.811+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=9304, status='terminated', exitcode=1, started='15:10:46') (9304) terminated with exit code 1
+[2025-06-11T15:10:46.812+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=9315, status='terminated', started='15:10:46') (9315) terminated with exit code None
+[2025-06-11T15:10:46.813+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=9307, status='terminated', started='15:10:46') (9307) terminated with exit code None
+[2025-06-11T15:10:46.814+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 143
+[2025-06-11T15:10:46.870+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-06-11T15:10:49.273+0000] {local_task_job_runner.py:121} ERROR - Received SIGTERM. Terminating subprocesses
+[2025-06-11T15:10:49.274+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 143

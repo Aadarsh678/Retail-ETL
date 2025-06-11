@@ -1,0 +1,167 @@
+[2025-06-09T18:41:24.331+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: multi_region_ods_merge_v2.process_table__3 manual__2025-06-09T18:41:22.248228+00:00 [queued]>
+[2025-06-09T18:41:24.344+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: multi_region_ods_merge_v2.process_table__3 manual__2025-06-09T18:41:22.248228+00:00 [queued]>
+[2025-06-09T18:41:24.345+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-09T18:41:24.367+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): process_table__3> on 2025-06-09 18:41:22.248228+00:00
+[2025-06-09T18:41:24.376+0000] {standard_task_runner.py:60} INFO - Started process 12069 to run task
+[2025-06-09T18:41:24.381+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'multi_region_ods_merge_v2', 'process_table__3', 'manual__2025-06-09T18:41:22.248228+00:00', '--job-id', '896', '--raw', '--subdir', 'DAGS_FOLDER/master_ods_dag.py', '--cfg-path', '/tmp/tmp6gvsswic']
+[2025-06-09T18:41:24.384+0000] {standard_task_runner.py:88} INFO - Job 896: Subtask process_table__3
+[2025-06-09T18:41:24.464+0000] {task_command.py:423} INFO - Running <TaskInstance: multi_region_ods_merge_v2.process_table__3 manual__2025-06-09T18:41:22.248228+00:00 [running]> on host 363551e04744
+[2025-06-09T18:41:24.725+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='multi_region_ods_merge_v2' AIRFLOW_CTX_TASK_ID='process_table__3' AIRFLOW_CTX_EXECUTION_DATE='2025-06-09T18:41:22.248228+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-09T18:41:22.248228+00:00'
+[2025-06-09T18:41:24.728+0000] {logging_mixin.py:188} INFO - Processing table categories for region eu in schema STAGING_EU
+[2025-06-09T18:41:24.729+0000] {logging_mixin.py:188} INFO - Running MERGE SQL:
+
+        MERGE INTO ods.categories AS ods
+        USING (
+            SELECT
+                category_name,
+                parent_category_id,
+                category_path,
+                category_name_local,
+                is_gdpr_sensitive,
+                is_active,
+                created_at,
+                updated_at,
+                'EU' AS source_region,
+                _source AS source_system
+            FROM eu.categories
+        ) src
+        ON ods.category_name = src.category_name AND ods.source_region = src.source_region
+        WHEN MATCHED THEN UPDATE SET
+            parent_category_id = src.parent_category_id,
+            category_path = src.category_path,
+            category_name_local = src.category_name_local,
+            is_gdpr_sensitive = src.is_gdpr_sensitive,
+            is_active = src.is_active,
+            updated_at = src.updated_at,
+            source_system = src.source_system
+        WHEN NOT MATCHED THEN INSERT (
+            category_name, parent_category_id, category_path,
+            category_name_local, is_gdpr_sensitive, is_active,
+            created_at, updated_at, source_region, source_system
+        ) VALUES (
+            src.category_name, src.parent_category_id, src.category_path,
+            src.category_name_local, src.is_gdpr_sensitive, src.is_active,
+            src.created_at, src.updated_at, src.source_region, src.source_system
+        );
+
+        
+[2025-06-09T18:41:24.762+0000] {base.py:83} INFO - Using connection ID 'snowflake_ods' for task execution.
+[2025-06-09T18:41:24.763+0000] {connection.py:486} INFO - Snowflake Connector for Python Version: 3.15.0, Python Version: 3.10.13, Platform: Linux-6.11.0-26-generic-x86_64-with-glibc2.36
+[2025-06-09T18:41:24.765+0000] {connection.py:1391} INFO - Connecting to GLOBAL Snowflake domain
+[2025-06-09T18:41:26.582+0000] {connection.py:547} WARNING - Certificate did not match expected hostname: spb81014.us-west-2.aws.snowflakecomputing.com. Certificate: {'subject': ((('commonName', '*.prod3.us-west-2.snowflakecomputing.com'),),), 'subjectAltName': [('DNS', '*.prod3.us-west-2.snowflakecomputing.com'), ('DNS', '*.us-west-2.snowflakecomputing.com'), ('DNS', '*.global.snowflakecomputing.com'), ('DNS', '*.snowflakecomputing.com'), ('DNS', '*.prod3.us-west-2.aws.snowflakecomputing.com')]}
+[2025-06-09T18:41:26.583+0000] {connectionpool.py:824} WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(CertificateError("hostname 'spb81014.us-west-2.aws.snowflakecomputing.com' doesn't match either of '*.prod3.us-west-2.snowflakecomputing.com', '*.us-west-2.snowflakecomputing.com', '*.global.snowflakecomputing.com', '*.snowflakecomputing.com', '*.prod3.us-west-2.aws.snowflakecomputing.com'"))': /session/v1/login-request?request_id=a1220ebb-d5b2-41ae-a8f5-6f0f08fd3efb&databaseName=retail_dwh&schemaName=ods&warehouse=COMPUTE_WH&roleName=ACCOUNTADMIN&request_guid=7a59ef20-3211-443c-ba8d-6f7ad09f0115
+[2025-06-09T18:41:27.754+0000] {connection.py:547} WARNING - Certificate did not match expected hostname: spb81014.us-west-2.aws.snowflakecomputing.com. Certificate: {'subject': ((('commonName', '*.prod3.us-west-2.snowflakecomputing.com'),),), 'subjectAltName': [('DNS', '*.prod3.us-west-2.snowflakecomputing.com'), ('DNS', '*.us-west-2.snowflakecomputing.com'), ('DNS', '*.global.snowflakecomputing.com'), ('DNS', '*.snowflakecomputing.com'), ('DNS', '*.prod3.us-west-2.aws.snowflakecomputing.com')]}
+[2025-06-09T18:41:30.005+0000] {connection.py:547} WARNING - Certificate did not match expected hostname: spb81014.us-west-2.aws.snowflakecomputing.com. Certificate: {'subject': ((('commonName', '*.prod3.us-west-2.snowflakecomputing.com'),),), 'subjectAltName': [('DNS', '*.prod3.us-west-2.snowflakecomputing.com'), ('DNS', '*.us-west-2.snowflakecomputing.com'), ('DNS', '*.global.snowflakecomputing.com'), ('DNS', '*.snowflakecomputing.com'), ('DNS', '*.prod3.us-west-2.aws.snowflakecomputing.com')]}
+[2025-06-09T18:41:30.006+0000] {connectionpool.py:824} WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(CertificateError("hostname 'spb81014.us-west-2.aws.snowflakecomputing.com' doesn't match either of '*.prod3.us-west-2.snowflakecomputing.com', '*.us-west-2.snowflakecomputing.com', '*.global.snowflakecomputing.com', '*.snowflakecomputing.com', '*.prod3.us-west-2.aws.snowflakecomputing.com'"))': /session/v1/login-request?request_id=dabc6d10-70e8-42c5-b3d8-9a051e06901c&databaseName=retail_dwh&schemaName=ods&warehouse=COMPUTE_WH&roleName=ACCOUNTADMIN&request_guid=5109743b-3f8f-4deb-8ab0-0938def00444
+[2025-06-09T18:41:31.022+0000] {connection.py:547} WARNING - Certificate did not match expected hostname: spb81014.us-west-2.aws.snowflakecomputing.com. Certificate: {'subject': ((('commonName', '*.prod3.us-west-2.snowflakecomputing.com'),),), 'subjectAltName': [('DNS', '*.prod3.us-west-2.snowflakecomputing.com'), ('DNS', '*.us-west-2.snowflakecomputing.com'), ('DNS', '*.global.snowflakecomputing.com'), ('DNS', '*.snowflakecomputing.com'), ('DNS', '*.prod3.us-west-2.aws.snowflakecomputing.com')]}
+[2025-06-09T18:41:31.028+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/vendored/urllib3/connectionpool.py", line 715, in urlopen
+    httplib_response = self._make_request(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/vendored/urllib3/connectionpool.py", line 404, in _make_request
+    self._validate_conn(conn)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/vendored/urllib3/connectionpool.py", line 1058, in _validate_conn
+    conn.connect()
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/vendored/urllib3/connection.py", line 472, in connect
+    _match_hostname(cert, self.assert_hostname or server_hostname)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/vendored/urllib3/connection.py", line 545, in _match_hostname
+    match_hostname(cert, asserted_hostname)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/vendored/urllib3/util/ssl_match_hostname.py", line 150, in match_hostname
+    raise CertificateError(
+snowflake.connector.vendored.urllib3.util.ssl_match_hostname.CertificateError: hostname 'spb81014.us-west-2.aws.snowflakecomputing.com' doesn't match either of '*.prod3.us-west-2.snowflakecomputing.com', '*.us-west-2.snowflakecomputing.com', '*.global.snowflakecomputing.com', '*.snowflakecomputing.com', '*.prod3.us-west-2.aws.snowflakecomputing.com'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/vendored/requests/adapters.py", line 485, in send
+    resp = conn.urlopen(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/vendored/urllib3/connectionpool.py", line 827, in urlopen
+    return self.urlopen(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/vendored/urllib3/connectionpool.py", line 799, in urlopen
+    retries = retries.increment(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/vendored/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+snowflake.connector.vendored.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='spb81014.us-west-2.aws.snowflakecomputing.com', port=443): Max retries exceeded with url: /session/v1/login-request?request_id=a1220ebb-d5b2-41ae-a8f5-6f0f08fd3efb&databaseName=retail_dwh&schemaName=ods&warehouse=COMPUTE_WH&roleName=ACCOUNTADMIN&request_guid=7a59ef20-3211-443c-ba8d-6f7ad09f0115 (Caused by SSLError(CertificateError("hostname 'spb81014.us-west-2.aws.snowflakecomputing.com' doesn't match either of '*.prod3.us-west-2.snowflakecomputing.com', '*.us-west-2.snowflakecomputing.com', '*.global.snowflakecomputing.com', '*.snowflakecomputing.com', '*.prod3.us-west-2.aws.snowflakecomputing.com'")))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/network.py", line 1091, in _request_exec
+    raw_ret = session.request(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/vendored/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/vendored/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/vendored/requests/adapters.py", line 516, in send
+    raise SSLError(e, request=request)
+snowflake.connector.vendored.requests.exceptions.SSLError: HTTPSConnectionPool(host='spb81014.us-west-2.aws.snowflakecomputing.com', port=443): Max retries exceeded with url: /session/v1/login-request?request_id=a1220ebb-d5b2-41ae-a8f5-6f0f08fd3efb&databaseName=retail_dwh&schemaName=ods&warehouse=COMPUTE_WH&roleName=ACCOUNTADMIN&request_guid=7a59ef20-3211-443c-ba8d-6f7ad09f0115 (Caused by SSLError(CertificateError("hostname 'spb81014.us-west-2.aws.snowflakecomputing.com' doesn't match either of '*.prod3.us-west-2.snowflakecomputing.com', '*.us-west-2.snowflakecomputing.com', '*.global.snowflakecomputing.com', '*.snowflakecomputing.com', '*.prod3.us-west-2.aws.snowflakecomputing.com'")))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/connection.py", line 1647, in _authenticate
+    auth.authenticate(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/auth/_auth.py", line 226, in authenticate
+    ret = self._rest._post_request(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/network.py", line 759, in _post_request
+    ret = self.fetch(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/network.py", line 874, in fetch
+    ret = self._request_exec_wrapper(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/network.py", line 1002, in _request_exec_wrapper
+    raise e
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/network.py", line 924, in _request_exec_wrapper
+    return_object = self._request_exec(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/network.py", line 1161, in _request_exec
+    Error.errorhandler_wrapper(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/errors.py", line 279, in errorhandler_wrapper
+    handed_over = Error.hand_to_other_handler(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/errors.py", line 337, in hand_to_other_handler
+    connection.errorhandler(connection, cursor, error_class, error_value)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/errors.py", line 210, in default_errorhandler
+    raise error_class(
+snowflake.connector.errors.OperationalError: 250003: 250003: Hit non-retryable SSL error, HTTPSConnectionPool(host='spb81014.us-west-2.aws.snowflakecomputing.com', port=443): Max retries exceeded with url: /session/v1/login-request?request_id=a1220ebb-d5b2-41ae-a8f5-6f0f08fd3efb&databaseName=retail_dwh&schemaName=ods&warehouse=COMPUTE_WH&roleName=ACCOUNTADMIN&request_guid=7a59ef20-3211-443c-ba8d-6f7ad09f0115 (Caused by SSLError(CertificateError("hostname 'spb81014.us-west-2.aws.snowflakecomputing.com' doesn't match either of '*.prod3.us-west-2.snowflakecomputing.com', '*.us-west-2.snowflakecomputing.com', '*.global.snowflakecomputing.com', '*.snowflakecomputing.com', '*.prod3.us-west-2.aws.snowflakecomputing.com'"))).
+Verify that the hostnames and port numbers in SYSTEM$ALLOWLIST are added to your firewall's allowed list.
+To further troubleshoot your connection you may reference the following article: https://docs.snowflake.com/en/user-guide/client-connectivity-troubleshooting/overview.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/master_ods_dag.py", line 126, in process_table
+    hook.run(merge_sql)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/providers/snowflake/hooks/snowflake.py", line 382, in run
+    with closing(self.get_conn()) as conn:
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/providers/snowflake/hooks/snowflake.py", line 276, in get_conn
+    conn = connector.connect(**conn_config)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/__init__.py", line 54, in Connect
+    return SnowflakeConnection(**kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/connection.py", line 548, in __init__
+    self.connect(**kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/connection.py", line 901, in connect
+    self.__open_connection()
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/connection.py", line 1293, in __open_connection
+    self.authenticate_with_retry(self.auth_class)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/connection.py", line 1615, in authenticate_with_retry
+    self._authenticate(auth_instance)
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/connection.py", line 1693, in _authenticate
+    raise auth_op from e
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/connection.py", line 1668, in _authenticate
+    auth_instance.handle_timeout(
+  File "/home/airflow/.local/lib/python3.10/site-packages/snowflake/connector/auth/by_plugin.py", line 211, in handle_timeout
+    raise error
+snowflake.connector.errors.OperationalError: 250001: 250001: Could not connect to Snowflake backend after 2 attempt(s).Aborting
+Verify that the hostnames and port numbers in SYSTEM$ALLOWLIST are added to your firewall's allowed list.
+To further troubleshoot your connection you may reference the following article: https://docs.snowflake.com/en/user-guide/client-connectivity-troubleshooting/overview.
+[2025-06-09T18:41:31.045+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=multi_region_ods_merge_v2, task_id=process_table__3, execution_date=20250609T184122, start_date=20250609T184124, end_date=20250609T184131
+[2025-06-09T18:41:31.087+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 896 for task process_table__3 (250001: 250001: Could not connect to Snowflake backend after 2 attempt(s).Aborting
+Verify that the hostnames and port numbers in SYSTEM$ALLOWLIST are added to your firewall's allowed list.
+To further troubleshoot your connection you may reference the following article: https://docs.snowflake.com/en/user-guide/client-connectivity-troubleshooting/overview.; 12069)
+[2025-06-09T18:41:31.107+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-06-09T18:41:31.154+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
